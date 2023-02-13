@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.AboutUsFragment.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/base_title_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/icon_title_logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back_gray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/about_us"
+                    android:textColor="@color/color_theme_black"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line" />
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="82dp"
+                    android:layout_height="82dp"
+                    android:layout_marginTop="80dp"
+                    android:src="@drawable/icon_logo_y" />
+
+                <TextView
+                    android:id="@+id/photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="@{vm.version}"
+                    android:textColor="@color/black"
+                    android:textSize="16.3sp" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/dp_40"
+                android:src="@drawable/qd_logo" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.HomeNav2Fragment.ClickProxy" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_bg_car"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_dataRes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="34dp"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:padding="5dp"
+                    android:text="Charging\nStation"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="35sp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_user" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_user"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:onClick="@{()->click.open()}"
+                    android:src="@drawable/icon_user"
+                    android:tint="@color/white"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <LinearLayout
+                    android:id="@+id/rv"
+                    drawable_radiusLT="@{19}"
+                    drawable_radiusRT="@{19}"
+                    drawable_solidColor="@{@color/white}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="260dp"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <RelativeLayout
+                        drawable_radius="@{10}"
+                        drawable_solidColor="@{@color/light_green}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@color/white"
+                        android:onClick="@{() -> click.SelectCharger()}"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_image"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:paddingStart="2dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_charge_select" />
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_back" />
+
+                        <TextView
+                            android:id="@+id/tv_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toEndOf="@id/iv_image"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="Select charger"
+                            android:textColor="@color/dark_text_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_text"
+                            android:layout_alignStart="@id/tv_text"
+                            android:layout_marginTop="4dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="Select charger"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="10sp"
+                            tools:text="111111" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        drawable_radius="@{10}"
+                        drawable_solidColor="@{@color/light_green}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@color/white"
+                        android:onClick="@{() -> click.ChargingStatus()}"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_image1"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_status" />
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_back" />
+
+                        <TextView
+                            android:id="@+id/tv_text1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toEndOf="@id/iv_image1"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="Charging Status"
+                            android:textColor="@color/dark_text_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_id1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_text1"
+                            android:layout_alignStart="@id/tv_text1"
+                            android:layout_marginTop="4dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="View timing status and charging status"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="12sp"
+                            tools:text="111111" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        drawable_radius="@{10}"
+                        drawable_solidColor="@{@color/light_green}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:background="@color/white"
+                        android:onClick="@{() -> click.scan()}"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+                        <ImageView
+                            android:id="@+id/iv_image2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_scan" />
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/icon_back" />
+
+                        <TextView
+                            android:id="@+id/tv_text2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toEndOf="@id/iv_image2"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="Scan"
+                            android:textColor="@color/dark_text_color"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_id2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_text2"
+                            android:layout_alignStart="@id/tv_text2"
+                            android:layout_marginTop="4dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="Enter Via Scan QR code"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="12sp"
+                            tools:text="111111" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.HomeStationBean" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_16"
+        android:clickable="true"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            drawable_radius="@{10}"
+            android:padding="@dimen/dp_10"
+            drawable_solidColor="@{@color/black_25}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_like"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="5dp"
+                android:layout_centerVertical="true"
+                android:padding="5dp" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/iv_like"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@{info.chargeBoxId}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="11111" />
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:gravity="end"
+                android:layout_toEndOf="@id/tv_name"
+                android:layout_marginTop="10dp"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/manrope_semibold"
+                android:textColor="@color/white_a5"
+                android:textSize="12sp"
+                tools:text="11111" />
+        </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selle_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_below="@id/rl"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:paddingStart="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_f_delete"/>
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+</layout>

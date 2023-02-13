@@ -1,0 +1,588 @@
+<resources>
+    <string name="app_name">Evport</string>
+    <string name="welcome_back">
+
+    </string>
+
+    <string name="free_music_json">
+
+    </string>
+
+    <string name="library_json">
+
+    </string>
+    <string name="play">
+
+    </string>
+    <string name="notify_of_play">
+
+    </string>
+    <string name="network_unconnected">
+
+    </string>
+
+    <string name="play_repeat">
+
+    </string>
+    <string name="play_repeat_once">
+
+    </string>
+    <string name="play_shuffle">
+
+    </string>
+
+    <string name="unfinished">
+
+    </string>
+    <string name="recently">
+
+    </string>
+    <string name="best_practice">
+
+    </string>
+
+
+    <string name="app_summary">
+
+    </string>
+    <string name="project_title">
+        </string>
+    <string name="search_page_tip">
+
+    </string>
+    <string name="test_download">
+
+    </string>
+    <string name="test_lifecycle_download">
+
+    </string>
+    <string name="search_back">
+
+    </string>
+
+    <string name="relearn_android"></string>
+    <string name="learn_more_friends">
+
+    </string>
+    <string name="learn_more">Learn More</string>
+    <string name="debug_fragment_databinding_warning"></string>
+    <string name="debug_activity_databinding_warning"></string>
+    <string name="login_title">
+
+    </string>
+    <string name="login_content">
+
+    </string>
+
+
+    <!--    以上酌情删除-->
+    <string name="Copyright">
+
+    </string>
+    <string name="text_com_name">
+<!--        公司名-->
+    </string>
+    <!--   net test 页面-->
+    <string name="activity_title_internet_api">动态API设置</string>
+    <string name="net_ping_api">确定</string>
+    <string name="net_hint_api">请输入IP(域名)地址</string>
+    <string name="net_hint_port_api">请输入端口</string>
+    <string name="net_error_api">设置失败！</string>
+    <string name="net_success_api">设置成功！</string>
+    <string name="net_notice_api">请输入正确的IP地址</string>
+
+    <!--    登陆注册-->
+    <string name="user_email">אימייל
+</string>
+    <string name="user_password">קוד גישה
+</string>
+    <string name="login">כניסה - למערכת
+</string>
+    <string name="CreateAccount">לא נרשם ? צור חשבון
+</string>
+    <string name="forgetPassword">שכחתי  -סיסמא
+</string>
+    <string name="account">חשבון
+</string>
+    <string name="emailCode">השווה קוד
+</string>
+    <string name="Username">שם משתמש
+</string>
+    <string name="Areacode">אזור
+</string>
+    <string name="phone">טֵלֵפוֹן</string>
+    <string name="Birthday">יום הולדת</string>
+    <string name="female">נקבה
+</string>
+    <string name="male">זכר
+</string>
+    <string name="signUp">כניסה למערכת
+</string>
+    <string name="send">שלח
+</string>
+    <string name="next">הבא
+</string>
+    <string name="Confirm">אישור
+</string>
+    <string name="old_pwd">קוד קודם
+</string>
+    <string name="Newpassword">קוד גישה
+</string>
+    <string name="charge_point_start_password">Charge point start password</string>
+    <string name="white_list_of_charging_posts">White list of charging posts</string>
+    <string name="charger_id">Charger ID</string>
+    <string name="charge_point_setting">Charge point setting</string>
+
+    <string name="search">חפש
+</string>
+    <string name="welcome_nback">ברוך שובך</string>
+    <string name="thank_you_very_much_for_nusing_this_app_n_we_bring_you_a_different_nexperience">Thank you very much for \n using this app.\n We bring you a different\nexperience</string>
+    <string name="edit_white_list">Edit white list</string>
+
+    <string name="stats">סטטיסטיקות</string>
+    <string name="record">עדכן
+</string>
+
+    <string name="sulfur_dioxide">Sulfur dioxide</string>
+    <string name="carbon_intensity">Carbon intensity</string>
+    <string name="dust_emission">Dust emission</string>
+    <string name="i_don_t_have_an_account">I don’t have an account.</string>
+
+    <string name="charging_times">זמן טעינה
+</string>
+
+
+    <string name="danwei_L">(kg)</string>
+    <string name="sign_up">כניסה למערכת
+</string>
+    <string name="not_registered_create_an_account"></string>
+    <string name="reset_password_and_login">אפס סיסמא ושם משתמש
+</string>
+    <string name="cancel_tv">ביטול
+</string>
+    <string name="filter">סינון
+</string>
+    <string name="reset_tv">איפוס
+</string>
+    <string name="need_location_permission">אנו זקוקים להרשאת מיקום עבור שימוש בפונקציונליות האפליקציה</string>
+    <string name="home">עמוד הבית
+</string>
+    <string name="favorites">אהוב</string>
+    <string name="save_as_default_filter">שמור סינון
+</string>
+    <string name="charge">טעינה
+</string>
+    <string name="toast_not_select_image">לא בחרת תמונה</string>
+    <string name="log_out">יציאה
+</string>
+    <string name="_2020_powercore_inc">© 2020 Powercore, Inc</string>
+    <string name="text_Your_feedback">תגובות
+</string>
+    <string name="rating">דֵרוּג</string>
+    <string name="toast_content_is_empty">התוכן ריק</string>
+    <string name="text_commit">שלח
+</string>
+    <string name="text_Your_comment">מהי חוות דעתך לטעינה זו ? השאר חוות דעתך לעדכן את כולם.
+</string>
+
+
+    <string name="acTitle_bluetooth">חבר עמדה
+</string>
+    <string name="main_bt_disable_msg">Bluetooth is disable</string>
+    <string name="main_location_disable_msg">Location is disable</string>
+
+    <string name="change_language">שנה שפה
+</string>
+    <string name="language_selection">בחירת שפה
+</string>
+    <string name="choose_the_language_you_are_proficient_in">בחר את השפה המועדפת
+</string>
+    <string name="reset_password">אפס קוד
+</string>
+    <string name="check_password">בדוק קוד
+</string>
+    <string name="all">כולם
+</string>
+    <string name="idle">לא פעיל
+</string>
+    <string name="operator">מפעיל
+</string>
+    <string name="socket_type">סוג החיבור
+</string>
+    <string name="type">סוג</string>
+    <string name="commonly_used">שימוש נפוץ
+</string>
+    <string name="Power">הספק
+</string>
+    <string name="info">מיידע
+</string>
+    <string name="device">עמדה
+</string>
+    <string name="comment">הערות
+</string>
+    <string name="operational_information">מידע תפעולי
+</string>
+    <string name="open_time">זמן פתיחה
+</string>
+    <string name="service_hotline">שרות חם
+</string>
+    <string name="at_this_station">בתחנה זו
+.</string>
+    <string name="comments">הערות
+</string>
+    <string name="and_">גַם</string>
+    <string name="connector">קונקטור
+</string>
+
+    <string name="status_type_idle">לא פעיל
+</string>
+    <string name="status_type_Offline">לא מקוון
+</string>
+    <string name="status_type_Plugged">מחובר
+</string>
+    <string name="status_type_Finished">הסתיים
+</string>
+    <string name="status_type_Charging">בטעינה
+</string>
+    <string name="status_type_Unavailable">לא זמין
+</string>
+    <string name="status_type_Faulted">תקול
+</string>
+    <string name="status_type_Reserved">שמור
+</string>
+    <string name="the_comment_has_been_deleted">ההערה נמחקה
+</string>
+    <string name="replies">תגובות
+</string>
+    <string name="reply"> חזור
+</string>
+    <string name="comment_details">פירוט הערות
+</string>
+    <string name="say_something">תגיד משהו
+</string>
+    <string name="Operation_timed_out">הזמן המוגדר לביצוע הפעולה הסתיים
+</string>
+    <string name="The_operation_may_be">ייתכן שהפעולה הסתיימה, אנא אשר בכדי לחזור לעמוד הקודם.
+</string>
+    <string name="charging_gun">ידית התקן טעינה
+</string>
+    <string name="price_information">פירוט החיוב הכספי
+</string>
+    <string name="electricity_fee">תעריף חשמל
+</string>
+    <string name="server_fee">תעריף שרות
+</string>
+    <string name="parking_fee">מחיר חנייה
+</string>
+    <string name="payment">תשלום
+</string>
+    <string name="credit_card">כרטיס אשראי
+</string>
+    <string name="charging_card">כרטיס חיוב
+</string>
+    <string name="how_to_use_this_charger">כיצד להשתמש בטעינה
+</string>
+    <string name="please_click_here_to_refresh_after_connecting_the_connector">בבקשה ל&lt;font color=&quot;#15CD80&quot;&gt;חץ כאן לרי&lt;/font&gt;ענון , אחרי התחברות למטען
+</string>
+    <string name="start_charging">התחל טעינה
+</string>
+    <string name="charging_settings">הגדר טעינה
+</string>
+    <string name="quick_charge">טעינה מהירה
+</string>
+    <string name="set_time">כיוון זמן
+</string>
+    <string name="duration">זמן
+</string>
+    <string name="set_energy">קבע אנרגיה
+</string>
+    <string name="charging_energy">אנרגיית טעינה
+</string>
+    <string name="set_soc">עדכן זמן
+</string>
+    <string name="payment_detail">פירוט תשלום
+</string>
+    <string name="card">זיהוי כרטיס
+:</string>
+    <string name="please_enter_the_card_number">נא הכנס מספר הכרטיס
+</string>
+    <string name="year">שנה
+</string>
+    <string name="month">חודש
+</string>
+    <string name="first_name">שם פרטי
+</string>
+    <string name="enter_the_first_name">הכנס שם פרטי
+</string>
+    <string name="last_name">שם משפחה
+</string>
+    <string name="enter_the_last_name">הכנס שם משפחה
+</string>
+    <string name="correctcardnumber">נא הכנס מספר הכרטיס
+</string>
+    <string name="correctyear">נא הכנס את השנה
+</string>
+    <string name="correctmonth">נא הכנס את החודש
+</string>
+    <string name="correctfirstname">נא הכנס שם פרטי
+</string>
+    <string name="correctlastname">נא הכנס שם משפחה
+</string>
+    <string name="correctcvc">נא הכנס פרטי כרטיס אשראי CVC
+</string>
+    <string name="success">הצלחה
+</string>
+    <string name="use_tutorial">פתח מדריך
+</string>
+    <string name="view_all_comments">ראה כל ההערות
+</string>
+    <string name="there_are_no_vehicles_charging">אין רכב בעמדת הטעינה
+</string>
+    <string name="Waiting">המתן
+</string>
+    <string name="Stop_charging">הפסק טעינה
+</string>
+    <string name="stop_">הפסק
+</string>
+    <string name="areyousurrestop_">האם מעוניין להפסיק טעינה
+</string>
+    <string name="voltage">מתח
+</string>
+    <string name="current">זרם
+</string>
+    <string name="power">הספק
+</string>
+    <string name="start_time">זמן התחלה
+</string>
+    <string name="charging_fee">מחיר טעינה
+</string>
+    <string name="scan">סרוק
+</string>
+    <string name="place_qr_code_in_box">שים קוד QR בתיבה</string>
+    <string name="energy">אנרגיה
+</string>
+    <string name="Consumption">צריכה
+</string>
+    <string name="information">מידע
+</string>
+    <string name="amount_of_consumption">סה"כ צריכה
+</string>
+    <string name="Date">יום
+</string>
+    <string name="spendTime">זמן שימוש
+</string>
+    <string name="Money">כסף
+</string>
+    <string name="Desc">מיון יורד
+</string>
+    <string name="Asc">מיון עולה
+</string>
+    <string name="charging_record">רישום טעינות
+</string>
+    <string name="order_number">מספר הזמנה
+</string>
+    <string name="Connector">קונקטור
+</string>
+    <string name="End_time">זמן סיום
+</string>
+    <string name="energy_kwh">אנרגיה (קילוואט)
+</string>
+    <string name="Payment_details">פירוט תשלום
+</string>
+    <string name="details">פירוט
+</string>
+    <string name="order_status">מצב ההזמנה
+</string>
+    <string name="balance">יתרה
+</string>
+    <string name="ok">מאושר
+</string>
+    <string name="score">ניקוד
+</string>
+    <string name="post_a_comment">של הערה
+</string>
+    <string name="cvc">CVC</string>
+    <string name="my_message">ההודעה שלי
+</string>
+    <string name="my_collection">הבחירה שלי
+</string>
+    <string name="my_card">הכרטיס שלי
+</string>
+    <string name="bluetooth_connect_device">חיבור בלוטוס
+</string>
+    <string name="feedback">תגובות
+</string>
+    <string name="setting">הגדרות
+</string>
+    <string name="about_us">אודות
+</string>
+    <string name="loading_pictures_under_non_wifi_network">טעינת תמונה בחיבור סלסולרי
+</string>
+    <string name="company_website">אתר החברה
+
+</string>
+    <string name="privacy_agreement">הסכם פרטיות
+</string>
+    <string name="clear_cache">מחק זכרון מטמון
+</string>
+    <string name="check_for_updates">בדוק עידכונים
+</string>
+    <string name="device_failure">התקן תקול
+</string>
+    <string name="Appinformation">ההודעה מערכת  שגוייה
+</string>
+    <string name="problemencountered">בעיה בחיוב לתשלום
+</string>
+    <string name="Appisunstabl">אפליקציה לא יציבה
+</string>
+    <string name="issues"> תקלה במנוי
+</string>
+    <string name="Otherproblems">בעיות אחרות
+</string>
+    <string name="please_describe_the_problem_you_are_experiencing">נא תאר את התקלה
+</string>
+    <string name="upload_image_not_more_than_3">טען תמונה לא יותר מ 3
+</string>
+    <string name="stations">עמדות
+</string>
+    <string name="status">מצב
+</string>
+    <string name="using">שימוש</string>
+    <string name="lose">איבוד</string>
+    <string name="unbound">נדחה</string>
+    <string name="expired">פג תוקף</string>
+    <string name="personal_information">מיידע אישי
+</string>
+    <string name="profile_photo">תמונת פרופיל
+</string>
+    <string name="name">שם
+</string>
+    <string name="e_mail">אימייל
+</string>
+    <string name="password">קוד גישה
+</string>
+    <string name="edit">ערוך
+</string>
+    <string name="sex">מִין</string>
+    <string name="notification_center">מרכז התראות
+</string>
+    <string name="system_message">הודעות מערכת
+</string>
+    <string name="my_feedback">תגובתי
+</string>
+    <string name="my_comment">הערותי
+</string>
+    <string name="reply_to_mine">הגב
+</string>
+    <string name="system_message_detail">פירוט הודעות מערכת
+</string>
+    <string name="as_you_know">אנו בתהליך טיפול בבקשתך , בהקדם נשוב אלייך.
+</string>
+    <string name="delete">מחק
+</string>
+    <string name="replied_to_my_comment">השב להערותי
+</string>
+    <string name="the_user_has_not_bound_the_carrier_charging_card_you_can_apply_for_a_charging_card_at_the_service_point_of_the_local_operator">כרטטיס הטעינה אינו פעיל לצורך הפעלת טעינה נא לדרוש בעמדה המרכזית
+</string>
+    <string name="there_are_no_collection_charging_stations">אין בסביבה תחנות לטעינה חשמלית
+</string>
+    <string name="no_comment_yet">אין תגובה עדיין
+</string>
+    <string name="there_was_no_system_message">אין הודעות מערכת
+</string>
+    <string name="there_is_no_charge_record">אין רישום חיוב
+</string>
+
+    <!--    easy photo 多语言-->
+    <string name="selector_folder_all_easy_photos">כל התמונות</string>
+
+    <string name="selector_folder_all_video_photo_easy_photos">תמונות וסרטונים</string>
+
+    <string name="selector_folder_video_easy_photos">כל הסרטונים</string>
+
+    <string name="selector_easy_photos">בחר</string>
+
+    <!--http://stackoverflow.com/questions/17502824/whats-wrong-with-this-format-string-->
+    <string name="selector_action_done_easy_photos">לְמַלֵא(%1$d/%2$d)</string>
+
+    <string name="selector_preview_easy_photos">הַצָגָה מוּקדֶמֶת</string>
+
+    <string name="selector_reach_max_hint_easy_photos">אתה יכול לבחור רק %d תמונות או סרטונים לכל היותר</string>
+
+    <string name="selector_reach_max_image_hint_easy_photos">אתה יכול לבחור רק %d תמונות לכל היותר</string>
+
+    <string name="selector_reach_max_video_hint_easy_photos">אתה יכול לבחור רק %d סרטונים לכל היותר</string>
+
+    <string name="selector_single_type_hint_easy_photos">ניתן לבחור רק סוג אחד של קובץ</string>
+
+    <string name="msg_no_camera_easy_photos">לא ניתן להפעיל את המצלמה!</string>
+
+    <string name="camera_temp_file_error_easy_photos">תמונה שגויה</string>
+
+    <string name="selector_permission_error_easy_photos">הרשאות שגויות, לא עובד!</string>
+
+    <string name="selector_image_size_error_easy_photos">רוחב התמונה חייב להיות גדול מ-%1d והגובה חייב להיות גדול מ-%2d</string>
+
+    <string name="selector_image_type_error_easy_photos">פורמט תמונה זה אינו נתמך</string>
+
+    <string name="edit_easy_photos">לַעֲרוֹך</string>
+
+    <string name="empty_easy_photos">רֵיק</string>
+
+    <string name="no_photos_easy_photos">אין תמונה שעומדת בדרישות, צלמו</string>
+
+    <string name="no_videos_easy_photos">אין סרטונים תואמים</string>
+
+    <string name="permissions_again_easy_photos">אנא לחץ ואפשר את ההרשאות הרלוונטיות</string>
+
+    <string name="permissions_die_easy_photos">אנא לחץ ואפשר את ההרשאות הרלוונטיות בהגדרות</string>
+
+    <string name="original_easy_photos">תמונה מקורית</string>
+
+    <string name="preview_current_number_easy_photos">%1$d/%2$d</string>
+
+    <string name="done_easy_photos">לְהַשְׁלִים</string>
+
+    <string name="cancel_easy_photos">לְבַטֵל</string>
+
+    <string name="template_easy_photos">תבנית</string>
+
+    <string name="text_sticker_easy_photos">דמות</string>
+
+    <string name="text_sticker_date_easy_photos">תַאֲרִיך</string>
+
+    <string name="text_sticker_hint_easy_photos">לחץ פעמיים כדי לערוך</string>
+
+    <string name="text_sticker_hint_name_easy_photos">התאמה אישית</string>
+
+    <string name="picture_selection_easy_photos">בחירת תמונה</string>
+
+    <string name="video_selection_easy_photos">בחירת וידאו</string>
+
+    <string name="puzzle_easy_photos">איות אחד</string>
+
+    <string name="select_puzzle_photos">אנא בחר 2 \- 9 תמונות</string>
+
+    <string name="gif_easy_photos">GIF</string>
+
+    <string name="video_easy_photos">וִידֵאוֹ</string>
+    <string name="Pleaseselectavaliddevice">נא בחר עמדה זמינה
+</string>
+    <string name="Discoverservicefailed">איתור שירות נכשל
+</string>
+    <string name="Devicestatusresponseerror">קבלת סטטוס התקלה
+</string>
+    <string name="Incompleteemailorpasswordutil">שימוש באימייל או סיסמה חלקיים</string>
+    <string name="Pleasecheckthenetwork">תתחבר לרשת
+</string>
+    <string name="Pleasetryagainlater">בבקשה נסה שוב מאוחר יותר</string>
+    <string name="Unknownexception">חריג לא ידוע</string>
+    <string name="please_input">בבקשה הכנס אינפורמציה נדרשת
+</string>
+    <string name="weneedpermission">אנא תן אישור למצלמת הטלפון
+</string>
+    <string name="somthingerror">משהו שגיאה, אנא נסה שוב מאוחר יותר</string>
+    <string name="pleaseselectachargingsettings">אנא בחר הגדרות טעינה</string>
+
+
+</resources>

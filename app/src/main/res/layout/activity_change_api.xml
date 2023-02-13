@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.MainViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.ChangeAPIActivity.ClickProxy" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey"
+        tools:context=".ui.activity.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+<!--            <include-->
+<!--                android:id="@+id/toolbar"-->
+<!--                layout="@layout/toolbar_my" />-->
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_ipaddress"
+                drawable_radius="@{5}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_16"
+                android:background="@null"
+                android:hint="@string/net_hint_api"
+                android:padding="4dp"
+                android:text="@={vm.ipAddress}"
+                android:textSize="@dimen/sp_22" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_port"
+                drawable_radius="@{5}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_15"
+                android:background="@null"
+                android:hint="@string/net_hint_port_api"
+                android:padding="4dp"
+                android:text="@={vm.ipPort}"
+                android:textSize="@dimen/sp_22" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/base_split"
+                android:layout_marginTop="@dimen/base_split"
+                android:layout_marginEnd="@dimen/base_split"
+                android:gravity="center"
+                android:text="@{vm.pingNotice}"
+                android:textColor="@color/colorTheme"
+                android:textSize="@dimen/sp_28" />
+
+            <TextView
+                drawable_enabled_radius="@{8}"
+                drawable_enabled_solidColor="@{@color/colorTheme}"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/colorTheme}"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="@dimen/base_split3X"
+                android:layout_marginTop="@dimen/base_split"
+                android:layout_marginEnd="@dimen/base_split3X"
+                android:enabled="@{vm.pingBtnEnable}"
+                android:gravity="center"
+                android:onClick="@{()->click.toPing()}"
+                android:text="@string/net_ping_api"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_28" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

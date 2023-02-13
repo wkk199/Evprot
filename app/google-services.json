@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "387497477107",
+    "project_id": "evport-app-android",
+    "storage_bucket": "evport-app-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387497477107:android:c8e02cff02ce8a42540886",
+        "android_client_info": {
+          "package_name": "com.evport.businessapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387497477107-jd76osgosron5oivo94hgoqkllf3vpnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmTh4duPUNtTDoeAH8EHN7dyvI5mjGgHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387497477107-jd76osgosron5oivo94hgoqkllf3vpnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

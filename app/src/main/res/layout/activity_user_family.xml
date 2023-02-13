@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.UserFamilyActivity.ClickProxy" />
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.StationViewModel" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+        <variable
+            name="adapterDevice"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+    </data>
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fitsSystemWindows="true">-->
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                imageUrl="@{vm.FamilyBg}"
+                placeHolder="@{@drawable/img_family_bg}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_family_bg" />
+
+            <RelativeLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@null">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:drawableEnd="@drawable/arrow__down_white_"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:onClick="@{()->click.menu()}"
+                    android:text="@={vm.FamilyTitle}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/guntitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/appbar_layout"
+                android:layout_margin="16dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="Charge Point"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_device"
+                adapter="@{adapterDevice}"
+                submitList="@{vm.deviceListHomeBean}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/ll_bind"
+                android:layout_below="@id/guntitle"
+                android:nestedScrollingEnabled="true"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <LinearLayout
+                android:id="@+id/ll_bind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black_25"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp_16">
+
+                <LinearLayout
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/colorTheme}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:gravity="center"
+                    android:onClick="@{()->click.bind()}"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btn_bind"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:drawableStart="@drawable/icon_f_scan"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:gravity="center"
+                        android:text="Add Charge Point"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_charge"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black_25"
+                android:visibility="gone"
+                android:onClick="@{()->click.dismissCharge()}"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_bottom"
+                    drawable_radiusLT="@{8}"
+                    drawable_radiusRT="@{8}"
+                    drawable_solidColor="@{@color/white}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/dp_15">
+
+                    <TextView
+                        android:id="@+id/btn_setTime"
+                        drawable_radius="@{8}"
+                        drawable_strokeColor="@{@color/colorTheme}"
+                        drawable_strokeWidth="@{1}"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:gravity="center"
+                        android:onClick="@{()->click.setTime()}"
+                        android:text="Set time"
+                        android:layout_marginEnd="@dimen/dp_10"
+                        android:textColor="@color/colorTheme"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/btn_confrim"
+                        drawable_enabled_radius="@{8}"
+                        drawable_enabled_solidColor="@{@color/colorTheme}"
+                        drawable_radius="@{8}"
+                        android:layout_marginStart="@dimen/dp_10"
+                        drawable_solidColor="@{@color/light_text_color}"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:layout_weight="1"
+                        android:enabled="true"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:gravity="center"
+                        android:onClick="@{()->click.chargeNow()}"
+                        android:text="Charge now"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_setTime"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:background="@color/black_25"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:onClick="@{()->click.dismissSetTime()}"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    drawable_radiusLT="@{8}"
+                    drawable_radiusRT="@{8}"
+                    drawable_solidColor="@{@color/white}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/dp_15">
+
+                    <TextView
+                        android:id="@+id/tv_time_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/icon_switch_off"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:onClick="@{()->click.startSwitch()}"
+                        android:padding="@dimen/dp_16"
+                        android:textColor="@color/black"
+                        android:text="Start time"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_time_start0"
+                        drawable_radius="@{8}"
+                        drawable_solidColor="@{@color/black_10}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:onClick="@{()->click.startTime()}"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/manrope_medium"
+                            android:padding="@dimen/dp_16"
+                            android:text="Set time "
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_time_start2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:drawableEnd="@drawable/icon_arrow_right"
+                            android:drawablePadding="@dimen/dp_5"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="end"
+                            android:hint=" -- "
+                            android:padding="@dimen/dp_16"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/icon_switch_off"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:onClick="@{()->click.endSwitch()}"
+                        android:padding="@dimen/dp_16"
+                        android:text="End time"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_time_stop"
+                        drawable_radius="@{8}"
+                        drawable_solidColor="@{@color/black_10}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/dp_10"
+                        android:onClick="@{()->click.endTime()}"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/manrope_medium"
+                            android:padding="@dimen/dp_16"
+                            android:text="Set time "
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_time_end"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:drawableEnd="@drawable/icon_arrow_right"
+                            android:drawablePadding="@dimen/dp_5"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="end"
+                            android:hint=" -- "
+                            android:padding="@dimen/dp_16"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/btn_ok"
+                        drawable_radius="@{8}"
+                        drawable_solidColor="@{@color/light_text_color}"
+                        drawable_enabled_radius="@{8}"
+                        drawable_enabled_solidColor="@{@color/colorTheme}"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="@dimen/dp_15"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:gravity="center"
+                        android:enabled="false"
+                        android:onClick="@{()->click.ok()}"
+                        android:text="Ok"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/menuRL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appbar_layout"
+                android:background="@color/black_65"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{()->click.menuClear()}"
+                android:visibility="gone">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_stations"
+                    adapter="@{adapter}"
+                    addItemDecoration="@{true}"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/white_a8}"
+                    submitList="@{vm.familyList}"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:layout_marginBottom="100dp"
+                    android:background="@color/white_a5"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_progress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_a5"
+                android:visibility="gone">
+
+                <com.github.lzyzsd.circleprogress.DonutProgress
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:donut_progress="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </FrameLayout>
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.UserCollectActivity.ClickProxy" />
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.StationViewModel" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+        <variable
+            name="adapterDevice"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+    </data>
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:fitsSystemWindows="true">-->
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:elevation="0dp"
+                android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:background="@color/white">
+
+                        <ImageView
+                            android:id="@+id/back"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:onClick="@{()->click.back()}"
+                            android:src="@drawable/icon_back1" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:text="@string/my_collection"
+                            android:textColor="@color/color_theme_black"
+                            android:textSize="16sp" />
+
+
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:background="@color/white_f5"/>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_station"
+                    android:layout_width="match_parent"
+                    currentItem="@{0}"
+                    initTabAndPage="@{vm.initTabAndPage}"
+                    offscreen="@{6}"
+                    android:layout_height="44dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/white"
+                    app:tabIndicatorHeight="0dp"
+                    android:layout_marginBottom="@dimen/dp_7"
+                    app:tabSelectedTextColor="@color/colorTheme"
+                    app:tabTextAppearance="@style/tabAllCapsStyle"
+                    app:tabTextColor="@color/light_gray">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stations" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/device" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/appbar_layout"
+                android:background="@color/bg_color">
+
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/list_stations"
+                            adapter="@{adapter}"
+                            submitList="@{vm.gunListBean}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:nestedScrollingEnabled="true"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <RelativeLayout
+                            android:id="@+id/empty_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone">
+
+                            <include layout="@layout/empty_view_collect" />
+                        </RelativeLayout>
+
+                    </RelativeLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <!--                <androidx.core.widget.NestedScrollView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_device"
+                        adapter="@{adapterDevice}"
+                        submitList="@{vm.deviceListBean}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="true"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <RelativeLayout
+                        android:id="@+id/empty_view1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <include layout="@layout/empty_view_collect1" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <!--                </androidx.core.widget.NestedScrollView>-->
+
+            </androidx.viewpager.widget.ViewPager>
+
+
+        </RelativeLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <!--    </androidx.core.widget.NestedScrollView>-->
+</layout>

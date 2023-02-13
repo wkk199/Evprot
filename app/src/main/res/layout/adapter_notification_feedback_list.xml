@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.Feedback" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_toLeftOf="@+id/new_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@{info.feedbackContent}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="11111" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selle_recycler_view"
+                adapter="@{adapter}"
+                submitList="@{info.imageList()}"
+                notifyCurrentListChanged="true"
+                android:layout_below="@id/tv_name"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+            <TextView
+                android:id="@+id/tv_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selle_recycler_view"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:singleLine="true"
+                android:text="@{info.commentDateString()}"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+            <TextView
+                visible="@{!info.checked}"
+                android:id="@+id/new_tag"
+                drawable_radius="@{10}"
+                drawable_solidColor="@{@color/red}"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_18"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:gravity="center"
+                android:text="新"
+                android:textColor="#ffffffff"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@android:color/white" />
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+</layout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.GunResp" />
+
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{10}"
+        drawable_solidColor="@{info.colorBg}"
+        drawable_selected_radius="@{10}"
+        drawable_selected_solidColor="@{@color/colorTheme}"
+        selected="@{info.itemSelect}"
+        android:layout_width="match_parent"
+        android:layout_height="155dp"
+        android:layout_margin="16dp"
+        android:background="@color/light_cart_bg"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="79dp"
+            android:layout_height="69dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/icon_charge_set" />
+        <ImageView
+            android:id="@+id/iv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+
+            visible="@{info.itemSelect}"
+            android:tint="@color/white"
+            android:src="@drawable/icon_circle_check" />
+
+        <ImageView
+            android:id="@+id/iv_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            android:layout_marginStart="-10dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginBottom="-10dp"
+            android:src="@drawable/img_gun_select_botoom" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            drawable_radius="@{2}"
+            drawable_solidColor="@{info.colorBgStatu}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/manrope_medium"
+            android:layout_toEndOf="@id/iv_image"
+            android:layout_alignTop="@id/iv_image"
+            android:layout_marginStart="-35dp"
+            android:padding="3dp"
+            android:text="@{info.status}"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:text="111esasasdsa"/>
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="14dp"
+            android:layout_margin="5dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/charger_id"
+            android:textColor="@color/light_text_color"
+            android:textSize="12sp"
+
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_text"
+            android:layout_alignStart="@id/tv_text"
+            android:layout_marginTop="4dp"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@{info.connectorId}"
+            android:textColor="@color/dark_text_color"
+            android:textSize="14sp"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            tools:text="111111" />
+
+
+    </RelativeLayout>
+</layout>

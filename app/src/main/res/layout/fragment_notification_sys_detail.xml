@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.NotiSysDetailFragment.ClickProxy" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/base_title_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/icon_title_logo" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white"
+
+                >
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back_gray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/system_message_detail"
+                    android:textColor="@color/color_theme_black"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <RelativeLayout
+                android:id="@+id/content1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+              >
+
+                <RelativeLayout
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:padding="@dimen/dp_16">
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/manrope_semibold"
+                        android:text="@{vm.sysDetail.sysMessageTitle}"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="11111" />
+
+                    <TextView
+                        android:id="@+id/tv_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_name"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:text="@{vm.sysDetail.commentDateString()}"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_comments"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:text="@{vm.sysDetail.sysMessageSummaryStr()}"
+                        android:textColor="#ff979797"
+                        android:textSize="14sp"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_summary"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:text="@{vm.sysDetail.sysMessageContent}"
+                        android:textColor="@color/color_AA"
+                        tools:text="111111" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

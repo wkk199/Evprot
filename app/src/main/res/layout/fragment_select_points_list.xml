@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.ScanViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.SelectPointListActivity.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTheme">
+
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="48dp"
+                android:onClick="@{()->click.back()}"
+                android:scaleType="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:materialIcon="arrow_left"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="24dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:gravity="center"
+                android:text="Select"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl"
+                drawable_radiusLT="@{20}"
+                drawable_radiusRT="@{20}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="60dp"
+                android:background="@color/white"
+                android:gravity="center"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tv_subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="start"
+                    android:text="Power source"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/p_sol"
+                    drawable_radius="@{8}"
+                    drawable_selected_radius="@{8}"
+                    drawable_selected_solidColor="@{@color/colorTheme}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    selected="@{vm.selectSolarPower}"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:gravity="center"
+                    android:onClick="@{()->click.SolarPowerStorage()}"
+                    android:singleLine="true"
+                    android:text="Solar power storage"
+                    android:textColor="@color/selector_text_color_white_black"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/p_grid"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_subtitle1"
+                    app:layout_constraintEnd_toStartOf="@id/p_grid"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/p_grid"
+                    drawable_radius="@{8}"
+                    drawable_selected_radius="@{8}"
+                    drawable_selected_solidColor="@{@color/colorTheme}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    selected="@{!vm.selectSolarPower}"
+                    android:layout_width="0dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:gravity="center"
+                    android:hint="@string/Birthday"
+                    android:onClick="@{()->click.PowerGrid()}"
+                    android:singleLine="true"
+                    android:text="Power grid"
+                    android:textColor="@color/selector_text_color_white_black"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toRightOf="@id/p_sol"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_subtitle1"
+                    app:layout_constraintStart_toEndOf="@id/p_sol"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <ImageView
+                    visible="@{vm.selectSolarPower}"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/icon_circle_check"
+                    android:tint="@color/white"
+                    app:layout_constraintLeft_toLeftOf="@id/p_sol"
+                    app:layout_constraintTop_toTopOf="@id/p_sol"
+                    app:layout_constraintStart_toStartOf="@id/p_sol" />
+
+
+                <ImageView
+                    visible="@{!vm.selectSolarPower}"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/icon_circle_check"
+                    android:tint="@color/white"
+                    app:layout_constraintLeft_toLeftOf="@id/p_grid"
+                    app:layout_constraintTop_toTopOf="@id/p_grid"
+                    app:layout_constraintStart_toStartOf="@id/p_grid" />
+
+                <TextView
+                    android:id="@+id/tv_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="start"
+                    android:text="Select charging gun"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/p_sol"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    adapter="@{adapter}"
+                    submitList="@{vm.listGuns}"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@color/white"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/btn_setTime"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
+                    app:spanCount="2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <Button
+                    android:id="@+id/btn_setTime"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/green}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:onClick="@{()->click.setTime()}"
+                    android:text="Set time"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/btn_chargeNow"
+                    app:layout_constraintEnd_toStartOf="@id/btn_chargeNow"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/btn_chargeNow"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/colorTheme}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:onClick="@{()->click.chargeNow()}"
+                    android:text="Charge now"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/btn_setTime"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/btn_setTime" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_progress"
+                android:background="@color/white_a5"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="match_parent">
+
+                <com.github.lzyzsd.circleprogress.DonutProgress
+                    android:id="@+id/progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    custom:donut_progress="0"/>
+            </FrameLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/white}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/dp_16"
+                android:text="提示"
+                android:textColor="#ff222825"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dp_30"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:text="我已阅读并同意"
+                    android:textColor="#222825"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/dp_4"
+                    android:layout_marginRight="@dimen/dp_4"
+                    android:id="@+id/user_agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户协议"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="和"
+                    android:textColor="#222825"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/privacyPolicy"
+                  android:layout_marginLeft="@dimen/dp_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="隐私政策"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/white_f5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="取消"
+                    android:textColor="#ff222825"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="0.8dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white_f5" />
+
+                <TextView
+                    android:id="@+id/confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="同意"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF00A0E9</color>
+    <color name="colorPrimaryDark">#FF00A0E9</color>
+    <color name="colorAccent">#FF00A0E9</color>
+
+    <color name="colorTheme">#FF00A0E9</color>
+    <color name="colorTheme_a20">#8AB4D4</color>
+    <color name="colorTheme_a50">#2015CD80</color>
+<!--    #15CD80-->
+    <color name="green">#30E297</color>
+
+    <color name="green_chart">#56DC96</color>
+    <color name="start_chart">#008BFF</color>
+    <color name="end_chart">#0D56B7</color>
+    <color name="light_green">#F7F7F7</color>
+
+    <color name="bubble_green">#00F260</color>
+    <color name="bubble_blue">#0575E6</color>
+
+
+
+    <color name="lightColorTheme">#B0BED4</color>
+    <color name="light_cart_bg">#EAF0F9</color>
+    <color name="light_card_border">#D4E6FF</color>
+
+    <color name="bg_un_available">#F9EBEA</color>
+
+    <color name="light_text_color">#AAAAAA</color>
+    <color name="light_text_color20">#50AAAAAA</color>
+    <color name="light_bg_color">#F1F1F1</color>
+    <color name="light_bg_color_green">#6015cd80</color>
+    <color name="dark_text_color">#404D66</color>
+    <color name="light_text_color_b">#ff222825</color>
+
+    <color name="dash_line_1">#1B69C7</color>
+    <color name="dash_line_2">#C9DEF3</color>
+    <color name="dash_line_3">#A7C6EA</color>
+
+
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="gray">#666</color>
+    <color name="light_gray">#999</color>
+    <color name="line">#2a2d36</color>
+    <color name="line_theme">#8193AE</color>
+    <color name="red">#FF7A7A</color>
+    <color name="white_a5">#80FFFFFF</color>
+    <color name="offline">#EAF0F9</color>
+    <color name="bg_yellow">#F7B72C</color>
+    <color name="bg_yellow_a20">#50F7B72C</color>
+
+
+    <color name="grey">#cbcbcb</color>
+
+
+    <color name="black_85">#d92b2b2b</color>
+    <color name="white_95">#f3ffffff</color>
+    <color name="black_65">#a62b2b2b</color>
+    <color name="black_45">#732b2b2b</color>
+    <color name="black_10">#192b2b2b</color>
+    <color name="white_35">#59ffffff</color>
+    <color name="coral">#f55555</color>
+    <color name="cornflower">#736efe</color>
+    <color name="very_light_pink">#bebebe</color>
+    <color name="black_25">#402b2b2b</color>
+    <color name="dandelion">#00cdac</color>
+    <color name="white_55">#8cffffff</color>
+    <color name="brownish_grey">#666666</color>
+    <color name="white_10">#19ffffff</color>
+    <color name="white_75">#c0ffffff</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent_two">#a62b2b2b</color>
+
+    <color name="white_two">#f4f4f4</color>
+    <color name="white_three">#d8d8d8</color>
+    <color name="white_four">#f3ffffff</color>
+    <color name="white_five">#f7f7f7</color>
+    <color name="white_f5">#f5f5f5</color>
+    <color name="yellow">#F7B72C</color>
+
+    <color name="idle">#66B1FF</color>
+    <color name="plugged">#3498DB</color>
+    <color name="finished">#0fce96</color>
+    <color name="charging">#66B1FF</color>
+    <color name="unavailable">#F56C6C</color>
+    <color name="faulted">#D9001B</color>
+    <color name="reserved">#E6A23C</color>
+
+    <color name="idle20">#5066B1FF</color>
+    <color name="plugged20">#503498DB</color>
+    <color name="finished20">#500fce96</color>
+    <color name="charging20">#5066B1FF</color>
+    <color name="unavailable20">#50F56C6C</color>
+    <color name="faulted20">#50D9001B</color>
+    <color name="reserved20">#50E6A23C</color>
+
+</resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.Comment" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingTop="3dp"
+            android:paddingEnd="@dimen/dp_10"
+            android:paddingBottom="3dp">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_image"
+                android:layout_width="78dp"
+                android:layout_height="78dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                app:placeholderImage="@color/grey"
+                app:placeholderImageScaleType="centerCrop"
+                app:roundedCornerRadius="@dimen/dp_8" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/iv_image"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@{info.stationName}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="11111" />
+
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_street"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@id/ratingBar"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@{info.rating}"
+                android:textColor="@color/yellow"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="4.5" />
+
+            <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/ratingBar"
+                visible="@{info.rating!=null}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_street"
+                android:layout_alignStart="@id/tv_name"
+                android:layout_marginTop="3dp"
+                app:srb_clickable="false"
+                app:srb_drawableEmpty="@drawable/icon_star_grey"
+                app:srb_drawableFilled="@drawable/icon_star"
+                app:srb_isIndicator="false"
+                app:srb_minimumStars="0"
+                app:srb_numStars="5"
+                app:srb_scrollable="false"
+                app:srb_starHeight="15dp"
+                app:srb_starPadding="2dp"
+                app:srb_starWidth="15dp"
+                app:srb_stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/tv_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_alignStart="@id/tv_name"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@{info.stationStreet}"
+                android:textSize="14sp"
+                android:textColor="#8F9392"
+                tools:text="111111"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_content"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white_f5}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ratingBar"
+                android:layout_alignStart="@id/tv_name"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/manrope_medium"
+                android:maxLines="3"
+                android:padding="16dp"
+                android:text="@{info.contentIsdelString()}"
+                android:textColor="#8F9392"
+                android:textSize="14sp"
+                tools:text="111111" />
+
+            <TextView
+                android:id="@+id/tv_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manrope_medium"
+                android:singleLine="true"
+                android:textColor="@color/color_AA"
+                android:text="@{info.commentTime}"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:gravity="center"
+
+            android:text="@string/delete"
+            android:textColor="@android:color/white" />
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+</layout>

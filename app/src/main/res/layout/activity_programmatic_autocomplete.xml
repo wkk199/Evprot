@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2020 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  >
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="50dp"
+      android:layout_marginBottom="@dimen/dp_10">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_toLeftOf="@+id/cancel">
+
+      <EditText
+          android:id="@+id/search_edit_text"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_centerVertical="true"
+          android:layout_toLeftOf="@+id/close_iv"
+          android:background="@null"
+          android:drawablePadding="16dp"
+          android:focusable="true"
+          android:focusableInTouchMode="true"
+          android:gravity="center_vertical"
+          android:hint="目的地"
+          android:paddingStart="16dp"
+          android:singleLine="true"
+          android:textColorHint="#8F9392"
+          android:textSize="14sp" />
+      <ImageView
+          android:id="@+id/close_iv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_alignParentRight="true"
+          android:onClick="@{()->click.close()}"
+          android:visibility="gone"
+          />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:onClick="@{()->click.back()}"
+        android:text="取消"
+        android:textColor="#ff222825"
+        android:textSize="16sp" />
+  </RelativeLayout>
+
+
+    <ProgressBar
+      android:id="@+id/progress_bar"
+      style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="-7dp"
+      android:layout_marginBottom="-7dp" />
+
+
+  <ViewAnimator
+    android:id="@+id/view_animator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerView"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="@dimen/dp_10"
+          android:visibility="gone"
+     />
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/recyclerView_history"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginTop="@dimen/dp_10"
+           />
+
+      <RelativeLayout
+          android:id="@+id/empty_rl"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/white"
+          android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/history_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@mipmap/icon_search" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_10"
+              android:text="暂无搜索记录"
+              android:textColor="#ffaaaaaa"
+              android:textSize="14sp" />
+        </LinearLayout>
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:id="@+id/search_empty"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/white"
+          android:visibility="gone"
+          >
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@mipmap/icon_network" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_10"
+              android:text="暂无结果, 换一个词试试吧"
+              android:textColor="#ffaaaaaa"
+              android:textSize="14sp" />
+        </LinearLayout>
+
+      </RelativeLayout>
+
+
+      <RelativeLayout
+          android:id="@+id/empty_network"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:background="@color/white"
+          android:visibility="gone"
+          >
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@mipmap/icon_network" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/dp_10"
+              android:text="网络加载异常"
+              android:textColor="#ffaaaaaa"
+              android:textSize="14sp" />
+        </LinearLayout>
+
+      </RelativeLayout>
+    </RelativeLayout>
+  </ViewAnimator>
+
+</LinearLayout>

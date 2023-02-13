@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+   >
+
+    <data>
+
+        <variable
+            name="infos"
+            type="String" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="105dp"
+        android:layout_height="105dp"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/img_uri"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_90"
+            android:scaleType="centerCrop"
+            android:layout_centerInParent="true"
+            android:src="@drawable/image_add" />
+
+        <ImageView
+            android:id="@+id/img_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="2dp"
+          android:layout_marginRight="@dimen/dp_2"
+            android:layout_alignParentRight="true"
+
+            android:onClick="onClick"
+            android:src="@drawable/image_delete_feedback"
+            android:layout_marginEnd="@dimen/dp_2"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.ChargePointSettingFragment.ClickProxy" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:layout_marginTop="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:onClick="@{()->click.back()}"
+                android:scaleType="center"
+                android:layout_margin="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:materialIcon="arrow_left"
+                app:materialIconColor="@color/black"
+                app:materialIconSize="24dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:text="@string/charge_point_setting"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/manrope_semibold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line"/>
+            <TextView
+                android:id="@+id/tv_changePwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/charge_point_start_password"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:onClick="@{()->click.changePassword()}"
+                android:drawableStart="@drawable/icon_lock"
+                android:drawableEnd="@drawable/icon_arrow_right"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:textColor="@color/dark_text_color"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/line"
+                />
+
+            <TextView
+                android:id="@+id/tv_charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/white_list_of_charging_posts"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:onClick="@{()->click.whiteList()}"
+                android:drawableStart="@drawable/icon_whitelist"
+                android:drawableEnd="@drawable/icon_arrow_right"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:textColor="@color/dark_text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

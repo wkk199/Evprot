@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.ResetPasswordViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.ChargeWhiteListEditFragment.ClickProxy" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorTheme">
+
+
+            <net.steamcrafted.materialiconlib.MaterialIconView
+                android:id="@+id/btn_back"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:onClick="@{()->click.back()}"
+                android:scaleType="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:materialIcon="arrow_left"
+                app:materialIconColor="@color/white"
+                app:materialIconSize="24dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:gravity="center"
+                android:text="Set up network"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/btn_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:visibility="gone"
+                android:src="@drawable/image_change_pwd"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingStart="20dp"
+                android:background="@color/white"
+                android:paddingEnd="20dp"
+                android:layout_marginTop="@dimen/dp_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_bg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+
+                <TextView
+                    android:id="@+id/tv_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="56dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="center"
+                    android:text="Please set up device WiFi"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="20sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <EditText
+                    android:id="@+id/email"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="90dp"
+                    android:drawableStart="@drawable/icon_message"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:hint="@string/user_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="12dp"
+                    android:singleLine="true"
+                    android:visibility="gone"
+                    android:text="@={vm.email}"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/sendCode"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/colorTheme}"
+                    drawable_strokeWidth="@{1}"
+                    android:layout_width="60dp"
+                    android:layout_height="44dp"
+                    android:gravity="center"
+                    android:onClick="@{()->click.sendEmailCode()}"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:singleLine="true"
+                    android:text="@string/send"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/email"
+                    app:layout_constraintRight_toRightOf="@id/email"
+                    app:layout_constraintTop_toTopOf="@id/email"
+                    app:layout_constraintEnd_toEndOf="@id/email" />
+
+
+                <EditText
+                    android:id="@+id/emailCode"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+
+                    android:drawableStart="@drawable/icon_wifi"
+                    android:drawablePadding="5dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:hint="Wifi name"
+                    android:paddingStart="12dp"
+                    android:singleLine="true"
+                    android:text="@={vm.emailCode}"
+                    android:textSize="14sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+                <EditText
+                    android:id="@+id/et_pwd"
+                    drawable_radius="@{12}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    passwordInputType="@{vm.passwordVisible}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawableStart="@drawable/icon_lock"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:hint="@string/user_password"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/sp_14"
+                    android:singleLine="true"
+                    android:text="@={vm.password}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/emailCode"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/iv_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:onClick="@{()->click.toLockPassword()}"
+                    android:padding="10dp"
+                    android:src="@{vm.passwordVisible?@drawable/icon_view_psw:@drawable/icon_unview_psw}"
+                    app:layout_constraintBottom_toBottomOf="@id/et_pwd"
+                    app:layout_constraintEnd_toEndOf="@id/et_pwd" />
+
+                <TextView
+                    android:id="@+id/remeber"
+                    android:drawableStart="@drawable/icon_unselect"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:onClick="@{()->click.sendEmailCode()}"
+                    android:singleLine="true"
+                    android:text="Remember password"
+                    android:textColor="@color/black_45"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/btn_netx"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_pwd"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <Button
+                    android:id="@+id/btn_netx"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/colorTheme}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:onClick="@{()->click.toConfirm()}"
+                    android:text="Connect Network"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/remeber"
+                    app:layout_goneMarginTop="72dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

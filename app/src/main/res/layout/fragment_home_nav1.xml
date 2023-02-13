@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.StatsViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.HomeNav1Fragment.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:layout_marginTop="@dimen/dp_3"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl_layout"
+                tabSelectedListener="@{vm.onTabSelectedListener}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="@dimen/dp_50"
+                android:layout_marginRight="@dimen/dp_50"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="0dp"
+                app:tabSelectedTextColor="@color/colorTheme"
+                app:tabTextAppearance="@style/tabAllCapsStyle"
+                app:tabTextColor="@color/black_222628">
+
+                <!--            <com.google.android.material.tabs.TabItem-->
+                <!--                android:layout_width="wrap_content"-->
+                <!--                android:layout_height="wrap_content"-->
+                <!--                android:text="week" />-->
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/month" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/year" />
+
+            </com.google.android.material.tabs.TabLayout>
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:layout_marginBottom="@dimen/dp_20"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tl_layout">
+
+            <LinearLayout
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/ll_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingTop="@dimen/dp_10"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/tl_layout">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/tl_layout">
+
+                        <TextView
+                            android:id="@+id/chageTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_panel_back"
+                            android:drawablePadding="@dimen/dp_8"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:gravity="center"
+                            android:onClick="@{()->click.selTime()}"
+                            android:padding="5dp"
+                            android:text="@{vm.ChangeTime}"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            tools:text="2020-01" />
+
+                        <TextView
+                            android:id="@+id/SelectEnergy"
+                            drawable_selected_radius="@{10}"
+                            drawable_selected_strokeColor="@{@color/colorTheme}"
+                            drawable_selected_strokeWidth="@{1}"
+                            android:layout_width="@dimen/dp_50"
+                            android:layout_height="@dimen/dp_20"
+                            android:layout_marginStart="@dimen/dp_15"
+                            android:layout_toStartOf="@id/SelectConsumption"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:onClick="@{()->click.SelectEnergy()}"
+                            android:text="@string/energy"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/SelectConsumption"
+                            drawable_selected_radius="@{10}"
+                            drawable_selected_strokeColor="@{@color/colorTheme}"
+                            drawable_selected_strokeWidth="@{1}"
+                            android:layout_width="@dimen/dp_50"
+                            android:layout_height="@dimen/dp_20"
+                            android:layout_marginStart="@dimen/dp_10"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:onClick="@{()->click.SelectConsumption()}"
+
+                            android:text="@string/Consumption"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            android:layout_alignParentEnd="true"/>
+
+
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:id="@+id/tv_sss"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="top"
+                        android:padding="5dp"
+                        android:text="@{vm.chartValueString}"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_dataRes"
+                        tools:text="charge" />
+
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layerType="software" />
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@drawable/icon_bg_line" />
+
+                <TextView
+                    android:id="@+id/tv_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="top"
+                    android:padding="5dp"
+                    android:text="@string/information"
+                    android:textColor="@color/black_222628"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_chart"
+
+                    />
+
+                <LinearLayout
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_s"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingBottom="@dimen/dp_20"
+                    app:layout_constraintStart_toStartOf="parent">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center_vertical"
+                        android:onClick="@{() -> click.scan()}"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:text="@{vm.chargingTime}"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            tools:text="1111" />
+
+                        <TextView
+                            android:id="@+id/tv_text3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:drawableStart="@drawable/icon_charging_time_record"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:text="@string/duration"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F1F1F1"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="55dp"
+                        />
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:onClick="@{() -> click.scan()}"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:text="@{vm.chargingEnergy}"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            tools:text="1111" />
+
+                        <TextView
+                            android:id="@+id/tv_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:drawableStart="@drawable/icon_record_chargefee_theme_record"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:textColor="@color/black_222628"
+                            android:text="@string/charging_energy"
+                            android:textSize="14sp" />
+
+
+                    </RelativeLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F1F1F1"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="55dp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:onClick="@{() -> click.SelectCharger()}"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:text="@{vm.times}"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            tools:text="1111" />
+
+                        <TextView
+                            android:id="@+id/tv_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:drawableStart="@drawable/icon_charging_num"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:text="@string/charging_times"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F1F1F1"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="55dp"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:onClick="@{() -> click.SelectCharger()}"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/manrope_semibold"
+                            android:text="@{vm.money}"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp"
+                            tools:text="1111" />
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:drawableStart="@drawable/icon_sun_money"
+                            android:drawablePadding="@dimen/dp_10"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center"
+                            android:text="Total amount"
+                            android:textColor="@color/black_222628"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:visibility="gone"
+                    android:background="@drawable/icon_bg_line" />
+
+                <TextView
+                    android:id="@+id/tv_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:gravity="top"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    android:text="@string/amount_of_consumption"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_chart"
+
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/selle_recycler_view"
+                    adapter="@{adapter}"
+                    android:visibility="gone"
+                    submitList="@{vm.listNameValue}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp_16"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
+
+
+    <!--                    <RelativeLayout-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginStart="16dp"-->
+    <!--                        android:layout_marginEnd="16dp"-->
+    <!--                        android:onClick="@{() -> click.ChargingStatus()}"-->
+    <!--                        android:orientation="vertical"-->
+    <!--                        android:padding="5dp">-->
+
+    <!--                        <ImageView-->
+    <!--                            android:id="@+id/iv_image1"-->
+    <!--                            android:layout_width="30dp"-->
+    <!--                            android:layout_height="30dp"-->
+    <!--                            android:layout_centerVertical="true"-->
+    <!--                            android:src="@drawable/icon_co2" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_alignParentEnd="true"-->
+    <!--                            android:layout_centerVertical="true"-->
+    <!--                            android:fontFamily="@font/manrope_medium"-->
+    <!--                            android:text="@{vm.co2}"-->
+    <!--                            android:textColor="@color/dark_text_color"-->
+    <!--                            android:textSize="14sp"-->
+    <!--                            tools:text="1111" />-->
+
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_text1"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_marginStart="10dp"-->
+    <!--                            android:layout_marginTop="8dp"-->
+    <!--                            android:layout_toEndOf="@id/iv_image1"-->
+    <!--                            android:fontFamily="@font/manrope_medium"-->
+    <!--                            android:text="@string/carbon_intensity"-->
+    <!--                            android:textColor="@color/dark_text_color"-->
+    <!--                            android:textSize="14sp" />-->
+
+    <!--                        <TextView-->
+    <!--                            android:id="@+id/tv_id1"-->
+    <!--                            android:layout_width="wrap_content"-->
+    <!--                            android:layout_height="wrap_content"-->
+    <!--                            android:layout_below="@id/tv_text1"-->
+    <!--                            android:layout_alignStart="@id/tv_text1"-->
+    <!--                            android:layout_marginTop="4dp"-->
+    <!--                            android:drawablePadding="10dp"-->
+    <!--                            android:fontFamily="@font/manrope_medium"-->
+    <!--                            android:text="@string/danwei_L"-->
+    <!--                            android:textColor="@color/light_text_color"-->
+    <!--                            android:textSize="12sp" />-->
+
+    <!--                    </RelativeLayout>-->
+
+</layout>

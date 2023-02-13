@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.ReplyDetail" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <com.mcxtzhang.swipemenulib.SwipeMenuLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10">
+
+<!--            circleCrop="@{true}"-->
+<!--            drawable_radius="@{8}"-->
+<!--            imageUrl="@{info.replyAvatarUrl}"-->
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_image"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                app:placeholderImage="@drawable/icon_avavtar_def"
+                app:placeholderImageScaleType="centerCrop"
+                app:roundAsCircle="true" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@id/iv_image"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@{info.replyName}"
+                android:textColor="@color/black_85"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="11111" />
+
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_name"
+                android:layout_alignStart="@id/tv_name"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@string/replied_to_my_comment"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_hint"
+                android:layout_alignStart="@id/tv_name"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@{info.conetntIsDelString()}"
+                android:textColor="@color/black_85"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+            <TextView
+                android:id="@+id/tv_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_street"
+                android:layout_alignStart="@id/tv_name"
+                android:layout_marginTop="@dimen/dp_5"
+                android:fontFamily="@font/manrope_medium"
+                android:singleLine="true"
+                android:text="@{info.commentTime()}"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+            <RelativeLayout
+                android:id="@+id/rl_station"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_comments"
+                android:layout_alignStart="@id/tv_name"
+                android:orientation="vertical">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/iv_station"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:scaleType="centerCrop"
+                    app:placeholderImage="@color/grey"
+                    app:placeholderImageScaleType="centerCrop"
+                    app:roundedCornerRadius="@dimen/dp_8" />
+
+
+                <TextView
+                    android:id="@+id/tv_name_station"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/iv_station"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@{info.stationName}"
+                    android:textSize="12sp"
+                    tools:text="11111" />
+
+                <TextView
+                    android:id="@+id/tv_street_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_name_station"
+                    android:layout_alignStart="@id/tv_name_station"
+                    android:layout_marginTop="8dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:text="@{info.stationStreet}"
+                    android:textSize="12sp"
+                    tools:text="111111" />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                visible="@{info.isCheck()}"
+                android:id="@+id/new_tag"
+                drawable_radius="@{10}"
+                drawable_solidColor="@{@color/red}"
+                android:layout_width="@dimen/dp_28"
+                android:layout_height="@dimen/dp_18"
+                android:layout_alignParentRight="true"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_16"
+                android:gravity="center"
+                android:text="新"
+                android:textColor="#ffffffff"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="@string/delete"
+            android:textColor="@android:color/white" />
+    </com.mcxtzhang.swipemenulib.SwipeMenuLayout>
+</layout>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.StationListBean" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{10}"
+        drawable_solidColor="@{@color/white}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="@dimen/dp_8"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_image"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="@dimen/dp_16"
+            app:placeholderImage="@drawable/icon_gun_default"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundedCornerRadius="@dimen/dp_8" />
+
+        <ImageView
+            android:id="@+id/iv_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:padding="8dp"
+            android:src="@drawable/icon_map_nav" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="22dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_delete"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="@dimen/dp_13"
+            android:layout_toStartOf="@id/iv_nav"
+            android:layout_toEndOf="@id/iv_image"
+            android:ellipsize="end"
+            android:fontFamily="@font/manrope_semibold"
+            android:singleLine="true"
+            android:text="@{info.stationName}"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="11111" />
+
+        <TextView
+            android:id="@+id/tv_street"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_alignStart="@id/tv_name"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="@dimen/dp_13"
+            android:layout_toStartOf="@id/iv_nav"
+            android:drawablePadding="10dp"
+            android:singleLine="true"
+            android:text="@{info.street}"
+            android:textColor="@color/color_8F9293"
+            android:textSize="14sp"
+            tools:text="111111" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_nav"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_5"
+            android:text="@{info.distance}"
+            android:textColor="@color/color_AA"
+            android:textSize="12sp"
+            tools:text="11111111111111" />
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_street"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@id/ratingBar"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@{info.ratingString()}"
+            android:textColor="@color/yellow"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="4.5" />
+
+        <TextView
+            android:id="@+id/tv_opName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ratingBar"
+            android:layout_alignStart="@id/tv_name"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/icon_yunyinshang"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/manrope_medium"
+            android:singleLine="true"
+            android:text="@{info.operatorName}"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="111111" />
+
+        <com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/ratingBar"
+            visible="@{info.ratingShow()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_street"
+            android:layout_alignStart="@id/tv_name"
+            android:layout_marginTop="3dp"
+            app:srb_clickable="false"
+            app:srb_drawableEmpty="@drawable/icon_star_grey"
+            app:srb_drawableFilled="@drawable/icon_star"
+            app:srb_isIndicator="false"
+            app:srb_minimumStars="0"
+            app:srb_numStars="5"
+            app:srb_scrollable="false"
+            app:srb_starHeight="15dp"
+            app:srb_starPadding="2dp"
+            app:srb_starWidth="15dp"
+            app:srb_stepSize="0.5" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selle_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_opName"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </RelativeLayout>
+</layout>

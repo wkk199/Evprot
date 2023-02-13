@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.evport.businessapp">
+
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- <uses-permission android:name="android.permission.FLASHLIGHT"/> -->
+    <!-- 允许获取粗略位置，若用GPS实现定位小蓝点功能则必选 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许获取设备和运营商信息，用于问题排查和网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许获取wifi网络信息，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许获取wifi状态改变，用于网络定位，若无gps但仍需实现定位小蓝点功能则此权限必选 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许写入扩展存储，用于数据缓存，若无此权限则写到私有目录 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许写设备缓存，用于问题排查 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" /> <!-- 允许读设备等信息，用于问题排查 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" /> <!-- 允许程序改变网络连接状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" /> <!-- 允许程序访问安装未知来源应用 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <queries>
+        <package android:name="com.eg.android.AlipayGphone" /> <!-- 支付宝 -->
+        <package android:name="hk.alipay.wallet" /> <!-- AlipayHK -->
+    </queries>
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:maxAspectRatio="2.4"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:resizeableActivity="true"
+        android:roundIcon="@drawable/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute"
+        tools:replace="android:label">
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.page.activity.InvoicingResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.page.activity.WebViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="wxc5d62e543ba85693" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.page.activity.NotiFeedbackDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.page.activity.ProgrammaticAutocompleteToolbarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.page.activity.SearchMapActivity"
+            android:exported="false" />
+        <activity android:name=".ui.page.activity.CreatCardActivity" />
+        <activity android:name=".ui.page.activity.RecordDetailActivity" />
+        <activity android:name=".ui.page.activity.HowUseActivity" />
+        <activity
+            android:name=".ui.page.activity.ChargeStatuListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ui.page.CreateCommentActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.page.activity.UserFamilyActivity" />
+        <activity android:name=".ui.page.activity.UserCollectActivity" />
+        <activity android:name=".ui.page.activity.CommentReplyDetailActivity" />
+        <activity
+            android:name=".ui.page.activity.ChageGunDetailActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".ui.page.activity.CreatFeedbackActivity" />
+        <activity
+            android:name=".ui.page.activity.CommentDetailActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateUnchanged|adjustResize" />
+        <activity android:name=".ui.page.activity.ScanActivity" />
+        <activity android:name=".ui.page.activity.SelectPointListActivity" />
+        <activity android:name=".ui.page.activity.ChargeStationDetailActivity" />
+        <activity android:name=".ui.page.activity.CreateEditFamilyActivity" />
+        <activity android:name=".ui.page.activity.ChangeAPIActivity" />
+        <activity android:name=".ui.page.activity.ChangeLanguageActivity" />
+        <activity
+            android:name=".ui.page.activity.WelcomeActivity"
+            android:launchMode="singleTask" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.evport.businessapp.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/my_provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+    <service
+            android:name=".utils.WebService"
+            android:exported="false" />
+        -->
+        <service
+            android:name=".player.notification.PlayerService"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
+        <meta-data
+            android:name="notch.config"
+            android:value="portrait|landscape" />
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="179957bf0aea20a042e4b6cfa5c9d8bb" />
+        <meta-data
+            android:name="ScopedStorage"
+            android:value="true" />
+
+        <service
+            android:name=".ws.WsService"
+            android:enabled="true"
+            android:exported="false" /> <!-- UpgradeService -->
+        <service
+            android:name=".upgrade.service.UpgradeService"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":upgrade">
+            <intent-filter>
+                <action android:name="{applicationId}.intent.action.UpgradeService" />
+            </intent-filter>
+        </service> <!-- PackagesReceiver -->
+        <receiver
+            android:name=".upgrade.receiver.PackagesReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver> <!-- UpgradeFileProvider -->
+        <provider
+            android:name=".upgrade.provider.UpgradeFileProvider"
+            android:authorities="${applicationId}.UpgradeFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

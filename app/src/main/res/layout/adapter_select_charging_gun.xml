@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.Connector" />
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{8}"
+        drawable_solidColor="@{@color/white}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15">
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_12"
+            android:paddingTop="26dp"
+            android:paddingRight="@dimen/dp_12"
+            android:paddingBottom="26dp"
+            android:src="@drawable/icon_gun_detail" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:text="@{info.socket}"
+            android:textColor="#ff222825"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/status"
+            drawable_radius="@{4}"
+            drawable_solidColor="@{info.bgColor1()}"
+            android:layout_width="72dp"
+            android:layout_height="@dimen/dp_22"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="@dimen/dp_15"
+            android:fontFamily="@font/manrope_medium"
+            android:gravity="center"
+            android:text="@{info.statusText1()}"
+            android:textColor="@{info.textColor1()}"
+            android:textSize="14sp"
+            tools:text="111111" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toRightOf="@+id/iv_icon"
+            android:orientation="horizontal">
+
+            <TextView
+                drawable_radius="@{10}"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{info.isAC1()?@color/color_009:@color/colorTheme}"
+                drawable_strokeWidth="@{1}"
+                android:layout_width="38dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="@{info.socketTypeStr1()}"
+                android:textColor="@{info.isAC1()?@color/color_009:@color/colorTheme}"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@{info.connectorType}"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                tools:text="111111" />
+
+            <TextView
+                android:id="@+id/tv_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toEndOf="@id/tv_title"
+                android:fontFamily="@font/manrope_medium"
+                android:text='@{" · "+info.power}'
+                android:textSize="12sp"
+                tools:text="111111"
+                android:textColor="#8F9392"/>
+
+            <TextView
+                android:id="@+id/tv_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_2"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:fontFamily="@font/manrope_medium"
+                android:text="kW"
+                android:textSize="12sp"
+                android:textColor="#8F9392"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toEndOf="@id/tv_all" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.ScanViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.ChargeStatuListV2Fragment.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:fillViewport="true">-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:fitsSystemWindows="true">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            adapter="@{adapter}"
+            submitList="@{vm.listCheckTransaction}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:paddingBottom="55dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--            <RelativeLayout-->
+        <!--                android:id="@+id/empty_view"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="0dp"-->
+        <!--                android:visibility="gone"-->
+        <!--                app:layout_constraintTop_toBottomOf="@id/toolbar"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                >-->
+
+        <!--                <include layout="@layout/empty_view_card"/>-->
+        <!--            </RelativeLayout>-->
+
+
+        <ImageView
+            android:id="@+id/iv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/dp_50"
+            android:scaleType="centerInside"
+            android:src="@drawable/empty_charging"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/manrope_semibold"
+            android:gravity="center"
+            android:text="@string/there_are_no_vehicles_charging"
+            android:textColor="@color/color_AA"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.62" />
+
+
+        <FrameLayout
+            android:id="@+id/fl_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_a5"
+            android:visibility="gone">
+
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:id="@+id/DonutProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                custom:donut_progress="30" />
+        </FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    </androidx.core.widget.NestedScrollView>-->
+
+</layout>

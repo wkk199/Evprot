@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_login"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/SignCodeFragment"
+        android:name="com.evport.businessapp.ui.page.SignCodeFragment"
+        android:label="fragment_signUp"
+        tools:layout="@layout/fragment_signup">
+
+        <action
+            android:id="@+id/action_SignCodeFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+
+        <action
+            android:id="@+id/action_signCodeFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.evport.businessapp.ui.page.SignUpFragment"
+        android:label="fragment_signUp1"
+        tools:layout="@layout/fragment_signup1">
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signCodeFragment"
+            app:destination="@id/SignCodeFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.evport.businessapp.ui.page.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_loginFragment_to_signCodeFragment"
+            app:destination="@id/SignCodeFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+
+        <action
+            android:id="@+id/action_loginFragment_to_ResetPasswordFragment"
+            app:destination="@id/ResetPasswordFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingNewPasswordFragment"
+        android:name="com.evport.businessapp.ui.page.SettingNewPasswordFragment"
+        android:label="SettingNewPasswordFragment"
+        tools:layout="@layout/fragment_setting_new_password" />
+
+    <action
+        android:id="@+id/action_resetPasswordFragment_to_settingNewPasswordFragment"
+        app:destination="@id/settingNewPasswordFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+
+
+    <fragment
+        android:id="@+id/ResetPasswordFragment"
+        android:name="com.evport.businessapp.ui.page.ResetPasswordFragment"
+        android:label="ResetPasswordFragment"
+        tools:layout="@layout/fragment_resetpwd">
+
+
+
+    </fragment>
+
+
+
+</navigation>

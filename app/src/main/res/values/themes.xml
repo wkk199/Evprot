@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.Dialog.ActionButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">@dimen/dialog_upgrade_button_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/btn_dialog_upgrade_button</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textColor">@color/dialog_upgrade_button_dark_color</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>

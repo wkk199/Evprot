@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.NotiFeedbackDetailActivity.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorTheme"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/icon_title_logo"
+                android:visibility="gone" />
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="反馈回复"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line" />
+        </LinearLayout>
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintBottom_toTopOf="@id/rl_send"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/selle_recycler_view1"
+                adapter="@{adapter}"
+                submitList="@{vm.listNotiFeedback}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:reverseLayout="true" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:id="@+id/rl_send"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_58"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_reply"
+                drawable_radius="@{18}"
+                drawable_solidColor="@{@color/light_bg_color}"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_margin="5dp"
+                android:layout_weight="6"
+                android:background="@null"
+                android:gravity="center_vertical"
+                android:hint="@string/say_something"
+                android:imeOptions="actionSend"
+                android:padding="8dp" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:onClick="@{()->click.openPhoto()}">
+
+                <ImageView
+                    android:id="@+id/open"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/image_add" />
+
+                <TextView
+                    android:id="@+id/tv_num"
+                    drawable_radius="@{45}"
+                    drawable_solidColor="@{@color/red}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:padding="3dp"
+                    android:textColor="@color/white"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_44"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@drawable/confirm_bg"
+                    android:gravity="center"
+                    android:onClick="@{()->click.send()}"
+                    android:paddingStart="@dimen/dp_12"
+                    android:paddingLeft="@dimen/dp_12"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:paddingRight="@dimen/dp_12"
+                    android:text="@string/send"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

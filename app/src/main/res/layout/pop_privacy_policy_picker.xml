@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:background="@drawable/white_bg8">
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/dp_24"
+                android:paddingBottom="@dimen/dp_16"
+                android:text="用户协议及隐私政策提示"
+                android:textColor="#ff222825"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottom_ll"
+                android:layout_below="@+id/title">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:lineSpacingExtra="3dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="重要提示：\n
+      淮北交控宝馨绿动新能源科技有限公司（注册地址：安徽省淮北市烈山区青龙山产业园陶博路18号）（以下简称“相易充”或“我们”）作为“相易充”平台（包括但不限于网站、客户端、小程序）的运营者，深知个人信息对您的重要性，我们将按照法律法规的规定，严格遵循合法、正当、必要和诚信原则处理您的信息，保护您的个人信息安全。
+在使用“相易充”平台及相关服务前，请您仔细阅读并理解《相易充个人信息保护政策》（以下简称“本政策”），以便做出适当的选择。如果您是未成年人，请您在监护人的陪同下一起阅读本政策。本政策中涉及的相关术语，我们尽量以简明扼要的方式进行表述，以便您更好地理解。我们将通过本政策向您说明我们将收集的个人信息范围、收集目的、收集方式、收集用途、隐私安全保障措施及拒绝提供个人信息对某些非核心功能使用的权限影响。
+下文将帮您详细了解我们将如何收集、使用、存储、传输、共享、转让、公开披露和保护（如适用）您的个人信息，帮您了解查询、访问、删除、更正、撤回授权个人信息的方式。其中，有关您个人信息权益的条款重要内容我们已用加粗形式提示，请特别关注。请您了解并知悉，“相易充”未来有可能根据信息处理情境不时更新或修改本政策。"
+                    android:textColor="#ff222825"
+                    android:textSize="14sp" />
+            </androidx.core.widget.NestedScrollView>
+
+            <LinearLayout
+                android:id="@+id/bottom_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/dp_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_16"
+
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:text="您可以阅读完整版"
+                        android:textColor="#ff8f9392"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/user_agreement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:text="用户协议"
+                        android:textColor="@color/colorTheme"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="和"
+                        android:textColor="#ff8f9392"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/privacyPolicy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:text="隐私政策"
+                        android:textColor="@color/colorTheme"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/confirm"
+                    drawable_radius="@{4}"
+                    drawable_solidColor="@{@color/colorTheme}"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:gravity="center"
+                    android:text="同意并开始使用"
+                    android:textColor="#ffffffff"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_44"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:gravity="center"
+                    android:text="不同意并退出"
+                    android:textColor="#ff979797"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

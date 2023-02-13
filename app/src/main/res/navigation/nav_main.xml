@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.evport.businessapp.ui.page.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+
+    <action
+        android:id="@+id/action_global_mainFragment_to_changePasswordFragment"
+        app:destination="@id/changePasswordFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <action
+        android:id="@+id/action_global_mainFragment_to_chargeSettingFragment"
+        app:destination="@id/chargeSettingFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.evport.businessapp.ui.page.ChangePasswordFragment"
+        android:label="fragment_changePassword"
+        tools:layout="@layout/fragment_changepwd" />
+
+    <fragment
+        android:id="@+id/chargeSettingFragment"
+        android:name="com.evport.businessapp.ui.page.ChargeSettingFragment"
+        android:label="ChargeSettingFragment"
+        tools:layout="@layout/fragment_charge_setting"></fragment>
+    <action
+        android:id="@+id/action_chargeSettingFragment_to_chargePointSettingFragment"
+        app:destination="@id/chargePointSettingFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/chargePointSettingFragment"
+        android:name="com.evport.businessapp.ui.page.ChargePointSettingFragment"
+        android:label="ChargePointSettingFragment"
+        tools:layout="@layout/fragment_charge_point_setting"></fragment>
+    <action
+        android:id="@+id/action_chargePointSettingFragment_to_chargeChangePasswordFragment"
+        app:destination="@id/chargeChangePasswordFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <action
+        android:id="@+id/action_global_chargeWhiteListFragment"
+        app:destination="@id/chargeWhiteListFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/chargeChangePasswordFragment"
+        android:name="com.evport.businessapp.ui.page.ChargeChangePasswordFragment"
+        android:label="ChargeChangePasswordFragment"
+        tools:layout="@layout/fragment_charge_setting_pwd" />
+    <fragment
+        android:id="@+id/chargeStatuListV2Fragment"
+        android:name="com.evport.businessapp.ui.page.activity.ChargeStatuListV2Fragment"
+        android:label="ChargeStatuListV2Fragment"
+        tools:layout="@layout/fragment_scharge_status_list" />
+    <action
+        android:id="@+id/action_global_chargeStatuListV2Fragment"
+        app:destination="@id/chargeStatuListV2Fragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/chargeWhiteListFragment"
+        android:name="com.evport.businessapp.ui.page.ChargeWhiteListFragment"
+        android:label="ChargeWhiteListFragment"
+        tools:layout="@layout/fragment_charge_whitelist_setting">
+        <action
+            android:id="@+id/action_chargeWhiteListFragment_to_chargeWhiteListEditFragment"
+            app:destination="@id/chargeWhiteListEditFragment"
+            app:enterAnim="@anim/h_fragment_enter"
+            app:exitAnim="@anim/h_fragment_exit"
+            app:popEnterAnim="@anim/h_fragment_pop_enter"
+            app:popExitAnim="@anim/h_fragment_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/chargeWhiteListEditFragment"
+        android:name="com.evport.businessapp.ui.page.ChargeWhiteListEditFragment"
+        android:label="ChargeWhiteListEditFragment"
+        tools:layout="@layout/fragment_charge_whitelist_edit" />
+    <fragment
+        android:id="@+id/homeNav2Fragment"
+        android:name="com.evport.businessapp.ui.page.HomeNav2Fragment"
+        android:label="HomeNav2Fragment" />
+    <fragment
+        android:id="@+id/homeNav1Fragment"
+        android:name="com.evport.businessapp.ui.page.HomeNav1Fragment"
+        android:label="HomeNav1Fragment" />
+    <fragment
+        android:id="@+id/homeNav3Fragment"
+        android:name="com.evport.businessapp.ui.page.HomeNav3Fragment"
+        android:label="HomeNav3Fragment" />
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.evport.businessapp.ui.page.ScanFragment"
+        android:label="ScanFragment" />
+    <action
+        android:id="@+id/action_scanFragment_to_scanSetPasswordFragment"
+        app:destination="@id/scanSetPasswordFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/scanSetPasswordFragment"
+        android:name="com.evport.businessapp.ui.page.ScanSetPasswordFragment"
+        android:label="ScanSetPasswordFragment" />
+    <action
+        android:id="@+id/action_global_scanFragment"
+        app:destination="@id/scanFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.evport.businessapp.ui.page.LoginFragment"
+        android:label="LoginFragment" />
+
+    <action
+        android:id="@+id/action_global_mainFragment_to_loginFragment"
+        app:destination="@id/loginFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/chargePointListFragment"
+        android:name="com.evport.businessapp.ui.page.ChargePointListFragment"
+        android:label="ChargePointListFragment" />
+    <action
+        android:id="@+id/action_global_chargePointListFragment"
+        app:destination="@id/chargePointListFragment"
+        app:enterAnim="@anim/h_fragment_enter"
+        app:exitAnim="@anim/h_fragment_exit"
+        app:launchSingleTop="false"
+        app:popEnterAnim="@anim/h_fragment_pop_enter"
+        app:popExitAnim="@anim/h_fragment_pop_exit" />
+    <fragment
+        android:id="@+id/homeMapFragment"
+        android:name="com.evport.businessapp.ui.page.HomeMapFragment"
+        android:label="HomeMapFragment" />
+    <fragment
+        android:id="@+id/homeMapGDFragment"
+        android:name="com.evport.businessapp.ui.page.HomeMapGDFragment"
+        android:label="HomeMapGDFragment" />
+
+    <fragment
+        android:id="@+id/homeUserFragment"
+        android:name="com.evport.businessapp.ui.page.HomeUserFragment"
+        android:label="HomeUserFragment" />
+    <fragment
+        android:id="@+id/userSettingFragment"
+        android:name="com.evport.businessapp.ui.page.UserSettingFragment"
+        android:label="UserSettingFragment" />
+    <action
+        android:id="@+id/action_global_userSettingFragment"
+        app:destination="@id/userSettingFragment" />
+    <fragment
+        android:id="@+id/appSettingFragment"
+        android:name="com.evport.businessapp.ui.page.AppSettingFragment"
+        android:label="AppSettingFragment" />
+    <action
+        android:id="@+id/action_global_appSettingFragment"
+        app:destination="@id/appSettingFragment" />
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.evport.businessapp.ui.page.AboutUsFragment"
+        android:label="AboutUsFragment" />
+    <action
+        android:id="@+id/action_global_aboutUsFragment"
+        app:destination="@id/aboutUsFragment" />
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.evport.businessapp.ui.page.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" />
+    <fragment
+        android:id="@+id/notificationCenterFragment"
+        android:name="com.evport.businessapp.ui.page.NotificationCenterFragment"
+        android:label="NotificationCenterFragment" />
+    <action
+        android:id="@+id/action_global_notificationCenterFragment"
+        app:destination="@id/notificationCenterFragment" />
+    <fragment
+        android:id="@+id/notiCommentListFragment"
+        android:name="com.evport.businessapp.ui.page.NotiCommentListFragment"
+        android:label="NotiCommentListFragment" />
+    <fragment
+        android:id="@+id/notiFeedbackListFragment"
+        android:name="com.evport.businessapp.ui.page.NotiFeedbackListFragment"
+        android:label="NotiFeedbackListFragment" />
+    <fragment
+        android:id="@+id/notiReplyListFragment"
+        android:name="com.evport.businessapp.ui.page.NotiReplyListFragment"
+        android:label="NotiReplyListFragment" />
+    <fragment
+        android:id="@+id/notiSysListFragment"
+        android:name="com.evport.businessapp.ui.page.NotiSysListFragment"
+        android:label="NotiSysListFragment" />
+    <action
+        android:id="@+id/action_global_notiCommentListFragment"
+        app:destination="@id/notiCommentListFragment" />
+    <action
+        android:id="@+id/action_global_notiFeedbackListFragment"
+        app:destination="@id/notiFeedbackListFragment" />
+    <action
+        android:id="@+id/action_global_notiReplyListFragment"
+        app:destination="@id/notiReplyListFragment" />
+    <action
+        android:id="@+id/action_global_notiSysListFragment"
+        app:destination="@id/notiSysListFragment" />
+    <fragment
+        android:id="@+id/notiFeedbackDetailFragment"
+        android:name="com.evport.businessapp.ui.page.NotiFeedbackDetailFragment"
+        android:label="NotiFeedbackDetailFragment" />
+    <action
+        android:id="@+id/action_global_notiFeedbackDetailFragment"
+        app:destination="@id/notiFeedbackDetailFragment" />
+
+    <fragment
+        android:id="@+id/myWalletFragment"
+        android:name="com.evport.businessapp.ui.page.MyWalletFragment"
+        android:label="MyWalletFragment" />
+    <action
+        android:id="@+id/action_global_myWalletFragment"
+        app:destination="@id/myWalletFragment" />
+
+    <fragment
+        android:id="@+id/myCardListFragment"
+        android:name="com.evport.businessapp.ui.page.MyCardListFragment"
+        android:label="MyCardListFragment" />
+    <action
+        android:id="@+id/action_global_myCardListFragment"
+        app:destination="@id/myCardListFragment" />
+
+    <fragment
+        android:id="@+id/accountRechargeFragment"
+        android:name="com.evport.businessapp.ui.page.AccountRechargeFragment"
+        android:label="AccountRechargeFragment" />
+    <action
+        android:id="@+id/action_global_accountRechargeFragment"
+        app:destination="@id/accountRechargeFragment" />
+
+    <fragment
+        android:id="@+id/withdrawalFragment"
+        android:name="com.evport.businessapp.ui.page.WithdrawalFragment"
+        android:label="WithdrawalFragment" />
+    <action
+        android:id="@+id/action_global_withdrawalFragment"
+        app:destination="@id/withdrawalFragment" />
+
+    <fragment
+        android:id="@+id/notiSysDetailFragment"
+        android:name="com.evport.businessapp.ui.page.NotiSysDetailFragment"
+        android:label="NotiSysDetailFragment" />
+    <action
+        android:id="@+id/action_global_notiSysDetailFragment"
+        app:destination="@id/notiSysDetailFragment" />
+    <fragment
+        android:id="@+id/homeRecordAndStatsFragment"
+        android:name="com.evport.businessapp.ui.page.HomeRecordAndStatsFragment"
+        android:label="HomeRecordAndStatsFragment" />
+    <action
+        android:id="@+id/action_global_homeRecordAndStatsFragment"
+        app:destination="@id/homeRecordAndStatsFragment" />
+    <fragment
+        android:id="@+id/recordDetailFragment"
+        android:name="com.evport.businessapp.ui.page.RecordDetailFragment"
+        android:label="RecordDetailFragment" />
+    <action
+        android:id="@+id/action_global_recordDetailFragment"
+        app:destination="@id/recordDetailFragment" />
+    <fragment
+        android:id="@+id/invoicingFragment"
+        android:name="com.evport.businessapp.ui.page.InvoicingFragment"
+        android:label="InvoicingFragment" />
+    <action
+        android:id="@+id/action_global_InvoicingFragment"
+        app:destination="@id/invoicingFragment" />
+    <fragment
+        android:id="@+id/invoicingDetailsFragment"
+        android:name="com.evport.businessapp.ui.page.InvoicingDetailsFragment"
+        android:label="InvoicingDetailsFragment" />
+    <action
+        android:id="@+id/action_global_InvoicingDetailsFragment"
+        app:destination="@id/invoicingDetailsFragment" />
+    <fragment
+        android:id="@+id/invoicingMoreFragment"
+        android:name="com.evport.businessapp.ui.page.InvoicingMoreFragment"
+        android:label="InvoicingMoreFragment" />
+    <action
+        android:id="@+id/action_global_invoicingMoreFragment"
+        app:destination="@id/invoicingMoreFragment" />
+    <fragment
+        android:id="@+id/invoicingResultFragment"
+        android:name="com.evport.businessapp.ui.page.InvoicingResultFragment"
+        android:label="InvoicingResultFragment" />
+    <action
+        android:id="@+id/action_global_invoicingResultFragment"
+        app:destination="@id/invoicingResultFragment" />
+    <fragment
+        android:id="@+id/billingHistoryFragment"
+        android:name="com.evport.businessapp.ui.page.BillingHistoryFragment"
+        android:label="BillingHistoryFragment" />
+    <action
+        android:id="@+id/action_global_billingHistoryFragment"
+        app:destination="@id/billingHistoryFragment" />
+
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/createCommentFragment"-->
+    <!--        android:name="com.evport.businessapp.ui.page.CreateCommentFragment"-->
+    <!--        android:label="CreateCommentFragment" /><action android:id="@+id/action_global_createCommentFragment" app:destination="@id/createCommentFragment"/>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/chargeStatuListFragment"-->
+    <!--        android:name="com.evport.businessapp.ChargeStatuListFragment"-->
+    <!--        android:label="ChargeStatuListFragment" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/selectPointListFragment"-->
+    <!--        android:name="com.powercore.eviecharge.eviechargeljx.ui.page.SelectPointListFragment"-->
+    <!--        android:label="SelectPointListFragment" />-->
+    <!--    <action-->
+    <!--        android:id="@+id/action_global_selectPointListFragment"-->
+    <!--        app:destination="@id/selectPointListFragment"-->
+    <!--        app:enterAnim="@anim/h_fragment_enter"-->
+    <!--        app:exitAnim="@anim/h_fragment_exit"-->
+    <!--        app:launchSingleTop="false"-->
+    <!--        app:popEnterAnim="@anim/h_fragment_pop_enter"-->
+    <!--        app:popExitAnim="@anim/h_fragment_pop_exit" />-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/chargeStatuListFragment"-->
+    <!--        android:name="com.evport.businessapp.ChargeStatuListFragment"-->
+    <!--        android:label="ChargeStatuListFragment" />-->
+    <!--    <action-->
+    <!--        android:id="@+id/action_global_chargeStatuListFragment"-->
+    <!--        app:destination="@id/chargeStatuListFragment"-->
+    <!--        app:enterAnim="@anim/h_fragment_enter"-->
+    <!--        app:exitAnim="@anim/h_fragment_exit"-->
+    <!--        app:launchSingleTop="false"-->
+    <!--        app:popEnterAnim="@anim/h_fragment_pop_enter"-->
+    <!--        app:popExitAnim="@anim/h_fragment_pop_exit"/>-->
+    <!--    &lt;!&ndash;    <action&ndash;&gt;-->
+    <!--        android:id="@+id/action_global_homeNav2Fragment"-->
+    <!--        app:destination="@id/homeNav2Fragment"-->
+    <!--        app:enterAnim="@anim/h_fragment_enter"-->
+    <!--        app:exitAnim="@anim/h_fragment_exit"-->
+    <!--        app:popEnterAnim="@anim/h_fragment_pop_enter"-->
+    <!--        app:popExitAnim="@anim/h_fragment_pop_exit"  />-->
+
+</navigation>

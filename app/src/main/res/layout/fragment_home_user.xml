@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.DrawerViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.HomeUserFragment.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:fitsSystemWindows="true"
+        android:fillViewport="true"
+        android:clipToPadding="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_logo"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:onClick="@{()->click.logoClick()}"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_home_user"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@string/personal_center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_title_logo"
+                android:layout_marginTop="42dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:onClick="@{()->click.logoClick()}"
+                android:src="@drawable/icon_arrow_right"
+                android:tint="@color/white"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_avatar"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/iv_avatar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:onClick="@{()->click.logoClick()}"
+                app:layout_constraintBottom_toBottomOf="@id/iv_logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_logo"
+                app:placeholderImage="@drawable/icon_avavtar_def"
+                app:placeholderImageScaleType="centerCrop"
+                app:roundAsCircle="true"
+                app:roundingBorderWidth="2dp"
+                app:roundingBorderColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:onClick="@{()->click.logoClick()}"
+                android:text="11111"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@id/iv_avatar"
+                app:layout_constraintTop_toTopOf="@+id/iv_avatar" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{()->click.logoClick()}"
+                android:text="ssssssss"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <LinearLayout
+                android:id="@+id/ll_my"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_width="match_parent"
+                android:layout_height="98dp"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_user_message"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:gravity="center"
+                    android:onClick="@{()->click.myMessage()}"
+                    android:text="@string/my_message"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_user_collect"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:gravity="center"
+                    android:onClick="@{()->click.myCollect()}"
+                    android:text="@string/my_collection"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/icon_user_card"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:gravity="center"
+                    android:onClick="@{()->click.myCard()}"
+                    android:text="@string/my_card"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                android:layout_margin="@dimen/dp_16"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/ll_bottom"
+                app:layout_constraintVertical_bias="0"
+                app:layout_constraintTop_toBottomOf="@+id/ll_my"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_family"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/my_family"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.family()}"
+                    android:padding="16dp"
+                    android:text="@string/home"
+                    android:visibility="gone"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@color/light_bg_color"/>
+                <TextView
+                    android:id="@+id/tv_changePwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_bluetech"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.bluetooth()}"
+                    android:padding="16dp"
+                    android:visibility="gone"
+                    android:text="@string/bluetooth_connect_device"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:visibility="gone"
+                    android:background="@color/light_bg_color"/>
+
+                <TextView
+                    android:id="@+id/tv_charge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_fadeback"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="10dp"
+                    android:gravity="center_vertical"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.feedback()}"
+                    android:padding="16dp"
+                    android:text="@string/feedback"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@color/light_bg_color"/>
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_user_setting"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="11dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.setting()}"
+                    android:paddingStart="17dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@color/light_bg_color"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_invoicing"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="11dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.invoicing()}"
+                    android:paddingStart="17dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="16dp"
+                    android:gravity="center_vertical"
+                    android:text="开票"
+
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dp_16"
+                    android:layout_marginEnd="@dimen/dp_16"
+                    android:background="@color/light_bg_color"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/icon_about_us"
+                    android:drawableEnd="@drawable/icon_arrow_right"
+                    android:drawablePadding="11dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:onClick="@{()->click.aboutUS()}"
+                    android:paddingStart="17dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/about_us"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/dark_text_color"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

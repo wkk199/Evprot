@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="272dp"
+        android:layout_height="192dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_company"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            android:scrollbarSize="4dp"
+            android:scrollbarStyle="insideInset"
+            android:scrollbarThumbVertical="@color/color_e6"
+            android:scrollbars="vertical" />
+
+    </RelativeLayout>
+</layout>

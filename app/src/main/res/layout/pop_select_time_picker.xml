@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/white_top_bg8">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/tv_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.evport.businessapp.ui.view.PickerView
+                android:id="@+id/wheel_hour"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                app:npv_DividerColor="#F1F1F1"
+                app:npv_ItemPaddingHorizontal="5dp"
+                app:npv_ItemPaddingVertical="5dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowDivider="true"
+                app:npv_ShownCount="5"
+                app:npv_TextColorNormal="#ACACAC"
+                app:npv_TextColorSelected="#242B2B"
+                app:npv_TextSizeNormal="16sp"
+                app:npv_TextSizeSelected="16sp"
+                app:npv_WrapSelectorWheel="false" />
+
+            <com.evport.businessapp.ui.view.PickerView
+                android:id="@+id/wheel_minute"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                app:npv_DividerColor="#F1F1F1"
+                app:npv_ItemPaddingHorizontal="5dp"
+                app:npv_ItemPaddingVertical="5dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowDivider="true"
+                app:npv_ShownCount="5"
+                app:npv_TextColorNormal="#ACACAC"
+                app:npv_TextColorSelected="#242B2B"
+                app:npv_TextSizeNormal="16sp"
+                app:npv_TextSizeSelected="16sp"
+                app:npv_WrapSelectorWheel="false" />
+
+            <com.evport.businessapp.ui.view.PickerView
+                android:id="@+id/wheel_second"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFFFF"
+                app:npv_DividerColor="#F1F1F1"
+                app:npv_ItemPaddingHorizontal="5dp"
+                app:npv_ItemPaddingVertical="5dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowDivider="true"
+                app:npv_ShownCount="5"
+                app:npv_TextColorNormal="#ACACAC"
+                app:npv_TextColorSelected="#242B2B"
+                app:npv_TextSizeNormal="16sp"
+                app:npv_TextSizeSelected="16sp"
+                app:npv_WrapSelectorWheel="false" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/white}"
+            drawable_strokeColor="@{@color/color_AA}"
+            drawable_strokeWidth="@{1}"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/color_AA"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_ok"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_ok"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/colorTheme}"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="25dp"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_cancel"
+            app:layout_constraintTop_toTopOf="@id/tv_cancel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

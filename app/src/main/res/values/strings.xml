@@ -1,0 +1,474 @@
+<resources>
+    <string name="app_name">Evport</string>
+    <string name="welcome_back">
+
+    </string>
+
+    <string name="free_music_json">
+
+    </string>
+
+    <string name="library_json">
+
+    </string>
+    <string name="play">
+
+    </string>
+    <string name="notify_of_play">
+
+    </string>
+    <string name="network_unconnected">
+
+    </string>
+
+    <string name="play_repeat">
+
+    </string>
+    <string name="play_repeat_once">
+
+    </string>
+    <string name="play_shuffle">
+
+    </string>
+
+    <string name="unfinished">
+
+    </string>
+    <string name="recently">
+
+    </string>
+    <string name="best_practice">
+
+    </string>
+
+
+    <string name="app_summary">
+
+    </string>
+    <string name="project_title">
+        </string>
+    <string name="search_page_tip">
+
+    </string>
+    <string name="test_download">
+
+    </string>
+    <string name="test_lifecycle_download">
+
+    </string>
+    <string name="search_back">
+
+    </string>
+
+    <string name="relearn_android"></string>
+    <string name="learn_more_friends">
+
+    </string>
+    <string name="learn_more">Learn More</string>
+    <string name="debug_fragment_databinding_warning"></string>
+    <string name="debug_activity_databinding_warning"></string>
+    <string name="login_title">
+
+    </string>
+    <string name="login_content">
+
+    </string>
+
+
+    <!--    以上酌情删除-->
+    <string name="Copyright">
+
+    </string>
+    <string name="text_com_name">
+<!--        公司名-->
+    </string>
+    <!--   net test 页面-->
+    <string name="activity_title_internet_api">动态API设置</string>
+    <string name="net_ping_api">确定</string>
+    <string name="net_hint_api">请输入IP(域名)地址</string>
+    <string name="net_hint_port_api">请输入端口</string>
+    <string name="net_error_api">设置失败！</string>
+    <string name="net_success_api">设置成功！</string>
+    <string name="net_notice_api">请输入正确的IP地址</string>
+
+    <!--    登陆注册-->
+    <string name="user_email">Email</string>
+    <string name="user_password">Password</string>
+    <string name="user_password_hint">8-16位大小写英文和数字组合</string>
+    <string name="login">Login</string>
+    <string name="CreateAccount">Create an account</string>
+    <string name="forgetPassword">Forgot password?</string>
+    <string name="account">Email</string>
+    <string name="me">Account</string>
+    <string name="personal_center">个人中心</string>
+    <string name="authentication_code_login">验证码登录</string>
+    <string name="password_login">密码登录</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="emailCode">Email verification code</string>
+    <string name="Username">User name</string>
+    <string name="Areacode">Area code</string>
+    <string name="phone">手机</string>
+    <string name="Birthday">Birthday</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="send">Send</string>
+    <string name="next">Next</string>
+    <string name="signUp">Sign up</string>
+
+    <string name="Confirm">Confirm</string>
+    <string name="old_pwd">旧密码  8-16位大小写英文和数字组合</string>
+    <string name="Newpassword">新密码  8-16位大小写英文和数字组合</string>
+    <string name="charge_point_start_password">Charge point start password</string>
+    <string name="white_list_of_charging_posts">White list of charging posts</string>
+    <string name="charger_id">Charger ID</string>
+    <string name="charge_point_setting">Charge point setting</string>
+    <string name="search">Search</string>
+    <string name="welcome_nback">Welcome\nBack</string>
+    <string name="thank_you_very_much_for_nusing_this_app_n_we_bring_you_a_different_nexperience">Thank you very much for\nusing this app.\n We bring you a different\nexperience</string>
+    <string name="edit_white_list">Edit white list</string>
+    <string name="stats">数据统计</string>
+    <string name="record">Record</string>
+    <string name="order">Record</string>
+    <string name="sulfur_dioxide">Sulfur dioxide</string>
+    <string name="carbon_intensity">Carbon intensity</string>
+    <string name="charging_times">Charging sessions</string>
+    <string name="dust_emission">Dust emission</string>
+    <string name="danwei_L">(kg)</string>
+    <string name="i_don_t_have_an_account">I don’t have an account.</string>
+    <string name="sign_up">sign up</string>
+    <string name="not_registered_create_an_account">Not registered yet ?</string>
+
+    <string name="reset_reset_password_and_login">Reset password and login</string>
+    <string name="reset_you_agree_to_our">By signing up, you agree to our</string>
+    <string name="reset_user_agreement">  \t User \tAgreement</string>
+    <string name="reset_and">  \tand</string>
+    <string name="reset_privacy_policy">Privacy Policy</string>
+
+    <string name="cancel_tv">取消</string>
+    <string name="filter">filter</string>
+    <string name="reset_tv">Reset</string>
+    <string name="need_location_permission">We need location permission for application function using</string>
+    <string name="home">Home</string>
+    <string name="favorites">favorites</string>
+    <string name="save_as_default_filter">Save as default filter</string>
+    <string name="save_as_default_Min_Power">Min.Power</string>
+    <string name="charge">Charge</string>
+    <string name="toast_not_select_image">you have not select image</string>
+    <string name="log_out">退出登录</string>
+    <string name="_2020_powercore_inc">© 2020 Powercore, Inc</string>
+    <string name="text_Your_feedback">请输入...</string>
+    <string name="rating">Rating</string>
+    <string name="toast_content_is_empty">content is empty</string>
+    <string name="text_commit">Submit</string>
+    <string name="text_Your_comment">How is the charging experience this time? Leave a comment to tell everyone</string>
+    <string name="acTitle_bluetooth">Connect device</string>
+
+
+    <string name="main_bt_disable_msg">Bluetooth is disable</string>
+    <string name="main_location_disable_msg">Location is disable</string>
+    <string name="change_language">Change Language</string>
+    <string name="language_selection">Language Selection</string>
+    <string name="choose_the_language_you_are_proficient_in">Choose the language you are proficient in</string>
+    <string name="reset_password">Reset password</string>
+    <string name="check_password">确认密码</string>
+    <string name="setting_new_password">设置新密码</string>
+    <string name="new_password">新密码</string>
+    <string name="confirm_new_password">确认新密码</string>
+    <string name="all">/所有</string>
+    <string name="idle">空闲</string>
+    <string name="operator">Operator</string>
+    <string name="socket_type">Connector type</string>
+    <string name="type">Type</string>
+    <string name="commonly_used">Status</string>
+    <string name="Power">Power</string>
+    <string name="info">Info</string>
+    <string name="device">Device</string>
+    <string name="comment">Comment</string>
+
+    <string name="operational_information">Operational information</string>
+    <string name="open_time">Open time</string>
+    <string name="service_hotline">Service hotline</string>
+    <string name="at_this_station">桩</string>
+    <string name="comments">Comment</string>
+    <string name="and_">and</string>
+    <string name="connector">connector</string>
+
+    <!-- Idle = 空闲 Plugged = 已插枪 Charging = 充电中 Finishing = 充电结束 Reserved = 已预约 Unavailable = 不可用 Faulted = 故障 Offline=离线-->
+    <string name="status_type_idle">idle</string>
+    <string name="status_type_Offline">offline</string>
+    <string name="status_type_Plugged">plugged</string>
+    <string name="status_type_Finished">finished</string>
+    <string name="status_type_Charging">charging</string>
+    <string name="status_type_Unavailable">unavailable</string>
+    <string name="status_type_Faulted">faulted</string>
+    <string name="status_type_Reserved">reserved</string>
+    <string name="the_comment_has_been_deleted">The comment has been deleted</string>
+    <string name="replies">replies</string>
+    <string name="reply">Reply </string>
+    <string name="comment_details">Comment Details</string>
+    <string name="say_something">reply Abayo Stevens...</string>
+    <string name="Operation_timed_out">操作超时</string>
+    <string name="The_operation_may_be">操作可能成功，请单击确认返回上一页</string>
+    <string name="charging_gun">Charging Connector</string>
+    <string name="price_information">Price information</string>
+    <string name="electricity_fee">Electricity fee</string>
+    <string name="server_fee">Service fee</string>
+    <string name="parking_fee">Parking fee</string>
+    <string name="payment">Payment</string>
+    <string name="credit_card">Credit card</string>
+    <string name="charging_card">Charging card</string>
+    <string name="how_to_use_this_charger">How to use this charger</string>
+    <string name="please_click_here_to_refresh_after_connecting_the_connector">Please &lt;font color=&quot;#00A0E9&quot;&gt;click here&lt;/font&gt; to refresh after connecting the connector</string>
+    <string name="start_charging">Start charging</string>
+    <string name="charging_settings">Charging Settings</string>
+    <string name="quick_charge">快充</string>
+    <string name="set_time">Set time</string>
+    <string name="duration">Charging time</string>
+    <string name="set_energy">Set energy</string>
+    <string name="charging_energy">Charging energy</string>
+    <string name="set_soc">SOC(%)</string>
+    <string name="payment_detail">Payment Details</string>
+    <string name="card">Card</string>
+    <string name="please_enter_the_card_number">Please enter the card number</string>
+    <string name="year">Year</string>
+    <string name="month">Month</string>
+    <string name="first_name">First Name</string>
+    <string name="enter_the_first_name">enter the first name</string>
+    <string name="last_name">Last Name</string>
+    <string name="enter_the_last_name">enter the last name</string>
+    <string name="correctcardnumber">Please enter the correct card number</string>
+    <string name="correctyear">Please enter the correct year</string>
+    <string name="correctmonth">Please enter the correct month</string>
+    <string name="correctfirstname">Please enter the correct first name</string>
+    <string name="correctlastname">Please enter the correct last name</string>
+    <string name="correctcvc">Please enter the correct cvc</string>
+    <string name="success">success</string>
+    <string name="use_tutorial">Use tutorial</string>
+    <string name="view_all_comments">View all comments</string>
+    <string name="there_are_no_vehicles_charging">No charging station information</string>
+    <string name="Waiting">等待</string>
+    <string name="Stop_charging">Stop</string>
+    <string name="stop_">停止</string>
+    <string name="areyousurrestop_">您确定结束充电吗?</string>
+    <string name="voltage">Voltage</string>
+    <string name="current">Current</string>
+    <string name="power">Power</string>
+    <string name="start_time">Start time</string>
+    <string name="charging_fee">Charging fee</string>
+    <string name="charging_fee1">充电费(元)</string>
+
+    <string name="scan">扫一扫</string>
+    <string name="place_qr_code_in_box">请将二维码放入框内</string>
+    <string name="energy">Energy</string>
+    <string name="Consumption">Consumption</string>
+    <string name="information">Information</string>
+    <string name="amount_of_consumption">Amount of Consumption</string>
+    <string name="Date">Date</string>
+    <string name="spendTime">Spend Time</string>
+    <string name="Money">Money</string>
+    <string name="Desc">Desc</string>
+    <string name="Asc">Asc</string>
+    <string name="charging_record">订单详情</string>
+    <string name="order_number">订单号</string>
+    <string name="Connector">充电枪</string>
+    <string name="End_time">结束时间</string>
+    <string name="energy_kwh">电量(度)</string>
+    <string name="Payment_details">支付详情</string>
+    <string name="details">详情</string>
+    <string name="order_status">支付状态</string>
+    <string name="balance">余额</string>
+    <string name="ok">确认</string>
+    <string name="score">Score</string>
+    <string name="post_a_comment">Post comment</string>
+    <string name="cvc">CVC</string>
+    <string name="my_message">我的信息</string>
+    <string name="my_collection">My Collection</string>
+    <string name="my_card">我的钱包</string>
+    <string name="bluetooth_connect_device">Bluetooth connect device</string>
+    <string name="feedback">反馈</string>
+    <string name="setting">设置</string>
+    <string name="about_us">关于我们</string>
+    <string name="loading_pictures_under_non_wifi_network">Loading pictures under non-WiFi network</string>
+    <string name="company_website">公司网址</string>
+    <string name="privacy_agreement">隐私协议</string>
+    <string name="clear_cache">清空缓存</string>
+    <string name="check_for_updates">版本更新</string>
+    <string name="device_failure">设备故障</string>
+    <string name="Appinformation">程序错误</string>
+    <string name="problemencountered">付款时遇到问题</string>
+    <string name="Appisunstabl">应用不稳定</string>
+    <string name="issues">账户相关问题</string>
+    <string name="Otherproblems">其他问题</string>
+    <string name="please_describe_the_problem_you_are_experiencing">* 请描述你遇到的问题</string>
+    <string name="upload_image_not_more_than_3">上传图片(不超过3张)</string>
+    <string name="stations">Stations</string>
+    <string name="status">状态</string>
+    <string name="using">正常</string>
+    <string name="lose">过期</string>
+    <string name="unbound">未绑定</string>
+    <string name="expired">expired</string>
+    <string name="personal_information">个人信息</string>
+    <string name="profile_photo">头像</string>
+    <string name="name">姓名</string>
+    <string name="e_mail">邮箱</string>
+    <string name="password">password</string>
+    <string name="edit">edit</string>
+    <string name="sex">Sex</string>
+    <string name="notification_center">消息中心</string>
+    <string name="system_message">系统消息</string>
+    <string name="my_feedback">我的反馈</string>
+    <string name="my_comment">我的评论</string>
+    <string name="reply_to_mine">评论回复</string>
+    <string name="system_message_detail">消息详情</string>
+    <string name="as_you_know">您好，您的反馈正在加急处理中，我们会尽快给您答复。在此期间给您带来的不便，我们深表歉意，感谢理解！</string>
+    <string name="delete">删除</string>
+    <string name="replied_to_my_comment">回复了我的评论</string>
+    <string name="the_user_has_not_bound_the_carrier_charging_card_you_can_apply_for_a_charging_card_at_the_service_point_of_the_local_operator">用户未绑定运营商计费卡，您可以到当地运营商服务点申请充值卡。</string>
+    <string name="there_are_no_collection_charging_stations">No site information</string>
+    <string name="no_comment_yet">暂无评论</string>
+    <string name="there_was_no_system_message">暂无系统消息</string>
+    <string name="there_is_no_charge_record">暂无订单记录</string>
+
+    <string name="no_system_message">暂无消息</string>
+    <string name="no_my_feedback">暂无反馈</string>
+    <string name="no_comment">暂无评论</string>
+    <string name="no_reply_to_mine">暂无回复</string>
+
+    <!--    easy photo 多语言-->
+    <!-- <string name="selector_folder_all_easy_photos">AllImages</string>
+
+    <string name="selector_folder_all_video_photo_easy_photos">picturesAndVideos</string>
+
+    <string name="selector_folder_video_easy_photos">AllVideos</string>
+
+    <string name="selector_easy_photos">Select</string>
+
+    &lt;!&ndash;http://stackoverflow.com/questions/17502824/whats-wrong-with-this-format-string&ndash;&gt;
+    <string name="selector_action_done_easy_photos">Complete(%1$d/%2$d)</string>
+
+    <string name="selector_preview_easy_photos">Preview</string>
+
+    <string name="selector_reach_max_hint_easy_photos">You can only select at most %d pictures or videos</string>
+
+    <string name="selector_reach_max_image_hint_easy_photos">You can only select at most %d images</string>
+
+    <string name="selector_reach_max_video_hint_easy_photos">You can only select at most %d videos</string>
+
+    <string name="selector_single_type_hint_easy_photos">Only one type of file can be selected</string>
+
+    <string name="msg_no_camera_easy_photos">Unable to start camera!</string>
+
+    <string name="camera_temp_file_error_easy_photos">WrongPicture</string>
+
+    <string name="selector_permission_error_easy_photos">Wrong permissions, not working!</string>
+
+    <string name="selector_image_size_error_easy_photos">The width of the image must be greater than %1d and the height must be greater than %2d</string>
+
+    <string name="selector_image_type_error_easy_photos">This image format is not supported</string>
+
+    <string name="edit_easy_photos">Edit</string>
+
+    <string name="empty_easy_photos">Empty</string>
+
+    <string name="no_photos_easy_photos">There is no picture that meets the requirements, take a picture</string>
+
+    <string name="no_videos_easy_photos">noMatchingVideos</string>
+
+    <string name="permissions_again_easy_photos">Please click and allow the relevant permissions</string>
+
+    <string name="permissions_die_easy_photos">Please click and allow the relevant permissions in the settings</string>
+
+    <string name="original_easy_photos">OriginalImage</string>
+
+    <string name="preview_current_number_easy_photos">%1$d/%2$d</string>
+
+    <string name="done_easy_photos">Complete</string>
+
+    <string name="cancel_easy_photos">Cancel</string>
+
+    <string name="template_easy_photos">Template</string>
+
+    <string name="text_sticker_easy_photos">character</string>
+
+    <string name="text_sticker_date_easy_photos">Date</string>
+
+    <string name="text_sticker_hint_easy_photos">DoubleClickToEdit</string>
+
+    <string name="text_sticker_hint_name_easy_photos">Customize</string>
+
+    <string name="picture_selection_easy_photos">PictureSelection</string>
+
+    <string name="video_selection_easy_photos">VideoSelection</string>
+
+    <string name="puzzle_easy_photos">SpellOne</string>
+
+    <string name="select_puzzle_photos">Please select 2 \- 9 photos</string>
+
+    <string name="gif_easy_photos">GIF</string>
+
+    <string name="video_easy_photos">Video</string>-->
+
+    <string name="Pleaseselectavaliddevice">Please select a valid device</string>
+    <string name="Discoverservicefailed">Discover service failed</string>
+    <string name="Devicestatusresponseerror">Device status response error</string>
+    <string name="Incompleteemailorpasswordutil">Incomplete email or password util</string>
+    <string name="Pleasecheckthenetwork">Please test the network</string>
+    <string name="Pleasetryagainlater">Please try again later</string>
+    <string name="Unknownexception">Unknown exception</string>
+    <string name="please_input">please input the required information!</string>
+    <string name="weneedpermission">You must agree to permissions to use a sweep</string>
+    <string name="somthingerror">something error , please try again later</string>
+    <string name="pleaseselectachargingsettings">Please select a Charging settings</string>
+
+    <string name="jan">Jan</string>
+    <string name="feb">Feb</string>
+    <string name="mar">Mar</string>
+    <string name="apr">Apr</string>
+    <string name="may">May</string>
+    <string name="jun">Jun</string>
+    <string name="jul">Jul</string>
+    <string name="aug">Aug</string>
+    <string name="sep">Sep</string>
+    <string name="oct">Oct</string>
+    <string name="nov">Nov</string>
+    <string name="dec">Dec</string>
+
+
+    <string name="dialog_upgrade_title">发现新版本，快下载体验吧！</string>
+    <string name="dialog_upgrade_message">1、新增了xxxxxx\n2、修复了xxxxxx\n3、优化了xxxxxx</string>
+    <string name="dialog_upgrade_date">发布日期 [%1$s]</string>
+    <string name="dialog_upgrade_versions">版本号 [%1$s]</string>
+    <string name="dialog_upgrade_size">安装包 [%1$s]</string>
+    <string name="dialog_upgrade_progress">%1$d%%</string>
+
+    <string name="dialog_upgrade_btn_negative">以后再说</string>
+    <string name="dialog_upgrade_btn_positive">立即体验</string>
+    <string name="dialog_upgrade_btn_neutral">忽略更新</string>
+    <string name="dialog_upgrade_btn_pause">暂停</string>
+    <string name="dialog_upgrade_btn_resume">继续</string>
+    <string name="dialog_upgrade_btn_complete">安装</string>
+    <string name="dialog_upgrade_btn_check">效验中&#8230;</string>
+    <string name="dialog_upgrade_btn_install">安装中&#8230;</string>
+    <string name="dialog_upgrade_btn_reset">重试</string>
+    <string name="dialog_upgrade_btn_launch">重启</string>
+
+    <string name="message_connect_success">连接成功</string>
+    <string name="message_connect_failure">连接失败，服务已存在客户端实例！</string>
+    <string name="message_disconnect_success">断开连接成功</string>
+    <string name="message_disconnect_failure">断开连接失败</string>
+    <string name="message_check_for_update">获取更新中&#8230;</string>
+    <string name="message_check_for_update_failure">获取更新失败，请稍候重试！</string>
+    <string name="message_check_for_update_no_available">已安装最新版本！</string>
+    <string name="message_download_start">下载连接中&#8230;.</string>
+    <string name="message_download_pause">下载暂停</string>
+    <string name="message_download_cancel">下载取消</string>
+    <string name="message_download_error">下载出错</string>
+    <string name="message_download_complete">下载完成</string>
+    <string name="message_install_validate">安装包效验中&#8230;</string>
+    <string name="message_install_start">安装中&#8230;</string>
+    <string name="message_install_error">安装失败</string>
+    <string name="message_install_complete">安装完成</string>
+    <string name="message_install_cancel">安装取消</string>
+    <string name="message_install_package_invalid">安装包无效</string>
+    <string name="message_install_package_delete">安装已完成，已自动删除安装包</string>
+</resources>

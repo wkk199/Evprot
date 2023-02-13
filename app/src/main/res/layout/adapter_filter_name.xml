@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.SocketType" />
+
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{4}"
+        drawable_solidColor="@{info.colorBgStatu}"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            >
+
+        <ImageView
+            android:id="@+id/img_socket"
+            android:layout_width="20dp"
+            android:gravity="center"
+            android:layout_height="20dp"
+
+            />
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_medium"
+            android:gravity="center"
+            android:text="@{info.name}"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            tools:text="111111" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

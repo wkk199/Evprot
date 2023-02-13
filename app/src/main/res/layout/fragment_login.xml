@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.LoginViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.LoginFragment.ClickProxy" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_gradient"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_22"
+                android:layout_marginTop="107dp"
+                android:background="@drawable/login"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/im_bugourd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_22"
+                android:background="@drawable/logo_bugroud"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <LinearLayout
+                android:id="@+id/input_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_50"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/im_bugourd">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    style="@style/EditTextStyle.Alignment"
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:drawableStart="@drawable/icon_account"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/manrope_medium"
+                    android:hint="@string/account"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="@dimen/dp_12"
+                    android:singleLine="true"
+                    android:text="@={vm.email}"
+                    android:textSize="@dimen/sp_14" />
+
+                <LinearLayout
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/light_green}"
+                    drawable_strokeColor="@{@color/light_green}"
+                    drawable_strokeWidth="@{1}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_pwd"
+                        style="@style/EditTextStyle.Alignment"
+                        passwordInputType="@{vm.passwordVisible}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:drawableStart="@drawable/icon_lock"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:hint="Password"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:singleLine="true"
+                        android:text="@={vm.password}"
+                        android:textSize="@dimen/sp_14" />
+
+                    <ImageView
+                        android:id="@+id/iv_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()->click.toLockPassword()}"
+                        android:layout_marginEnd="10dp"
+                        android:paddingTop="@dimen/dp_10"
+                        android:paddingBottom="@dimen/dp_10"
+                        android:src="@{vm.passwordVisible?@drawable/icon_view_psw:@drawable/icon_unview_psw}" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--            android:src="@={vm.passwordVisible?@drawable/icon_unview_psw:@drawable/icon_view_psw}"-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/manrope_medium"
+                android:onClick="@{()->click.toResetPassword()}"
+                android:padding="10dp"
+                android:text="@string/forgetPassword"
+                android:textColor="@color/light_text_color"
+                android:textSize="@dimen/dp_12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_ll" />
+
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/selector_bg"
+                android:enabled="false"
+                android:onClick="@{()->click.login()}"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_ll" />
+
+            <LinearLayout
+                android:id="@+id/register_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginRight="@dimen/dp_20"
+                android:onClick="@{()->click.toSignUp()}"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_login">
+
+                <TextView
+                    android:id="@+id/clicktoapi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_medium"
+                    android:text="@string/not_registered_create_an_account"
+                    android:textColor="@color/light_text_color"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/manrope_medium"
+                    android:text="@string/CreateAccount"
+                    android:textColor="@color/colorTheme"
+                    android:textSize="@dimen/sp_14" />
+
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

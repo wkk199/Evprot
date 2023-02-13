@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF00A0E9</color>
+    <color name="colorPrimaryDark">#FF00A0E9</color>
+    <color name="colorAccent">#FF00A0E9</color>
+
+    <color name="colorAccent1">#5000A0E9</color>
+
+    <color name="colorTheme">#00A0E9</color>
+    <color name="colorThemeEnabled">#8AB4D4</color>
+    <color name="colorThemeClick">#094A82</color>
+    <color name="colorTheme_a20">#801569A9</color>
+    <color name="colorTheme_a50">#201569A9</color>
+    <color name="color_009">#009FA8</color>
+    <color name="color_8f">#8F9392</color>
+    <color name="colorTheme2">#D0E1EE</color>
+    <color name="color_15c">#2030E297</color>
+    <color name="color_e76167">#ffe76767</color>
+    <color name="color_e8CCCE9">#8CCCE9</color>
+    <color name="color_006999">#006999</color>
+    <color name="color_EBF8FE">#EBF8FE</color>
+
+
+    <color name="color_69FFAC">#801569A9</color>
+<!--    #15CD80-->
+    <color name="green">#30E297</color>
+
+    <color name="green_chart">#56DC96</color>
+    <color name="start_chart">#008BFF</color>
+    <color name="end_chart">#0D56B7</color>
+    <color name="light_green">#F7F7F7</color>
+
+    <color name="bubble_green">#00F260</color>
+    <color name="bubble_blue">#0575E6</color>
+
+
+
+    <color name="lightColorTheme">#B0BED4</color>
+    <color name="light_cart_bg">#EAF0F9</color>
+    <color name="light_card_border">#D4E6FF</color>
+
+    <color name="bg_un_available">#F9EBEA</color>
+
+
+
+<!--    登录-->
+    <color name="light_text_color">#FF8F9293</color>
+    <color name="light_text_color20">#50AAAAAA</color>
+    <color name="light_bg_color">#F1F1F1</color>
+    <color name="light_bg_color_green">#601569A9</color>
+    <color name="dark_text_color">#404D66</color>
+    <color name="light_text_color_b">#ff222825</color>
+    <color name="login">#69BDEA</color>
+    <color name="login1">#91D5EE </color>
+
+    <color name="color_8F9293">#8F9293</color>
+    <color name="station_color_8F9293">#208F9293 </color>
+
+
+
+
+    <color name="dash_line_1">#1B69C7</color>
+    <color name="dash_line_2">#C9DEF3</color>
+    <color name="dash_line_3">#A7C6EA</color>
+    <color name="color_d8">#D8D8D8</color>
+    <color name="color_bf000000">#bf000000</color>
+    <color name="color_00354D">#00354D</color>
+
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="black_222628">#222628</color>
+    <color name="black_5E5E5E">#5E5E5E</color>
+    <color name="color_C0C8CC">#25C0C8CC</color>
+    <color name="color_10C0C8CC">#20C0C8CC</color>
+    <color name="color_24C0C8CC">#34C0C8CC</color>
+
+    <color name="gray">#666</color>
+    <color name="light_gray">#999</color>
+    <color name="line">#2a2d36</color>
+    <color name="line_theme">#8193AE</color>
+    <color name="red">#FF7A7A</color>
+    <color name="white_a5">#80FFFFFF</color>
+    <color name="white_a8">#A0FFFFFF</color>
+    <color name="offline">#EAF0F9</color>
+    <color name="bg_yellow">#F7B72C</color>
+    <color name="bg_yellow_a20">#50F7B72C</color>
+    <color name="color_theme_black">#222825</color>
+    <color name="color_line">#E6E6E6</color>
+
+    <color name="grey">#cbcbcb</color>
+    <color name="bg_color">#F5F5F5</color>
+    <color name="color_e8">#E8F4FC</color>
+    <color name="color_fa">#fafafa</color>
+    <color name="black_85">#d92b2b2b</color>
+    <color name="white_95">#f3ffffff</color>
+    <color name="black_65">#a62b2b2b</color>
+    <color name="black_45">#45000000</color>
+    <color name="black_10">#192b2b2b</color>
+    <color name="white_35">#59ffffff</color>
+    <color name="coral">#f55555</color>
+    <color name="cornflower">#736efe</color>
+    <color name="very_light_pink">#bebebe</color>
+    <color name="black_25">#402b2b2b</color>
+    <color name="dandelion">#00cdac</color>
+    <color name="white_55">#8cffffff</color>
+    <color name="brownish_grey">#666666</color>
+    <color name="white_10">#19ffffff</color>
+    <color name="white_75">#c0ffffff</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent_two">#a62b2b2b</color>
+    <color name="color_ff74">#FF7474</color>
+    <color name="color_f7">#f7f7f7</color>
+    <color name="white_two">#f4f4f4</color>
+    <color name="white_three">#d8d8d8</color>
+    <color name="white_four">#f3ffffff</color>
+    <color name="white_five">#f7f7f7</color>
+    <color name="white_f5">#f5f5f5</color>
+    <color name="yellow">#F7B72C</color>
+    <color name="color_AA">#AAAAAA</color>
+    <color name="color_e6">#E6E6E6</color>
+
+
+    <color name="idle">#00A0E9</color>
+    <color name="plugged">#4AB335</color>
+    <color name="finished">#00A0A6</color>
+    <color name="charging">#4AB336</color>
+    <color name="unavailable">#D16B3F</color>
+    <color name="faulted">#C24E55</color>
+    <color name="reserved">#C78B00</color>
+
+    <color name="idle20">#2000A0E9</color>
+    <color name="plugged20">#204AB335</color>
+    <color name="finished20">#2000A0A6</color>
+    <color name="charging20">#204AB336</color>
+    <color name="unavailable20">#20D16B3F</color>
+    <color name="faulted20">#20C24E55</color>
+    <color name="reserved20">#20C78B00</color>
+
+    <color name="color_242b2b">#242B2B</color>
+
+    <color name="dialog_upgrade_background_color">#FFFFFF</color>
+    <color name="dialog_upgrade_accent_color">#FF4081</color>
+    <color name="dialog_upgrade_text_light_color">#FFFFFF</color>
+    <color name="dialog_upgrade_text_dark_color">#222222</color>
+    <color name="dialog_upgrade_button_light_color">@color/dialog_upgrade_accent_color</color>
+    <color name="dialog_upgrade_button_dark_color">#FF757575</color>
+    <color name="dialog_upgrade_button_selected">#33969696</color>
+    <color name="dialog_upgrade_progress_background_color">#EEEEEE</color>
+    <color name="dialog_upgrade_progress_background_start_color">#F48FB1</color>
+    <color name="dialog_upgrade_progress_background_start_center">#F06292</color>
+    <color name="dialog_upgrade_progress_background_start_end">@color/dialog_upgrade_accent_color
+    </color>
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

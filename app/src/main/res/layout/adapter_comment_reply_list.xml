@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.ReplyDetail" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="@dimen/dp_10"
+        android:paddingBottom="@dimen/dp_5"
+        android:orientation="vertical">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:roundAsCircle="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            app:placeholderImage="@drawable/icon_avavtar_def"
+            app:placeholderImageScaleType="centerCrop"
+            android:clickable="true" />
+
+        <ImageView
+            android:id="@+id/iv_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="12dp"
+            android:padding="5dp"
+            android:src="@drawable/icon_delete"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/iv_image"
+            android:textColor="@color/black_5E5E5E"
+            android:text="@{info.replyName}"
+            android:textSize="14sp"
+            tools:text="11111" />
+
+        <TextView
+            android:id="@+id/tv_has_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            android:layout_alignStart="@id/tv_name"
+            android:fontFamily="@font/manrope_medium"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textColor="@color/light_text_color"
+            visible="@{info.hasDelFlag()}"
+            android:text="@string/the_comment_has_been_deleted"
+            />
+        <RelativeLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_name"
+            invisible="@{!info.hasDelFlag()}"
+            android:layout_alignStart="@id/tv_name">
+
+            <TextView
+                android:id="@+id/tv_re"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@string/reply"
+                android:textSize="12sp"
+                android:textColor="@color/black_222628"
+                tools:text="Reply " />
+
+
+            <TextView
+                android:id="@+id/tv_father_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tv_re"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:drawablePadding="10dp"
+                android:textColor="@color/colorTheme"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@{info.replySourceUserName}"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+
+            <TextView
+                android:id="@+id/tv_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/tv_father_name"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@{info.replyContent()}"
+                android:textColor="@color/black_222628"
+                android:textSize="12sp"
+                tools:text="111111" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_content"
+            android:layout_alignStart="@id/tv_name"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/manrope_medium"
+            android:singleLine="true"
+            android:text="@{info.commentTime()}"
+            android:textSize="12sp"
+            tools:text="111111" />
+    </RelativeLayout>
+</layout>

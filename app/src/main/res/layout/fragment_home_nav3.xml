@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.RecordViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.HomeNav3Fragment.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_f5">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_select"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/white"
+            android:paddingStart="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_10"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/icon_sg_down"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorTheme"
+                android:fontFamily="@font/manrope_semibold"
+                android:gravity="center"
+                android:onClick="@{() -> click.selectRes()}"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="@{vm.dataRes}"
+                android:textColor="@color/colorTheme"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toStartOf="@id/tv_array"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="charge" />
+
+            <TextView
+                android:id="@+id/tv_array"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:drawableEnd="@drawable/icon_down"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/colorTheme"
+                android:fontFamily="@font/manrope_semibold"
+                android:gravity="center"
+                android:onClick="@{() -> click.array()}"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:textColor="@color/colorTheme"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_date"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Asce" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_select"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                adapter="@{adapter}"
+                submitList="@{vm.list}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/cl_select"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <include layout="@layout/empty_view_record"/>
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

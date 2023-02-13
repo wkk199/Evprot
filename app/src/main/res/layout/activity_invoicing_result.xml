@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.InvoicingResultViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.InvoicingResultActivity.ClickProxy" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_f5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/base_title_bg"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/icon_title_logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back_gray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="开具发票"
+                    android:textColor="@color/color_theme_black"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:src="@{vm.type==0?@drawable/icon_invoicing_success:@drawable/icon_invoicing_fail}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@{vm.typeHint}"
+                android:textColor="#ff222825"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_6"
+                android:text="@{vm.typeHint1}"
+                android:textColor="#ffaaaaaa"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/next"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/colorTheme}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="80dp"
+                android:layout_marginRight="@dimen/dp_20"
+                android:background="@null"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+                android:onClick="@{()->click.backToInvoicing()}"
+                android:text="发票首页"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/colorTheme}"
+                drawable_strokeWidth="@{1}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_16"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:background="@null"
+                android:fontFamily="@font/manrope_medium"
+                android:gravity="center"
+                android:onClick="@{()->click.history()}"
+                android:text="开票历史"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTheme"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

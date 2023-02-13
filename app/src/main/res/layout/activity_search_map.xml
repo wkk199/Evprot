@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.SearchMapViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.SearchMapActivity.ClickProxy" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+        <variable
+            name="adapterHistory"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context="com.evport.businessapp.ui.page.activity.SearchMapActivity">
+
+        <LinearLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/base_title_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:src="@drawable/icon_title_logo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back_gray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="搜索"
+                    android:textColor="@color/color_theme_black"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/color_line" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+           android:layout_marginBottom="@dimen/dp_10">
+
+            <RelativeLayout
+                drawable_radius="@{18}"
+                drawable_solidColor="@{@color/light_bg_color}"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toLeftOf="@+id/cancel">
+
+                <EditText
+                    android:id="@+id/search_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/close_iv"
+                    android:background="@null"
+                    android:drawableStart="@drawable/icon_search"
+                    android:drawablePadding="16dp"
+                    android:drawableTint="@color/light_gray"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:hint="目的地"
+                    android:paddingStart="16dp"
+                    android:paddingRight="@dimen/dp_16"
+                    android:singleLine="true"
+                    android:textColor="@color/dark_text_color"
+                    android:textColorHint="#8F9392"
+                    android:textSize="14sp" />
+                <ImageView
+                    android:id="@+id/close_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="@dimen/dp_12"
+                    android:layout_alignParentRight="true"
+                    android:onClick="@{()->click.close()}"
+                    android:visibility="gone"
+                    android:src="@drawable/icon_edit_close"/>
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:onClick="@{()->click.back()}"
+                android:padding="@dimen/dp_15"
+                android:text="取消"
+                android:textColor="#ff222825"
+                android:textSize="16sp" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#F7F7F7"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                adapter="@{adapter}"
+                submitList="@{vm.listOne}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_10"
+                android:visibility="gone"
+                addItemDecoration="@{true}"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView_history"
+                adapter="@{adapterHistory}"
+                addItemDecoration="@{true}"
+                submitList="@{vm.listHistory}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginRight="@dimen/dp_15"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <RelativeLayout
+                android:id="@+id/empty_rl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/history_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_search" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="暂无搜索记录"
+                        android:textColor="#ffaaaaaa"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/search_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="暂无结果, 换一个词试试吧"
+                    android:textColor="#ffaaaaaa"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/empty_network"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:visibility="gone"
+               >
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/icon_network" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="网络加载异常"
+                        android:textColor="#ffaaaaaa"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

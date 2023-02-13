@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.NotiSys" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@{info.SysMessageTitle}"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            tools:text="111111" />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@{info.commentDateString}"
+            android:layout_below="@+id/tv_id"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
+            tools:text="111111" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@{info.sysMessageContent}"
+            android:layout_below="@+id/tv_id"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/dp_10"
+            android:gravity="center"
+            tools:text="111111" />
+
+    </RelativeLayout>
+</layout>

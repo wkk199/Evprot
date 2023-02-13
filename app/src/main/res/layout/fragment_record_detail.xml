@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright 2018-2020 KunMinX
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.RecordViewModel" />
+
+        <!--        <variable-->
+        <!--            name="vm.info"-->
+        <!--            type="com.evport.businessapp.RecordDetailResp" />-->
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.RecordDetailFragment.ClickProxy" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="true"
+        android:fillViewport="true">
+
+
+            <RelativeLayout
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:onClick="@{()->click.back()}"
+                    android:src="@drawable/icon_back_gray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:text="@string/charging_record"
+                    android:textColor="@color/color_theme_black"
+                    android:textSize="16sp" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_liner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_3"
+                android:layout_below="@+id/toolbar"
+                android:background="@color/white_f5"
+                app:layout_constraintBottom_toBottomOf="@id/toolbar"
+                />
+
+
+        <androidx.core.widget.NestedScrollView
+
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/ll_bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_liner">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/rl_card1"
+                    drawable_radius="@{10}"
+                    drawable_solidColor="@{@color/white}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:padding="@dimen/dp_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_medium"
+                        android:padding="10dp"
+
+                        android:text="@{vm.info.stationName}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_start_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_date"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_time"
+                        android:fontFamily="@font/manrope_medium"
+
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.orderId}"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="#CCCCCC"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp"
+                        tools:text="111111111111111111111111111111" />
+
+                    <TextView
+                        android:id="@+id/tv_start_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_id"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_time"
+                        android:fontFamily="@font/manrope_medium"
+
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.connector}"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="#CCCCCC"
+                        android:textIsSelectable="true"
+                        android:textSize="14sp"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_email"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_time"
+                        android:fontFamily="@font/manrope_medium"
+
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.startTimeString()}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="111111111111" />
+
+                    <TextView
+                        android:id="@+id/tv_start_en"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_time"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_time"
+                        android:fontFamily="@font/manrope_medium"
+
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.stopTimeString()}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_date"
+                        android:fontFamily="@font/manrope_medium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/order_number"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_id"
+                        android:fontFamily="@font/manrope_medium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/Connector"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_email"
+                        android:fontFamily="@font/manrope_medium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/start_time"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_en"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_time"
+                        android:fontFamily="@font/manrope_medium"
+                        android:paddingStart="10dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/End_time"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/order_db"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/rl_card1">
+
+                    <LinearLayout
+                        android:id="@+id/rl_co2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_co2_t"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@{vm.info.energy}"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/tv_co2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawableStart="@drawable/icon_record_energy"
+                            android:drawablePadding="@dimen/dp_5"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@string/energy_kwh"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        android:background="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_time_"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@{vm.info.chargeTimeString}"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawableStart="@drawable/icon_record_time"
+
+                            android:drawablePadding="@dimen/dp_5"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@string/duration"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_16"
+                        android:background="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@{vm.info.totalFeeString1}"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:drawableStart="@drawable/icon_record_chargefee"
+
+                            android:drawablePadding="@dimen/dp_5"
+                            android:fontFamily="@font/manrope_medium"
+                            android:text="@string/charging_fee1"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+
+                    android:id="@+id/rl_card3"
+                    drawable_radius="@{10}"
+                    drawable_solidColor="@{@color/white}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp_40"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginRight="@dimen/dp_20"
+                    android:padding="@dimen/dp_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_card2">
+
+                    <TextView
+                        android:id="@+id/tv_start_date3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_medium"
+                        android:padding="10dp"
+                        android:text="@string/Payment_details"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_start_times"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_id3"
+                        android:layout_alignBottom="@id/tv_id3"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_id3"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.paymentString()}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="111111111111111" />
+
+                    <TextView
+                        android:id="@+id/tv_charge_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_email3"
+                        android:layout_alignBottom="@id/tv_email3"
+
+                        android:layout_toEndOf="@id/tv_time3"
+                        android:autoSizeMaxTextSize="14sp"
+                        android:autoSizeMinTextSize="6sp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="5dp"
+                        android:text="@{vm.info.totalFeeString}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="111111" />
+
+                    <TextView
+                        android:id="@+id/tv_show_detail"
+                        drawable_radius="@{2}"
+                        drawable_strokeColor="@{@color/light_text_color}"
+                        drawable_strokeWidth="@{1}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_email3"
+                       android:layout_toRightOf="@+id/tv_charge_time"
+                        android:layout_marginTop="@dimen/dp_20"
+                        android:drawableEnd="@drawable/icon_arrow_down_small"
+                        android:drawableTint="@color/grey"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="end"
+                        android:padding="@dimen/dp_3"
+
+
+                        android:text="@string/details"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="12sp" />
+
+                    <RelativeLayout
+                        android:id="@+id/rl_card4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_email3"
+                        android:layout_margin="10dp"
+                        android:paddingStart="@dimen/dp_10"
+                        android:paddingEnd="@dimen/dp_10"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_start_id4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tv_id4"
+                            android:layout_alignBottom="@id/tv_id4"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_toEndOf="@id/tv_id4"
+
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@{vm.info.eleFeeString}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="111111111111111" />
+
+                        <TextView
+                            android:id="@+id/tv_start_email4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@id/tv_email4"
+                            android:layout_alignBottom="@id/tv_email4"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@id/tv_time4"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@{vm.info.serveFeeString}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="111111" />
+
+                        <TextView
+                            android:id="@+id/tv_start_time4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_start_email4"
+                            android:layout_alignTop="@id/tv_time4"
+                            android:layout_alignBottom="@id/tv_time4"
+                            android:layout_alignParentEnd="true"
+                            android:layout_toEndOf="@id/tv_time4"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@{vm.info.parkFeeString}"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            tools:text="111111111111" />
+
+                        <TextView
+                            android:id="@+id/tv_id4"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/icon_record_elefee"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingStart="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@string/electricity_fee"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_email4"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_start_id4"
+                            android:drawableStart="@drawable/icon_record_servefee"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingStart="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@string/server_fee"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tv_time4"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_start_email4"
+                            android:drawableStart="@drawable/icon_record_parkfee"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical"
+                            android:paddingStart="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="@string/parking_fee"
+                            android:textColor="@color/light_text_color"
+                            android:textSize="14sp" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_start_time3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_time3"
+                        android:layout_alignBottom="@id/tv_time3"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_time3"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@{vm.info.statusString()}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="111111111111" />
+
+                    <TextView
+                        android:id="@+id/tv_start_en3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_time3"
+                        android:layout_alignTop="@id/tv_en3"
+                        android:layout_alignBottom="@id/tv_en3"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/tv_en3"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingTop="20dp"
+
+                        android:text="@{vm.info.balanceString()}"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:text="11113231231" />
+
+                    <TextView
+                        android:id="@+id/tv_id3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_date3"
+                        android:drawableStart="@drawable/icon_record_payment"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/payment"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_email3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_start_times"
+                        android:drawableStart="@drawable/icon_record_chargefee_theme"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/charging_fee"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_time3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rl_card4"
+                        android:drawableStart="@drawable/icon_record_status"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/order_status"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tv_en3"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_time3"
+                        android:drawableStart="@drawable/icon_record_banlance"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center_vertical"
+                        android:paddingStart="15dp"
+                        android:paddingTop="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/balance"
+                        android:textColor="@color/light_text_color"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom"
+            visible="@{vm.info.commentShow()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:onClick="@{()->click.comment()}"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/btn_netx"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeWidth="@{1}"
+                drawable_strokeColor="@{@color/colorTheme}"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_margin="16dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/manrope_semibold"
+                android:gravity="center"
+                android:onClick="@{()->click.comment()}"
+                android:text="@string/comment"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTheme"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

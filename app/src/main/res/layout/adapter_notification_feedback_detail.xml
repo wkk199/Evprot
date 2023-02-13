@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.Feedback" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+
+    <RelativeLayout
+        android:id="@+id/content1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingTop="6dp"
+        android:paddingEnd="@dimen/dp_10"
+        android:paddingBottom="3dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_rb"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_below="@+id/tv_comments"
+            app:placeholderImage="@drawable/ic_launcher"
+            app:placeholderImageScaleType="centerCrop"
+            android:scaleType="centerCrop"
+            app:roundAsCircle="true" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_my"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_below="@+id/tv_comments"
+            android:layout_alignParentEnd="true"
+            app:placeholderImage="@drawable/icon_avavtar_def"
+            app:placeholderImageScaleType="centerCrop"
+            app:roundAsCircle="true" />
+
+        <TextView
+            android:id="@+id/tv_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/manrope_medium"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_16"
+            android:singleLine="true"
+            android:text="@{info.commentDateString()}"
+            android:textSize="12sp"
+            android:visibility="@{info.isShowTime()?View.VISIBLE:View.GONE}"
+            tools:text="111111" />
+
+        <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_comments"
+           android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@id/iv_my"
+            android:layout_toEndOf="@id/iv_rb"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10">
+
+            <TextView
+                android:id="@+id/tv_name"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{info.bgColor}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_semibold"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_5"
+                android:text="@{info.feedbackContent}"
+                android:textSize="14sp"
+                android:textStyle="bold"
+
+                tools:text="11111"
+                android:paddingStart="@dimen/dp_15"
+                android:paddingEnd="@dimen/dp_15" />
+
+            <TextView
+                android:id="@+id/tv_name1"
+                drawable_radius="@{8}"
+                android:layout_alignParentRight="true"
+                drawable_solidColor="@{info.bgColor}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_semibold"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_15"
+                android:paddingBottom="@dimen/dp_5"
+                android:text="@{info.feedbackContent}"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="11111"
+                android:layout_alignParentEnd="true"
+                android:paddingEnd="@dimen/dp_15"
+                android:paddingStart="@dimen/dp_15" />
+
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selle_recycler_view"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{info.bgColor}"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-2dp"
+            android:paddingBottom="@dimen/dp_10"
+            android:visibility="@{info.imageList().size()>0?View.VISIBLE:View.GONE}" />
+   <!--     <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{info.imgJson}"/>-->
+    </RelativeLayout>
+
+</layout>

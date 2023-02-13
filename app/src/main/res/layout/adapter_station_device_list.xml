@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.evport.businessapp.data.bean.Device" />
+
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{10}"
+        drawable_solidColor="@{@color/white}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:gravity="start"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/manrope_semibold"
+            android:text="@{info.chargerId}"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="11111" />
+
+        <ImageView
+            android:id="@+id/iv_like"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentEnd="true"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/icon_unlike" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/selle_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_below="@id/iv_like"/>
+
+
+    </RelativeLayout>
+</layout>

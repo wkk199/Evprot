@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <!--        <variable-->
+        <!--            name="vm"-->
+        <!--            type="com.powercore.eviecharge.eviechargeljx.ui.state.MainActivityViewModel" />-->
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.ChangeLanguageActivity.ClickProxy" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/icon_back"
+            app:tint="@color/black"
+            android:visibility="gone"
+            android:id="@+id/btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:onClick="@{()->click.back()}"
+            android:scaleType="center"
+            app:materialIcon="arrow_left"
+            app:materialIconColor="@color/black"
+            app:materialIconSize="24dp" />
+
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_back"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/language_selection"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/manrope_medium"
+            android:text="@string/choose_the_language_you_are_proficient_in"
+            android:textColor="#ACACAC"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/english"
+            android:drawableStart="@drawable/icon_engilsh"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/light_green}"
+            drawable_selected_radius="@{8}"
+            drawable_selected_solidColor="@{@color/colorTheme}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_16"
+            android:layout_below="@id/tv2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="90dp"
+            android:gravity="center|start"
+            android:drawablePadding="@dimen/dp_16"
+            android:fontFamily="@font/manrope_medium"
+            android:onClick="@{()->click.toEng()}"
+            android:text="English"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_select_en"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignEnd="@id/english"
+            android:layout_alignTop="@id/english"
+            android:layout_alignBottom="@id/english"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:src="@drawable/icon_select_language"/>
+
+
+        <TextView
+            android:id="@+id/sp"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/light_green}"
+            drawable_selected_radius="@{8}"
+            drawable_selected_solidColor="@{@color/colorTheme}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/english"
+            android:layout_centerHorizontal="true"
+            android:drawableStart="@drawable/icon_iw"
+            android:padding="@dimen/dp_16"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center|start"
+            android:drawablePadding="@dimen/dp_16"
+            android:layout_marginBottom="28dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:fontFamily="@font/manrope_medium"
+            android:onClick="@{()->click.toSp()}"
+            android:text="עברית"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_select_sp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_alignEnd="@id/sp"
+            android:layout_alignTop="@id/sp"
+            android:layout_alignBottom="@id/sp"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:src="@drawable/icon_select_language"/>
+        <TextView
+            android:id="@+id/btn_ok"
+            drawable_radius="@{8}"
+            drawable_solidColor="@{@color/colorTheme}"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:layout_marginBottom="28dp"
+            android:fontFamily="@font/manrope_medium"
+            android:onClick="@{()->click.ok()}"
+            android:text="@string/Confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</layout>
