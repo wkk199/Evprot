@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zyao89:zloading:1.2.0@aar">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/6ee16a51d5fed0dd717143f21a3b0eb0/jetified-zloading-1.2.0/jars/classes.jar!/" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/6ee16a51d5fed0dd717143f21a3b0eb0/jetified-zloading-1.2.0/res" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/6ee16a51d5fed0dd717143f21a3b0eb0/jetified-zloading-1.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.zyao89/zloading/1.2.0/7748adb871d1d7e7f83e1aa624613a1e115c9e2c/zloading-1.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.zyao89/zloading/1.2.0/640907a655dceb19065117b2ab7a053e06993f09/zloading-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

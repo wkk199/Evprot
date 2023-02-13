@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Evprot_New_Android.iml" filepath="$PROJECT_DIR$/.idea/modules/Evprot_New_Android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.iml" filepath="$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.main.iml" filepath="$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/architecture/Evprot_New_Android.architecture.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.main.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/upgradelibrary/Evprot_New_Android.upgradelibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/upgradelibrary/Evprot_New_Android.upgradelibrary.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.alipay.sdk:alipaysdk-android:15.8.11@aar">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8504a980ca0de5e4375496d8e9d11b42/jetified-alipaysdk-android-15.8.11/jars/classes.jar!/" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8504a980ca0de5e4375496d8e9d11b42/jetified-alipaysdk-android-15.8.11/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
