@@ -15,6 +15,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.main.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/blufilibrary/Evprot_New_Android.blufilibrary.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.iml" filepath="$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.main.iml" filepath="$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/toast_box/Evprot_New_Android.toast_box.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/upgradelibrary/Evprot_New_Android.upgradelibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/upgradelibrary/Evprot_New_Android.upgradelibrary.iml" />
     </modules>
   </component>

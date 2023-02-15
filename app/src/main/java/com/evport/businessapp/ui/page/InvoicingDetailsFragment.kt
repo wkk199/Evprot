@@ -400,7 +400,7 @@ class InvoicingDetailsFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 
@@ -431,7 +431,7 @@ class InvoicingDetailsFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 
@@ -461,7 +461,7 @@ class InvoicingDetailsFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
                 nav().navigate(R.id.action_global_invoicingResultFragment, Bundle().apply

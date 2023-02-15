@@ -261,7 +261,7 @@ class UserSettingFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
                 dismissLoading()
@@ -284,7 +284,7 @@ class UserSettingFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
             }
 
@@ -329,7 +329,7 @@ class UserSettingFragment : BaseFragment() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

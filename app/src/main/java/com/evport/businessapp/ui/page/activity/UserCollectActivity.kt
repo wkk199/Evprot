@@ -253,7 +253,7 @@ class UserCollectActivity : BaseActivity() {
 
                 override fun onFailure(message: String) {
                     if (!message.isNullOrBlank()) {
-                        ToastUtils.showLong(message)
+                        message.toast()
                     }
 
                 }
@@ -279,7 +279,7 @@ class UserCollectActivity : BaseActivity() {
 
                 override fun onFailure(message: String) {
                     if (!message.isNullOrBlank()) {
-                        ToastUtils.showLong(message)
+                        message.toast()
                     }
 
                 }
@@ -343,7 +343,7 @@ class UserCollectActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }
@@ -402,7 +402,7 @@ class UserCollectActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

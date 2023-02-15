@@ -55,7 +55,7 @@ class ScanActivity : BaseActivity() {
 //            }
 //
 //            override fun onFailure(message: String) {
-//                ToastUtils.showLong(message)
+//                message.toast()
 //                dismissLoading()
 //
 //            }

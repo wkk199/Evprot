@@ -168,7 +168,7 @@ class NotificationCenterFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

@@ -107,7 +107,7 @@ class WithdrawalFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 
@@ -137,7 +137,7 @@ class WithdrawalFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 

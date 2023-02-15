@@ -873,7 +873,7 @@
                                     app:rsb_mode="single"
                                     app:rsb_progress_color="@color/colorAccent"
                                     app:rsb_progress_default_color="#DDDDDD"
-                                    app:rsb_thumb_drawable="@drawable/icon_seekbar_stop"
+                                    app:rsb_thumb_drawable="@drawable/bg_garden"
                                     app:rsb_thumb_height="16dp"
                                     app:rsb_thumb_width="16dp"
                                     app:rsb_thumb_scale_ratio="1.4"

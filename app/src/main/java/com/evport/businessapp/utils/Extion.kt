@@ -18,6 +18,7 @@ import com.evport.businessapp.data.bean.HomeFilter
 import com.evport.businessapp.data.bean.StationListBean
 import com.evport.businessapp.data.bean.User
 import com.evport.businessapp.data.config.Configs
+import com.evport.businessapp.ui.page.activity.PdfviewActivity
 import com.evport.businessapp.ui.page.activity.WebViewActivity
 import com.evport.businessapp.utils.loader.GlideApp
 import java.math.BigDecimal
@@ -725,16 +726,23 @@ fun isEmail(email: String?): Boolean {
     val m = p.matcher(email)
     return m.matches()
 }
+//fun  toUserAgreement(context: Context){
+//    var intent=Intent(context, WebViewActivity::class.java)
+//    intent.putExtra("title","User Agreement")
+//    intent.putExtra("url",Configs.BASE_URL1+"terms/userAgreement.html")
+//    context.startActivity(intent)
+//}
+
 fun  toUserAgreement(context: Context){
-    var intent=Intent(context, WebViewActivity::class.java)
+    var intent=Intent(context, PdfviewActivity::class.java)
     intent.putExtra("title","User Agreement")
-    intent.putExtra("url",Configs.BASE_URL1+"terms/userAgreement.html")
+    intent.putExtra("url","UserTerms.pdf")
     context.startActivity(intent)
 }
 fun  toPrivacyPolicy(context: Context){
-    var intent=Intent(context, WebViewActivity::class.java)
+    var intent=Intent(context, PdfviewActivity::class.java)
     intent.putExtra("title","privacyPolicy")
-    intent.putExtra("url",Configs.BASE_URL1+"terms/privacyPolicy.html")
+    intent.putExtra("url","PrivacyPolicy.pdf")
     context.startActivity(intent)
 }
 

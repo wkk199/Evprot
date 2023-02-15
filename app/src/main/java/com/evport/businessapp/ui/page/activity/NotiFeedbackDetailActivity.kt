@@ -210,7 +210,7 @@ Log.e("hm----allList",Gson().toJson(allList))
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -284,7 +284,7 @@ Log.e("hm----allList",Gson().toJson(allList))
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }
@@ -500,7 +500,7 @@ Log.e("hm----allList",Gson().toJson(allList))
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

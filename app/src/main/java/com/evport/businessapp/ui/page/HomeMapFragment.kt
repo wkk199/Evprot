@@ -56,6 +56,7 @@ import com.evport.businessapp.utils.*
 import com.evport.businessapp.widget.PopChargeTypePicker
 import com.evport.businessapp.widget.PopFilterPicker
 import com.google.android.gms.location.LocationListener
+import com.gyf.immersionbar.ImmersionBar
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.core.BasePopupView
 import io.reactivex.Observable
@@ -317,6 +318,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
 
         sharedViewModel.mapRefresh.observe(this, EventObserver {
             if (it) {
+                ImmersionBar.with(this).statusBarDarkFont(false).init()
                 mapFragment.getMapAsync(this)
                 refreshData()
             }
@@ -593,7 +595,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 

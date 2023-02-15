@@ -141,6 +141,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation project(':architecture')
+    implementation project(':toast_box')
     implementation 'com.kunminx.player:player:1.1.6'
 
 //    compileOnly 'androidx.constraintlayout:constraintlayout:2.0.0-beta6'
@@ -184,7 +185,7 @@ dependencies {
 //   utils
     implementation 'com.blankj:utilcode:1.30.6'
 
-
+    implementation "com.dmitryborodin:pdfview-android:1.1.0"
 //    侧滑删除
     implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
 

@@ -173,7 +173,7 @@ class ChargeStatuListActivity : BaseActivity() {
                 }
 
                 override fun onFailure(message: String) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                     dismissLoading()
 
                 }
@@ -345,7 +345,7 @@ class ChargeStatuListActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                ToastUtils.showLong(message)
+                message.toast()
 
             }
 

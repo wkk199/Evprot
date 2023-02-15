@@ -193,7 +193,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 finish()
             }
@@ -228,7 +228,7 @@ class CreateEditFamilyActivity : BaseActivity() {
                     getHomePk(true)
                 else
                     if (!message.isNullOrBlank()){
-                        ToastUtils.showLong(message)
+                        message.toast()
                     }
             }
 
@@ -268,7 +268,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 finish()
             }
@@ -295,7 +295,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }
@@ -341,7 +341,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 et_email.setText("")
             }
@@ -380,7 +380,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 et_email.setText("")
             }
@@ -412,7 +412,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
             }
 
@@ -441,7 +441,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
             }
 
@@ -471,7 +471,7 @@ class CreateEditFamilyActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

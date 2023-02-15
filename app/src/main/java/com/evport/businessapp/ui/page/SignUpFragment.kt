@@ -93,7 +93,7 @@ class SignUpFragment : BaseFragment() {
                 SPUtils.getInstance()
                     .put(Configs.PHONE, user.phone)
                 mSignUpViewModel!!.loadingVisible.set(false)
-                ToastUtils.showLong("Registration successful")
+                "Registration successful".toast()
                 //注册成功--直接登录
                 sharedViewModel.isLoginSuccess.postValue(true)
             }

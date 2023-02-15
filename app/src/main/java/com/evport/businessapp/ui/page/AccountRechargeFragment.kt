@@ -24,6 +24,7 @@ import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_account_recharge.*
 import kotlinx.coroutines.*
 import com.evport.businessapp.utils.MoneyValueFilter
+import com.evport.businessapp.utils.toast
 import com.tencent.mm.opensdk.openapi.IWXAPI
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.tencent.mm.opensdk.modelpay.PayReq
@@ -113,11 +114,11 @@ class AccountRechargeFragment : BaseFragment() {
         fun confrim() {
             var amount = input_money.text.toString()
             if (amount.isNullOrBlank()) {
-                ToastUtils.showShort("请输入充值金额")
+                "请输入充值金额".toast()
                 return
             }
             if (amount.toDouble() < 0.01 || amount.toDouble() > 1000) {
-                ToastUtils.showShort("请输入正确的充值金额")
+                "请输入正确的充值金额".toast()
                 return
 
             }
@@ -145,7 +146,7 @@ class AccountRechargeFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showShort(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -172,7 +173,7 @@ class AccountRechargeFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -199,13 +200,13 @@ class AccountRechargeFragment : BaseFragment() {
                 dismissLoading()
                 delay(100)
                 if (TextUtils.equals(resultStatus, "9000")) {
-                    ToastUtils.showShort("支付成功")
+                    "支付成功".toast()
                     input_money.setText("")
                     LiveBus.getInstance().post(EventBean(Configs.REFRESH_BALANCE, true, ""))
                     nav().navigateUp()
                 } else {
                     // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                    ToastUtils.showShort("支付失败")
+                    "支付失败".toast()
                 }
             }
 

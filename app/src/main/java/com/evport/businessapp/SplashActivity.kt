@@ -3,9 +3,6 @@ package com.evport.businessapp
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import com.blankj.utilcode.util.ToastUtils
-import com.gyf.immersionbar.ImmersionBar
-import com.kunminx.architecture.utils.SPUtils
 import com.evport.businessapp.data.bean.HomeFilter
 import com.evport.businessapp.data.config.Configs
 import com.evport.businessapp.data.http.networkmanager.NetworkBoundResource
@@ -18,6 +15,9 @@ import com.evport.businessapp.ui.page.activity.WelcomeActivity
 import com.evport.businessapp.ui.state.MainActivityViewModel
 import com.evport.businessapp.utils.getHomeFilterData
 import com.evport.businessapp.utils.saveHomeFilterData
+import com.evport.businessapp.utils.toast
+import com.gyf.immersionbar.ImmersionBar
+import com.kunminx.architecture.utils.SPUtils
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_splash.*
 
@@ -107,7 +107,7 @@ class SplashActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 link()
 

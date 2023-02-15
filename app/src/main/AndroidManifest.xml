@@ -69,6 +69,9 @@
             android:name=".ui.page.activity.WebViewActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.page.activity.PdfviewActivity"
+            android:exported="false" />
+        <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop">

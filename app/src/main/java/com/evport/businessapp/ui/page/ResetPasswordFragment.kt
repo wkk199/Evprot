@@ -232,7 +232,7 @@ class ResetPasswordFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 timer!!.cancel()
                 timer!!.onFinish()
@@ -266,7 +266,7 @@ class ResetPasswordFragment : BaseFragment() {
         object:NetworkBoundResource<User>(object : NetworkStatusCallback<User>{
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 

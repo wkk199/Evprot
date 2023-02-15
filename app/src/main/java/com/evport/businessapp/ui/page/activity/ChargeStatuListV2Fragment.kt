@@ -30,6 +30,7 @@ import com.evport.businessapp.ui.page.adapter.ChargeStatusAdapter
 import com.evport.businessapp.ui.state.ScanViewModel
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
+import com.gyf.immersionbar.ImmersionBar
 import com.kunminx.architecture.utils.SPUtils
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.*
@@ -124,6 +125,7 @@ class ChargeStatuListV2Fragment : BaseFragment() {
         })
         sharedViewModel.refreshNav2.observe(this, EventObserver {
             if (it) {
+                ImmersionBar.with(this).statusBarDarkFont(true).init()
                 refreshDataSelf()
 //                toastT("主页导航栏点击 刷新数据-时间戳：${DateUtil.getNow()}")
             }

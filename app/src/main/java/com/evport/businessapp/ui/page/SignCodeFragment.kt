@@ -17,7 +17,9 @@ package com.evport.businessapp.ui.page
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.blankj.utilcode.util.RegexUtils.isEmail
 import com.blankj.utilcode.util.ToastUtils
@@ -35,10 +37,11 @@ import com.evport.businessapp.utils.*
 import com.kunminx.architecture.domain.manager.NetState
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_signup.*
-import kotlinx.android.synthetic.main.fragment_signup.btn_login
 import org.jetbrains.anko.support.v4.runOnUiThread
+import org.jetbrains.anko.support.v4.toast
 import java.util.*
 import kotlin.math.roundToInt
+
 
 /**
  * 发送验证码
@@ -118,27 +121,6 @@ class SignCodeFragment : BaseFragment() {
 
 
         aCache = ACache.get(activity)
-        val signUpSmsTime = aCache!!.getAsString("signUpSmsTime")
-        val signUpSmsPhone = aCache!!.getAsString("signUpSmsPhone")
-        val nowTime = Date().time
-        if (!signUpSmsTime.isNullOrBlank()) {
-            val startTime = signUpSmsTime.toLong()
-            val chaTime = nowTime - startTime
-            if (chaTime < 60 * 1000) {
-                millisInFuture = ((60 * 1000) - chaTime).toInt()
-                mSignUpViewModel!!.email.set(signUpSmsPhone)
-            } else {
-                millisInFuture = 60 * 1000
-            }
-        }
-        initCountDownTimer()
-        if (!signUpSmsTime.isNullOrBlank()) {
-            val startTime = signUpSmsTime.toLong()
-            val chaTime = nowTime - startTime
-            if (chaTime < 60 * 1000) {
-                timer!!.start()
-            }
-        }
         initView()
     }
 
@@ -156,14 +138,13 @@ class SignCodeFragment : BaseFragment() {
             //关闭软键盘
             closeKeyWord()
 //            showLoading()
-
-
-            //TODO  后期验证邮箱
             nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
                 it.putString("email", email.text.toString())
                 it.putString("emailCode", emailCode.text.toString())
             }
             )
+
+//            getValidRegistrationCode(email.text.toString(),emailCode.text.toString())
         }
 
         fun toLogin() {
@@ -194,6 +175,33 @@ class SignCodeFragment : BaseFragment() {
 
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        val signUpSmsTime = aCache!!.getAsString("signUpSmsTime")
+        val signUpSmsPhone = aCache!!.getAsString("signUpSmsPhone")
+        val nowTime = Date().time
+        if (!signUpSmsTime.isNullOrBlank()) {
+            val startTime = signUpSmsTime.toLong()
+            val chaTime = nowTime - startTime
+            if (chaTime < 60 * 1000) {
+                millisInFuture = ((60 * 1000) - chaTime).toInt()
+                mSignUpViewModel!!.email.set(signUpSmsPhone)
+            } else {
+                millisInFuture = 60 * 1000
+            }
+        }
+        initCountDownTimer()
+        if (!signUpSmsTime.isNullOrBlank()) {
+            val startTime = signUpSmsTime.toLong()
+            val chaTime = nowTime - startTime
+            if (chaTime < 60 * 1000) {
+                timer!!.start()
+            }
+        }
+
+    }
+
     override fun onPause() {
         super.onPause()
         timer!!.onFinish()
@@ -206,18 +214,25 @@ class SignCodeFragment : BaseFragment() {
 
         object : NetworkBoundResource<String>(networkStatusCallback = object :
             NetworkStatusCallback<String> {
-
             override fun onSuccess(data: String?) {
+
+                if (timer!=null){
+                    timer!!.onFinish()
+                    timer!!.cancel()
+                }
+                initCountDownTimer()
                 timer!!.start()
+
                 aCache!!.put("signUpSmsTime", Date().time.toString())
                 aCache!!.put("signUpSmsPhone", email)
 
                 dismissLoading()
-                ToastUtils.showLong("Verification code has been sent")
+                "The registration code has been sent, if you didn't find it in your inbox, it may be in your spam".toast(5000)
+//                ToastUtils.showLong("The registration code has been sent, if you didn't find it in your inbox, it may be in your spam.",2222)
             }
 
             override fun onFailure(message: String) {
-                ToastUtils.showLong(message)
+                message.toast()
                 timer!!.cancel()
                 timer!!.onFinish()
                 dismissLoading()
@@ -232,6 +247,39 @@ class SignCodeFragment : BaseFragment() {
 
     }
 
+
+    fun getValidRegistrationCode(email: String,emailCode :String) {
+
+        object : NetworkBoundResource<String>(networkStatusCallback = object :
+            NetworkStatusCallback<String> {
+            override fun onSuccess(data: String?) {
+
+
+
+
+                //TODO  后期验证邮箱
+                nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
+                    it.putString("email", email)
+                    it.putString("emailCode", emailCode)
+                }
+                )
+
+
+            }
+
+            override fun onFailure(message: String) {
+                message.toast()
+                dismissLoading()
+
+            }
+
+        }) {
+            override fun loadFromNetData(): Observable<Resource<String>> {
+                return SingletonFactory.apiService.getValidRegistrationCode(User(email = email, note = emailCode))
+            }
+        }
+
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

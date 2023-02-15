@@ -16,6 +16,7 @@
 package com.evport.businessapp.ui.page
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.kunminx.architecture.domain.manager.NetState
 import com.evport.businessapp.BR
@@ -24,6 +25,7 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.RecordViewModel
 import com.gyf.immersionbar.ImmersionBar
+import com.kunminx.architecture.ui.callback.EventObserver
 import kotlinx.android.synthetic.main.fragment_home_stats_and_records.*
 
 
@@ -52,11 +54,6 @@ class HomeRecordAndStatsFragment : BaseFragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         //
-        ImmersionBar.with(this)
-            .navigationBarColor(R.color.black)
-            .keyboardEnable(false)
-            .statusBarDarkFont(true)
-            .init()
 
         back.setImageResource(R.drawable.icon_record)
         title.text = resources.getString(R.string.record)
@@ -64,7 +61,11 @@ class HomeRecordAndStatsFragment : BaseFragment() {
             .beginTransaction()
             .add(R.id.content, HomeNav3Fragment())
             .commit()
-
+        sharedViewModel.mapRefresh3.observe(this) {
+            if (it) {
+                ImmersionBar.with(this).statusBarDarkFont(true).init()
+            }
+        }
     }
 
 

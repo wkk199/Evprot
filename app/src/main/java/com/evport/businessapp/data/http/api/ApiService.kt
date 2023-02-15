@@ -36,6 +36,9 @@ interface ApiService {
     @POST("app/user/getCode")
     fun getCode(@Body user: User): Observable<Resource<String>>
 
+    // 发送邮件验证码
+    @POST("/ocpp/user/validRegistrationCode")
+    fun getValidRegistrationCode(@Body user: User): Observable<Resource<String>>
 
     // 发送邮件验证码 -- 改密码
     @GET("app/user/getEmailCode")

@@ -68,7 +68,9 @@
 
 
     <color name="white">#ffffff</color>
+    <color name="white_50">#50ffffff</color>
     <color name="black">#000</color>
+    <color name="black_80">#90000000</color>
     <color name="black_222628">#222628</color>
     <color name="black_5E5E5E">#5E5E5E</color>
     <color name="color_C0C8CC">#25C0C8CC</color>

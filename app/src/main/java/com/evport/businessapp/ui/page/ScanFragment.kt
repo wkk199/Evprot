@@ -161,7 +161,7 @@ class ScanFragment : BaseFragment() {
             }
 
             override fun onFailure(message: String) {
-                ToastUtils.showLong(message)
+                message.toast()
                 dismissLoading()
                 nav().navigateUp()
 

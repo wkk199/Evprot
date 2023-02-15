@@ -130,7 +130,7 @@ class NotiSysListFragment : BaseFragment() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 empty_view.visibility = if (allList.isNullOrEmpty()) View.VISIBLE else View.GONE
             }

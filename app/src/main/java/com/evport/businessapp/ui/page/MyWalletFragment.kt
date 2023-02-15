@@ -15,6 +15,7 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.MyWalletViewModel
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_my_wallet.*
 import kotlinx.coroutines.*
@@ -112,7 +113,7 @@ class MyWalletFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
 

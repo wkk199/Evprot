@@ -260,8 +260,7 @@ class UserFamilyActivity : BaseActivity() {
                                 progress.setDonut_progress(percent)
                                 if (percent.toInt() >= 100) {
                                     fl_progress.visibility = View.GONE
-                                    ToastUtils.showLong(getString(R.string.success))
-
+                                    getString(R.string.success).toast()
 //                                    getData()
                                     val intent = Intent(
                                         this@UserFamilyActivity,
@@ -277,14 +276,14 @@ class UserFamilyActivity : BaseActivity() {
                                 showProgress()
                             }
                         } else {
-                            ToastUtils.showLong(gsonObjects.data?.message.toString())
+                            gsonObjects.data?.message.toString().toast()
                             fl_progress.visibility = View.GONE
 //                            getData()
                         }
                     }
                 } catch (e: Exception) {
                     fl_progress.visibility = View.GONE
-                    ToastUtils.showLong("something error")
+                    "something error".toast()
 //                    getData()
 
 
@@ -418,7 +417,8 @@ class UserFamilyActivity : BaseActivity() {
 
         fun bind() {
             if (adapter.selectItem == null || adapter.selectItem?.homePk == null) {
-                ToastUtils.showLong("no family selected")
+                "no family selected".toast()
+
             }
 
             adapter.selectItem?.homePk?.apply {
@@ -442,7 +442,7 @@ class UserFamilyActivity : BaseActivity() {
                                 )
                             ) {
                                 try {
-                                    ToastUtils.showLong("必须同意权限才能使用扫一扫")
+                                    "必须同意权限才能使用扫一扫".toast()
                                 } catch (e: Exception) {
 
                                 }
@@ -502,7 +502,7 @@ class UserFamilyActivity : BaseActivity() {
                     time += " $hourOfDay:$minute:59"
                     //最终选择的时间
                     if (DateUtil.isBeforeNow(DateUtil.formatTimeStamp(time))) {
-                        ToastUtils.showLong("date is illegal")
+                        "date is illegal".toast()
                     } else {
 
 
@@ -569,7 +569,7 @@ class UserFamilyActivity : BaseActivity() {
                     time += " $hourOfDay:$minute:59"
                     //最终选择的时间
                     if (DateUtil.isBeforeNow(DateUtil.formatTimeStamp(time))) {
-                        ToastUtils.showLong("date is illegal")
+                        "date is illegal".toast()
                     } else {
 
 
@@ -636,7 +636,7 @@ class UserFamilyActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -673,7 +673,7 @@ class UserFamilyActivity : BaseActivity() {
                 dismissLoading()
                 Log.e("hm----onFailure", message);
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
             }
 
@@ -692,14 +692,13 @@ class UserFamilyActivity : BaseActivity() {
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
-
-                ToastUtils.showLong(getString(R.string.success))
+                getString(R.string.success).toast()
                 getDeviceData()
             }
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -723,14 +722,14 @@ class UserFamilyActivity : BaseActivity() {
 
             override fun onSuccess(data: Any?) {
 
-                ToastUtils.showLong(getString(R.string.success))
+                getString(R.string.success).toast()
 
                 getDeviceData()
             }
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -776,7 +775,7 @@ class UserFamilyActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }
@@ -790,7 +789,7 @@ class UserFamilyActivity : BaseActivity() {
 
     fun addSchedule() {
         if (startTime.isNotBlank()&&endTime.isNotBlank()&&startTime.toLong()>=endTime.toLong()){
-            ToastUtils.showLong("stop time must be greater than start time")
+            "stop time must be greater than start time".toast()
             return
         }
         startLoading()
@@ -802,7 +801,7 @@ class UserFamilyActivity : BaseActivity() {
 
                 schedulePk = ""
                 if (startTime.isNotBlank()) {
-                    ToastUtils.showLong(getString(R.string.success))
+                    getString(R.string.success).toast()
                     dismissLoading()
                     ClickProxy().dismissSetTime()
                     getDeviceData()
@@ -816,7 +815,7 @@ class UserFamilyActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 schedulePk = ""
                 dismissLoading()
@@ -836,7 +835,7 @@ class UserFamilyActivity : BaseActivity() {
 
     fun updateSchedule() {
         if (startTime.isNotBlank()&&endTime.isNotBlank()&&startTime.toLong()>=endTime.toLong()){
-            ToastUtils.showLong("stop time must be greater than start time")
+            "stop time must be greater than start time".toast()
             return
         }
         startLoading()
@@ -844,14 +843,14 @@ class UserFamilyActivity : BaseActivity() {
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
-                ToastUtils.showLong("success!")
+                "success!".toast()
                 schedulePk = ""
                 getDeviceData()
             }
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
                 schedulePk = ""
@@ -876,14 +875,14 @@ class UserFamilyActivity : BaseActivity() {
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
-                ToastUtils.showLong("delete Success")
+                "delete Success".toast()
                 schedulePk = ""
                 getDeviceData()
             }
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
                 schedulePk = ""

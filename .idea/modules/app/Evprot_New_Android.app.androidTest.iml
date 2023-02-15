@@ -162,6 +162,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/57b9967de2641c78c87b1117e3c3b911/jetified-javax.inject-1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ace94fb01cea3c5fde436e9096c9f528/jetified-jsr305-2.0.1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/10d4e05076cb06d2fe3a91e2b04699e7/jetified-kotlin-android-extensions-runtime-1.6.10.jar</arg>
+                <arg>$MODULE_DIR$/../../../toast_box/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/67b8242d025b5da3b032d1bbd278787a/jetified-stripe-core-20.5.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5ff0475a39ef40568a8ee3cfa125e2ad/jetified-payments-model-20.5.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f6c5a4c0002b6f64e87a81dcd1e8a947/jetified-kotlin-stdlib-jdk8-1.6.10.jar</arg>
@@ -178,6 +179,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/d95bac810144340271cd3d816ed83345/jetified-rxandroid-2.0.2-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/990650dfccfb5a9cb64d5e2b15ad9582/jetified-rxjava-2.1.16.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/bdd537d1843780d4d21119ef9280fa42/jetified-utilcode-1.30.6-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/6fb0c7e794d89aef2b2c7dd7d74525e5/jetified-pdfview-android-1.1.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/9929f703186256f85b547a96870ca827/jetified-EasySwipeMenuLayout-1.1.4-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/cc2243397007b92ee0967fc67751c12d/jetified-MPAndroidChart-v3.1.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/bf4754b74b3f869ee5b60921e3ac2d99/jetified-RangeSeekBar-3.0.0-api.jar</arg>
@@ -311,6 +313,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="Evprot_New_Android.toast_box.main" scope="TEST" />
     <orderEntry type="module" module-name="Evprot_New_Android.blufilibrary.main" scope="TEST" />
     <orderEntry type="module" module-name="Evprot_New_Android.app.main" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.databinding:databinding-common:4.1.1" level="project" />
@@ -493,6 +496,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: top.zibin:Luban:1.1.8@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.reactivex.rxjava2:rxandroid:2.0.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.blankj:utilcode:1.30.6@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.dmitryborodin:pdfview-android:1.1.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.anzaizai:EasySwipeMenuLayout:1.1.4@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.PhilJay:MPAndroidChart:v3.1.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.Jay-Goo:RangeSeekBar:3.0.0@aar" level="project" />

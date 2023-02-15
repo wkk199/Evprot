@@ -185,6 +185,9 @@ class MainFragment : BaseFragment() {
                     0 -> {
                         sharedViewModel.mapRefresh.postValue(true)
                     }
+                    3 -> {
+                        sharedViewModel.mapRefresh3.postValue(true)
+                    }
 
                 }
             }
@@ -199,6 +202,9 @@ class MainFragment : BaseFragment() {
                     }
                     0 -> {
                         sharedViewModel.mapRefresh.postValue(true)
+                    }
+                    3 -> {
+                        sharedViewModel.mapRefresh3.postValue(true)
                     }
                 }
             }

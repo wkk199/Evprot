@@ -187,7 +187,6 @@ class ChageGunDetailActivity : BaseActivity() {
         })
 
 
-
         wheel_hour.apply {
 
             refreshByNewDisplayedValues(arrayOfNulls<String>(18).apply {
@@ -325,7 +324,7 @@ class ChageGunDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                ToastUtils.showLong(message)
+                message.toast()
                 dismissLoading()
 
             }
@@ -561,6 +560,7 @@ class ChageGunDetailActivity : BaseActivity() {
                         "-0"
                     )
                 ) {
+                    bubbleSeekBar.setProgress(2.5f)
                     bubbleSeekBar.setIndicatorText("0")
                     this@ChageGunDetailActivity.value = "0"
                 }
@@ -768,7 +768,7 @@ class ChageGunDetailActivity : BaseActivity() {
 //                NetworkStateManager.getInstance()
 //                    .networkStateCallback.postValue(NetState("remoteStart"))
                 Log.e("hm----onFailure", message);
-                ToastUtils.showLong(message)
+                message.toast()
             }
 
         }) {

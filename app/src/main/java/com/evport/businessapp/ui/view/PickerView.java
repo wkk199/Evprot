@@ -3,6 +3,7 @@ package com.evport.businessapp.ui.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -1325,17 +1326,26 @@ public class PickerView extends View {
                 textSize = getEvaluateSize(fraction, mTextSizeNormal, mTextSizeSelected);
                 textSizeCenterYOffset = getEvaluateSize(fraction, mTextSizeNormalCenterYOffset,
                         mTextSizeSelectedCenterYOffset);
+                mPaintText.setColor(Color.BLACK);
             } else if (i == mShownCount / 2 + 1) {
                 textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
                 textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
                 textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
                         mTextSizeSelectedCenterYOffset);
+                mPaintText.setColor(Color.BLACK);
+            } else if (i == mShownCount / 2 - 1) {
+                textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
+                textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
+                textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
+                        mTextSizeSelectedCenterYOffset);
+                mPaintText.setColor(Color.BLACK);
             } else {
                 textColor = mTextColorNormal;
                 textSize = mTextSizeNormal;
                 textSizeCenterYOffset = mTextSizeNormalCenterYOffset;
+                mPaintText.setColor(Color.GRAY);
             }
-            mPaintText.setColor(textColor);
+
             mPaintText.setTextSize(textSize);
 
             if (0 <= index && index < getOneRecycleSize()) {

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.dmitryborodin:pdfview-android:1.1.0@aar">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/cfcdac84277e9884b93091bf2bd03e99/jetified-pdfview-android-1.1.0/jars/classes.jar!/" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/cfcdac84277e9884b93091bf2bd03e99/jetified-pdfview-android-1.1.0/res" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/cfcdac84277e9884b93091bf2bd03e99/jetified-pdfview-android-1.1.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.dmitryborodin/pdfview-android/1.1.0/103394c446829190b660a83b0a722bee7d5573f8/pdfview-android-1.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.dmitryborodin/pdfview-android/1.1.0/af6aabb4008cb3072f19e632895ec1264305097c/pdfview-android-1.1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -27,6 +27,7 @@ import com.evport.businessapp.data.http.networkmanager.NetworkBoundResource
 import com.evport.businessapp.data.http.networkmanager.NetworkStatusCallback
 import com.evport.businessapp.data.http.networkmanager.Resource
 import com.evport.businessapp.data.http.networkmanager.SingletonFactory
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import java.util.*
 
@@ -117,8 +118,8 @@ class DataRepository : ILocalSource, IRemoteSource {
 
             override fun onFailure(message: String) {
 
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance().networkStateCallback.postValue(NetState("login"))
 
             }
@@ -147,8 +148,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance().networkStateCallback.postValue(NetState("singup"))
 
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
 
             }
 
@@ -172,15 +173,16 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: ChargeSetting?) {
                 if (data == null) {
                     liveData.postValue(ChargeSetting("", "", "", "", ""))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
+
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("chargeSetting"))
 
@@ -201,15 +203,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: MutableList<ChargeSetting>?) {
                 if (data == null) {
                     liveData.postValue(arrayListOf())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getChargeList"))
 
@@ -229,15 +231,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: Any?) {
                 if (data == null) {
                     liveData.postValue(true)
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(true)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getChargeList"))
 
@@ -257,15 +259,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: Any?) {
                 if (data == null) {
                     liveData.postValue(true)
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(true)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getChargeList"))
 
@@ -287,15 +289,15 @@ class DataRepository : ILocalSource, IRemoteSource {
 
             override fun onSuccess(data: String?) {
 //                liveData.postValue(User())
-                ToastUtils.showLong(data)
+                data!!.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCode"))
 
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCode"))
 
@@ -322,8 +324,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCode"))
             }
@@ -347,8 +349,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("checkName"))
 
@@ -369,7 +371,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: User?) {
                 if (data == null) {
                     liveData.postValue(User())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
 
                     liveData.postValue(data)
@@ -377,8 +379,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -402,15 +404,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: ChangePassword?) {
                 if (data == null) {
                     liveData.postValue(ChangePassword())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -433,7 +435,16 @@ class DataRepository : ILocalSource, IRemoteSource {
 
             override fun onSuccess(data: StatsDataResp?) {
                 if (data == null) {
-                    liveData.postValue(StatsDataResp(mutableListOf(), mutableListOf(),"0","0","","0"))
+                    liveData.postValue(
+                        StatsDataResp(
+                            mutableListOf(),
+                            mutableListOf(),
+                            "0",
+                            "0",
+                            "",
+                            "0"
+                        )
+                    )
 //                    ToastUtils.showLong("no data")
                 } else {
                     liveData.postValue(data)
@@ -441,8 +452,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -473,8 +484,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -501,8 +512,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -525,15 +536,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: MutableList<ChargeSetting>?) {
                 if (data == null) {
                     liveData.postValue(arrayListOf())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getChargePoints"))
 
@@ -558,15 +569,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: MutableList<GunResp>?) {
                 if (data == null) {
                     liveData.postValue(arrayListOf())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -589,10 +600,10 @@ class DataRepository : ILocalSource, IRemoteSource {
                 override fun onSuccess(data: MutableList<CheckTransaction>?) {
                     if (data == null) {
                         liveData.postValue(arrayListOf())
-                        ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                        Utils.getApp().resources.getString(R.string.success).toast()
                     } else {
-                        if (data!=null){
-                          //  Log.e("hm----charging",Gson().toJson(data)+"FFF");
+                        if (data != null) {
+                            //  Log.e("hm----charging",Gson().toJson(data)+"FFF");
                             liveData.postValue(data)
                         }
 
@@ -600,8 +611,8 @@ class DataRepository : ILocalSource, IRemoteSource {
                 }
 
                 override fun onFailure(message: String) {
-                    if(message.isNotBlank())
-                        ToastUtils.showLong(message)
+                    if (message.isNotBlank())
+                        message.toast()
                     NetworkStateManager.getInstance()
                         .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -614,7 +625,7 @@ class DataRepository : ILocalSource, IRemoteSource {
         }
     }
 
-     fun getCheckTransactions(pk:String,liveData: MutableLiveData<MutableList<CheckTransaction>>) {
+    fun getCheckTransactions(pk: String, liveData: MutableLiveData<MutableList<CheckTransaction>>) {
 
         object :
             NetworkBoundResource<MutableList<CheckTransaction>>(networkStatusCallback = object :
@@ -623,15 +634,15 @@ class DataRepository : ILocalSource, IRemoteSource {
                 override fun onSuccess(data: MutableList<CheckTransaction>?) {
                     if (data == null) {
                         liveData.postValue(arrayListOf())
-                        ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                        Utils.getApp().resources.getString(R.string.success).toast()
                     } else {
                         liveData.postValue(data)
                     }
                 }
 
                 override fun onFailure(message: String) {
-                    if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                    if (message.isNotBlank())
+                        message.toast()
                     NetworkStateManager.getInstance()
                         .networkStateCallback.postValue(NetState("getCodeResetPwd"))
 
@@ -656,15 +667,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("setChargingSchedule"))
 
@@ -689,15 +700,15 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
             }
 
             override fun onFailure(message: String) {
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("setChargingScheduleStart"))
 
@@ -721,7 +732,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -730,8 +741,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("setChargingScheduleUpdate"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {
@@ -752,7 +763,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -761,8 +772,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("setChargingScheduleDelete"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {
@@ -783,7 +794,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -792,8 +803,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("setAutoSwitch"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {
@@ -814,7 +825,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -824,8 +835,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("remoteStart"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {
@@ -846,7 +857,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: String?) {
                 if (data == null) {
                     liveData.postValue(Utils.getApp().resources.getString(R.string.success))
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -855,8 +866,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("remoteStop"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {
@@ -877,7 +888,7 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onSuccess(data: ArrayList<SocketType>?) {
                 if (data == null) {
                     liveData.postValue(arrayListOf())
-                    ToastUtils.showLong(Utils.getApp().resources.getString(R.string.success))
+                    Utils.getApp().resources.getString(R.string.success).toast()
                 } else {
                     liveData.postValue(data)
                 }
@@ -886,8 +897,8 @@ class DataRepository : ILocalSource, IRemoteSource {
             override fun onFailure(message: String) {
                 NetworkStateManager.getInstance()
                     .networkStateCallback.postValue(NetState("remoteStop"))
-                if(message.isNotBlank())
-                    ToastUtils.showLong(message)
+                if (message.isNotBlank())
+                    message.toast()
             }
 
         }) {

@@ -17,6 +17,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
 import com.blankj.utilcode.util.ToastUtils
 import com.evport.businessapp.data.bean.EventBean
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.toast
 import com.tencent.mm.opensdk.constants.ConstantsAPI
 
 
@@ -56,13 +57,15 @@ class WXPayEntryActivity : BaseActivity(), IWXAPIEventHandler {
 
                 when (resp.errCode) {
                     0 -> {
-                        ToastUtils.showShort("充值成功")
+                        "充值成功".toast()
                         LiveBus.getInstance().post(EventBean(Configs.WX_CHAT_PAY, true, ""))
                     }
-                    -1 -> {ToastUtils.showShort("支付异常")
+                    -1 -> {
+                        "支付异常".toast()
                         LiveBus.getInstance().post(EventBean(Configs.WX_CHAT_PAY, false, ""))
                     }
-                    -2 -> {ToastUtils.showShort("支付取消")
+                    -2 -> {
+                        "支付取消".toast()
                         LiveBus.getInstance().post(EventBean(Configs.WX_CHAT_PAY, false, ""))
                     }
                 }

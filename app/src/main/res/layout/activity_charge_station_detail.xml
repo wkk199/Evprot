@@ -381,12 +381,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
-                                    android:paddingRight="@dimen/dp_20"
-                                    android:paddingLeft="@dimen/dp_20"
-                                    android:layout_centerVertical="true"
                                     android:ellipsize="end"
-                                    android:singleLine="true"
                                     android:fontFamily="@font/manrope_semibold"
+                                    android:paddingLeft="@dimen/dp_50"
+                                    android:paddingRight="@dimen/dp_50"
+                                    android:singleLine="true"
                                     android:text="@{info.stationName}"
                                     android:textSize="16sp" />
 

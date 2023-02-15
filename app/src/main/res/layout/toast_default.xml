@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="adapter"
+            type="androidx.recyclerview.widget.ListAdapter" />
+
+        <variable
+            name="vm"
+            type="com.evport.businessapp.ui.state.StationViewModel" />
+
+        <variable
+            name="click"
+            type="com.evport.businessapp.ui.page.activity.ChageGunDetailActivity.ClickProxy" />
+
+    </data>
+
+    <RelativeLayout
+        drawable_radius="@{10}"
+        drawable_solidColor="@{@color/black}"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content">
+
+        <TextView
+            drawable_radius="@{10}"
+            drawable_solidColor="@{@color/black}"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/station_bg_show"
+            android:gravity="center"
+            android:paddingLeft="30dp"
+            android:paddingTop="10dp"
+            android:paddingRight="30dp"
+            android:paddingBottom="10dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</layout>

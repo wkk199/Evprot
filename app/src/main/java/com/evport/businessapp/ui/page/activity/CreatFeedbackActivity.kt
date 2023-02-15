@@ -209,7 +209,7 @@ class CreatFeedbackActivity : BaseActivity() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

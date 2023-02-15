@@ -232,7 +232,7 @@ class NotiFeedbackDetailFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
                 dismissLoading()
             }
@@ -306,7 +306,7 @@ class NotiFeedbackDetailFragment : BaseFragment() {
             override fun onFailure(message: String) {
                 dismissLoading()
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }
@@ -503,7 +503,7 @@ class NotiFeedbackDetailFragment : BaseFragment() {
 
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()){
-                    ToastUtils.showLong(message)
+                    message.toast()
                 }
 
             }

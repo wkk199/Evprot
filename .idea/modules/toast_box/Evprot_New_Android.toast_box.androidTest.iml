@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":toast_box:androidTest" external.linked.project.path="$MODULE_DIR$/../../../toast_box" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.type="sourceSet" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="kotlin-language" name="Kotlin">
+      <configuration version="5" platform="JVM 1.8" allPlatforms="JVM [1.8]" useProjectSettings="false">
+        <compilerSettings>
+          <option name="additionalArguments" value="-Xallow-no-source-files" />
+        </compilerSettings>
+        <compilerArguments>
+          <flagArguments>
+            <flagArg name="noStdlib" arg="true" />
+          </flagArguments>
+          <stringArguments>
+            <stringArg name="classpath">
+              <args>
+                <arg>$MODULE_DIR$/../../../toast_box/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/dfea2303581234e03b70b50c6ecc82c6/jetified-junit-1.1.2-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/3f6cac60b05ba7aac57f0a919d5c5836/espresso-core-3.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f6c5a4c0002b6f64e87a81dcd1e8a947/jetified-kotlin-stdlib-jdk8-1.6.10.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/905b87410c49610d7d66da740dc2a685/runner-1.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/eddfa134450e89b501e4726778878faf/jetified-junit-4.12.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/90c928758a20efa742ec3b1597acfa92/jetified-hamcrest-integration-1.3.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/299f0e02f5345b636052c3372ace4ebc/jetified-hamcrest-library-1.3.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ae0e289eb656572b790308ff2748edaa/jetified-hamcrest-core-1.3.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5b61ca477dee4adcf51c192e55fc264f/jetified-core-1.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/21a443c8fda420c3cea782fb1258113e/jetified-core-ktx-1.3.2-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/449bc0fdca2b515181aa822ffb488958/material-1.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/1d8dfda19ddf65703cdabea7117e0a4f/constraintlayout-2.0.4-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/db7c5bdfbf66e701272d23db1557211e/appcompat-1.2.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8e3665dd0ed08a6bcf0c45ee26372e27/monitor-1.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/fb17be0f60f972ee036c60e5765772b0/jetified-viewpager2-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/85bcfcecaec8fb9a8aeac2f511348feb/fragment-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/eab26bd3b82c3e8890b2a4a4f827306e/jetified-appcompat-resources-1.2.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/4858f5ff4012714f6b2b4f27c1b32ce0/drawerlayout-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f5d99def09c91bb1c0c16d1cf61d9055/coordinatorlayout-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/20bd0037eaa0b5049bbc959b3be339d8/dynamicanimation-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/e101cf2df1533eb29ec7db259d1a742f/recyclerview-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/685cbdb99c6ae5b2aed5f9eaac7eedb4/transition-1.2.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/37ec05421fcbd870bdaf840528fb0d64/vectordrawable-animated-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/9dea521f41660c9c2f7e08aeb9f637b8/vectordrawable-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/05ede55ca8a9976b18751be867813587/viewpager-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/bcad8df91bb578213ec7b1cf2ac54a28/legacy-support-core-utils-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/304ac3fed5c00c73192ac5b650902e89/loader-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ee52c48c261923f431dc7d6522470bf9/jetified-activity-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/2b3d3779de40dbbcbfea2dbcc2f0d659/customview-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/9c600c0e15efc9ecc9df45a468fb2037/core-1.3.2-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/a2bd2989fef3a746f85fd57e9fa9b200/cursoradapter-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/07691e1f47697a4cf6348c7e915305b8/cardview-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/67b5b9308077c502c7716b3cf7a12882/lifecycle-runtime-2.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/7c2d499d845cb07257081d71a5aecc12/jetified-savedstate-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/bdd254106388ee9e7d9847e489ce566a/lifecycle-livedata-2.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/43d91333e22889e7681ced773588a352/lifecycle-livedata-core-2.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common/2.1.0/c67e7807d9cd6c329b9d0218b2ec4e505dd340b7/lifecycle-common-2.1.0.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b4625ba119bee78e6fc159263295389d/versionedparcelable-1.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.collection/collection/1.1.0/1f27220b47669781457de0d600849a5de0e89909/collection-1.1.0.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/e1e3016bdcb4bddc3997c6a22e6dbdf6/lifecycle-viewmodel-2.1.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/d3b8ee90ced71efb23496d576a1c7405/core-runtime-2.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.arch.core/core-common/2.1.0/b3152fc64428c9354344bd89848ecddc09b6f07e/core-common-2.1.0.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8d249060bc48c24db001219e6dc128c5/interpolator-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/65d3c5db021820b31ef51bce18a66ae0/documentfile-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/0e5d91937f6cd4c4a353bd268203e921/localbroadcastmanager-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/d06937cbbd2617f39b94bd76e9736a9d/print-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.annotation/annotation/1.1.0/e3a6fb2f40e3a3842e6b7472628ba4ce416ea4c8/annotation-1.1.0.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/148eb1ad4bd38a02bc6a2017d1fd0f9b/espresso-idling-resource-3.3.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/4bd7b004d85defb3d03603221f98c8d7/jetified-javawriter-2.1.1.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/57b9967de2641c78c87b1117e3c3b911/jetified-javax.inject-1.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ace94fb01cea3c5fde436e9096c9f528/jetified-jsr305-2.0.1.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/adabbef6ee05c8507cc0f9b1e101ca09/jetified-kotlin-stdlib-jdk7-1.6.10.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/a429a60c15f47bec6fa1215aeef3c5d8/jetified-kotlin-stdlib-1.6.10.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/35eb189a5d5d0b4453f82ea896772c9f/jetified-annotations-13.0.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/630478c14112537bdfaae803012c6975/jetified-kotlin-stdlib-common-1.6.10.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout-solver/2.0.4/1f001d7db280a89a6c26b26a66eb064bb6d5efeb/constraintlayout-solver-2.0.4.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/28551b2a2466c4d119114d6f14450a21/jetified-annotation-experimental-1.0.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/3114533778558fa394aa08e91e7d5e7a/jetified-startup-runtime-1.0.0-api.jar</arg>
+                <arg>$MODULE_DIR$/../../../../sdk/platforms/android-31/android.jar</arg>
+                <arg>$MODULE_DIR$/../../../../sdk/build-tools/29.0.3/core-lambda-stubs.jar</arg>
+              </args>
+            </stringArg>
+            <stringArg name="destination" arg="$MODULE_DIR$/../../../toast_box/build/tmp/kotlin-classes/debugAndroidTest" />
+            <stringArg name="jvmTarget" arg="1.8" />
+            <stringArg name="moduleName" arg="toast_box_debug" />
+            <stringArg name="apiVersion" arg="1.6" />
+            <stringArg name="languageVersion" arg="1.6" />
+          </stringArguments>
+          <arrayArguments>
+            <arrayArg name="friendPaths">
+              <args>
+                <arg>$MODULE_DIR$/../../../toast_box/build/tmp/kotlin-classes/debug</arg>
+                <arg>$MODULE_DIR$/../../../toast_box/build/intermediates/javac/debug/classes</arg>
+                <arg>$MODULE_DIR$/../../../toast_box/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
+              </args>
+            </arrayArg>
+            <arrayArg name="pluginClasspaths" />
+            <arrayArg name="pluginOptions" />
+          </arrayArguments>
+        </compilerArguments>
+      </configuration>
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="debug" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
+        <afterSyncTasks>
+          <task>generateDebugSources</task>
+        </afterSyncTasks>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../toast_box/src/main/res;file://$MODULE_DIR$/../../../toast_box/src/debug/res;file://$MODULE_DIR$/../../../toast_box/build/generated/res/rs/debug;file://$MODULE_DIR$/../../../toast_box/build/generated/res/resValues/debug" />
+        <option name="TEST_RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../../../toast_box/src/androidTest/res;file://$MODULE_DIR$/../../../toast_box/src/androidTestDebug/res;file://$MODULE_DIR$/../../../toast_box/build/generated/res/rs/androidTest/debug;file://$MODULE_DIR$/../../../toast_box/build/generated/res/resValues/androidTest/debug" />
+        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
+        <option name="PROJECT_TYPE" value="1" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/aidl_source_output_dir/debugAndroidTest/out" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/ap_generated_sources/debugAndroidTest/out" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/renderscript_source_output_dir/debugAndroidTest/out" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/res/resValues/androidTest/debug" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/res/rs/androidTest/debug" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/build/generated/source/buildConfig/androidTest/debug" />
+    <content url="file://$MODULE_DIR$/../../../toast_box/src/androidTest">
+      <sourceFolder url="file://$MODULE_DIR$/../../../toast_box/src/androidTest/java" isTestSource="true" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../toast_box/src/androidTestDebug" />
+    <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="Evprot_New_Android.toast_box.main" scope="TEST" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-integration:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-library:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-common:2.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.collection:collection:1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.arch.core:core-common:2.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.annotation:annotation:1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.10" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.constraintlayout:constraintlayout-solver:2.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.ext:junit:1.1.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.espresso:espresso-core:3.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:runner:1.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:core:1.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.core:core-ktx:1.3.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.material:material:1.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.constraintlayout:constraintlayout:2.0.4@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.appcompat:appcompat:1.2.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test:monitor:1.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.viewpager2:viewpager2:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.fragment:fragment:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.appcompat:appcompat-resources:1.2.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.drawerlayout:drawerlayout:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.coordinatorlayout:coordinatorlayout:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.dynamicanimation:dynamicanimation:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.recyclerview:recyclerview:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.transition:transition:1.2.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.vectordrawable:vectordrawable-animated:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.vectordrawable:vectordrawable:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.viewpager:viewpager:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.legacy:legacy-support-core-utils:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.loader:loader:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.activity:activity:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.customview:customview:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.core:core:1.3.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.cursoradapter:cursoradapter:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.cardview:cardview:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-runtime:2.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.savedstate:savedstate:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-livedata:2.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-livedata-core:2.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.versionedparcelable:versionedparcelable:1.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.lifecycle:lifecycle-viewmodel:2.1.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.arch.core:core-runtime:2.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.interpolator:interpolator:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.documentfile:documentfile:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.localbroadcastmanager:localbroadcastmanager:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.print:print:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.test.espresso:espresso-idling-resource:3.3.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.annotation:annotation-experimental:1.0.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: androidx.startup:startup-runtime:1.0.0@aar" level="project" />
+  </component>
+  <component name="TestModuleProperties" production-module="Evprot_New_Android.toast_box.main" />
+</module>
