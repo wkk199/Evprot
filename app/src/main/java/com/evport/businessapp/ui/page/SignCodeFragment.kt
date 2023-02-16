@@ -17,6 +17,8 @@ package com.evport.businessapp.ui.page
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -107,11 +109,22 @@ class SignCodeFragment : BaseFragment() {
 
             change()
         }
-        emailCode.doOnTextChanged { charSequence, start, _, _ ->
-            // 禁止EditText输入空格
-            mSignUpViewModel!!.emailCode.set(emailCode.text.toString())
-            change()
-        }
+        emailCode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                mSignUpViewModel!!.emailCode.set(emailCode.text.toString())
+                change()
+            }
+
+        })
+
     }
 
     override fun onViewCreated(
@@ -138,13 +151,13 @@ class SignCodeFragment : BaseFragment() {
             //关闭软键盘
             closeKeyWord()
 //            showLoading()
-            nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
-                it.putString("email", email.text.toString())
-                it.putString("emailCode", emailCode.text.toString())
-            }
-            )
+//            nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
+//                it.putString("email", email.text.toString())
+//                it.putString("emailCode", emailCode.text.toString())
+//            }
+//            )
 
-//            getValidRegistrationCode(email.text.toString(),emailCode.text.toString())
+            getValidRegistrationCode(email.text.toString(),emailCode.text.toString())
         }
 
         fun toLogin() {
@@ -256,13 +269,13 @@ class SignCodeFragment : BaseFragment() {
 
 
 
-
-                //TODO  后期验证邮箱
-                nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
-                    it.putString("email", email)
-                    it.putString("emailCode", emailCode)
+                if (data!=null) {
+                    nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
+                        it.putString("email", email)
+                        it.putString("emailCode", emailCode)
+                    }
+                    )
                 }
-                )
 
 
             }

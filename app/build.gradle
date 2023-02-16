@@ -310,7 +310,8 @@ dependencies {
     //阴影布局
     implementation 'com.github.lihangleo2:ShadowLayout:3.3.2'
 
-//    implementation 'com.github.allenlzhang:NetworkState:v1.0.0'
+    //网络监听
+    implementation 'com.github.allenlzhang:NetworkState:v1.0.0'
 
    // implementation 'com.github.itsnows:android-upgrade:1.2.4'
 

@@ -37,6 +37,7 @@ import com.evport.businessapp.ui.page.adapter.NotificationReplyAdapter
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.utils.LiveBus
 import com.evport.businessapp.utils.onLoadMoreListener
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_notification_reply_list.*
 import org.jetbrains.anko.support.v4.startActivity

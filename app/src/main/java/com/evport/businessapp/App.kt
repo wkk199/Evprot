@@ -29,6 +29,7 @@ import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
 import com.blankj.utilcode.util.CrashUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.carlt.networklibs.NetworkManager
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.google.android.libraries.places.api.Places
 import com.evport.businessapp.data.bean.HomeFilter
@@ -68,7 +69,7 @@ class App : Application(), ViewModelStoreOwner {
         //google 地图搜索
         Places.initialize(applicationContext, getString(R.string.google_maps_key))
         //网络监听
-        //NetworkManager.getInstance().init(this);
+        NetworkManager.getInstance().init(this);
 
         Utils.init(this)
 //        PlayerManager.getInstance().init(this)

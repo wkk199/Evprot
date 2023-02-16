@@ -202,6 +202,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/21bad1e5c495303c7e1a6a1342084d6e/jetified-Java-WebSocket-1.5.2.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/840b345415bf0309b4ccff8e158ebb73/jetified-eventbus-3.1.1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f0358b19d18902f80dc59c0bcc85c15a/jetified-ShadowLayout-3.3.2-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b42fcc318113cf8a9e7c4c997ef7f28f/jetified-NetworkState-v1.0.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.constraintlayout/constraintlayout-solver/2.0.0-beta6/cef2f31494d7c7ef0f9913f93571d69481d18e79/constraintlayout-solver-2.0.0-beta6.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/c4b74671d25646c660b027be100a6ed2/jetified-core-1.7.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/819dd0f8d635432c49b160e267aee459/jetified-annotation-experimental-1.1.0-api.jar</arg>
@@ -514,6 +515,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.zyao89:zloading:1.2.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.xw.repo:bubbleseekbar:3.20-lite@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.lihangleo2:ShadowLayout:3.3.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.github.allenlzhang:NetworkState:v1.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.play:core:1.7.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.annotation:annotation-experimental:1.1.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:fbcore:1.13.0@aar" level="project" />

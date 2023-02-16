@@ -14,6 +14,11 @@
 
 package com.evport.businessapp.ui.page.adapter
 
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,12 +44,17 @@ class PlacePredictionAdapter : RecyclerView.Adapter<PlacePredictionAdapter.Place
 
     override fun onBindViewHolder(holder: PlacePredictionViewHolder, position: Int) {
         val place = predictions[position]
-        holder.setPrediction(place)
+//        holder.setPrediction(place)
         holder.itemView.setOnClickListener {
             onPlaceClickListener?.invoke(place)
         }
-    }
+        holder.title.text = place.name
+        holder.address.text = place.addres
 
+        stringInterceptionChangeRed(holder.title,contentS,place.addres)
+
+    }
+    var contentS=""
     override fun getItemCount(): Int {
         return predictions.size
     }
@@ -59,16 +69,31 @@ class PlacePredictionAdapter : RecyclerView.Adapter<PlacePredictionAdapter.Place
     }
 
     class PlacePredictionViewHolder(itemView: View) : ViewHolder(itemView) {
-        private val title: TextView = itemView.findViewById(R.id.text_view_title)
-        private val address: TextView = itemView.findViewById(R.id.text_view_address)
+         val title: TextView = itemView.findViewById(R.id.text_view_title)
+         val address: TextView = itemView.findViewById(R.id.text_view_address)
 
-        fun setPrediction(prediction: PlaceBean) {
-            title.text = prediction.name
-            address.text = prediction.addres
-        }
+//        fun setPrediction(prediction: PlaceBean) {
+//
+//            stringInterceptionChangeRed(   binding.title, contentS, item.title);
+//        }
     }
-
-    interface OnPlaceClickListener {
-//        fun onPlaceClicked(place: AutocompletePrediction)
+    /**
+     * CSDN-深海呐
+     * TextView部分文字变色
+     * keyword = 关键字、需要变色的文字   string = 包含变色文字的全部文字
+     */
+    fun stringInterceptionChangeRed(textView: TextView, keyword: String?, string: String) {
+        if (keyword == null || keyword.trim { it <= ' ' }.isEmpty()) return
+        if (!string.contains(keyword)) return
+        val start = string.indexOf(keyword)
+        val end = start + keyword.length
+        if (end != 0 && start != -1) {
+            val style = SpannableStringBuilder()
+            style.append(string)
+            //设置部分文字颜色
+            val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#00A0E9"))
+            style.setSpan(foregroundColorSpan, start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textView.setText(style)
+        }
     }
 }

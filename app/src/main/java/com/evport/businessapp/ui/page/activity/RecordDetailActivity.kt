@@ -16,6 +16,7 @@ import com.evport.businessapp.ui.base.BaseActivity
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.CreateCommentActivity
 import com.evport.businessapp.ui.state.RecordViewModel
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_record_detail.rl_card4
 import kotlinx.android.synthetic.main.activity_record_detail.tv_en3

@@ -21,6 +21,7 @@ import com.evport.businessapp.ui.state.StationViewModel
 import com.evport.businessapp.utils.LiveBus
 import com.evport.businessapp.utils.getUser
 import com.evport.businessapp.utils.setImageIsWifi
+import com.evport.businessapp.utils.toast
 import com.gyf.immersionbar.ImmersionBar
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_comment_detail.*

@@ -25,6 +25,7 @@ import com.evport.businessapp.ui.page.adapter.ChargeStatusAdapter
 import com.evport.businessapp.ui.state.ScanViewModel
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.toast
 import com.google.gson.Gson
 import com.kunminx.architecture.utils.SPUtils
 import com.lxj.xpopup.XPopup

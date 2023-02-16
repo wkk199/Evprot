@@ -33,6 +33,7 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 
 /**

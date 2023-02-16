@@ -44,6 +44,7 @@ import com.evport.businessapp.ui.page.activity.ChageGunDetailActivity
 import com.evport.businessapp.ui.state.ScanViewModel
 import com.evport.businessapp.utils.LiveBus
 import com.evport.businessapp.utils.QrCodeAnalyzer
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_scan.*
 import org.jetbrains.anko.support.v4.startActivity

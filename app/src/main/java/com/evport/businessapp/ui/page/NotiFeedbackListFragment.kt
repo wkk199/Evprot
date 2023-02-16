@@ -34,10 +34,7 @@ import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.activity.NotiFeedbackDetailActivity
 import com.evport.businessapp.ui.page.adapter.NotificationFeedbackAdapter
 import com.evport.businessapp.ui.state.DrawerViewModel
-import com.evport.businessapp.utils.ImageUrl
-import com.evport.businessapp.utils.LiveBus
-import com.evport.businessapp.utils.getIsWifiLoad
-import com.evport.businessapp.utils.onLoadMoreListener
+import com.evport.businessapp.utils.*
 import com.previewlibrary.GPreviewBuilder
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_notification_feedback_list.*

@@ -32,6 +32,7 @@ import com.evport.businessapp.ui.page.activity.*
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.utils.getUser
 import com.evport.businessapp.utils.setImageIsWifi
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_home_user.*
 import kotlinx.android.synthetic.main.fragment_home_user.iv_avatar

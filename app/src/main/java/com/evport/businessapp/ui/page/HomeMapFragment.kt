@@ -22,6 +22,8 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.location.Location
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
@@ -47,22 +49,18 @@ import com.evport.businessapp.data.http.networkmanager.SingletonFactory
 import com.evport.businessapp.ui.base.BaseLocationFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.activity.ChargeStationDetailActivity
-import com.evport.businessapp.ui.page.activity.ProgrammaticAutocompleteToolbarActivity
+import com.evport.businessapp.ui.page.activity.PlacesMapsLatngActivity
 import com.evport.businessapp.ui.page.activity.UserCollectActivity
 import com.evport.businessapp.ui.page.adapter.ChargeGunListAdapter
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.ui.state.StatsViewModel
 import com.evport.businessapp.utils.*
-import com.evport.businessapp.widget.PopChargeTypePicker
 import com.evport.businessapp.widget.PopFilterPicker
 import com.google.android.gms.location.LocationListener
 import com.gyf.immersionbar.ImmersionBar
 import com.lxj.xpopup.XPopup
-import com.lxj.xpopup.core.BasePopupView
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.fragment_home_map.refreshLayout
-import kotlinx.android.synthetic.main.fragment_home_map.rv_stationlist
-import kotlinx.android.synthetic.main.fragment_home_map.search_edit_text
+import kotlinx.android.synthetic.main.fragment_home_map.*
 import org.jetbrains.anko.support.v4.startActivity
 
 /**
@@ -86,7 +84,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
     var selectPointsB = ArrayList<Boolean>()
     var ek = mutableListOf<StatsData>()
     private var currentMarker: Marker? = null
-    private var currentSearchPlace: Place? = null
+    private var currentSearchPlace: LatLng? = null
     var currentPosition = -1
     private var mMap: GoogleMap? = null
     private var isRequest: Boolean = false
@@ -99,7 +97,8 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
     // return after the user has made a selection.
     val fields = listOf(Place.Field.NAME, Place.Field.LAT_LNG)
 
-
+    var lat = 0.00
+    var lng = 0.00
     override fun onLocationGet(location: Location) {
 
         Log.e("onLocationGet", "onLocationGet")
@@ -129,7 +128,8 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
             mMap?.moveCamera(
                 CameraUpdateFactory.zoomTo(14f)
             )
-
+            lat = location.latitude
+            lng = location.longitude
 
 
             context?.saveLat(location.latitude.toFloat())
@@ -217,8 +217,10 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                         currentPosition = index
                         list.add(gunlist)
                         statsViewModel?.listOne?.value = list
-                        val statsData = gunlist.connectorStatus?.filter { its -> its.status == "Charging" }
-                        val statsIdle = gunlist.connectorStatus?.filter { its -> its.status == "Idle" }
+                        val statsData =
+                            gunlist.connectorStatus?.filter { its -> its.status == "Charging" }
+                        val statsIdle =
+                            gunlist.connectorStatus?.filter { its -> its.status == "Idle" }
                         if (statsData!!.isNotEmpty()) {
                             it.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.mark_select))
                         } else {
@@ -342,7 +344,30 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
         })
 
         refreshLayout.isEnabled = statsViewModel?.isListShow?.get()!!
-//        rv_stationlist.adapter = adapter
+
+
+
+        search_edit_text.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s!!.isNotEmpty()) {
+                    close.visibility = View.VISIBLE
+                } else {
+                    close.visibility = View.INVISIBLE
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
+
+
     }
 
 
@@ -371,7 +396,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
 //            startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
             var intent = Intent(
                 this@HomeMapFragment.context,
-                ProgrammaticAutocompleteToolbarActivity::class.java
+                PlacesMapsLatngActivity::class.java
             )
             startActivityForResult(intent, 100)
 
@@ -387,8 +412,8 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
             var lng = 0.0f
             lat = activity!!.getLat()
             lng = activity!!.getLng()
-            Log.e("TAG", "zoomIn: "+lat )
-            Log.e("TAG", "zoomIn: -----"+lng )
+            Log.e("TAG", "zoomIn: " + lat)
+            Log.e("TAG", "zoomIn: -----" + lng)
             mMap?.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(
@@ -439,16 +464,16 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
 
         fun close() {
             search_edit_text.text = ""
-//            if (lat != 0.00) {
-//                aMap!!.moveCamera(
-//                    com.amap.api.maps.CameraUpdateFactory.newLatLngZoom(
-//                        com.amap.api.maps.model.LatLng(
-//                            lat,
-//                            lng
-//                        ), 14f))
-//            }
-//            mHomeSearch.latitude = lat
-//            mHomeSearch.longitude = lng
+            if (lat != 0.00) {
+                mMap!!.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(lat,lng
+                        ), 14f
+                    )
+                )
+            }
+            mHomeSearch.latitude = lat
+            mHomeSearch.longitude = lng
             mHomeSearch.pageNum = 1
             getData()
 
@@ -474,7 +499,31 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 100 && data != null) {
             val name = data.getStringExtra("name")
-            Log.e("TAG", "onActivityResult: " + name)
+            val latitude = data.getStringExtra("latitude")
+            val longitude = data.getStringExtra("longitude")
+
+//            search_edit_text.text = name
+//
+//            val latLng =LatLng(latitude!!.toDouble(),longitude!!.toDouble())
+//            mMap?.moveCamera(
+//                CameraUpdateFactory
+//                    .newLatLngZoom(latLng, DEFAULT_ZOOM)
+//            )
+            if (!latitude.isNullOrBlank()) {
+                currentSearchPlace = LatLng(latitude.toDouble(),longitude!!.toDouble())
+                search_edit_text.text = name
+                mMap!!.moveCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        LatLng(latitude.toDouble(),longitude.toDouble()
+                        ), 14f
+                    )
+                )
+
+                mHomeSearch.latitude = latitude.toDouble()
+                mHomeSearch.longitude = longitude.toDouble()
+                mHomeSearch.pageNum = 1
+                getData()
+            }
         }
     }
 
@@ -538,8 +587,10 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                     mMap?.clear()
                     allList.forEachIndexed { index, stationListBean ->
 
-                        val statsData = stationListBean.connectorStatus?.filter { it.status == "Charging" }
-                        val statsIdle = stationListBean.connectorStatus?.filter { it.status == "Idle" }
+                        val statsData =
+                            stationListBean.connectorStatus?.filter { it.status == "Charging" }
+                        val statsIdle =
+                            stationListBean.connectorStatus?.filter { it.status == "Idle" }
                         val bitmap =
                             if (index == currentPosition) {
                                 setMapsLogoShow(statsData, statsIdle)
@@ -565,16 +616,17 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                         val bitmap =
                             BitmapFactory.decodeResource(resources, R.drawable.icon_map_search)
 
-                        val markOption = currentSearchPlace?.latLng?.let { it1 ->
-                            MarkerOptions().position(
-                                it1
-                            ).icon(BitmapDescriptorFactory.fromBitmap(bitmap))
-                        }
+
+                        val markOption = MarkerOptions().position(
+                            LatLng(
+                                currentSearchPlace!!.latitude,currentSearchPlace!!.longitude
+                            )
+                        ).icon(BitmapDescriptorFactory.fromBitmap(bitmap))
+
                         val marker = mMap?.addMarker(markOption!!)
                         marker?.tag = SEARCHTAG
                         if (!bitmap.isRecycled) bitmap.recycle()
                     }
-
 
 
                     //添加当前图标位置
@@ -583,9 +635,15 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                             activity!!.getLat().toDouble(),
                             activity!!.getLng().toDouble()
                         )
-                    ).icon(BitmapDescriptorFactory.fromBitmap(   BitmapFactory.decodeResource(resources, R.drawable.location)))
+                    ).icon(
+                        BitmapDescriptorFactory.fromBitmap(
+                            BitmapFactory.decodeResource(
+                                resources,
+                                R.drawable.location
+                            )
+                        )
+                    )
                     mMap?.addMarker(markOption)
-
 
 
                 }
@@ -654,7 +712,6 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                 }
             }
         }
-
 
 
     }

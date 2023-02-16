@@ -14,6 +14,7 @@ import com.evport.businessapp.data.bean.SocketType
 import com.evport.businessapp.ui.page.adapter.FilterHomeListAdapter
 import com.evport.businessapp.utils.getHomeFilterData
 import com.evport.businessapp.utils.saveHomeFilterData
+import com.evport.businessapp.utils.toast
 import com.lxj.xpopup.core.BottomPopupView
 import kotlinx.android.synthetic.main.fragment_drawer.view.*
 
@@ -110,6 +111,11 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
     }
 
     fun setData() {
+        if (et_energy.text.toString().toInt()<7){
+            "The input range cannot be smaller than 7".toast()
+            return
+        }
+
         val homeFilter = context.getHomeFilterData() ?: HomeFilter()
         homeFilter.apply {
             operators = adapter1.selectItem!!
@@ -119,9 +125,9 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
 //            发送通知给map页面
         }
         context.saveHomeFilterData(homeFilter)
-        if (homeFilter.operators.isNotEmpty() || homeFilter.socketTypes.isNotEmpty()) {
+//        if (homeFilter.operators.isNotEmpty() || homeFilter.socketTypes.isNotEmpty() || minPower) {
             mOkBlock.invoke(true)
-        }
+//        }
     }
 
     fun setCallBack(okBlock: (Boolean) -> Unit = {}) {

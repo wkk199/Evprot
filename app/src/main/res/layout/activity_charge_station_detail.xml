@@ -587,6 +587,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/manrope_medium"
+                                    android:onClick="@{()->click.phone()}"
                                     android:gravity="end"
                                     android:text="@{vm.stationInfo.info.hotLine}"
                                     android:textColor="@color/black" />

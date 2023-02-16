@@ -306,7 +306,7 @@
                         submitList="@{vm.gunListBean}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="58dp"
+                        android:paddingBottom="90dp"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
                     <RelativeLayout

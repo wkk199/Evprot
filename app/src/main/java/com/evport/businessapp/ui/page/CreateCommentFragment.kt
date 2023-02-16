@@ -29,6 +29,7 @@ import com.evport.businessapp.data.http.networkmanager.SingletonFactory
 import com.evport.businessapp.ui.base.BaseActivity
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.RecordViewModel
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_create_comment.*
 

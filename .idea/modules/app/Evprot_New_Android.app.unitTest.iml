@@ -221,6 +221,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/d1eb5fb0a42d512d77cbfad88bcb2ff7/jetified-bubbleseekbar-3.20-lite-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/840b345415bf0309b4ccff8e158ebb73/jetified-eventbus-3.1.1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f0358b19d18902f80dc59c0bcc85c15a/jetified-ShadowLayout-3.3.2-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b42fcc318113cf8a9e7c4c997ef7f28f/jetified-NetworkState-v1.0.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/a51f8fb0f9a4a93255869772aac22e23/jetified-volley-1.1.1-api.jar</arg>
                 <arg>$MODULE_DIR$/../../../blufilibrary/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>$MODULE_DIR$/../../../../sdk/platforms/android-31/android.jar</arg>
@@ -513,6 +514,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.zyao89:zloading:1.2.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.xw.repo:bubbleseekbar:3.20-lite@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.lihangleo2:ShadowLayout:3.3.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.github.allenlzhang:NetworkState:v1.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.volley:volley:1.1.1@aar" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="Evprot_New_Android.app.main" />

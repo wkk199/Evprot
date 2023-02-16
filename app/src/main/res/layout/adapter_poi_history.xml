@@ -27,16 +27,16 @@
                 android:id="@+id/cityName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ff222825"
+                android:textColor="#222628"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                 />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_10"
-                android:textColor="#ff8f9392"
+                android:textColor="#AAAAAA"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -46,8 +46,17 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="@dimen/dp_20"
-            android:text="清空搜索历史"
-            android:textColor="#ff222825"
+            android:text="Clear search history"
+            android:textColor="#8F9293"
             android:textSize="13sp" />
+
+        <View
+            android:id="@+id/view_liner"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/content"
+            android:background="@color/white_f5"
+          />
+
     </RelativeLayout>
 </layout>

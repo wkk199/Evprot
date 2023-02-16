@@ -31,11 +31,8 @@ import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.ui.view.EmailPicker
 import com.evport.businessapp.ui.view.NamePicker
 import com.evport.businessapp.ui.view.NoticePicker
-import com.evport.businessapp.utils.FileUtils
-import com.evport.businessapp.utils.getUser
+import com.evport.businessapp.utils.*
 import com.evport.businessapp.utils.loader.Glide4Engine
-import com.evport.businessapp.utils.saveUser
-import com.evport.businessapp.utils.setImageIsWifi
 import com.tbruyelle.rxpermissions2.RxPermissions
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_user_setting.iv_avatar

@@ -24,6 +24,7 @@ import com.evport.businessapp.ui.state.InvoicingDetailsViewModel
 import com.evport.businessapp.ui.view.IssuingElectronicInvoicepicker
 import com.evport.businessapp.utils.ACache
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.toast
 import com.lxj.xpopup.XPopup
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_invoicing_details.*

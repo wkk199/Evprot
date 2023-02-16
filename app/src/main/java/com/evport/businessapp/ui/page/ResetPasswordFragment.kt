@@ -37,6 +37,7 @@ import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.ResetPasswordViewModel
 import com.evport.businessapp.utils.ACache
 import com.evport.businessapp.utils.toMD5
+import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_resetpwd.*
 import kotlinx.android.synthetic.main.fragment_resetpwd.email
@@ -159,12 +160,12 @@ class ResetPasswordFragment : BaseFragment() {
         }
         emailCode.doOnTextChanged { charSequence, start, _, _ ->
             // 禁止EditText输入空格
-            mResetPwdViewModel!!.emailCode.set(email.text.toString())
+            mResetPwdViewModel!!.emailCode.set(emailCode.text.toString())
             change()
         }
         et_pwd.doOnTextChanged { charSequence, start, _, _ ->
             // 禁止EditText输入空格
-            mResetPwdViewModel!!.password.set(email.text.toString())
+            mResetPwdViewModel.password.set(et_pwd.text.toString())
             change()
         }
     }

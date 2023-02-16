@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.allenlzhang:NetworkState:v1.0.0@aar">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/25da31284c23efc5c123b25c56832703/jetified-NetworkState-v1.0.0/jars/classes.jar!/" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/25da31284c23efc5c123b25c56832703/jetified-NetworkState-v1.0.0/res" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/25da31284c23efc5c123b25c56832703/jetified-NetworkState-v1.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.github.allenlzhang/NetworkState/v1.0.0/b501aa37cef9ee59a8b71f49dc33d52cfefc97fb/NetworkState-v1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

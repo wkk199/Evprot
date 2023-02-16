@@ -17,8 +17,10 @@ package com.evport.businessapp.ui.page.activity
 
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
@@ -50,6 +52,9 @@ import com.evport.businessapp.ui.page.adapter.StationCommentAdapter
 import com.evport.businessapp.ui.page.adapter.StationDeviceAdapter
 import com.evport.businessapp.ui.state.StationViewModel
 import com.evport.businessapp.utils.*
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
 import com.kunminx.architecture.utils.Utils
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
@@ -303,6 +308,35 @@ class ChargeStationDetailActivity : BaseActivity() {
         fun back() {
 
             finish()
+        }
+        fun phone() {
+
+
+            if (text_phone.text.toString() == ""|| TextUtils.isEmpty(text_phone.text)){
+                return
+            }
+            XXPermissions.with(this@ChargeStationDetailActivity)
+                .permission(Permission.CALL_PHONE)
+                .request(object : OnPermissionCallback {
+                    override fun onGranted(permissions: MutableList<String>, all: Boolean) {
+                        if (!all) {
+                            ToastUtils.showShort("请获取拨打电话权限")
+                            return
+                        }
+                        val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + text_phone.text)) //直接拨打电话
+                        startActivity(dialIntent)
+                    }
+
+                    override fun onDenied(permissions: MutableList<String>, never: Boolean) {
+                        if (never) {
+                            ToastUtils.showShort("被永久拒绝授权，请手动授予拨打电话权限")
+                            // 如果是被永久拒绝就跳转到应用权限系统设置页面
+                            XXPermissions.startPermissionActivity(this@ChargeStationDetailActivity, permissions)
+                        } else {
+                            ToastUtils.showShort("获取拨打电话权限失败")
+                        }
+                    }
+                })
         }
 
         fun love() {

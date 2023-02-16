@@ -741,7 +741,7 @@ fun  toUserAgreement(context: Context){
 }
 fun  toPrivacyPolicy(context: Context){
     var intent=Intent(context, PdfviewActivity::class.java)
-    intent.putExtra("title","privacyPolicy")
+    intent.putExtra("title","Privacy Policy")
     intent.putExtra("url","PrivacyPolicy.pdf")
     context.startActivity(intent)
 }
