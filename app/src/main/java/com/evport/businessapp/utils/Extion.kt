@@ -185,10 +185,10 @@ fun String.toDayFrendly(): String {
         val min = all.minus(d * 24 * 60 * 60).minus(h * 60 * 60).div(60)
         val sec = all.minus(d * 24 * 60 * 60).minus(h * 60 * 60).minus(min * 60)
         s = when {
-            d > 0 -> "${d}天 ${h}时${min}分${sec}秒"
-            h > 0 -> "${h}时${min}分${sec}秒"
-            min > 0 -> "${min}分${sec}秒"
-            sec > 0 -> "${sec}秒"
+            d > 0 -> "${d}day ${h}h${min}m${sec}s"
+            h > 0 -> "${h}h${min}m${sec}s"
+            min > 0 -> "${min}m${sec}s"
+            sec > 0 -> "${sec}s"
             else -> "0"
         }
     } catch (e: Exception) {

@@ -27,6 +27,7 @@ import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
 import com.evport.businessapp.utils.toast
 import com.google.gson.Gson
+import com.gyf.immersionbar.ImmersionBar
 import com.kunminx.architecture.utils.SPUtils
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.interfaces.OnConfirmListener
@@ -274,7 +275,6 @@ class ChargeStatuListActivity : BaseActivity() {
                     try {
 //                        val  currentPosition =((RecyclerView.LayoutParams) recyclerView.getChildAt(0).getLayoutParams()).getViewAdapterPosition();
                         position = (recyclerView.getChildAt(0).layoutParams as RecyclerView.LayoutParams).bindingAdapterPosition
-                        Log.e("=====currentPosition", "" + 0)
                     } catch (e:Exception) {
 
                     }
@@ -338,6 +338,13 @@ class ChargeStatuListActivity : BaseActivity() {
 
                         allList[position] = i
                     }
+
+                    if (allList.size<=1){
+                        toolbar.visibility =View.GONE
+                    }else{
+                        toolbar.visibility =View.VISIBLE
+                    }
+
                     mScaViewModel.listCheckTransaction.value = allList
                     mAdapter.notifyDataSetChanged()
                     iv_empty.isVisible = allList.size==0

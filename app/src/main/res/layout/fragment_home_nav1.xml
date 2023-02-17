@@ -53,7 +53,6 @@
                 android:layout_marginLeft="@dimen/dp_50"
                 android:layout_marginRight="@dimen/dp_50"
                 app:layout_constraintStart_toStartOf="parent"
-
                 app:layout_constraintTop_toTopOf="parent"
                 app:tabIndicatorColor="@color/white"
                 app:tabIndicatorHeight="0dp"
@@ -108,7 +107,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="44dp"
+                        android:layout_height="40dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
                         app:layout_constraintTop_toBottomOf="@+id/tl_layout">
@@ -130,11 +129,12 @@
 
                         <TextView
                             android:id="@+id/SelectEnergy"
-                            drawable_selected_radius="@{10}"
+                            drawable_selected_radius="@{12}"
                             drawable_selected_strokeColor="@{@color/colorTheme}"
                             drawable_selected_strokeWidth="@{1}"
-                            android:layout_width="@dimen/dp_50"
-                            android:layout_height="@dimen/dp_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
                             android:layout_marginStart="@dimen/dp_15"
                             android:layout_toStartOf="@id/SelectConsumption"
                             android:fontFamily="@font/manrope_medium"
@@ -146,16 +146,16 @@
 
                         <TextView
                             android:id="@+id/SelectConsumption"
-                            drawable_selected_radius="@{10}"
+                            drawable_selected_radius="@{12}"
                             drawable_selected_strokeColor="@{@color/colorTheme}"
                             drawable_selected_strokeWidth="@{1}"
-                            android:layout_width="@dimen/dp_50"
-                            android:layout_height="@dimen/dp_20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/dp_5"
                             android:layout_marginStart="@dimen/dp_10"
                             android:fontFamily="@font/manrope_medium"
                             android:gravity="center"
                             android:onClick="@{()->click.SelectConsumption()}"
-
                             android:text="@string/Consumption"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp"
@@ -229,7 +229,6 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
                         android:gravity="center_vertical"
@@ -241,12 +240,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
                             android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.chargingTime}"
+                            android:layout_marginTop="11dp"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp"
-                            tools:text="1111" />
+                            tools:text="11111111111111111111111111111111111111111" />
 
                         <TextView
                             android:id="@+id/tv_text3"
@@ -288,7 +287,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/dp_11"
                             android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.chargingEnergy}"
                             android:textColor="@color/black_222628"
@@ -331,7 +330,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/dp_11"
                             android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.times}"
                             android:textColor="@color/black_222628"
@@ -373,7 +372,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
+                            android:layout_marginTop="@dimen/dp_11"
                             android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.money}"
                             android:textColor="@color/black_222628"

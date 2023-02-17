@@ -26,7 +26,7 @@ import com.evport.businessapp.databinding.AdapterRecordBinding
 /**
  * Create by KunMinX at 20/4/19
  */
-class RecordAdapter(context: Context?) :
+class RecordAdapter(var context: Context?) :
     SimpleDataBindingAdapter<RecordResp, AdapterRecordBinding>(
         context,
         R.layout.adapter_record,
@@ -52,6 +52,12 @@ class RecordAdapter(context: Context?) :
         holder: RecyclerView.ViewHolder
     ) {
         binding.info = item
+
+        if (item.isChargingState()){
+            binding.rlStartDate.background=context!!.resources.getDrawable(R.drawable.shape_record_bt1)
+        }else{
+            binding.rlStartDate.background=context!!.resources.getDrawable(R.drawable.shape_record_bt)
+        }
 
     }
 

@@ -412,8 +412,6 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
             var lng = 0.0f
             lat = activity!!.getLat()
             lng = activity!!.getLng()
-            Log.e("TAG", "zoomIn: " + lat)
-            Log.e("TAG", "zoomIn: -----" + lng)
             mMap?.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(
@@ -605,7 +603,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                         ).icon(BitmapDescriptorFactory.fromBitmap(bitmap))
 
 
-                        val marker = mMap?.addMarker(markOption!!)
+                        val marker = mMap?.addMarker(markOption)
                         marker?.tag = stationListBean.stationPk
                         if (index == currentPosition && currentMarker != null)
                             currentMarker = marker

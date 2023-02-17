@@ -143,16 +143,16 @@ data class RecordResp(
     fun unitString(): String {
         return if (amount.isNullOrBlank())
         //unit.toUnit().plus(amount)
-            "￥ 0"
+            "0"
         else
-            "￥ $amount"
+            "$amount"
     }
 
     fun chargingStateString(): String {
         return if (chargingState == "over") {
-            "已结算"
+            "Settled"
         } else {
-            "未结算"
+            "Unsettled"
         }
     }
 

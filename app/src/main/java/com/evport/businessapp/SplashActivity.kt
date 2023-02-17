@@ -36,6 +36,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        closeKeyWord()
         ImmersionBar.with(this)
             .navigationBarColor(R.color.black)
             .keyboardEnable(false)

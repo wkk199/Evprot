@@ -113,9 +113,12 @@ interface ApiService {
 
 // ------
 
-    //
+
     @POST("pcApp/chargingOrder/stats")
     fun stats(@Body requestStats: RequestStats): Observable<Resource<StatsDataResp>>
+
+//@POST("/ev365/transaction/stats")
+//    fun stats(@Body requestStats: RequestStats): Observable<Resource<StatsDataResp>>
 
     @POST("pcApp/index/search")
     fun homeSearch(@Body requestStats: HomeSearch): Observable<Resource<List<StationListBean>>>

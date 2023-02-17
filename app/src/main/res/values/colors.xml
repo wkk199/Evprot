@@ -19,6 +19,7 @@
     <color name="color_e8CCCE9">#8CCCE9</color>
     <color name="color_006999">#006999</color>
     <color name="color_EBF8FE">#EBF8FE</color>
+    <color name="color_72c2f6">#72c2f6</color>
 
 
     <color name="color_69FFAC">#801569A9</color>
@@ -109,6 +110,7 @@
     <color name="brownish_grey">#666666</color>
     <color name="white_10">#19ffffff</color>
     <color name="white_75">#c0ffffff</color>
+    <color name="unsettled_D94821">#D94821</color>
 
     <color name="transparent">#00FFFFFF</color>
     <color name="transparent_two">#a62b2b2b</color>

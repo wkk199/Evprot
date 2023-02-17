@@ -1,6 +1,7 @@
 package com.evport.businessapp.ui.page.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -28,11 +29,15 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.ChargeStatusAdapter
 import com.evport.businessapp.ui.state.ScanViewModel
+import com.evport.businessapp.ui.view.PopTimePicker
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.socketTypeIsAc
 import com.gyf.immersionbar.ImmersionBar
 import com.kunminx.architecture.utils.SPUtils
+import com.lxj.xpopup.XPopup
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.adapter_charge_status.*
 import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.*
 import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.DonutProgress
 import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.fl_progress
@@ -223,8 +228,8 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                         tv_empty.visibility = View.VISIBLE
                     }
 
-                    if (recyclerView.onFlingListener==null){
-                        Log.e("hm---绑定","绑定")
+                    if (recyclerView.onFlingListener == null) {
+                        Log.e("hm---绑定", "绑定")
                         val snapHelper = PagerSnapHelper()
                         recyclerView.onFlingListener = null
                         snapHelper.attachToRecyclerView(recyclerView)
@@ -418,10 +423,14 @@ class ChargeStatuListV2Fragment : BaseFragment() {
 
                             allList[position] = i
                         }
-                        iv_empty.isVisible = allList.size == 0
-                        tv_empty.isVisible = allList.size == 0
-                        mScaViewModel.listCheckTransaction.value = allList
-                        mAdapter.notifyDataSetChanged()
+                        if (allList.size == 1) {
+                            initView(allList[0])
+                        } else {
+                            iv_empty.isVisible = allList.size == 0
+                            tv_empty.isVisible = allList.size == 0
+                            mScaViewModel.listCheckTransaction.value = allList
+                            mAdapter.notifyDataSetChanged()
+                        }
 
                     }
                 }
@@ -440,15 +449,170 @@ class ChargeStatuListV2Fragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView();
     }
 
 
-    fun initView() {
+    fun initView(crossinline: CheckTransaction) {
+        if (!crossinline.status.equals("Charging")) {
+            btn_setTime.text = this@ChargeStatuListV2Fragment.resources.getString(R.string.Waiting)
+            btn_setTime.isEnabled = false
+        } else {
+            btn_setTime.text =
+                this@ChargeStatuListV2Fragment.resources.getString(R.string.Stop_charging)
+            btn_setTime.isEnabled = true
+        }
+        btn_setTime.setOnClickListener {
+            val popupView =
+                XPopup.Builder(context)
+                    .asConfirm(
+                        this@ChargeStatuListV2Fragment.resources.getString(R.string.stop_),
+                        this@ChargeStatuListV2Fragment.resources.getString(R.string.areyousurrestop_),
+                        this@ChargeStatuListV2Fragment.resources.getString(R.string.cancel_tv),
+                        this@ChargeStatuListV2Fragment.resources.getString(R.string.Confirm),
+                        {
+                            transactionPk = crossinline.transactionPk.toString()
+                            mScaViewModel.remoteStop(RequestChargeChange(transactionPk = transactionPk))
+                            showLoading()
+                        },
+                        null,
+                        false
+                    )
+            popupView.cancelTextView.setTextColor(0x8193AE)
+            popupView.confirmTextView.setTextColor(0x15CD80)
+            popupView.show()
+        }
+        tv_local.text = crossinline.location
+        if (crossinline.chargingSetting?.toLowerCase() == "spendtime") {
+            Log.e("hm----startTime", crossinline.startTime.toString())
+            Log.e("hm----nowTiem", DateUtil.getNowTime())
+            tv_charge_time.setUpTime(
+                crossinline.startTime.toString(),
+                crossinline.settingValue.toString()
+            )
+        } else {
+            Log.e("TAG", "onBindItem: --------------" + crossinline.startTime)
+            if (crossinline.startTime != null)
+                tv_charge_time.setUpTime(crossinline.startTime.toString())
+        }
+        tv_eng.setCompoundDrawablesWithIntrinsicBounds(
+            0,
+            R.drawable.icon_charging_soc,
+            0,
+            0
+        )
+        toolbar1.visibility = View.INVISIBLE
+        Voltage.text = crossinline.voltageString()
+        Current.text = crossinline.currentString()
+        power.text = crossinline.powerString()
+        tv_start_times.text = crossinline.startTime
+        tv_start_time3.text = crossinline.feeString()
+
+
+        if (crossinline.type.isNullOrEmpty() || crossinline.type.toString().socketTypeIsAc()) {
+            // 交流不能设置百分比
+            tv_perscent.isVisible = false
+            // binding.ArcProgress.progress = 100
+            crossinline.chargingSetting?.apply {
+                when {
+                    this.toLowerCase() == "soc" -> {
+                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
+                    }
+                    this.toLowerCase() == "energy" -> {
+                        // binding.tvEng.text = "${item.settingValue ?: "--"}度"
+                        tv_eng.text =
+                            "${crossinline.usedEnergy ?: "--"}度/${crossinline.settingValue ?: "--"}KWh"
+                    }
+                    this.toLowerCase() == "spendtime" -> {
+                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
+                    }
+                    else -> {
+                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
+                    }
+                }
+            }
+        } else {
+            tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
+            tv_perscent.text = "${crossinline.soc ?: "--"}%"
+            tv_perscent.isVisible = !crossinline.soc.isNullOrBlank()
+
+            if (crossinline.progress?.toInt() ?: 0 != ArcProgress.progress) {
+                ArcProgress.progress = crossinline.progress?.toInt() ?: 0
+            }
+            crossinline.chargingSetting?.apply {
+                when {
+                    this.toLowerCase() == "soc" -> {
+                        tv_perscent.text =
+                            "${crossinline.soc ?: "--"}%/${crossinline.settingValue ?: "--"}%"
+                    }
+                    this.toLowerCase() == "energy" -> {
+                        tv_eng.text =
+                            "${crossinline.usedEnergy ?: "--"}KWh${crossinline.settingValue ?: "--"}KWh"
+                    }
+                }
+            }
+        }
+
+
+
+        crossinline.strategy?.apply {
+            if (this.isNotEmpty()) {
+                forEach {
+                    it.time?.split("-")?.apply {
+                        if (DateUtil.containNowDate(this[0].trim(), this[1].trim())) {
+                            time.text = it.time
+                            tv_cfee.text =
+                                "$".plus(it.energy).plus("/KWh")
+                            tv_sfee.text =
+                                "$".plus(it.service).plus("/KWh")
+                            tv_pfee.text =
+                                "$".plus(it.park).plus("/h")
+                        }
+                    }
+                }
+                time.setOnClickListener {
+
+                    XPopup.Builder(requireContext())
+                        .asCustom(PopTimePicker(requireContext(),this ).apply {
+                        })
+                        .show()
+
+
+//                    val s = this.map { it.time }.toTypedArray()
+//                    android.app.AlertDialog.Builder(context)
+//                        .setItems(
+//                            s
+//                        ) { dialogInterface, i ->
+//
+//                            val i2 = this[i]
+//                            time.text = i2.time
+//                            tv_cfee.text =
+//                                "$".plus(i2.energy).plus("/KWh")
+//                            tv_sfee.text =
+//                                "$".plus(i2.service).plus("/KWh")
+//                            tv_pfee.text =
+//                                "$".plus(i2.park).plus("/h")
+//                        }.create()
+//                        .show()
+                }
+            } else {
+                time.text = "--"
+                tv_cfee.text =
+                    "$".plus("--").plus("/KWh")
+                tv_sfee.text =
+                    "$".plus("--").plus("/KWh")
+                tv_pfee.text =
+                    "$".plus("--").plus("/h")
+            }
+
+        }
+
+
+        power_iv.setBackgroundResource(R.drawable.battery_anim)
+        val animationDrawable: AnimationDrawable = power_iv.background as AnimationDrawable
+        animationDrawable.start()
 
 
     }
-
 
 
 }

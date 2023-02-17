@@ -10,9 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9094f74-1ceb-4781-a055-54a099a26636" name="Changes" comment="更新代码">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_allenlzhang_NetworkState_v1_0_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/PlaceHistoryAdapter.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/no_result.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/PopTimePickerAdapter.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/view/PopTimePicker.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_record_bt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/shape_record_bt1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/white_top_bg16.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_time_picker.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_time_picker.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -24,57 +28,52 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.androidTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.androidTest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.unitTest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/Evprot_New_Android.app.unitTest.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/release/output-metadata.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/base/PlaceBean.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/base/PlaceBean.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/AcceptingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/AcceptingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/CreateCommentFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/CreateCommentFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/data/bean/ChargeSetting.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/data/bean/ChargeSetting.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/data/http/api/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/data/http/api/ApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/base/BaseLocationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/base/BaseLocationFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeMapFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeMapFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeUserFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeUserFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingDetailsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingDetailsFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingSucceededFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/InvoicingSucceededFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/MyCardListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/MyCardListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiCommentListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiCommentListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiFeedbackListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiFeedbackListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiReplyListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiReplyListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiSysDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiSysDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiSysListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotiSysListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotificationCenterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/NotificationCenterFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/RecordDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/RecordDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/ResetPasswordFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/ResetPasswordFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/ScanFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/ScanFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/SignCodeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/SignCodeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/UserSettingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/UserSettingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/WithdrawalFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/WithdrawalFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStationDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStationDetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeNav1Fragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/HomeNav1Fragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStatuListActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStatuListActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CommentDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CommentDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CommentReplyDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CommentReplyDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CreatFeedbackActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CreatFeedbackActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CreateEditFamilyActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/CreateEditFamilyActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ProgrammaticAutocompleteToolbarActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/PlacesMapsLatngActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/RecordDetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/RecordDetailActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/PlacePredictionAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/PlacePredictionAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStatuListV2Fragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/ChargeStatuListV2Fragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/PlacesMapsLatngActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/activity/PlacesMapsLatngActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/RecordAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/adapter/RecordAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/utils/Extion.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/utils/Extion.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/widget/PopFilterPicker.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/widget/PopFilterPicker.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_logo_y.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_logo_y.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_map_search.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_map_search.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_charge_station_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_charge_station_detail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_programmatic_autocomplete.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_programmatic_autocomplete.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_poi_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_poi_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_drawer.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_map.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/place_prediction_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/place_prediction_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/google_maps_api.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/google_maps_api.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_10.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_11.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_14.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_15.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_4.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_5.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_9.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_lock.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_lock.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_elefee.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_elefee.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_item.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_parkfee.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_parkfee.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_servefee.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_record_servefee.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_verificatio_code.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/icon_verificatio_code.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_charge_statu_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_charge_statu_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_charge_status.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_charge_status.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/adapter_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/adapter_record.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_charge_statusv2_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_charge_statusv2_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_nav1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_nav1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_resetpwd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_resetpwd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pop_month_picker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_month_picker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,11 +168,13 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
+    <property name="android-custom-viewC:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.1.0/45d3ce505f744a595313d5eb84efd3ca3c8d2d04/MPAndroidChart-v3.1.0-sources.jar!/com/github/mikephil/charting/charts/BarChart.java_SELECTED" value="BarChart" />
+    <property name="android-custom-viewC:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.github.PhilJay/MPAndroidChart/v3.1.0/45d3ce505f744a595313d5eb84efd3ca3c8d2d04/MPAndroidChart-v3.1.0-sources.jar!/com/github/mikephil/charting/charts/Chart.java_SELECTED" value="Chart" />
     <property name="android-custom-viewC:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.google.android.material/material/1.5.0/8d3b87c7463f55053836b805e014cb238f64757a/material-1.5.0-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED" value="TabLayout" />
     <property name="android-custom-viewD:/Evprot_New_Android/app/src/main/java/com/evport/businessapp/ui/view/PickerView.java_SELECTED" value="PickerView" />
     <property name="android-custom-viewD:/sdk/sources/android-31/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="cidr.known.project.marker" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="project.structure.last.edited" value="Build Variants" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.321066" />
@@ -187,14 +188,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Evprot_New_Android\app\src\main\res\drawable" />
+      <recent name="D:\Evprot_New_Android\app\src\main\res\layout" />
       <recent name="D:\Evprot_New_Android\app\src\main\res\drawable-xxhdpi" />
       <recent name="D:\Evprot_New_Android\app\src\main\res\drawable-xxxhdpi" />
       <recent name="D:\Evprot_New_Android\app\src\main\res\mipmap-xxhdpi" />
-      <recent name="D:\Evprot_New_Android\app" />
-      <recent name="D:\Evprot_New_Android\app\src\main\assets" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="com.evport.businessapp.ui.page.adapter" />
+      <recent name="com.evport.businessapp.ui.view" />
       <recent name="com.evport.businessapp.ui.page.activity" />
     </key>
   </component>
@@ -343,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676453344600</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="更新代码">
+      <created>1676530851284</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1676530851284</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -361,5 +370,16 @@
     <MESSAGE value="上传代码" />
     <MESSAGE value="更新代码" />
     <option name="LAST_COMMIT_MESSAGE" value="更新代码" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/evport/businessapp/ui/page/LoginFragment.kt</url>
+          <line>95</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

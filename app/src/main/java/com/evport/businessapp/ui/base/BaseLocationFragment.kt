@@ -165,7 +165,7 @@ abstract class BaseLocationFragment : BaseFragment(), GoogleApiClient.Connection
 
         var mLocationRequest = LocationRequest.create()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-            .setInterval(10)
+            .setInterval(500)
             .setFastestInterval(10)
 
 

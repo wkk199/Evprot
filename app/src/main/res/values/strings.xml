@@ -126,7 +126,7 @@
     <string name="welcome_nback">Welcome\nBack</string>
     <string name="thank_you_very_much_for_nusing_this_app_n_we_bring_you_a_different_nexperience">Thank you very much for\nusing this app.\n We bring you a different\nexperience</string>
     <string name="edit_white_list">Edit white list</string>
-    <string name="stats">数据统计</string>
+    <string name="stats">Stats</string>
     <string name="record">Record</string>
     <string name="order">Record</string>
     <string name="sulfur_dioxide">Sulfur dioxide</string>
@@ -140,7 +140,7 @@
 
     <string name="reset_reset_password_and_login">Reset password and login</string>
     <string name="reset_you_agree_to_our">By signing up, you agree to our</string>
-    <string name="reset_user_agreement">  \t User \tAgreement</string>
+    <string name="reset_user_agreement">  \t User Agreement</string>
     <string name="reset_and">  \tand</string>
     <string name="reset_privacy_policy">Privacy Policy</string>
 
@@ -177,7 +177,7 @@
     <string name="all">/所有</string>
     <string name="idle">空闲</string>
     <string name="operator">Operator</string>
-    <string name="socket_type">Connector type</string>
+    <string name="socket_type">Connector Type</string>
     <string name="type">Type</string>
     <string name="commonly_used">Status</string>
     <string name="Power">Power</string>
@@ -277,7 +277,7 @@
     <string name="details">详情</string>
     <string name="order_status">支付状态</string>
     <string name="balance">余额</string>
-    <string name="ok">确认</string>
+    <string name="ok">Confirm</string>
     <string name="score">Score</string>
     <string name="post_a_comment">Post comment</string>
     <string name="cvc">CVC</string>

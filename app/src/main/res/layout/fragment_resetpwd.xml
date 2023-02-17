@@ -52,7 +52,7 @@
                     android:layout_marginStart="12dp"
                     android:fontFamily="@font/manrope_semibold"
                     android:gravity="center"
-                    android:text="@string/reset_password"
+                    android:text="Reset_Password"
                     android:textColor="@color/color_theme_black"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -123,7 +123,7 @@
                 drawable_enabled_solidColor="@{@color/colorTheme}"
                 drawable_radiusRB="@{8}"
                 drawable_radiusRT="@{8}"
-                drawable_solidColor="@{@color/colorThemeEnabled}"
+                drawable_solidColor="@{@color/color_e8CCCE9}"
                 drawable_strokeWidth="@{1}"
                 android:layout_width="60dp"
                 android:layout_height="38dp"

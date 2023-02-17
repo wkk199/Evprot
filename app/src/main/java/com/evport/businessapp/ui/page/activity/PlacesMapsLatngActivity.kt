@@ -311,6 +311,7 @@ class PlacesMapsLatngActivity : BaseActivity() {
             .setTypeFilter(TypeFilter.GEOCODE)
             .setQuery(query)
 //            .setCountries("es")
+
             .build()
 
         // Perform autocomplete predictions request

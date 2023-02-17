@@ -16,6 +16,7 @@
 package com.evport.businessapp.ui.page
 
 import android.app.DatePickerDialog
+import android.graphics.Color
 import android.graphics.RectF
 import android.graphics.Typeface
 import android.os.Bundle
@@ -23,23 +24,9 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import com.github.mikephil.charting.components.Description
-import com.github.mikephil.charting.components.XAxis.XAxisPosition
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
-import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
-import com.google.gson.Gson
-import com.kunminx.architecture.domain.manager.NetState
-import com.evport.businessapp.data.bean.*
 import com.evport.businessapp.BR
 import com.evport.businessapp.R
+import com.evport.businessapp.data.bean.*
 import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.NameValueAdapter
@@ -50,11 +37,25 @@ import com.evport.businessapp.ui.view.PopMonthPicker
 import com.evport.businessapp.ui.view.XYMarkerView
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.toDayFrendly
+import com.github.mikephil.charting.components.Description
+import com.github.mikephil.charting.components.XAxis.XAxisPosition
+import com.github.mikephil.charting.data.BarData
+import com.github.mikephil.charting.data.BarDataSet
+import com.github.mikephil.charting.data.BarEntry
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.github.mikephil.charting.formatter.ValueFormatter
+import com.github.mikephil.charting.highlight.Highlight
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.gson.Gson
+import com.kunminx.architecture.domain.manager.NetState
 import com.lxj.xpopup.XPopup
 import kotlinx.android.synthetic.main.fragment_home_nav1.*
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
+
 
 /**
  * Create by KunMinX at 19/10/29
@@ -157,10 +158,13 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 //                list.add(NameValue(name = "CNY",value = "12"))//todo del
                 statsViewModel?.listNameValue?.postValue(list)
 
-                statsViewModel?.chargingEnergy?.set(statsData.power.plus("度"))
+                statsViewModel?.chargingEnergy?.set(statsData.power.plus("kWh"))
                 statsViewModel?.chargingTime?.set(statsData.time.toDayFrendly())
-                Log.e("hm---statsData.time", statsData.time)
-                statsViewModel!!.money.set("￥"+statsData.money)
+                val fromJson = Gson().fromJson(statsData.money, HashMap::class.java)
+                statsViewModel!!.money.set(
+                    "$" + fromJson.values.toString()
+                        .substring(1, fromJson.values.toString().length - 1)
+                )
                 if (!ek.isNullOrEmpty())
                     setData(statsData)
                 dismissLoading()
@@ -258,7 +262,7 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
         fun SelectEnergy() {
             statsViewModel?.chartValueString?.set("Energy kWh")
             SelectEnergy.setTextColor(resources.getColor(R.color.colorTheme))
-            SelectConsumption.setTextColor(resources.getColor(R.color.colorTheme_a20))
+            SelectConsumption.setTextColor(resources.getColor(R.color.black_222628))
             SelectEnergy.isSelected = true
             SelectConsumption.isSelected = false
             selectEnergy = true
@@ -268,7 +272,7 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
         fun SelectConsumption() {
             statsViewModel?.chartValueString?.set("Consumption $")
-            SelectEnergy.setTextColor(resources.getColor(R.color.colorTheme_a20))
+            SelectEnergy.setTextColor(resources.getColor(R.color.black_222628))
             SelectConsumption.setTextColor(resources.getColor(R.color.colorTheme))
             SelectEnergy.isSelected = false
             SelectConsumption.isSelected = true
@@ -286,14 +290,14 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
         fun selTime() {
 
-            var year=""
-            var month=""
-            if (selectYear){
-                year= statsViewModel!!.ChangeTime.get().toString()
-            }else{
-                var times=statsViewModel!!.ChangeTime.get().toString().split("-")
-                year=times[0]
-                month=times[1]
+            var year = ""
+            var month = ""
+            if (selectYear) {
+                year = statsViewModel!!.ChangeTime.get().toString()
+            } else {
+                var times = statsViewModel!!.ChangeTime.get().toString().split("-")
+                year = times[0]
+                month = times[1]
             }
             XPopup.Builder(requireContext())
                 .asCustom(PopMonthPicker(requireContext(), selectYear).apply {
@@ -464,7 +468,6 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
         } else {
 
-
             var xvalue = ek?.map { it.xValue }
             if (selectYear) {
                 xvalue = ek?.map { it.xValue }
@@ -479,21 +482,70 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
             }
 
             var entries = ArrayList<BarEntry>()
+            var entries1 = ArrayList<BarEntry>()
+            var entries2 = ArrayList<BarEntry>()
+
+            val dataSetList: MutableList<IBarDataSet> = ArrayList()
             stats.ek?.forEachIndexed { index, statsData ->
-                val barEntry =
-                    BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
-                entries.add(barEntry)
+                if (currentStatsData != null) {
+                    if (currentStatsData!!.xValue == statsData.xValue) {
+                        val barEntry =
+                            BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
+                        entries.add(barEntry)
+                        val dataset1 = BarDataSet(entries, "x")
+
+                        dataset1.setGradientColor(
+                            resources.getColor(R.color.colorTheme),
+                            resources.getColor(R.color.colorTheme)
+                        )
+                        dataset1.highLightColor = resources.getColor(R.color.colorTheme)
+                        dataset1.setDrawValues(true)
+                        dataSetList.add(index,dataset1)
+                    } else {
+                        val barEntry = BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
+                        entries1.add(barEntry)
+                        val dataset2 = BarDataSet(entries1, "x")
+                        dataset2.setGradientColor(
+                            resources.getColor(R.color.color_72c2f6),
+                            resources.getColor(R.color.color_72c2f6)
+                        )
+                        dataset2.highLightColor = resources.getColor(R.color.colorTheme)
+                        dataset2.setDrawValues(true)
+                        dataSetList.add(index,dataset2)
+                    }
+
+                } else {
+                    val barEntry =
+                        BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
+                    entries2.add(barEntry)
+                    val dataset3 = BarDataSet(entries2, "x")
+                    //渐变颜色
+                    dataset3.setGradientColor(
+                        resources.getColor(R.color.color_72c2f6),
+                        resources.getColor(R.color.color_72c2f6)
+                    )
+                    dataset3.highLightColor = resources.getColor(R.color.colorTheme)
+                    dataset3.setDrawValues(true)
+                    dataSetList.add(index,dataset3)
+                }
+
+
             }
-            val dataSet = BarDataSet(entries, "x")
-
-            dataSet.setGradientColor(
-                resources.getColor(R.color.colorTheme_a20),
-                resources.getColor(R.color.color_69FFAC)
-            )
-
-            dataSet.highLightColor = resources.getColor(R.color.colorTheme)
-            dataSet.setDrawValues(true)
-            val data = BarData(dataSet)
+//            stats.ek?.forEachIndexed { index, statsData ->
+//                val barEntry =
+//                    BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
+//                entries.add(barEntry)
+//            }
+//            val dataSet = BarDataSet(entries, "x")
+//
+//            dataSet.setGradientColor(
+//                resources.getColor(R.color.colorTheme_a20),
+//                resources.getColor(R.color.color_69FFAC)
+//            )
+//
+//            dataSet.highLightColor = resources.getColor(R.color.colorTheme)
+//            dataSet.setDrawValues(true)
+            val data = BarData(dataSetList)
             data.barWidth = 0.4f // 宽度 设置为一半
             data.setValueTextSize(10f)
             data.setValueTextColor(resources.getColor(R.color.colorTheme))
@@ -516,19 +568,23 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
     override fun onNothingSelected() {
     }
 
+    var currentStatsData: StatsData? = null
     private val onValueSelectedRectF = RectF()
     override fun onValueSelected(e: Entry?, h: Highlight?) {
         need = false
-        val statsData = e?.data as StatsData
-        Log.e("hm----statsData",Gson().toJson(statsData))
-        if (selectYear) {
-            year = statsData.xValue
-            month = null
-        } else {
-            month = statsData.xValue
-            year = null
+        currentStatsData = e?.data as StatsData
+        Log.e("hm----statsData", Gson().toJson(currentStatsData))
+        currentStatsData?.apply {
+            if (selectYear) {
+                year = xValue
+                month = null
+            } else {
+                month = xValue
+                year = null
+            }
+            statsViewModel!!.ChangeTime.set(xValue)
         }
-        statsViewModel!!.ChangeTime.set(statsData.xValue)
+
         requestData()
 //        if (e == null) return
 //        val bounds: RectF = onValueSelectedRectF
