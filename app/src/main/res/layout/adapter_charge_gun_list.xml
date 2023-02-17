@@ -94,10 +94,10 @@
 
         <TextView
             android:id="@+id/tv_distance"
-            android:layout_width="60dp"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_nav"
-            android:gravity="center"
+            android:gravity="right"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/dp_5"
             android:text="@{info.distance}"
@@ -163,11 +163,11 @@
             android:id="@+id/selle_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_opName"
+            android:layout_below="@id/iv_image"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="18dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="13dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

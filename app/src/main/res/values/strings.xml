@@ -194,14 +194,14 @@
     <string name="connector">connector</string>
 
     <!-- Idle = 空闲 Plugged = 已插枪 Charging = 充电中 Finishing = 充电结束 Reserved = 已预约 Unavailable = 不可用 Faulted = 故障 Offline=离线-->
-    <string name="status_type_idle">idle</string>
-    <string name="status_type_Offline">offline</string>
-    <string name="status_type_Plugged">plugged</string>
-    <string name="status_type_Finished">finished</string>
-    <string name="status_type_Charging">charging</string>
-    <string name="status_type_Unavailable">unavailable</string>
-    <string name="status_type_Faulted">faulted</string>
-    <string name="status_type_Reserved">reserved</string>
+    <string name="status_type_idle">Idle</string>
+    <string name="status_type_Offline">Offline</string>
+    <string name="status_type_Plugged">Plugged</string>
+    <string name="status_type_Finished">Finished</string>
+    <string name="status_type_Charging">Charging</string>
+    <string name="status_type_Unavailable">Unavailable</string>
+    <string name="status_type_Faulted">Faulted</string>
+    <string name="status_type_Reserved">Reserved</string>
     <string name="the_comment_has_been_deleted">The comment has been deleted</string>
     <string name="replies">replies</string>
     <string name="reply">Reply </string>

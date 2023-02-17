@@ -86,8 +86,8 @@
                     android:layout_height="12dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="19dp"
-                    android:background="@color/color_006999"
-                    tools:text="charge" />
+                    android:background="@color/color_20006999"
+                    />
             </RelativeLayout>
 
             <RelativeLayout

@@ -16,7 +16,13 @@ class PdfviewActivity : BaseActivity() {
     }
 
     private fun initView() {
+        back.setOnClickListener {
+            this.finish()
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
         title_tv.text = intent.getStringExtra("title")!!
         val stringExtra = intent.getStringExtra("url")!!
         back.setOnClickListener {
@@ -26,11 +32,9 @@ class PdfviewActivity : BaseActivity() {
         pdf_view.fromAsset(stringExtra)
         pdf_view.show()
 
-        back.setOnClickListener {
-            this.finish()
-        }
 
     }
+
 
     private var mMainActivityViewModel: MainActivityViewModel? = null
 

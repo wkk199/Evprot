@@ -42,15 +42,14 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_15"
+        >
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/dp_15"
-            android:layout_marginBottom="@dimen/dp_15"
-            android:layout_marginRight="@dimen/dp_15"
-            android:src="@drawable/img_how_use" />
+            android:background="@drawable/img_how_use" />
     </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

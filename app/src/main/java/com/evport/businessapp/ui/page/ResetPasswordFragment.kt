@@ -36,14 +36,18 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.ResetPasswordViewModel
 import com.evport.businessapp.utils.ACache
+import com.evport.businessapp.utils.NoFastClickUtils
 import com.evport.businessapp.utils.toMD5
 import com.evport.businessapp.utils.toast
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_resetpwd.*
 import kotlinx.android.synthetic.main.fragment_resetpwd.email
 import kotlinx.android.synthetic.main.fragment_resetpwd.emailCode
+import kotlinx.android.synthetic.main.fragment_resetpwd.et_pwd
 import kotlinx.android.synthetic.main.fragment_resetpwd.sendCode
 import kotlinx.android.synthetic.main.fragment_signup.*
+import kotlinx.coroutines.*
 import org.jetbrains.anko.support.v4.runOnUiThread
 import java.util.*
 import kotlin.math.roundToInt
@@ -206,14 +210,23 @@ class ResetPasswordFragment : BaseFragment() {
 
         fun toConfirm() {
 
-           setForgetPassWordCode();
+            setForgetPassWordCode();
 
 
         }
 
 
         fun toLockPassword() {
-            mResetPwdViewModel.passwordVisible.set(!mResetPwdViewModel.passwordVisible.get())
+
+            if (NoFastClickUtils.isFastClick())
+                mResetPwdViewModel.passwordVisible.set(!mResetPwdViewModel.passwordVisible.get())
+            GlobalScope.launch(Dispatchers.IO) {
+                delay(10)
+                withContext(Dispatchers.Main) {
+                    val index: Int = et_pwd.text.toString().length
+                    et_pwd.setSelection(index)
+                }
+            }
         }
 
     }
@@ -264,7 +277,7 @@ class ResetPasswordFragment : BaseFragment() {
     }
 
     fun setForgetPassWordCode() {
-        object:NetworkBoundResource<User>(object : NetworkStatusCallback<User>{
+        object : NetworkBoundResource<User>(object : NetworkStatusCallback<User> {
             override fun onFailure(message: String) {
                 if (!message.isNullOrBlank()) {
                     message.toast()
@@ -284,7 +297,7 @@ class ResetPasswordFragment : BaseFragment() {
                 dismissLoading()
             }
 
-        }){
+        }) {
 
             override fun loadFromNetData(): Observable<Resource<User>> {
                 return SingletonFactory.apiService.forgetPassword(

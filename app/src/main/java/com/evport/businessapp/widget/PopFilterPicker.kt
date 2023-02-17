@@ -60,7 +60,7 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
         //提交
         confirm_btn.setOnClickListener {
             setData()
-            dismiss()
+
         }
 
         //重置
@@ -111,7 +111,7 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
     }
 
     fun setData() {
-        if (et_energy.text.toString().toInt()<7){
+        if (et_energy.text.toString() == "" ||et_energy.text.toString().toInt()<7){
             "The input range cannot be smaller than 7".toast()
             return
         }
@@ -128,6 +128,8 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
 //        if (homeFilter.operators.isNotEmpty() || homeFilter.socketTypes.isNotEmpty() || minPower) {
             mOkBlock.invoke(true)
 //        }
+
+        dismiss()
     }
 
     fun setCallBack(okBlock: (Boolean) -> Unit = {}) {

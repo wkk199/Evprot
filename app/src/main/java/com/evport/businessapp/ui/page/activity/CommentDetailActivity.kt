@@ -227,7 +227,7 @@ class CommentDetailActivity : BaseActivity() {
                 showLoading()
                 addRep()
             } else
-                showLongToast("请输入评论内容")
+                showLongToast("Please enter your comments")
         }
 
     }
@@ -253,7 +253,7 @@ class CommentDetailActivity : BaseActivity() {
                         val list = ArrayList<ReplyDetail>()
                         childList.forEach { c ->
                             if (f.commentsReplyPk == c.commentsReplyRootPk) {
-                                if (list.size > 2) {
+                                if (list.size >= 2) {
                                     f.hasMoreReplyComment = true
                                 } else {
                                     f.hasMoreReplyComment = false

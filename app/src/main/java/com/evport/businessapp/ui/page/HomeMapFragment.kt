@@ -481,6 +481,19 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
             XPopup.Builder(requireContext())
                 .asCustom(PopFilterPicker(requireContext()).apply {
                     setCallBack {
+
+                        statsViewModel?.listOne?.value = arrayListOf<StationListBean>()
+                        statsViewModel?.isItemShow?.set(true)
+                        currentPosition = -1
+                        try {
+                            if (currentMarker != null) {
+//                                setMapsOnclickLogoShow()
+//                currentMarker?.hideInfoWindow()
+                                currentMarker = null
+                            }
+                        } catch (e: Exception) {
+
+                        }
                         initSearch()
                         refreshData()
                     }

@@ -308,7 +308,7 @@ class PlacesMapsLatngActivity : BaseActivity() {
 //            .setOrigin(LatLng(-33.8749937, 151.2041382))
             .setSessionToken(sessionToken)
 //            .setLocationBias(bias)
-            .setTypeFilter(TypeFilter.GEOCODE)
+            .setTypeFilter(TypeFilter.ADDRESS)
             .setQuery(query)
 //            .setCountries("es")
 
