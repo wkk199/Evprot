@@ -69,21 +69,20 @@
 
                         <ImageView
                             android:id="@+id/back"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_centerVertical="true"
                             android:layout_marginStart="10dp"
                             android:onClick="@{()->click.back()}"
                             android:src="@drawable/icon_back1" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:id="@+id/title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            android:fontFamily="@font/manrope_semibold"
                             android:text="@string/my_collection"
-                            android:textColor="@color/color_theme_black"
+                            android:textColor="@color/black_222628"
                             android:textSize="16sp" />
 
 
@@ -106,7 +105,8 @@
                     android:layout_marginBottom="@dimen/dp_7"
                     app:tabSelectedTextColor="@color/colorTheme"
                     app:tabTextAppearance="@style/tabAllCapsStyle"
-                    app:tabTextColor="@color/light_gray">
+                    app:tabBackground="@android:color/transparent"
+                    app:tabTextColor="@color/black_222628">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"

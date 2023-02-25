@@ -112,13 +112,12 @@
                         android:gravity="center_vertical"
                         app:layout_constraintTop_toBottomOf="@+id/tl_layout">
 
-                        <TextView
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:id="@+id/chageTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_panel_back"
                             android:drawablePadding="@dimen/dp_8"
-                            android:fontFamily="@font/manrope_semibold"
                             android:gravity="center"
                             android:onClick="@{()->click.selTime()}"
                             android:padding="5dp"
@@ -173,6 +172,7 @@
                         android:gravity="top"
                         android:padding="5dp"
                         android:text="@{vm.chartValueString}"
+                        android:textColor="@color/color_8F9293"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_dataRes"
@@ -183,7 +183,7 @@
                         android:id="@+id/chart"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layerType="software" />
 
 
@@ -196,13 +196,12 @@
                     android:layout_marginTop="@dimen/dp_10"
                     android:background="@drawable/icon_bg_line" />
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/tv_s"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="15dp"
-                    android:fontFamily="@font/manrope_semibold"
                     android:gravity="top"
                     android:padding="5dp"
                     android:text="@string/information"
@@ -236,11 +235,11 @@
                         android:orientation="vertical"
                         android:padding="5dp">
 
-                        <TextView
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:fontFamily="@font/manrope_semibold"
+                            android:fontFamily="@font/manrope_medium"
                             android:text="@{vm.chargingTime}"
                             android:layout_marginTop="11dp"
                             android:textColor="@color/black_222628"
@@ -283,12 +282,11 @@
                         android:orientation="vertical"
                         android:padding="5dp">
 
-                        <TextView
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/dp_11"
-                            android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.chargingEnergy}"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp"
@@ -326,12 +324,11 @@
                         android:orientation="vertical"
                         android:padding="5dp">
 
-                        <TextView
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/dp_11"
-                            android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.times}"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp"
@@ -368,16 +365,23 @@
                         android:orientation="vertical"
                         android:padding="5dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <com.evport.businessapp.ui.view.MediumBoldTextView
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/dp_11"
-                            android:fontFamily="@font/manrope_semibold"
                             android:text="@{vm.money}"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp"
-                            tools:text="1111" />
+                            tools:text="1111"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/manrope_medium"
+                            app:layout_constraintStart_toStartOf="parent"
+
+                            />
+
+
+
+
 
                         <TextView
 

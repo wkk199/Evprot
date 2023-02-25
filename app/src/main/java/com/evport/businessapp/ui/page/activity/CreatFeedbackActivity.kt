@@ -1,27 +1,18 @@
 package com.evport.businessapp.ui.page.activity
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.ContentResolver
-import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.core.app.ActivityCompat
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.*
 import com.blankj.utilcode.util.ToastUtils
-import com.gyf.immersionbar.ImmersionBar
-import com.hjq.permissions.OnPermissionCallback
-import com.hjq.permissions.Permission
-import com.hjq.permissions.XXPermissions
-import com.huantansheng.easyphotos.EasyPhotos
-import com.huantansheng.easyphotos.callback.SelectCallback
-import com.huantansheng.easyphotos.models.album.entity.Photo
 import com.evport.businessapp.R
 import com.evport.businessapp.data.bean.FeedbackCommit
 import com.evport.businessapp.data.bean.SocketType
@@ -34,21 +25,37 @@ import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.ImageAddAdapter
 import com.evport.businessapp.ui.page.adapter.ListStringAdapter
 import com.evport.businessapp.ui.state.StationViewModel
-import com.evport.businessapp.utils.FileUtils
-import com.evport.businessapp.utils.SpaceItemDecoration
+import com.evport.businessapp.ui.view.PopAvatarPicker
+import com.evport.businessapp.utils.*
 import com.evport.businessapp.utils.loader.Glide4Engine
-import com.evport.businessapp.utils.toast
-import com.evport.businessapp.utils.todp
+import com.hjq.permissions.OnPermissionCallback
+import com.hjq.permissions.Permission
+import com.hjq.permissions.XXPermissions
+import com.huantansheng.easyphotos.EasyPhotos
+import com.huantansheng.easyphotos.callback.SelectCallback
+import com.huantansheng.easyphotos.models.album.entity.Photo
+import com.lxj.xpopup.XPopup
+import com.nkr.home.ui.imgselector.WeChatPresenter
+import com.ypx.imagepicker.ImagePicker
+import com.ypx.imagepicker.bean.MimeType
+import com.ypx.imagepicker.bean.selectconfig.CropConfig
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_create_feedback.*
 import kotlinx.android.synthetic.main.activity_create_feedback.back
 import kotlinx.android.synthetic.main.fragment_user_setting.*
 import java.io.File
+import java.net.URL
 
 class CreatFeedbackActivity : BaseActivity() {
 
 
     private lateinit var mStationViewModel: StationViewModel
+
+
+    //头像选择弹窗
+    private val mPopAvatarPicker by lazy { PopAvatarPicker(this) }
+
+
     override fun getDataBindingConfig(): DataBindingConfig {
         return DataBindingConfig(R.layout.activity_create_feedback, mStationViewModel)
     }
@@ -58,8 +65,19 @@ class CreatFeedbackActivity : BaseActivity() {
         mStationViewModel = getActivityViewModel(StationViewModel::class.java)
     }
 
+    //裁剪配置
+    private val cropConfig by lazy {
+        CropConfig()
+            .apply {
+                cropRectMargin = 100
+                saveInDCIM(false)
+                isCircle = false
+                cropStyle = CropConfig.STYLE_GAP
+                cropGapBackgroundColor = Color.WHITE
+            }
 
-    val images = mutableListOf<File>()
+    }
+
     val imageList = mutableListOf<Uri>()
     val StringList = mutableListOf<SocketType>()
 
@@ -72,10 +90,6 @@ class CreatFeedbackActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_create_feedback)
-        ImmersionBar.with(this)
-            .navigationBarColor(R.color.black)
-            .keyboardEnable(false)
-            .init()
         add = Uri.parse(
             ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
                     + resources.getResourcePackageName(R.drawable.image_add) + "/"
@@ -89,19 +103,90 @@ class CreatFeedbackActivity : BaseActivity() {
         mImageAdapter = ImageAddAdapter(context = baseContext).apply {
             delClick = { item ->
 
-                images.remove(File(item.toString()))
                 imageList.remove(item)
                 if (!imageList.contains(add) && imageList.size < 3)
                     imageList.add(add)
                 submitList(imageList)
             }
             setOnItemClickListener { item, position ->
-                if (position == imageList.size - 1 && images.size < 3 && imageList.size < 4) {
+
+
+                if (imageList.size < 4 && Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+                                + resources.getResourcePackageName(R.drawable.image_add) + "/"
+                                + resources.getResourceTypeName(R.drawable.image_add) + "/"
+                                + resources.getResourceEntryName(R.drawable.image_add)
+                    ).toString().contains(Uri.parse(imageList[position].path).toString())){
+
+
                     requestPermission()
+
                 }
+
+//                if (position == imageList.size - 1 && imageList.size < 4 && !Uri.parse(
+//                        ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
+//                                + resources.getResourcePackageName(R.drawable.image_add) + "/"
+//                                + resources.getResourceTypeName(R.drawable.image_add) + "/"
+//                                + resources.getResourceEntryName(R.drawable.image_add)
+//                    ).toString().contains(Uri.parse(imageList[position].path).toString())
+//                ) {
+//                    requestPermission()
+//                }
             }
         }
         var mStringAdapter = ListStringAdapter(context = baseContext)
+
+
+        mPopAvatarPicker.setCallBack(object : PopAvatarPicker.CallBack {
+            //相机
+            override fun clickCamera() {
+                ImagePicker
+                    .takePhotoAndCrop(
+                        this@CreatFeedbackActivity,
+                        WeChatPresenter(),
+                        cropConfig
+                    ) {
+                        //拍照回调，主线程
+                        //图片选择回调，主线程
+                        it.first().cropUrl.toString().toast()
+                        imageList.add(
+                            imageList.size - 1,
+                            Uri.parse(it.first().cropUrl)
+                        )
+                        if (imageList.size >= 4 && imageList.contains(add)) {
+                            imageList.removeLast()
+                        }
+                        mImageAdapter?.submitList(imageList)
+                        mPopAvatarPicker.dismiss()
+                    }
+            }
+
+            //相册
+            override fun clickPhoto() {
+                ImagePicker
+                    .withMulti(WeChatPresenter())//指定presenter
+                    // 设置要加载的文件类型，可指定单一类型
+                    .mimeTypes(MimeType.ofImage())
+                    //设置需要过滤掉加载的文件类型
+                    .filterMimeTypes(MimeType.GIF)
+                    .setMaxCount(4 - imageList.size)
+                    .pick(this@CreatFeedbackActivity) {
+                        it.forEach {
+                            Log.e("TAG", "clickCamera: --------"+it.path )
+
+                            imageList.add(
+                                imageList.size - 1,
+                                Uri.parse(it.path)
+                            )
+                            if (imageList.size >= 4 && imageList.contains(add)) {
+                                imageList.removeLast()
+                            }
+
+                            mImageAdapter?.submitList(imageList)
+                            mPopAvatarPicker.dismiss()
+                        }
+                    }
+            }
+        })
 
 //
 
@@ -112,13 +197,20 @@ class CreatFeedbackActivity : BaseActivity() {
 //        StringList.add(SocketType("", "App is unstabl"))
 //        StringList.add(SocketType("", "Account related issues"))
 //        StringList.add(SocketType("", "Other problems"))
-        StringList.add(SocketType("", this.resources.getString(R.string.device_failure)))//1
-        StringList.add(SocketType("", this.resources.getString(R.string.Appisunstabl)))//4
-        StringList.add(SocketType("", this.resources.getString(R.string.Appinformation)))//2
-        StringList.add(SocketType("", this.resources.getString(R.string.issues)))//5
-        StringList.add(SocketType("", this.resources.getString(R.string.problemencountered)))//3
-        StringList.add(SocketType("", this.resources.getString(R.string.Otherproblems)))//6
-
+        StringList.apply {
+            add(SocketType("", getString(R.string.device_failure)))
+            add(SocketType("", getString(R.string.problemencountered)))
+            add(SocketType("", getString(R.string.issues)))
+            add(SocketType("", getString(R.string.Appinformation)))
+            add(SocketType("", getString(R.string.Otherproblems)))
+            add(SocketType("", getString(R.string.Appisunstabl)))
+        }
+//        StringList.add(SocketType("", this.resources.getString(R.string.device_failure)))//1
+//        StringList.add(SocketType("", this.resources.getString(R.string.Appisunstabl)))//4
+//        StringList.add(SocketType("", this.resources.getString(R.string.Appinformation)))//2
+//        StringList.add(SocketType("", this.resources.getString(R.string.issues)))//5
+//        StringList.add(SocketType("", this.resources.getString(R.string.problemencountered)))//3
+//        StringList.add(SocketType("", this.resources.getString(R.string.Otherproblems)))//6
 
 
         recycler_view_product.apply {
@@ -130,7 +222,7 @@ class CreatFeedbackActivity : BaseActivity() {
                     checkStatus()
                 }
             }
-            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL)
+            layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
 
         }
         mStringAdapter.submitList(StringList)
@@ -144,9 +236,7 @@ class CreatFeedbackActivity : BaseActivity() {
             var layoutManager =
                 LinearLayoutManager(this@CreatFeedbackActivity)
             //设置布局管理器
-            //设置布局管理器
             recycler_view_image.setLayoutManager(layoutManager)
-            //设置为垂直布局，这也是默认的
             //设置为垂直布局，这也是默认的
             layoutManager.orientation = OrientationHelper.HORIZONTAL
             // layoutManager = GridLayoutManager(this@CreatFeedbackActivity, 3, RecyclerView.VERTICAL, false)
@@ -184,8 +274,7 @@ class CreatFeedbackActivity : BaseActivity() {
             val list = ArrayList<String>()
             imageList.remove(add)
             imageList.forEach {
-
-                list.add(FileUtils.getBitmapFormUri(baseContext, it))
+                list.add(FileUtils.getBitmapFormUri(baseContext, Uri.fromFile(File(it.path!!))))
             }
 
 
@@ -209,7 +298,7 @@ class CreatFeedbackActivity : BaseActivity() {
 
             override fun onFailure(message: String) {
                 dismissLoading()
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
 
@@ -230,7 +319,8 @@ class CreatFeedbackActivity : BaseActivity() {
 
 
     fun checkStatus() {
-        btn_confrim.isEnabled = reason.trim().isNotEmpty() && et_reason.text.toString().trim().isNotEmpty()
+        btn_confrim.isEnabled =
+            reason.trim().isNotEmpty() && et_reason.text.toString().trim().isNotEmpty()
         /*  if (btn_confrim.isEnabled){
               btn_confrim.setBackgroundColor(resources.getColor(R.color.colorTheme))
           }else {
@@ -250,22 +340,26 @@ class CreatFeedbackActivity : BaseActivity() {
 
                 override fun onGranted(permissions: MutableList<String>, all: Boolean) {
                     if (!all) {
-                        ToastUtils.showShort("请获取选择图片权限")
+                        "Please obtain permission to select images".toast()
                         return
                     }
-                    selectPicture()
+//                    selectPicture()
+                    XPopup.Builder(this@CreatFeedbackActivity)
+                        .asCustom(mPopAvatarPicker)
+                        .show()
+
                 }
 
                 override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                     if (never) {
-                        ToastUtils.showShort("被永久拒绝授权，请手动授予选择图片权限")
+                        "Permanently denied authorization, please manually grant permission to select images".toast()
                         // 如果是被永久拒绝就跳转到应用权限系统设置页面
                         XXPermissions.startPermissionActivity(
                             this@CreatFeedbackActivity,
                             permissions
                         )
                     } else {
-                        ToastUtils.showShort("获取选择图片失败")
+                        "Failed to get the selected image".toast()
                     }
                 }
             })
@@ -286,43 +380,9 @@ class CreatFeedbackActivity : BaseActivity() {
         }
     }
 
-    private fun isPermissionGranted(permission: String): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return true
-        }
-        return ContextCompat.checkSelfPermission(
-            this,
-            permission
-        ) == PackageManager.PERMISSION_GRANTED
-    }
-
-    private fun setPermission(
-        context: Context, activity: Activity, permission: String,
-        requestCode: Int
-    ): Boolean {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager
-                    .PERMISSION_GRANTED
-            ) {
-                if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
-//                    activity.toast("Should open READ_EXTERNAL_STORAGE permission")
-                    return false
-                }
-                if (permission.contains(",")) {
-                    val list = permission.split(",")
-                    ActivityCompat.requestPermissions(activity, list.toTypedArray(), requestCode)
-                } else {
-                    ActivityCompat.requestPermissions(activity, arrayOf(permission), requestCode)
-                }
-                return true
-            }
-            return true
-        }
-        return false
-    }
 
     private fun selectPicture() {
-        val maxSize = 3 - images.size
+        val maxSize = 3 - imageList.size
 
         EasyPhotos.createAlbum(
             this,
@@ -354,13 +414,13 @@ class CreatFeedbackActivity : BaseActivity() {
                 val bitmap = BitmapFactory.decodeStream(
                     contentResolver.openInputStream(s)
                 )
-                images.add(f)
+//                imageList.add(f)
 //                compressBmpToFile(s,f)
                 imageList.add(s)
             }
         }
 
-        if (images.size < 3 && !imageList.contains(add)) {
+        if (imageList.size < 3 && !imageList.contains(add)) {
             imageList.add(add)
         }
         mImageAdapter?.submitList(imageList)

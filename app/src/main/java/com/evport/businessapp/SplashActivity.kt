@@ -43,7 +43,7 @@ class SplashActivity : BaseActivity() {
             .init()
         // 关闭暗黑模式
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        val homeFilter = getHomeFilterData()?: HomeFilter()
+
         if (SPUtils.getInstance().getString(Configs.HOST).isNullOrEmpty())
             SPUtils.getInstance().put(Configs.HOST, Configs.BASE_URL)
 //        SPUtils.getInstance()
@@ -54,8 +54,9 @@ class SplashActivity : BaseActivity() {
          //   startActivity<ChangeLanguageActivity>(Pair("first",true))
           //  finish()
         //}else {
-            if (!homeFilter.isDefault)
-                saveHomeFilterData(HomeFilter())
+//        val homeFilter = getHomeFilterData()?: HomeFilter()
+//            if (!homeFilter.isDefault)
+//                saveHomeFilterData(HomeFilter())
             root.postDelayed({
                 link()
 //            getUrl()

@@ -75,6 +75,7 @@ class CreateCommentActivity : BaseActivity() {
     inner class ClickProxy {
         fun back() {
             finish()
+            sharedViewModel.refreshComment.postValue(true)
         }
 
         fun comment() {
@@ -96,7 +97,8 @@ class CreateCommentActivity : BaseActivity() {
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
-                ToastUtils.showShort("Submit Successfully")
+                "Submit Successfully".toast()
+                sharedViewModel.refreshComment.postValue(true)
                 finish()
                 dismissLoading()
             }

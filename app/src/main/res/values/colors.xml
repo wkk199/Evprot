@@ -5,11 +5,12 @@
     <color name="colorAccent">#FF00A0E9</color>
 
     <color name="colorAccent1">#5000A0E9</color>
+    <color name="colorAccent_90">#1000A0E9</color>
 
     <color name="colorTheme">#00A0E9</color>
-    <color name="colorThemeEnabled">#8AB4D4</color>
+    <color name="colorThemeEnabled">#8CCCE9</color>
     <color name="colorThemeClick">#094A82</color>
-    <color name="colorTheme_a20">#801569A9</color>
+    <color name="colorTheme_a20">#8CCCE9</color>
     <color name="colorTheme_a50">#201569A9</color>
     <color name="color_009">#009FA8</color>
     <color name="color_8f">#8F9392</color>
@@ -21,6 +22,7 @@
     <color name="color_20006999">#25006999</color>
     <color name="color_EBF8FE">#EBF8FE</color>
     <color name="color_72c2f6">#72c2f6</color>
+    <color name="color_dddd">#DDDDDD</color>
 
 
     <color name="color_69FFAC">#801569A9</color>
@@ -71,6 +73,7 @@
 
     <color name="white">#ffffff</color>
     <color name="white_50">#50ffffff</color>
+    <color name="white75">#75FFFFFF</color>
     <color name="black">#000</color>
     <color name="black_80">#90000000</color>
     <color name="black_222628">#222628</color>
@@ -78,12 +81,15 @@
     <color name="color_C0C8CC">#25C0C8CC</color>
     <color name="color_10C0C8CC">#20C0C8CC</color>
     <color name="color_24C0C8CC">#34C0C8CC</color>
+    <color name="color_08C0C8CC">#10C0C8CC</color>
+    <color name="color_18C0C8CC">#18C0C8CC</color>
 
     <color name="gray">#666</color>
     <color name="light_gray">#999</color>
     <color name="line">#2a2d36</color>
     <color name="line_theme">#8193AE</color>
     <color name="red">#FF7A7A</color>
+    <color name="red_FA7D7D">#FA7D7D</color>
     <color name="white_a5">#80FFFFFF</color>
     <color name="white_a8">#A0FFFFFF</color>
     <color name="offline">#EAF0F9</color>
@@ -91,6 +97,7 @@
     <color name="bg_yellow_a20">#50F7B72C</color>
     <color name="color_theme_black">#222825</color>
     <color name="color_line">#E6E6E6</color>
+    <color name="color_757575">#757575</color>
 
     <color name="grey">#cbcbcb</color>
     <color name="bg_color">#F5F5F5</color>

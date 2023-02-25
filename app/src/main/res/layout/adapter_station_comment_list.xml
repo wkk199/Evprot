@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:paddingEnd="12dp"
         android:paddingBottom="@dimen/dp_5"
         android:orientation="vertical">
         <com.facebook.drawee.view.SimpleDraweeView
@@ -28,18 +28,18 @@
             android:layout_height="32dp"
             app:roundAsCircle="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             app:placeholderImage="@drawable/icon_avavtar_def"
             app:placeholderImageScaleType="centerCrop"
             android:clickable="true" />
 
         <ImageView
             android:id="@+id/iv_delete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="0dp"
-            android:padding="5dp"
+            android:layout_marginTop="@dimen/dp_15"
             android:src="@drawable/icon_delete"
             android:visibility="visible" />
         <TextView
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@id/iv_image"
             android:textColor="@color/black_5E5E5E"
             android:text="@{info.userName}"
@@ -77,11 +77,9 @@
             android:layout_marginTop="3dp"
             android:layout_marginStart="3dp"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/manrope_medium"
             android:text="@{info.ratingString()}"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black_222628"
             android:textSize="14sp"
-            android:textStyle="bold"
             tools:text="4.5" />
 
         <com.willy.ratingbar.ScaleRatingBar
@@ -110,13 +108,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ratingBar"
             android:layout_alignStart="@id/tv_name"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:drawablePadding="10dp"
             android:fontFamily="@font/manrope_medium"
             android:text="@{info.content}"
-            android:textColor="@color/black"
+            android:textColor="@color/black_222628"
             invisible="@{!info.hasDelFlag()}"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:text="111111" />
 
 
@@ -126,10 +124,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_street"
             android:layout_alignStart="@id/tv_name"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/manrope_medium"
             android:singleLine="true"
-            android:textSize="12sp"
+            android:layout_marginBottom="@dimen/dp_11"
+            android:textColor="@color/color_8F9293"
+            android:textSize="14sp"
             android:text="@{info.commentTime()}"
             tools:text="111111" />
 
@@ -144,9 +144,10 @@
             android:drawableEnd="@drawable/icon_comment_reply"
             android:drawablePadding="5dp"
             android:fontFamily="@font/manrope_medium"
-            android:layout_marginRight="@dimen/dp_8"
+            android:textColor="@color/color_8F9293"
+            android:layout_marginRight="@dimen/dp_1"
             android:singleLine="true"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:text="@{info.replyCounts}"
             tools:text="111111" />
 

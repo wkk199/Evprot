@@ -1,5 +1,6 @@
 package com.evport.businessapp.ui.base.binding_adapter;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Log;
@@ -90,9 +91,7 @@ public class TabPageBindingAdapter {
         } else
 
 //            设置默认位置和缓存页面
-            Log.e("TAG", "initTabAndPage: "+ offscreen);
             if (offscreen < 4) {
-                Log.e("TAG", "initTabAndPage:333333333333 ");
                 ViewPager viewPager = (tabLayout.getRootView()).findViewById(R.id.view_pager);
                 if (viewPager != null) {
                     viewPager.setAdapter(new CommonViewPagerAdapter(count, false, title, null));
@@ -112,7 +111,7 @@ public class TabPageBindingAdapter {
                             tab.setCustomView(view);//设置自定义的View
                             tabLayout.addTab(tab, i);
                         }
-                    } else {   Log.e("TAG", "initTabAndPage:5444444444444 ");
+                    } else {
 
                         for (int i = 0; i < count; i++) {
                             TabLayout.Tab tab = tabLayout.newTab();
@@ -122,7 +121,7 @@ public class TabPageBindingAdapter {
                             tabText1.setVisibility(View.VISIBLE);
                             tabText.setTextSize(14f);
                             tabText.setText(title[i]);
-                            tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.color_8F9293));
+                            tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.black_222628));
                             tabText1.setBackgroundResource(0);
                             if (i == currentItem) {
                                 tabText1.setBackgroundResource(R.drawable.layer_tab_indicator);
@@ -180,10 +179,9 @@ public class TabPageBindingAdapter {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if (tab != null && tab.getCustomView() != null && finalOffscreen > 3) {
+                if (tab != null && tab.getCustomView() != null ) {
                     TextView tab_text = tab.getCustomView().findViewById(R.id.tab_content_text);
                     tab_text.setTextColor(Utils.getApp().getResources().getColor(R.color.colorTheme));
-                    Log.e("TAG", "initTabAndPage:11111111 ");
                     ImageView imageView = tab.getCustomView().findViewById(R.id.tab_content_text1);
                     imageView.setBackgroundResource(R.drawable.layer_tab_indicator);
                 }
@@ -191,13 +189,22 @@ public class TabPageBindingAdapter {
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-                if (tab != null && tab.getCustomView() != null) {
+                if (tab != null && icon[0] != null) {
                     TextView tab_text = tab.getCustomView().findViewById(R.id.tab_content_text);
                     tab_text.setTextColor(Utils.getApp().getResources().getColor(R.color.color_8F9293));
-                    Log.e("TAG", "initTabAndPage:222222222222 ");
                     ImageView imageView = tab.getCustomView().findViewById(R.id.tab_content_text1);
                     imageView.setBackgroundResource(0);
+                }else {
+
+                    if (tab != null && tab.getCustomView() != null) {
+                        TextView tab_text = tab.getCustomView().findViewById(R.id.tab_content_text);
+                        tab_text.setTextColor(Utils.getApp().getResources().getColor(R.color.black_222628));
+                        ImageView imageView = tab.getCustomView().findViewById(R.id.tab_content_text1);
+                        imageView.setBackgroundResource(0);
+                    }
+
                 }
+
             }
 
             @Override
@@ -240,21 +247,27 @@ public class TabPageBindingAdapter {
             tabText.setTextSize(14f);
             ImageView imageView = (ImageView) view.findViewById(R.id.tab_content_text1);
             if (type.equals("详情")) {
+                tabText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
                 if (i == 0) {
                     tabText.setText("Info");
+                    tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.colorTheme));
                     imageView.setBackgroundResource(R.drawable.layer_tab_indicator);
                 } else if (i == 1) {
+                    tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.black_222628));
                     if (!totalComment.equals("")) tabText.setText(totalComment);
                     imageView.setBackgroundResource(0);
                 } else if (i == 2) {
+                    tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.black_222628));
                     if (!totalDevice.equals("")) tabText.setText(totalDevice);
                     imageView.setBackgroundResource(0);
                 }
             } else {
+                tabText.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));//加粗
                 if (i == 0) {
                     if (!totalComment.equals("")) tabText.setText(totalComment);
                     imageView.setBackgroundResource(R.drawable.layer_tab_indicator);
                 } else {
+                    tabText.setTextColor(Utils.getApp().getResources().getColor(R.color.black_222628));
                     if (!totalDevice.equals("")) tabText.setText(totalDevice);
                     imageView.setBackgroundResource(0);
                 }

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.ypx.yimagepicker:androidx:3.1.4@aar">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f95016f7a4d80c3a4f7a673eb5c65d59/jetified-androidx-3.1.4/jars/classes.jar!/" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f95016f7a4d80c3a4f7a673eb5c65d59/jetified-androidx-3.1.4/res" />
+      <root url="file://C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f95016f7a4d80c3a4f7a673eb5c65d59/jetified-androidx-3.1.4/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.ypx.yimagepicker/androidx/3.1.4/6c2dfc41ca71d01a6feb10041885e81add4bfde0/androidx-3.1.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/com.ypx.yimagepicker/androidx/3.1.4/30bbbd2acc6397a0584a6a4f23fa7b4c9d4fb235/androidx-3.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

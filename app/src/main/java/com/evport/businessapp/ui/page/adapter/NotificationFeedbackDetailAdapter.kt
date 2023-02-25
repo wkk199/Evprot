@@ -118,8 +118,8 @@ class NotificationFeedbackDetailAdapter(context: Context) :
         when (item.showType(mContext.getUser()?.userPk)) {
 
             FeedbackType -> {
-                binding.tvName.textColor = mContext.resources.getColor(R.color.white)
-                item.bgColor = mContext.resources.getColor(R.color.grey)
+                binding.tvName.textColor = mContext.resources.getColor(R.color.color_8F9293)
+                item.bgColor = mContext.resources.getColor(R.color.color_f7)
 
                 binding.tvComments.isVisible = false
                 binding.ivMy.visibility = View.INVISIBLE

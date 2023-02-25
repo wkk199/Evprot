@@ -37,19 +37,18 @@
 
             <ImageView
                 android:id="@+id/back"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:onClick="@{()->click.back()}"
                 android:src="@drawable/icon_back1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/manrope_semibold"
                 android:text="@string/charging_gun"
                 android:textColor="@color/color_theme_black"
                 android:textSize="16sp" />
@@ -77,10 +76,10 @@
 
             <ImageView
                 android:id="@+id/iv_image"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="11dp"
+                android:layout_marginTop="6dp"
                 android:src="@drawable/icon_gun_detail" />
 
 
@@ -89,7 +88,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/cl_item"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="@dimen/dp_4"
                 android:layout_toEndOf="@id/iv_image"
                 android:fontFamily="@font/manrope_medium"
                 android:text="@{vm.info.name}"
@@ -102,10 +102,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/iv_image"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
+                android:paddingStart="11dp"
                 android:paddingEnd="12dp"
-                android:paddingBottom="10dp">
+                android:paddingBottom="2dp">
 
                 <View
                     android:layout_width="match_parent"
@@ -135,7 +134,6 @@
                     android:layout_width="38dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@{vm.info.socketTypeStr()}"
                     android:textColor="@{vm.info.isAC()?@color/color_009:@color/colorTheme}"
@@ -144,15 +142,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/tv_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/manrope_semibold"
+                    android:layout_marginTop="@dimen/dp_4"
                     android:text="@{vm.info.socket}"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:textColor="@color/black_222628"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@id/tv_socket"
                     app:layout_constraintTop_toTopOf="parent"
@@ -163,7 +159,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"
-                    android:layout_marginTop="10dp"
                     android:layout_toEndOf="@id/tv_title"
                     android:fontFamily="@font/manrope_medium"
                     android:text='@{" · "+vm.info.power}'
@@ -193,14 +188,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
-                    android:layout_marginTop="10dp"
                     android:layout_marginRight="@dimen/dp_5"
                     android:layout_toEndOf="@id/tv_title"
                     android:fontFamily="@font/manrope_medium"
                     android:paddingLeft="@dimen/dp_10"
-                    android:paddingTop="@dimen/dp_5"
+                    android:paddingTop="@dimen/dp_2"
                     android:paddingRight="@dimen/dp_10"
-                    android:paddingBottom="@dimen/dp_5"
+                    android:paddingBottom="@dimen/dp_2"
                     android:text="@{vm.info.statusText()}"
                     android:textColor="@{vm.info.textColor()}"
                     android:textSize="14sp"
@@ -232,18 +226,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/tv_reply"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/line"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="15dp"
-                    android:fontFamily="@font/manrope_semibold"
                     android:text="@string/price_information"
                     android:textColor="@color/black_222628"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <!--                <View-->
                 <!--                    android:id="@+id/line11"-->
@@ -255,16 +247,16 @@
 
                 <LinearLayout
                     drawable_radius="@{8}"
-                    drawable_solidColor="@{@color/color_C0C8CC}"
+                    drawable_solidColor="@{@color/color_18C0C8CC}"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_32"
                     android:layout_marginLeft="@dimen/dp_15"
                     android:layout_marginTop="@dimen/dp_15"
                     android:layout_marginRight="@dimen/dp_15"
-                    android:paddingLeft="@dimen/dp_10"
                     android:gravity="center_vertical"
-                    android:paddingRight="@dimen/dp_10"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -362,34 +354,35 @@
                 </LinearLayout>
 
 
-            <LinearLayout
-                drawable_radius="@{8}"
-                drawable_solidColor="@{@color/color_C0C8CC}"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-               android:layout_margin="@dimen/dp_15"
-                android:orientation="horizontal">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/list_comment"
-                    adapter="@{adapter}"
-                    submitList="@{vm.Fee}"
-                    visible="@{vm.Fee.size()>0}"
+                <LinearLayout
+                    drawable_radius="@{8}"
+                    drawable_solidColor="@{@color/color_08C0C8CC}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_above="@id/ll_to_reply"
-                    android:layout_below="@id/line1"
-                    android:nestedScrollingEnabled="true"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    android:layout_margin="@dimen/dp_15"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-            </LinearLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_comment"
+                        adapter="@{adapter}"
+                        submitList="@{vm.Fee}"
+                        visible="@{vm.Fee.size()>0}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/ll_to_reply"
+                        android:layout_below="@id/line1"
+                        android:nestedScrollingEnabled="true"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </LinearLayout>
+
                 <View
                     android:id="@+id/line2"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp_8"
-                    android:layout_marginTop="@dimen/dp_1"
                     android:layout_below="@+id/tv_reply"
+                    android:layout_marginTop="@dimen/dp_1"
                     android:layout_marginBottom="@dimen/dp_15"
                     android:background="@color/light_bg_color" />
 
@@ -400,16 +393,14 @@
                     android:paddingStart="15dp"
                     android:paddingEnd="15dp">
 
-                    <TextView
+                    <com.evport.businessapp.ui.view.MediumBoldTextView
                         android:id="@+id/tv_Payment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:fontFamily="@font/manrope_semibold"
                         android:text="@string/payment"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/Credit_card"
@@ -453,13 +444,12 @@
                     android:background="@color/light_bg_color" />
 
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/tv_how_use"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/line"
                     android:drawableEnd="@drawable/icon_arrow_right_i"
-                    android:fontFamily="@font/manrope_semibold"
                     android:onClick="@{()->click.howUse()}"
                     android:paddingStart="@dimen/dp_15"
                     android:paddingTop="@dimen/dp_5"
@@ -467,8 +457,7 @@
                     android:paddingBottom="@dimen/dp_20"
                     android:text="@string/how_to_use_this_charger"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="14sp" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
@@ -538,9 +527,10 @@
             android:layout_height="match_parent"
             android:background="@color/black_45"
             android:visibility="gone"
-            android:onClick="@{()->click.dismissRl()}">
+            android:onClick="@{()->click.dismissRl()}"
+            >
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/tv_title2"
                 drawable_radiusLT="@{20}"
                 drawable_radiusRT="@{20}"
@@ -549,7 +539,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="245dp"
                 android:background="@color/white"
-                android:fontFamily="@font/manrope_semibold"
                 android:paddingLeft="@dimen/dp_15"
                 android:paddingTop="@dimen/dp_24"
                 android:text="@string/charging_settings"
@@ -573,11 +562,11 @@
                     <!--                    #C0C8CC-->
                     <LinearLayout
                         drawable_radius="@{8}"
-                        drawable_solidColor="@{@color/color_10C0C8CC}"
+                        drawable_solidColor="@{@color/color_08C0C8CC}"
                         android:layout_width="match_parent"
-                        android:background="@color/color_10C0C8CC"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dp_15"
+                        android:background="@color/color_10C0C8CC"
                         android:orientation="vertical">
 
 
@@ -623,15 +612,22 @@
                             android:id="@+id/fl_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dp_10"
+                            android:layout_marginRight="@dimen/dp_10"
                             android:orientation="horizontal"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toTopOf="@id/tv_cancel"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:layout_marginLeft="@dimen/dp_10"
-                            android:visibility="gone"
-                            android:layout_marginRight="@dimen/dp_10"
-                            app:layout_constraintTop_toTopOf="parent"
-                            >
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <View
+                                android:id="@+id/line12"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/dp_1"
+                                android:background="@color/light_bg_color" />
+
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -648,9 +644,9 @@
                                     android:layout_weight="1"
                                     android:background="#00FFFFFF"
                                     app:npv_DividerColor="#00FFFFFF"
+                                    app:npv_DividerMarginLeft="15dp"
                                     app:npv_ItemPaddingHorizontal="5dp"
                                     app:npv_ItemPaddingVertical="5dp"
-                                    app:npv_DividerMarginLeft="15dp"
                                     app:npv_RespondChangeOnDetached="false"
                                     app:npv_ShowDivider="true"
                                     app:npv_ShownCount="5"
@@ -697,19 +693,17 @@
                                     app:npv_TextSizeSelected="16sp"
                                     app:npv_WrapSelectorWheel="false" />
                             </LinearLayout>
+
                             <TextView
                                 drawable_radius="@{4}"
                                 drawable_solidColor="@{@color/color_24C0C8CC}"
                                 android:layout_width="match_parent"
-                                android:layout_marginLeft="@dimen/dp_4"
-                                android:layout_marginRight="@dimen/dp_4"
                                 android:layout_height="32dp"
+                                android:layout_marginLeft="@dimen/dp_4"
                                 android:layout_marginTop="62dp"
-                                />
+                                android:layout_marginRight="@dimen/dp_4" />
 
                         </FrameLayout>
-
-
 
 
                         <LinearLayout
@@ -717,8 +711,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
                             android:orientation="horizontal"
-                            android:visibility="gone"
-                            >
+                            android:visibility="gone">
+
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -774,12 +768,13 @@
                             android:text="@string/set_energy"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp" />
+
                         <View
                             android:id="@+id/line11"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/dp_1"
-                            android:visibility="gone"
-                            android:background="@color/light_bg_color" />
+                            android:background="@color/light_bg_color"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:id="@+id/ll_energy"
@@ -787,23 +782,25 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dp_15"
                             android:layout_marginBottom="@dimen/dp_15"
-                            android:visibility="gone"
                             android:orientation="horizontal"
-                            >
+                            android:visibility="gone">
+
                             <EditText
-                                drawable_radius="@{5}"
-                                drawable_solidColor="@{@color/white}"
                                 android:id="@+id/et_energy"
+                                drawable_radius="@{8}"
+                                drawable_solidColor="@{@color/white}"
+                                drawable_strokeColor="@{@color/color_dddd}"
+                                drawable_strokeWidth="@{1}"
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/dp_44"
-                                android:layout_weight="2"
                                 android:layout_marginLeft="@dimen/dp_15"
+                                android:layout_marginRight="@dimen/dp_15"
+                                android:layout_weight="2"
                                 android:background="@drawable/shape_filter_bt3"
                                 android:gravity="end"
                                 android:hint="please enter energy"
                                 android:inputType="number"
                                 android:padding="@dimen/dp_15"
-                                android:layout_marginRight="@dimen/dp_15"
                                 android:textColor="@color/black_85"
                                 android:textSize="14sp" />
 
@@ -811,8 +808,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/dp_15"
-                                android:textColor="@color/black_222628"
                                 android:text="kWh"
+                                android:textColor="@color/black_222628"
                                 android:textSize="14sp" />
 
 
@@ -836,7 +833,7 @@
                             android:fontFamily="@font/manrope_medium"
                             android:onClick="@{()->click.soc()}"
                             android:paddingLeft="@dimen/dp_15"
-                            android:text="Set SOC"
+                            android:text="Set SOC  (%)"
                             android:textColor="@color/black_222628"
                             android:textSize="14sp" />
 
@@ -845,10 +842,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/dp_15"
-                            android:visibility="gone"
                             android:gravity="center"
                             android:orientation="vertical"
-                            >
+                            android:visibility="gone">
+
                             <RelativeLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
@@ -862,26 +859,25 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     app:rsb_indicator_background_color="#00FFFFFF"
-                                    app:rsb_indicator_text_color="#000000"
                                     app:rsb_indicator_height="wrap_content"
                                     app:rsb_indicator_padding_bottom="5dp"
                                     app:rsb_indicator_padding_top="10dp"
                                     app:rsb_indicator_show_mode="alwaysShow"
+                                    app:rsb_indicator_text_color="#000000"
                                     app:rsb_indicator_text_size="14sp"
                                     app:rsb_indicator_width="8dp"
+                                    app:rsb_max="103"
+                                    app:rsb_min="0"
                                     app:rsb_mode="single"
                                     app:rsb_progress_color="@color/colorAccent"
                                     app:rsb_progress_default_color="#DDDDDD"
+                                    app:rsb_progress_height="6dp"
                                     app:rsb_thumb_drawable="@drawable/bg_garden"
                                     app:rsb_thumb_height="16dp"
-                                    app:rsb_thumb_width="16dp"
-                                    app:rsb_thumb_scale_ratio="1.4"
-                                    app:rsb_min="0"
-                                    app:rsb_max="100"
-                                    app:rsb_progress_height="6dp"
                                     app:rsb_thumb_inactivated_drawable="@drawable/thumb_activated"
-                                    app:rsb_tick_mark_mode="number"
-                                    />
+                                    app:rsb_thumb_scale_ratio="1.4"
+                                    app:rsb_thumb_width="16dp"
+                                    app:rsb_tick_mark_mode="number" />
 
                                 <TextView
                                     android:id="@+id/tv_min"
@@ -889,8 +885,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/bubbleSeekBar"
                                     android:layout_gravity="bottom"
-                                    android:text="0"
                                     android:layout_marginLeft="@dimen/dp_11"
+                                    android:text="0"
                                     android:textColor="@color/color_8F9293"
                                     android:textSize="14sp" />
 
@@ -899,8 +895,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/bubbleSeekBar"
                                     android:layout_alignParentRight="true"
-                                    android:layout_weight="1"
                                     android:layout_marginRight="@dimen/dp_4"
+                                    android:layout_weight="1"
                                     android:text="100"
                                     android:textColor="@color/color_8F9293"
                                     android:textSize="14sp" />
@@ -910,13 +906,12 @@
                     </LinearLayout>
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <com.evport.businessapp.ui.view.MediumBoldTextView
                         android:id="@+id/tv_title3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_4"
                         android:background="@color/white"
-                        android:fontFamily="@font/manrope_semibold"
                         android:paddingLeft="@dimen/dp_15"
                         android:text="@string/payment_detail"
                         android:textColor="@color/black"
@@ -925,7 +920,7 @@
 
                     <LinearLayout
                         drawable_radius="@{8}"
-                        drawable_solidColor="@{@color/color_10C0C8CC}"
+                        drawable_solidColor="@{@color/color_08C0C8CC}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/dp_15"
@@ -944,12 +939,6 @@
                             android:padding="@dimen/dp_15"
                             android:text="@string/charging_card"
                             android:textSize="14sp" />
-
-                        <View
-                            android:id="@+id/line52"
-                            android:layout_width="match_parent"
-                            android:layout_height="@dimen/dp_1"
-                            android:background="@color/light_bg_color" />
 
 
                         <TextView
@@ -981,75 +970,75 @@
                 app:hl_shadowHiddenRight="true"
                 app:hl_shadowLimit="10dp">
 
-            <LinearLayout
-                android:id="@+id/ll_to_charge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginBottom="@dimen/dp_18"
-                android:background="@color/white"
-                android:onClick="@{()->click.toChargeLL()}"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/dp_18"
-                android:paddingRight="@dimen/dp_18">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/white_f5" />
-
-
-                <TextView
-                    android:id="@+id/tv_tip1"
+                <LinearLayout
+                    android:id="@+id/ll_to_charge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:fontFamily="@font/manrope_medium"
-                    android:paddingBottom="@dimen/dp_8"
-                    android:textSize="12sp" />
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginBottom="@dimen/dp_18"
+                    android:background="@color/white"
+                    android:onClick="@{()->click.toChargeLL()}"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingRight="@dimen/dp_18">
 
-                <Button
-                    android:id="@+id/btn_to_charge"
-                    drawable_enabled_radius="@{8}"
-                    drawable_enabled_solidColor="@{@color/colorTheme}"
-                    drawable_radius="@{8}"
-                    drawable_solidColor="@{@color/colorTheme_a20}"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:background="@null"
-                    android:fontFamily="@font/manrope_medium"
-                    android:gravity="center"
-                    android:onClick="@{()->click.toCharge()}"
-                    android:text="@string/start_charging"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@color/white_f5" />
 
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_tip1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="@font/manrope_medium"
+                        android:paddingBottom="@dimen/dp_8"
+                        android:textSize="12sp" />
+
+                    <Button
+                        android:id="@+id/btn_to_charge"
+                        drawable_enabled_radius="@{8}"
+                        drawable_enabled_solidColor="@{@color/colorTheme}"
+                        drawable_radius="@{8}"
+                        drawable_solidColor="@{@color/colorTheme_a20}"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:background="@null"
+                        android:fontFamily="@font/manrope_medium"
+                        android:gravity="center"
+                        android:onClick="@{()->click.toCharge()}"
+                        android:text="@string/start_charging"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
             </com.lihang.ShadowLayout>
         </RelativeLayout>
 
 
-    <FrameLayout
-        android:id="@+id/fl_progress"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white_a5"
-        android:visibility="gone">
+        <FrameLayout
+            android:id="@+id/fl_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_a5"
+            android:visibility="gone">
 
-        <com.github.lzyzsd.circleprogress.DonutProgress
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:donut_progress="0"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </FrameLayout>
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:donut_progress="0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </FrameLayout>
 
-</RelativeLayout>
+    </RelativeLayout>
 </layout>

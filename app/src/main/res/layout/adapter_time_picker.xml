@@ -16,11 +16,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_bg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp_70"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp_15"
-        android:paddingRight="@dimen/dp_12"
-        android:paddingTop="@dimen/dp_12"
+        android:paddingTop="@dimen/dp_15"
         android:paddingBottom="@dimen/dp_12"
         tools:ignore="MissingConstraints">
 
@@ -57,8 +55,6 @@
             android:fontFamily="@font/manrope_medium"
             android:gravity="center"
             android:textColor="@color/color_8F9293"
-            android:paddingLeft="@dimen/dp_5"
-            android:layout_marginLeft="@dimen/dp_5"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@id/tv_unit"
             app:layout_constraintStart_toEndOf="@id/tv_eleString"
@@ -70,15 +66,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/dp_10"
-            android:fontFamily="@font/manrope_medium"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dp_5"
+            android:gravity="center"
             android:textColor="@color/color_8F9293"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_serviceString"
             app:layout_constraintTop_toTopOf="@id/tv_eleString"
             tools:text="111111" />
+
+
+        <View
+            android:id="@+id/view_liner"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/dp_12"
+            app:layout_constraintTop_toBottomOf="@id/tv_eleString"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

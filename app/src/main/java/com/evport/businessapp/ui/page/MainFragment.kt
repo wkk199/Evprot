@@ -1,9 +1,11 @@
 package com.evport.businessapp.ui.page
+
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
@@ -24,6 +26,7 @@ import com.evport.businessapp.ui.state.MainViewModel
 import com.evport.businessapp.ui.view.SelectChargingGunPicker
 import com.evport.businessapp.utils.LiveBus
 import com.evport.businessapp.utils.toMD5
+import com.gyf.immersionbar.ImmersionBar
 import com.kunminx.architecture.ui.callback.EventObserver
 import com.kunminx.architecture.utils.SPUtils
 import com.lxj.xpopup.XPopup
@@ -49,8 +52,6 @@ class MainFragment : BaseFragment() {
             )
         //                .addBindingParam(BR.adapter, new PlaylistAdapter(getContext()));
     }
-
-
 
 
     override fun onViewCreated(
@@ -148,7 +149,7 @@ class MainFragment : BaseFragment() {
                         feedbackTag = data.feedbackTag,
 
                         )
-                    data1.imgDir=      data.imgDir
+                    data1.imgDir = data.imgDir
                     nav().navigate(R.id.action_global_notiFeedbackDetailFragment,
                         Bundle().also { b ->
                             b.putParcelable("feedback", data1)
@@ -188,14 +189,25 @@ class MainFragment : BaseFragment() {
                     3 -> {
                         sharedViewModel.mapRefresh3.postValue(true)
                     }
+                    4 -> {
+                        sharedViewModel.mapRefreshUser4.postValue(true)
+                    }
 
                 }
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    1 -> {
+                        sharedViewModel.refreshNav2.postValue(false)
+                    }
+
+                }
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
+
+
                 when (tab?.position) {
                     1 -> {
                         sharedViewModel.refreshNav2.postValue(true)
@@ -206,12 +218,31 @@ class MainFragment : BaseFragment() {
                     3 -> {
                         sharedViewModel.mapRefresh3.postValue(true)
                     }
+                    4 -> {
+                        sharedViewModel.mapRefreshUser4.postValue(true)
+                    }
                 }
+                index = tab?.position!!
             }
-
         })
 
+
+        sharedViewModel.refreshComment.observe(this) {
+            if (it) {
+                ImmersionBar.with(this).statusBarDarkFont(true).init()
+                if (index == 3) {
+                    return@observe
+                }
+                view_pager.currentItem = 3
+            }
+        }
+
     }
+
+    companion object {
+        var index = -1
+    }
+
 
     // TODO tip 2：此处通过 DataBinding 来规避 在 setOnClickListener 时存在的 视图调用的一致性问题，
     // 也即，有绑定就有绑定，没绑定也没什么大不了的，总之 不会因一致性问题造成 视图调用的空指针。

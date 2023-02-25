@@ -36,6 +36,7 @@ import com.stripe.android.model.StripeIntent
 import com.stripe.android.view.PaymentMethodsActivityStarter
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_chage_gun_detail.*
+import kotlinx.android.synthetic.main.fragment_signup1.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
@@ -188,7 +189,7 @@ class ChageGunDetailActivity : BaseActivity() {
 
 
         wheel_hour.apply {
-
+            wrapSelectorWheel =true
             refreshByNewDisplayedValues(arrayOfNulls<String>(18).apply {
                 for (i in 0..17) {
                     this[i] = if (i < 10) "0${i}" else "${i}"
@@ -205,6 +206,7 @@ class ChageGunDetailActivity : BaseActivity() {
         }
 
         wheel_minute.apply {
+            wrapSelectorWheel =true
             refreshByNewDisplayedValues(arrayOfNulls<String>(60).apply {
                 for (i in 0..59) {
                     this[i] = if (i < 10) "0${i}" else "${i}"
@@ -215,9 +217,10 @@ class ChageGunDetailActivity : BaseActivity() {
                 setFinalHoursMinuteSecond()
             }
 
-            value = displayedValues.indexOfFirst { it.toInt() == mCurrMinute }
+//            value = displayedValues.indexOfFirst { it.toInt() == mCurrMinute }
         }
         wheel_second.apply {
+            wrapSelectorWheel =true
             refreshByNewDisplayedValues(arrayOfNulls<String>(60).apply {
                 for (i in 0..59) {
                     this[i] = if (i < 10) "0${i}" else "${i}"
@@ -228,8 +231,39 @@ class ChageGunDetailActivity : BaseActivity() {
                 setFinalHoursMinuteSecond()
             }
 
-            value = displayedValues.indexOfFirst { it.toInt() == mCurrSecond }
+//            value = displayedValues.indexOfFirst { it.toInt() == mCurrSecond }
         }
+
+
+
+
+        et_energy.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+                if (s.toString().isEmpty()) {
+
+
+                    btn_to_charge.isEnabled = false
+                    return
+                }
+                if (s.toString().toInt() <= 0) {
+                    "Not less than one kwh".toast()
+                    btn_to_charge.isEnabled = false
+                    return
+                }
+                checkBtn()
+
+            }
+
+        })
 
 
     }
@@ -237,12 +271,17 @@ class ChageGunDetailActivity : BaseActivity() {
 
     fun setFinalHoursMinuteSecond() {
 
-        if (mFinalHoursMinuteSecond[0] == null) mFinalHoursMinuteSecond[0] = mCurrHours.toString()
-        if (mFinalHoursMinuteSecond[1] == null) mFinalHoursMinuteSecond[1] = mCurrMinute.toString()
-        if (mFinalHoursMinuteSecond[2] == null) mFinalHoursMinuteSecond[2] = mCurrSecond.toString()
+
+        if (mFinalHoursMinuteSecond[0] == null) mFinalHoursMinuteSecond[0] =
+            wheel_hour.value.toString()
+        if (mFinalHoursMinuteSecond[1] == null) mFinalHoursMinuteSecond[1] =
+            wheel_minute.value.toString()
+        if (mFinalHoursMinuteSecond[2] == null) mFinalHoursMinuteSecond[2] =
+            wheel_second.value.toString()
 
         value =
             ((mFinalHoursMinuteSecond[0]!!.toInt() * 60 * 60 + mFinalHoursMinuteSecond[1]!!.toInt() * 60 + mFinalHoursMinuteSecond[2]!!.toInt()) * 1000).toString()
+
         checkBtn()
 
 
@@ -288,7 +327,7 @@ class ChageGunDetailActivity : BaseActivity() {
                         img_socket.setImageResource(this)
                     }
                     pymentMethod = data.paymentMethod!!;
-                    if (data.status == "Offline" || data.status == "Charging" || data.status == "Unavailable" || data.status == "Faulted") {
+                    if (data.status == "Offline" || data.status == "Idle" || data.status == "Charging" || data.status == "Unavailable" || data.status == "Faulted") {
                         btn_charge.isEnabled = false
                     } else {
                         btn_charge.isEnabled = true
@@ -310,13 +349,24 @@ class ChageGunDetailActivity : BaseActivity() {
 
                     }
 
-                    Log.e("TAG", "onSuccess:------------------- "+cardPk )
+                    Log.e("TAG", "onSuccess:------------------- " + cardPk)
 
-                    data.  socket.toString().socketTypeIcon()?.apply {
+                    data.socket.toString().socketTypeIcon()?.apply {
                         iv_image.setImageResource(this)
                     }
 
-                    isCss = data.socket != null && (data.socket == "CCS1" || data.socket == "CCS2")
+                    //直流
+                    isCss = data.socket != null && (data.socket == "CCS1" || data.socket == "CCS2" || data.socket == "CHAdeMO")
+
+
+                    if (isCss){
+                        line7.visibility =View.VISIBLE
+                        tv_sco.visibility = View.VISIBLE
+                    }else{
+                        line7.visibility =View.GONE
+                        tv_sco.visibility = View.GONE
+
+                    }
 
 //                    showProgress()
                 }
@@ -352,6 +402,21 @@ class ChageGunDetailActivity : BaseActivity() {
         }
 
         fun toCharge() {
+
+            if (setting == "spendTime") {
+                if (value!!.toInt() < 60000) {
+                    "The charging time cannot be less than one minute".toast()
+                    return
+                }
+            }
+            if (setting == "energy") {
+                if (value!!.toInt() <= 0) {
+                    "Not less than one kwh".toast()
+                    return
+                }
+            }
+
+
             if (card == 1) {
                 remoteStart()
             } else if (card == 2) {
@@ -447,13 +512,13 @@ class ChageGunDetailActivity : BaseActivity() {
         tv_time.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_circle_uncheck, 0)
         tv_energy.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_circle_uncheck, 0)
         tv_card_charge.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+            R.drawable.icon_balance_tag,
             0,
             R.drawable.icon_circle_uncheck,
             0
         )
         tv_card_credit.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+            R.drawable.icon_card_tag,
             0,
             R.drawable.icon_circle_uncheck,
             0
@@ -504,6 +569,7 @@ class ChageGunDetailActivity : BaseActivity() {
         setting = "spendTime"
         value = tv_set_time.text.toString()
 
+        setFinalHoursMinuteSecond()
 
     }
 
@@ -555,7 +621,6 @@ class ChageGunDetailActivity : BaseActivity() {
             ) {
                 bubbleSeekBar.setIndicatorText((leftValue - 2.5).toString().split(".")[0])
                 this@ChageGunDetailActivity.value = (leftValue - 2.5).toString().split(".")[0]
-
                 if (this@ChageGunDetailActivity.value!!.toInt() < 0 || this@ChageGunDetailActivity.value.equals(
                         "-0"
                     )
@@ -576,13 +641,13 @@ class ChageGunDetailActivity : BaseActivity() {
 
     fun selectCardCharge() {
         tv_card_charge.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+            R.drawable.icon_balance_tag,
             0,
             R.drawable.icon_circle_check_radio,
             0
         )
         tv_card_credit.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+            R.drawable.icon_card_tag,
             0,
             R.drawable.icon_circle_uncheck,
             0
@@ -609,14 +674,14 @@ class ChageGunDetailActivity : BaseActivity() {
     }
 
     fun selectCardCredit() {
-        tv_card_credit.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+        tv_card_charge.setCompoundDrawablesWithIntrinsicBounds(
+            R.drawable.icon_balance_tag,
             0,
             R.drawable.icon_circle_uncheck,
             0
         )
-        tv_card_charge.setCompoundDrawablesWithIntrinsicBounds(
-            0,
+        tv_card_credit.setCompoundDrawablesWithIntrinsicBounds(
+            R.drawable.icon_card_tag,
             0,
             R.drawable.icon_circle_uncheck,
             0
@@ -647,6 +712,13 @@ class ChageGunDetailActivity : BaseActivity() {
     var intentId: String? = null
 
     fun checkBtn() {
+        if (setting == "spendTime") {
+            if (value!!.toInt() <= 0) {
+                btn_to_charge.isEnabled = false
+                return
+            }
+        }
+
         when (card) {
             1 -> {
                 Log.e("hm---paymentMethod", "3")
@@ -790,7 +862,7 @@ class ChageGunDetailActivity : BaseActivity() {
                 val paymentMethod = result?.paymentMethod
                 methodId = paymentMethod?.id ?: ""
                 tv_card_credit.setCompoundDrawablesWithIntrinsicBounds(
-                    0,
+                    R.drawable.icon_card_tag,
                     0,
                     R.drawable.icon_circle_check_radio,
                     0

@@ -112,7 +112,6 @@ class UserCollectActivity : BaseActivity() {
             pageNumStation = 1
             canLoadMore = true
             refreshing = true
-            Log.e("TAG", "onCreate: ---------" + currentItem)
             getDeviceData()
             getStationData()
 
@@ -325,7 +324,7 @@ class UserCollectActivity : BaseActivity() {
 //                    "${resources.getString(R.string.stations)}(${data?.stations?.counts ?: 0})"
 
                 isStationData = true
-                counts = resources.getString(R.string.stations)+"(" + (data?.stations?.counts ?: 0)+")"
+                counts = resources.getString(R.string.stations)+" (" + (data?.stations?.counts ?: 0)+")"
                 if (isStationData && isStationCommentData) {
 
                     TabPageBindingAdapter.tabSelectedListener(
@@ -386,7 +385,7 @@ class UserCollectActivity : BaseActivity() {
                 }
                 isStationCommentData = true
                 deviceCounts =
-                    resources.getString(R.string.device) +"("+ (data?.devices?.counts ?: 0)+")"
+                    resources.getString(R.string.device) +" ("+ (data?.devices?.counts ?: 0)+")"
                 if (isStationData && isStationCommentData) {
                     TabPageBindingAdapter.tabSelectedListener(
                         tab_station, counts, deviceCounts,"收藏"

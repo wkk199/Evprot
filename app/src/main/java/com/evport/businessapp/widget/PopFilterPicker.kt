@@ -37,7 +37,6 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
 
 
     private fun initView() {
-
         adapter1.submitList(
             arrayListOf(
 //                SocketType("GBT AC", "慢充"),
@@ -85,8 +84,8 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
             et_energy.setSelection(minPower.toString().length)
         }
 
-        et_energy.inputType = InputType.TYPE_CLASS_PHONE;
         et_energy.isEnabled = true
+        et_energy.inputType = InputType.TYPE_CLASS_NUMBER;
     }
 
 
@@ -98,6 +97,9 @@ class PopFilterPicker constructor(context: Context) : BottomPopupView(context) {
     fun reSetData() {
         adapter1.selectItem = ArrayList()
         adapter2.selectItem = ArrayList()
+
+        et_energy.setText("7")
+        et_energy.setSelection(et_energy.text.toString().length)
     }
 
     override fun beforeShow() {

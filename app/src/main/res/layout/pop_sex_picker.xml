@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_top_bg8"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_sex"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_height="wrap_content">
+
+            <com.evport.businessapp.ui.view.PickerView
+                android:id="@+id/wheel_sex"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                app:npv_DividerColor="#00FFFFFF"
+
+                app:npv_ItemPaddingHorizontal="15dp"
+                app:npv_ItemPaddingVertical="5dp"
+                app:npv_RespondChangeOnDetached="false"
+                app:npv_ShowDivider="true"
+                app:npv_ShownCount="5"
+                app:npv_TextColorNormal="#ACACAC"
+                app:npv_TextColorSelected="@color/black_222628"
+                app:npv_TextSizeNormal="16sp"
+                app:npv_TextSizeSelected="16sp"
+                app:npv_WrapSelectorWheel="false" />
+
+            <TextView
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/color_C0C8CC}"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_32"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@color/color_C0C8CC" />
+
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_sex"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+
+            <com.evport.businessapp.ui.view.MediumBoldTextView
+                android:id="@+id/cancel"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/white}"
+                drawable_strokeColor="@{@color/colorTheme}"
+                drawable_strokeWidth="@{1}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_44"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Cancel"
+                android:textColor="#00A0E9"
+                android:textSize="14sp" />
+
+
+            <com.evport.businessapp.ui.view.MediumBoldTextView
+                android:id="@+id/tv_ok"
+                drawable_radius="@{8}"
+                drawable_solidColor="@{@color/colorTheme}"
+                drawable_strokeColor="@{@color/colorTheme}"
+                drawable_strokeWidth="@{1}"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp_44"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/ok"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:background="@color/white" />
+
+    </LinearLayout>
+</layout>

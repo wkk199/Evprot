@@ -228,8 +228,11 @@ dependencies {
 //    implementation 'com.nfleo:MatisseKotlin:2.1.1'
 //    implementation 'com.zhihu.android:matisse:0.5.2'
     implementation 'com.github.HuanTanSheng:EasyPhotos:3.1.5'
+    //图片选择
+    implementation "com.ypx.yimagepicker:androidx:3.1.4"
 
-
+    //多图预览点击放大
+    implementation 'com.ycjiang:ImagePreview:2.3.5'
 
 
 //    anko
@@ -245,8 +248,6 @@ dependencies {
     implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
 
 
-    //多图预览点击放大
-    implementation 'com.ycjiang:ImagePreview:2.3.5'
 
     // Stripe Android SDK
     implementation 'com.stripe:stripe-android:20.5.0'

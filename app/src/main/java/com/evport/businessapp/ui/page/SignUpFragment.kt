@@ -16,6 +16,8 @@
 package com.evport.businessapp.ui.page
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import com.blankj.utilcode.util.ToastUtils
@@ -29,6 +31,7 @@ import com.evport.businessapp.ui.state.SignUpViewModel
 import com.evport.businessapp.utils.*
 import com.kunminx.architecture.domain.manager.NetState
 import com.kunminx.architecture.utils.SPUtils
+import kotlinx.android.synthetic.main.fragment_signup.*
 import kotlinx.android.synthetic.main.fragment_signup.btn_login
 import kotlinx.android.synthetic.main.fragment_signup1.*
 import kotlinx.coroutines.*
@@ -41,12 +44,11 @@ class SignUpFragment : BaseFragment() {
     private var mSignUpViewModel: SignUpViewModel? = null
 
 
-
     val email by lazy {
-        arguments?.getString("email")?:""
+        arguments?.getString("email") ?: ""
     }
     val emailCode by lazy {
-        arguments?.getString("emailCode")?:""
+        arguments?.getString("emailCode") ?: ""
     }
 
     override fun initViewModel() {
@@ -63,15 +65,39 @@ class SignUpFragment : BaseFragment() {
 
 
     private fun initView() {
-        et_name.doOnTextChanged { charSequence, start, _, _ ->
-            mSignUpViewModel!!.name.set(et_name.text.toString())
-            change()
-        }
+//        et_name.doOnTextChanged { charSequence, start, _, _ ->
+//            mSignUpViewModel!!.name.set(et_name.text.toString())
+//            change()
+//        }
         et_pwd.doOnTextChanged { charSequence, start, _, _ ->
             // 禁止EditText输入空格
             mSignUpViewModel!!.password.set(et_pwd.text.toString())
             change()
         }
+
+        et_name.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+                if (s!!.length >= 50) {
+                    "The user name cannot contain more than 50 characters".toast()
+                    return
+                }
+
+                mSignUpViewModel!!.name.set(et_name.text.toString())
+                change()
+            }
+
+        })
+
+
     }
 
     override fun onViewCreated(
@@ -119,8 +145,8 @@ class SignUpFragment : BaseFragment() {
             showLoading()
             val result = mSignUpViewModel!!.password.get()?.toMD5()
             val user = User()
-            user.email =email
-            user.name =mSignUpViewModel!!.name.get()
+            user.email = email
+            user.name = mSignUpViewModel!!.name.get()
             user.note = emailCode
             user.password = result
 
@@ -161,7 +187,9 @@ class SignUpFragment : BaseFragment() {
 
 
     fun change() {
-        btn_login.isEnabled = !(mSignUpViewModel!!.name.get().isNullOrBlank() || mSignUpViewModel!!.password.get().isNullOrBlank())
+        btn_login.isEnabled =
+            !(mSignUpViewModel!!.name.get().isNullOrBlank() || mSignUpViewModel!!.password.get()
+                .isNullOrBlank())
 
     }
 }

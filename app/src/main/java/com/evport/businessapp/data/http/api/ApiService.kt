@@ -87,7 +87,12 @@ interface ApiService {
     fun commentsReplyCheck(@Body body: MessageData): Observable<Resource<String>>
 
     //修改用户信息
-    @POST("ocpp/user/updateInfo")
+//    @POST("ocpp/user/updateInfo")
+//    fun updateInfo(@Body body: User): Observable<Resource<String>>
+
+
+    //修改用户信息
+    @POST("ocpp/user/v2/updateInfo")
     fun updateInfo(@Body body: User): Observable<Resource<String>>
 
 //    ---------------------------
@@ -114,11 +119,11 @@ interface ApiService {
 // ------
 
 
-    @POST("pcApp/chargingOrder/stats")
-    fun stats(@Body requestStats: RequestStats): Observable<Resource<StatsDataResp>>
-
-//@POST("/ev365/transaction/stats")
+//    @POST("pcApp/chargingOrder/stats")
 //    fun stats(@Body requestStats: RequestStats): Observable<Resource<StatsDataResp>>
+
+    @POST("ev365/transaction/stats")
+    fun stats(@Body requestStats: RequestStats): Observable<Resource<StatsDataResp>>
 
     @POST("pcApp/index/search")
     fun homeSearch(@Body requestStats: HomeSearch): Observable<Resource<List<StationListBean>>>
@@ -166,7 +171,9 @@ interface ApiService {
 //    评论
 
     //
-    @POST("pcApp/chargingOrder/record")
+//    @POST("pcApp/chargingOrder/record")
+//    fun records(@Body requestRecord: RequestRecord): Observable<Resource<MutableList<RecordResp>>>
+    @POST("ev365/transaction/record")
     fun records(@Body requestRecord: RequestRecord): Observable<Resource<MutableList<RecordResp>>>
 
     //
@@ -368,8 +375,10 @@ interface ApiService {
 
     @POST("ocpp/chargingOrderInvoice/getCompanyInfo")
     fun getCompanyInfo(@Body homeSchedulePk: CompanyNameVO): Observable<Resource<ArrayList<CompanyBean>>>
+
     @POST("ocpp/chargingOrderInvoice/getCompanyInfo")
     fun getCompanyInfoDefult(@Body homeSchedulePk: DefultBean): Observable<Resource<ArrayList<CompanyBean>>>
+
     //开票接口
     @POST("ocpp/chargingOrderInvoice/createInvoice")
     fun createInvoice(@Body homeSchedulePk: CreateInvoiceVo): Observable<Resource<String>>

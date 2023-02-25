@@ -224,10 +224,13 @@ data class ReplyDetail(
 fun replyContent(): String {
         return ": "+replyContent!!
     }
+fun replyReplySourceUserNamet(): String {
+        return replySourceUserName!!
+    }
 
     fun conetntIsDelString(): String {
         return if (hasDelFlag()) {
-            "评论已被删除"
+            "The comment has been deleted"
         } else {
             if (replyContent!!.length > 45) {
                 replyContent.substring(0, 45) + "..."
@@ -706,12 +709,11 @@ data class NotiSys(
         }
         return date
     }
-
     fun sysMessageSummaryStr(): String {
         return if (sysMessageSummary.isNullOrBlank()) {
             ""
         } else {
-            "[摘要]$sysMessageSummary"
+            "[Summary]$sysMessageSummary"
         }
     }
 
@@ -736,7 +738,8 @@ data class MyCard(
     }
 
     fun expiryDateStr(): String {
-        return expiryDate!!.split(" ")[0]
+//        return expiryDate!!.split(" ")[0]
+        return expiryDate!!
     }
 
     fun statusStr(): String {

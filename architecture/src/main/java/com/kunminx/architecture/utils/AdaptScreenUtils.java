@@ -1,8 +1,10 @@
 package com.kunminx.architecture.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 
 import java.lang.reflect.Field;
 
@@ -41,6 +43,9 @@ public final class AdaptScreenUtils {
         float newXdpi = dm.xdpi = dm.density * 72;
         setAppDmXdpi(newXdpi);
         return resources;
+    }
+    public static int dp2px(Context context, float value) {
+        return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, context.getResources().getDisplayMetrics())+1f);
     }
 
     /**

@@ -49,8 +49,8 @@
             <ImageView
                 android:src="@drawable/icon_back1"
                 android:id="@+id/btn_back"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:onClick="@{()->click.back()}"
                 android:scaleType="center"
                 android:layout_margin="20dp"

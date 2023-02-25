@@ -192,42 +192,42 @@
                                 android:src="@drawable/icon_delete"
                                 android:visibility="gone" />
 
-<!--                            <TextView-->
-<!--                                android:id="@+id/tv_name"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginStart="10dp"-->
-<!--                                android:layout_marginTop="16dp"-->
-<!--                                android:ellipsize="end"-->
-<!--                                android:maxLines="1"-->
-<!--                                android:layout_toStartOf="@id/iv_nav"-->
-<!--                                android:layout_toEndOf="@id/iv_image"-->
-<!--                                android:fontFamily="@font/manrope_semibold"-->
-<!--                                android:text="@{info.stationName}"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:textSize="18sp"-->
-<!--                                android:paddingRight="@dimen/dp_28"-->
-<!--                                android:textStyle="bold"-->
-<!--                                tools:text="11111" />-->
+                            <!--                            <TextView-->
+                            <!--                                android:id="@+id/tv_name"-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_marginStart="10dp"-->
+                            <!--                                android:layout_marginTop="16dp"-->
+                            <!--                                android:ellipsize="end"-->
+                            <!--                                android:maxLines="1"-->
+                            <!--                                android:layout_toStartOf="@id/iv_nav"-->
+                            <!--                                android:layout_toEndOf="@id/iv_image"-->
+                            <!--                                android:fontFamily="@font/manrope_semibold"-->
+                            <!--                                android:text="@{info.stationName}"-->
+                            <!--                                android:textColor="@color/black"-->
+                            <!--                                android:textSize="18sp"-->
+                            <!--                                android:paddingRight="@dimen/dp_28"-->
+                            <!--                                android:textStyle="bold"-->
+                            <!--                                tools:text="11111" />-->
 
 
                             <TextView
                                 android:id="@+id/tv_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
                                 android:layout_marginTop="16dp"
                                 android:layout_marginRight="@dimen/dp_28"
-                                android:layout_marginStart="10dp"
                                 android:layout_toStartOf="@id/iv_nav"
                                 android:layout_toEndOf="@id/iv_image"
-                                android:fontFamily="@font/manrope_semibold"
                                 android:drawablePadding="10dp"
                                 android:ellipsize="end"
+                                android:fontFamily="@font/manrope_semibold"
                                 android:singleLine="true"
                                 android:text="@{info.stationName}"
-                                android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
+                                android:textStyle="bold"
                                 tools:text="111111" />
 
 
@@ -272,11 +272,9 @@
                                 android:layout_marginTop="3dp"
                                 android:layout_toEndOf="@id/ratingBar"
                                 android:drawablePadding="10dp"
-                                android:fontFamily="@font/manrope_medium"
                                 android:text="@{info.ratingString()}"
-                                android:textColor="@color/yellow"
+                                android:textColor="@color/color_8F9293"
                                 android:textSize="14sp"
-                                android:textStyle="bold"
                                 tools:text="4.5" />
 
                             <TextView
@@ -354,25 +352,23 @@
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/iv_menu"
-                                    android:layout_width="44dp"
-                                    android:layout_height="44dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginTop="12dp"
                                     android:onClick="@{()->click.back()}"
                                     android:padding="@dimen/dp_5"
                                     android:scaleType="centerInside"
-                                    android:src="@drawable/icon_back" />
+                                    android:background="@drawable/icon_back" />
 
                                 <androidx.appcompat.widget.AppCompatImageView
                                     android:id="@+id/iv_menu1"
-                                    android:layout_width="44dp"
-                                    android:layout_height="44dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginTop="12dp"
                                     android:onClick="@{()->click.back()}"
-                                    android:padding="@dimen/dp_5"
                                     android:scaleType="centerInside"
-                                    android:src="@drawable/icon_back1"
+                                    android:padding="@dimen/dp_5"
+                                    android:background="@drawable/icon_back1"
                                     android:visibility="gone" />
 
 
@@ -447,7 +443,7 @@
                     android:id="@+id/tab_station"
                     currentItem="@{0}"
                     initTabAndPage="@{vm.initTabAndPage}"
-                    offscreen="@{2}"
+                    offscreen="@{6}"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_alignParentBottom="true"
@@ -456,7 +452,8 @@
                     app:tabIndicatorHeight="0dp"
                     app:tabSelectedTextColor="@color/colorTheme"
                     app:tabTextAppearance="@style/tabAllCapsStyle"
-                    app:tabTextColor="@color/light_gray">
+                    app:tabBackground="@android:color/transparent"
+                    app:tabTextColor="@color/black">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
@@ -587,8 +584,8 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/manrope_medium"
-                                    android:onClick="@{()->click.phone()}"
                                     android:gravity="end"
+                                    android:onClick="@{()->click.phone()}"
                                     android:text="@{vm.stationInfo.info.hotLine}"
                                     android:textColor="@color/black" />
                             </LinearLayout>
@@ -627,8 +624,9 @@
                             <View
                                 android:layout_width="1dp"
                                 android:layout_height="@dimen/dp_10"
-                                android:layout_margin="@dimen/dp_5"
-                                android:background="#8F9293" />
+                                android:layout_marginLeft="@dimen/dp_10"
+                                android:layout_marginRight="@dimen/dp_12"
+                                android:background="#20006999" />
 
                             <TextView
                                 android:id="@+id/device_title"
@@ -669,7 +667,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        >
 
                         <TextView
                             android:id="@+id/comments"
@@ -682,6 +680,7 @@
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:textStyle="bold"
+                            android:padding="@dimen/dp_10"
                             android:visibility="gone"
                             tools:text="11111" />
                         <!--                        <View-->
@@ -696,6 +695,7 @@
                             addItemDecoration="@{true}"
                             submitList="@{vm.listComments}"
                             android:layout_width="match_parent"
+                            android:padding="@dimen/dp_10"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/comments"
                             android:nestedScrollingEnabled="true"
@@ -705,7 +705,8 @@
                             android:id="@+id/empty_view"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                            >
 
                             <include layout="@layout/empty_view_comment1" />
                         </RelativeLayout>

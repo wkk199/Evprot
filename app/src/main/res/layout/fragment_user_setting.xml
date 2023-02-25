@@ -40,61 +40,48 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/base_title_bg"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="@dimen/dp_40"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10">
 
             <ImageView
+                android:id="@+id/back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:onClick="@{()->click.back()}"
+                android:src="@drawable/icon_back1" />
+
+            <com.evport.businessapp.ui.view.MediumBoldTextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_40"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:src="@drawable/icon_title_logo" />
+                android:layout_centerInParent="true"
+                android:text="@string/personal_information"
+                android:textColor="@color/black_222628"
+                android:textSize="16sp" />
+        </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:paddingTop="@dimen/dp_10"
-                android:paddingBottom="@dimen/dp_10">
-
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:onClick="@{()->click.back()}"
-                    android:src="@drawable/icon_back_gray" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/manrope_semibold"
-                    android:text="@string/personal_information"
-                    android:textColor="@color/color_theme_black"
-                    android:textSize="16sp" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:background="@color/color_line" />
-        </LinearLayout>
+        <View
+            android:id="@+id/view_liner"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/white_f5" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/toolbar"
+            android:layout_below="@id/view_liner"
             android:clipToPadding="true"
             android:fillViewport="true">
 
@@ -132,12 +119,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="4.3sp"
                             android:text="@string/profile_photo"
-                            android:textColor="@color/black"
-
+                            android:textColor="@color/black_222628"
+                            android:textSize="@dimen/sp_14"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -147,7 +133,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
-                            android:src="@drawable/icon_arrow_right"
+                            android:src="@drawable/icon_arrow_right2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
@@ -181,7 +167,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_15"
-                        android:onClick="@{()->click.chageName()}"
                         android:paddingStart="@dimen/dp_15"
                         android:paddingEnd="@dimen/dp_15">
 
@@ -193,12 +178,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="4.3sp"
                             android:text="@string/name"
-                            android:textColor="@color/black"
-
+                            android:textColor="@color/black_222628"
+                            android:textSize="@dimen/sp_14"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -211,15 +195,13 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:drawableEnd="@drawable/icon_arrow_right"
                             android:drawablePadding="10dp"
                             android:ellipsize="end"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical|end"
                             android:lineSpacingExtra="4.3sp"
                             android:maxLines="1"
                             android:text="@{info.name}"
-                            android:textColor="@color/black_25"
+                            android:textColor="@color/color_AA"
                             android:textSize="13.3sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -237,8 +219,124 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="@dimen/dp_16"
                         android:background="@color/light_bg_color" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:onClick="@{()->click.sex()}"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingEnd="@dimen/dp_15"
+                        >
+
+                        <TextView
+                            android:id="@+id/user_sex"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:lineSpacingExtra="4.3sp"
+                            android:text="@string/sex"
+                            android:textColor="@color/black_222628"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_sex"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:drawablePadding="10dp"
+                            android:drawableEnd="@drawable/icon_arrow_right2"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical|end"
+                            android:lineSpacingExtra="4.3sp"
+                            android:maxLines="1"
+                            android:text="@{info.sex}"
+                            android:textColor="@color/color_757575"
+                            android:textSize="13.3sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/user_sex"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="@dimen/dp_16"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="@dimen/dp_16"
+                        android:background="@color/light_bg_color"
+                        />
+
+
 
                     <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:paddingStart="@dimen/dp_15"
+                        android:paddingEnd="@dimen/dp_15"
+                        >
+
+                        <TextView
+                            android:id="@+id/user_birth"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center_vertical"
+                            android:text="@string/Birthday"
+                            android:textColor="@color/black_222628"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_birthDayStr"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="10dp"
+                            android:drawablePadding="10dp"
+                            android:drawableEnd="@drawable/icon_arrow_right2"
+                            android:fontFamily="@font/manrope_medium"
+                            android:gravity="center_vertical|end"
+                            android:lineSpacingExtra="4.3sp"
+                            android:maxLines="1"
+                            android:text="@{info.birthDayStr()}"
+                            android:textColor="@color/color_757575"
+                            android:textSize="13.3sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/user_birth"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/light_bg_color"
+                        />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_15"
@@ -246,25 +344,24 @@
                         android:paddingEnd="@dimen/dp_15">
 
                         <TextView
-                            android:id="@+id/phone"
+                            android:id="@+id/user_email"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="4.3sp"
-                            android:text="@string/phone"
-                            android:textColor="@color/black"
-
+                            android:text="@string/e_mail"
+                            android:textColor="@color/black_222628"
+                            android:textSize="@dimen/sp_14"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/tv_phone"
+                            android:id="@+id/tv_email"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -277,14 +374,15 @@
                             android:gravity="center_vertical|end"
                             android:lineSpacingExtra="4.3sp"
                             android:maxLines="1"
-                            android:text="@{info.phone}"
-                            android:textColor="@color/black_25"
+                            android:text="@{info.email}"
+                            android:textColor="@color/color_AA"
                             android:textSize="13.3sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/phone"
+                            app:layout_constraintStart_toEndOf="@+id/user_email"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:text="13.3sp" />
+                            tools:text="90333@qq.com"
+                            />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -298,57 +396,57 @@
                         android:background="@color/light_bg_color" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/cl_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/dp_15"
-                        android:onClick="@{()->click.chageEmail()}"
+                        android:onClick="@{()->click.phone()}"
                         android:paddingStart="@dimen/dp_15"
                         android:paddingEnd="@dimen/dp_15">
 
                         <TextView
-                            android:id="@+id/user_email"
+                            android:id="@+id/phone"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="4.3sp"
-                            android:text="@string/e_mail"
-                            android:textColor="@color/black"
-
+                            android:text="@string/phone"
+                            android:textColor="@color/black_222628"
+                            android:textSize="@dimen/sp_14"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/tv_email"
+                            android:id="@+id/tv_phone"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="10dp"
-                            android:drawableEnd="@drawable/icon_arrow_right"
                             android:drawablePadding="10dp"
+                            android:drawableEnd="@drawable/icon_arrow_right2"
                             android:ellipsize="end"
                             android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical|end"
                             android:lineSpacingExtra="4.3sp"
                             android:maxLines="1"
-                            android:text="@{info.email}"
-                            android:textColor="@color/black_25"
+                            android:text="@{info.phone}"
+                            android:textColor="@color/color_757575"
                             android:textSize="13.3sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/user_email"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintStart_toEndOf="@+id/phone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:text="13.3sp" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                     <View
                         android:layout_width="match_parent"
@@ -375,12 +473,11 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="20dp"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical"
                             android:lineSpacingExtra="4.3sp"
                             android:text="@string/password"
-                            android:textColor="@color/black"
-
+                            android:textColor="@color/black_222628"
+                            android:textSize="@dimen/sp_14"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -393,20 +490,18 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginBottom="20dp"
-                            android:drawableEnd="@drawable/icon_arrow_right"
+                            android:drawableEnd="@drawable/icon_arrow_right2"
                             android:drawablePadding="10dp"
                             android:ellipsize="end"
-                            android:fontFamily="@font/manrope_medium"
                             android:gravity="center_vertical|end"
                             android:lineSpacingExtra="4.3sp"
                             android:maxLines="1"
-                            android:text="@string/edit"
-                            android:textColor="@color/black_25"
+                            android:text="edit"
+                            android:textColor="@color/color_757575"
                             android:textSize="13.3sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/user_password"
-
                             app:layout_constraintTop_toTopOf="parent" />
 
 
@@ -419,172 +514,8 @@
                         android:layout_marginEnd="@dimen/dp_16"
                         android:background="@color/light_bg_color" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_15"
-                        android:paddingStart="@dimen/dp_15"
-                        android:paddingEnd="@dimen/dp_15"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/user_sex"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="@string/sex"
-                            android:textColor="@color/black"
-
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/tv_sex"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:drawablePadding="10dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical|end"
-                            android:lineSpacingExtra="4.3sp"
-                            android:maxLines="1"
-                            android:text="@{info.sex}"
-                            android:textColor="@color/black_25"
-                            android:textSize="13.3sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/user_sex"
-                            app:layout_constraintTop_toTopOf="parent" />
 
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="@dimen/dp_16"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="@dimen/dp_16"
-                        android:background="@color/light_bg_color"
-                        android:visibility="gone" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_15"
-                        android:paddingStart="@dimen/dp_15"
-                        android:paddingEnd="@dimen/dp_15"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/user_birth"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="@string/Birthday"
-                            android:textColor="@color/black"
-
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:drawablePadding="10dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical|end"
-                            android:lineSpacingExtra="4.3sp"
-                            android:maxLines="1"
-                            android:text="@{info.birthDayStr()}"
-                            android:textColor="@color/black_25"
-                            android:textSize="13.3sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/user_birth"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="@dimen/dp_16"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="@dimen/dp_16"
-                        android:background="@color/light_bg_color"
-                        android:visibility="gone" />
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dp_15"
-                        android:paddingStart="@dimen/dp_15"
-                        android:paddingEnd="@dimen/dp_15"
-                        android:visibility="gone">
-
-                        <TextView
-                            android:id="@+id/user_phone"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical"
-                            android:lineSpacingExtra="4.3sp"
-                            android:text="@string/phone"
-                            android:textColor="@color/black"
-
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="10dp"
-                            android:drawablePadding="10dp"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/manrope_medium"
-                            android:gravity="center_vertical|end"
-                            android:lineSpacingExtra="4.3sp"
-                            android:maxLines="1"
-                            android:text="@{info.phone}"
-                            android:textColor="@color/black_25"
-                            android:textSize="13.3sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/user_phone"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </LinearLayout>
 

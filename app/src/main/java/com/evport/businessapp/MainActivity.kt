@@ -15,6 +15,7 @@
  */
 package com.evport.businessapp
 
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -45,6 +46,7 @@ import com.stripe.android.CustomerSession
 import org.jetbrains.anko.toast
 
 import com.evport.businessapp.data.bean.MessageWrap
+import com.evport.businessapp.ui.page.MainFragment
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -131,18 +133,35 @@ class MainActivity() : BaseActivity() {
 //        Handler().postDelayed(
 //            {
         //connectSocket()
-       // initTimer()
+        // initTimer()
 
 
+        Thread {
+            Thread.sleep(50)
+            //启动预加载WebView服务
+            val chatService = ComponentName(
+                "com.evport.businessapp",
+                "com.evport.businessapp.ws.WsService"
+            )
 
-        //启动预加载WebView服务
-        Intent(this, WsService::class.java).also { intent ->
+            val intent = Intent();
+            intent.component = chatService;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(intent)
+                startForegroundService(intent);
             } else {
-                startService(intent)
+                startService(intent);
             }
-        }
+
+        }.start()
+
+//        //启动预加载WebView服务
+//        Intent(this, WsService::class.java).also { intent ->
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                startForegroundService(intent)
+//            } else {
+//                startService(intent)
+//            }
+//        }
 
 //
 
@@ -152,9 +171,9 @@ class MainActivity() : BaseActivity() {
         super.onStart()
 
         Log.e("mainActivity", "onStart")
-        val homeFilter = getHomeFilterData() ?: HomeFilter()
-        if (!homeFilter.isDefault)
-            saveHomeFilterData(HomeFilter())
+//        val homeFilter = getHomeFilterData() ?: HomeFilter()
+//        if (!homeFilter.isDefault)
+//            saveHomeFilterData(HomeFilter())
     }
 
     private fun logOut() { //                    登出
@@ -204,17 +223,17 @@ class MainActivity() : BaseActivity() {
         }
     }
 
-        val url =
-            SPUtils.getInstance().getString(Configs.HOST).replaceFirst("http", "ws").plus("platform/")
-                .plus(SPUtils.getInstance().getString(Configs.PHONE)).plus("_pcApp")
-val url1="wss://170s2247n7.51mypc.cn/platform/625297621@qq.com_EBOOSTAPP"
+    val url =
+        SPUtils.getInstance().getString(Configs.HOST).replaceFirst("http", "ws").plus("platform/")
+            .plus(SPUtils.getInstance().getString(Configs.PHONE)).plus("_pcApp")
+    val url1 = "wss://170s2247n7.51mypc.cn/platform/625297621@qq.com_EBOOSTAPP"
 
     override fun onResume() {
         super.onResume()
-       // val subscription = RxWebSocket.get(url).subscribe()
-      //  if (subscription == null || subscription.isDisposed) {
-           // connectSocket()
-     //   }
+        // val subscription = RxWebSocket.get(url).subscribe()
+        //  if (subscription == null || subscription.isDisposed) {
+        // connectSocket()
+        //   }
         Log.e("mainActivity", "onResume")
     }
 
@@ -240,80 +259,90 @@ val url1="wss://170s2247n7.51mypc.cn/platform/625297621@qq.com_EBOOSTAPP"
         EventBus.getDefault().unregister(this);
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if (MainFragment.index == 3) {
+
+            ImmersionBar.with(this)
+                .statusBarDarkFont(true).init()
+        }
+        Log.e("TAG", "onBackPressed: =============" + MainFragment.index)
+    }
 
 
     private fun connectSocket() {
         Log.e("hm-----url", url)
-       /* try {
-            RxWebSocket.get(url) //RxLifecycle : https://github.com/dhhAndroid/RxLifecycle
-//                .compose(RxLifecycle.with(this).bindToLifecycle())
-                .compose(RxLifecycle.with(this).bindToLifecycle())
-                .subscribe(object : WebSocketSubscriber() {
-                    override fun onOpen(webSocket: WebSocket) {
-                        Log.d("RxWebSockets", "onOpen1:")
-                        toastT("RxWebSockets" + "onOpen1:")
+        /* try {
+             RxWebSocket.get(url) //RxLifecycle : https://github.com/dhhAndroid/RxLifecycle
+ //                .compose(RxLifecycle.with(this).bindToLifecycle())
+                 .compose(RxLifecycle.with(this).bindToLifecycle())
+                 .subscribe(object : WebSocketSubscriber() {
+                     override fun onOpen(webSocket: WebSocket) {
+                         Log.d("RxWebSockets", "onOpen1:")
+                         toastT("RxWebSockets" + "onOpen1:")
 
-                    }
+                     }
 
-                    override fun onMessage(text: String) {
-                        Log.d("RxWebSockets", "返回数据:$text")
-                        toastT("RxWebSockets,返回数据:$text")
+                     override fun onMessage(text: String) {
+                         Log.d("RxWebSockets", "返回数据:$text")
+                         toastT("RxWebSockets,返回数据:$text")
 
-                        when (ActivityUtils.getTopActivity().localClassName) {
-                            "ui.page.activity.ChargeStatuListActivity" -> {
-                                getInstance().post(EventBean(OnMessageList, text, ""))
-                                toastT("RxWebSockets,ChargeStatuListActivity页面接收socket通知")
-                            }
-                            "ui.page.activity.ChageGunDetailActivity" -> {
-                                getInstance().post(EventBean(OnMessageGunDetail, text, ""))
-                                toastT("RxWebSockets,充电详情页面接收socket通知")
-                            }
-                            "ui.page.activity.UserFamilyActivity" -> {
-                                getInstance().post(EventBean(OnMessageUserFamily, text, ""))
-                                toastT("RxWebSockets,家庭用户列表页面接收socket通知")
-                            }
-                            else -> {
-                                getInstance().post(EventBean(OnMessageHome, text, ""))
-                                toastT("RxWebSockets,主页页面接收socket通知")
-                            }
-                        }
-
-
-                    }
-
-                    override fun onMessage(byteString: ByteString) {
-                        Log.d("RxWebSockets", "返回数据:")
-                        dismissLoading()
-                    }
+                         when (ActivityUtils.getTopActivity().localClassName) {
+                             "ui.page.activity.ChargeStatuListActivity" -> {
+                                 getInstance().post(EventBean(OnMessageList, text, ""))
+                                 toastT("RxWebSockets,ChargeStatuListActivity页面接收socket通知")
+                             }
+                             "ui.page.activity.ChageGunDetailActivity" -> {
+                                 getInstance().post(EventBean(OnMessageGunDetail, text, ""))
+                                 toastT("RxWebSockets,充电详情页面接收socket通知")
+                             }
+                             "ui.page.activity.UserFamilyActivity" -> {
+                                 getInstance().post(EventBean(OnMessageUserFamily, text, ""))
+                                 toastT("RxWebSockets,家庭用户列表页面接收socket通知")
+                             }
+                             else -> {
+                                 getInstance().post(EventBean(OnMessageHome, text, ""))
+                                 toastT("RxWebSockets,主页页面接收socket通知")
+                             }
+                         }
 
 
-                    override fun onReconnect() {
-                        Log.d("RxWebSockets", "重连:")
-                        dismissLoading()
-                    }
+                     }
 
-                    override fun onClose() {
-                        getInstance().post(EventBean("onClose", "", ""))
-                        Log.d("RxWebSockets", "onClose:")
-                        toastT("RxWebSockets," + "onClose:")
-                        dismissLoading()
-                    }
-                })
-        } catch (e: Exception) {
-            Log.d("RxWebSockets", "e:" + e.message)
-        }*/
+                     override fun onMessage(byteString: ByteString) {
+                         Log.d("RxWebSockets", "返回数据:")
+                         dismissLoading()
+                     }
+
+
+                     override fun onReconnect() {
+                         Log.d("RxWebSockets", "重连:")
+                         dismissLoading()
+                     }
+
+                     override fun onClose() {
+                         getInstance().post(EventBean("onClose", "", ""))
+                         Log.d("RxWebSockets", "onClose:")
+                         toastT("RxWebSockets," + "onClose:")
+                         dismissLoading()
+                     }
+                 })
+         } catch (e: Exception) {
+             Log.d("RxWebSockets", "e:" + e.message)
+         }*/
 
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onGetMessage(message: MessageWrap) {
-        Log.e("hm-----eventbus",message.data)
+        Log.e("hm-----eventbus", message.data)
         if (message.type == 1) {
             var text = message.data
             toastT("RxWebSockets,返回数据:$text")
             when (ActivityUtils.getTopActivity().localClassName) {
                 "ui.page.activity.ChargeStatuListActivity" -> {
                     getInstance().post(EventBean(OnMessageList, text, ""))
+                    sharedViewModel.refreshNav2.postValue(false)
                     toastT("RxWebSockets,ChargeStatuListActivity页面接收socket通知")
                 }
                 "ui.page.activity.ChageGunDetailActivity" -> {

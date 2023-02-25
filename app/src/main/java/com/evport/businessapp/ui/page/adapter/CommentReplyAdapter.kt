@@ -16,20 +16,28 @@
 package com.evport.businessapp.ui.page.adapter
 
 import android.content.Context
+import android.graphics.Color
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
 import com.evport.businessapp.R
 import com.evport.businessapp.data.bean.ReplyDetail
 import com.evport.businessapp.databinding.AdapterCommentReplyListBinding
 import com.evport.businessapp.utils.getUser
 import com.evport.businessapp.utils.setImageIsWifi
+import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
+
 
 /**
  * Create by KunMinX at 20/4/19
  */
-class CommentReplyAdapter(context: Context) :
+class CommentReplyAdapter(val context: Context) :
     SimpleDataBindingAdapter<ReplyDetail, AdapterCommentReplyListBinding>(
         context,
         R.layout.adapter_comment_reply_list,
@@ -48,7 +56,7 @@ class CommentReplyAdapter(context: Context) :
                 return oldItem == newItem
             }
         }) {
-    var delClick :((item: ReplyDetail)->Any) ?=null
+    var delClick: ((item: ReplyDetail) -> Any)? = null
 
     protected override fun onBindItem(
         binding: AdapterCommentReplyListBinding,
@@ -61,17 +69,31 @@ class CommentReplyAdapter(context: Context) :
         binding.ivDelete.setOnClickListener {
             delClick?.invoke(item)
         }
-        if (!item.hasDelFlag()){
-            if(mContext.getUser()?.userPk == item.replyUserPk){
+        if (!item.hasDelFlag()) {
+            if (mContext.getUser()?.userPk == item.replyUserPk) {
                 binding.ivDelete.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.ivDelete.visibility = View.GONE
             }
-        }else{
+        } else {
             binding.ivDelete.visibility = View.GONE
         }
 
 //        item.distance = mContext.getDistanceShow(item.distance)
+
+
+//        stringInterceptionChangeRed(
+//            binding.tvStreet,
+//            item.replySourceUserName.toString(),
+//            "Reply" +item.replySourceUserName + item.replyContent()
+//        )
+
+
+        val spannableString = SpannableString("Reply " +item.replySourceUserName + item.replyContent())
+        val foregroundColorSpan = ForegroundColorSpan(Color.parseColor("#00A0E9"))
+        spannableString.setSpan(foregroundColorSpan, 6, item.replySourceUserName!!.length+6, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+        binding.tvStreet.setMText(spannableString)
+
 
         binding.ivImage.setImageIsWifi(item.replyAvatarUrl)
     }

@@ -61,7 +61,8 @@ class CommentDetailActivity : BaseActivity() {
                     setOnItemClickListener { item, position ->
                         addNewPK = item?.commentsReplyPk.toString()
                         addType = "reply"
-                        hint = "${resources.getString(R.string.reply)} ${item?.replyName.toString()}"
+                        hint =
+                            "${resources.getString(R.string.reply)} ${item?.replyName.toString()}"+"..."
                         et_reply.setText("")
                         et_reply.setHint(hint)
                         showSoftInputFromWindow()
@@ -84,10 +85,10 @@ class CommentDetailActivity : BaseActivity() {
                     itemClick = { name, pk, type ->
                         addNewPK = pk
                         addType = type
-                        hint = "${resources.getString(R.string.reply)} $name"
+                        hint = "${resources.getString(R.string.reply)} $name"+"..."
                         et_reply.setText("")
                         et_reply.setHint(hint)
-                        Log.e("hm----","12345")
+                        Log.e("hm----", "12345")
                         showSoftInputFromWindow()
 
                     }
@@ -104,6 +105,9 @@ class CommentDetailActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mStationViewModel.Comment.value = comment
         Log.e("hm---comment", Gson().toJson(comment))
+
+
+
 
         addNewPK = if (comment?.commentsPk.isNullOrBlank())
             comment?.appCommentsPk.toString()
@@ -133,9 +137,14 @@ class CommentDetailActivity : BaseActivity() {
             feedbackReplyCheck()
         }
 
-        tv_reply.text = "${comment?.replyCounts}  ${resources.getString(R.string.replies)}"
+        tv_reply.hint = if (comment?.replyCounts.equals("0") || comment?.replyCounts.equals("1")) {
+            "${comment?.replyCounts}  ${resources.getString(R.string.reply)}"+"..."
+        } else{
+            "${comment?.replyCounts}  ${resources.getString(R.string.replies)}"+"..."
+        }
+
 //        }
-        mReplyList.clear()
+            mReplyList.clear()
         mStationViewModel.listCommentReply.value?.clear()
         comment?.ratingString()?.apply {
 
@@ -154,9 +163,9 @@ class CommentDetailActivity : BaseActivity() {
         rl_top.setOnClickListener {
             addType = "comment"
             if (!comment?.userName.isNullOrBlank()) {
-                hint = "${resources.getString(R.string.reply)}  ${comment?.userName}"
+                hint = "${resources.getString(R.string.reply)}  ${comment?.userName}"+"..."
             } else {
-                hint = "${resources.getString(R.string.reply)} "
+                hint = "${resources.getString(R.string.reply)} "+"..."
             }
             et_reply.setText("")
             et_reply.setHint(hint)
@@ -248,7 +257,12 @@ class CommentDetailActivity : BaseActivity() {
 
                     val fatherList = filter { it.commentsReplyRootPk == null }
                     val childList = filter { it.commentsReplyRootPk != null }
-                    tv_reply.text = "${fatherList.size} ${resources.getString(R.string.replies)}"
+
+                    tv_reply.text = if (fatherList.size<=1) {
+                        "${fatherList.size}  ${resources.getString(R.string.reply)}"
+                    } else{
+                        "${fatherList.size}  ${resources.getString(R.string.replies)}"
+                    }
                     fatherList.forEach { f ->
                         val list = ArrayList<ReplyDetail>()
                         childList.forEach { c ->
@@ -291,7 +305,7 @@ class CommentDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
 
@@ -315,7 +329,7 @@ class CommentDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
 
@@ -338,7 +352,7 @@ class CommentDetailActivity : BaseActivity() {
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
-               // getData()
+                // getData()
                 LiveBus.getInstance().post(EventBean(Configs.NOTIFICATION_MSG, true, ""))
 
                 this@CommentDetailActivity.finish()
@@ -347,7 +361,7 @@ class CommentDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
 
@@ -379,7 +393,7 @@ class CommentDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
             }
@@ -418,7 +432,7 @@ class CommentDetailActivity : BaseActivity() {
             }
 
             override fun onFailure(message: String) {
-                if (!message.isNullOrBlank()){
+                if (!message.isNullOrBlank()) {
                     message.toast()
                 }
 

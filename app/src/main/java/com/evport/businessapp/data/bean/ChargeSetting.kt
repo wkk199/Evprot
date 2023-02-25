@@ -53,7 +53,7 @@ data class NameValue(
 data class StatsData(
     val data: List<StatsDataY>,
     val amount: String? = null ?: "0.0",
-    val xValue: String,
+    val xvalue: String,
     val energy: String? = null ?: "0.0"//电量
 ) {
     fun amountFloat(): Float {
@@ -134,6 +134,7 @@ data class RecordResp(
     var dust: String = energy.toDustkg(),
     val email: String? = null,
     var flag: Boolean = true,
+    var stationName: String? = null,
     val chargingState: String? = null,
 ) {
     fun dateString(): String {
@@ -147,18 +148,18 @@ data class RecordResp(
         else
             "$amount"
     }
-
+//
     fun chargingStateString(): String {
-        return if (chargingState == "over") {
+        return if (flag) {
             "Settled"
         } else {
             "Unsettled"
         }
     }
-
-    fun isChargingState(): Boolean {
-        return chargingState == "over"
-    }
+//
+//    fun isChargingState(): Boolean {
+//        return chargingState == "over"
+//    }
 }
 
 @Keep
@@ -211,7 +212,7 @@ data class RecordDetailResp(
     }
 
     fun totalFeeString1(): String {
-        return totalFee
+        return currency.toUnit().plus(totalFee)
     }
 
     fun balanceString(): String {
@@ -248,19 +249,19 @@ data class RecordDetailResp(
         return appCommentsPk.isNullOrBlank() && !stationPk.isNullOrBlank() && !orderId.isNullOrBlank()
     }
 
-    fun paymentString(): String {
-        return if (payment == "Charging card") {
-            "充电卡"
-        } else {
-            "账户余额"
-        }
-    }
+//    fun paymentString(): String {
+//        return if (payment == "Charging card") {
+//            "Charging card"
+//        } else {
+//            "账户余额"
+//        }
+//    }
 
     fun statusString(): String {
         return if (status == "over") {
-            "支付完成"
+            "Payment completed"
         } else {
-            "未结算"
+            ""
         }
     }
 
@@ -269,10 +270,11 @@ data class RecordDetailResp(
 
 @Keep
 data class RequestRecord(
-    var order: String = "date",//充电记录的类型
+    var order: String = "",//充电记录的类型
     var pageNum: Int = 1,
     var desc: Boolean? = null ?: true,
-    var transactionPk: String? = ""
+    var transactionPk: String? = "",
+    var orderField: String? = "startTimestamp"
 )
 
 @Keep

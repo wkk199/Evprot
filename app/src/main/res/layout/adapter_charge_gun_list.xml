@@ -29,10 +29,10 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_image"
-            android:layout_width="73dp"
-            android:layout_height="73dp"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_15"
             app:placeholderImage="@drawable/icon_gun_default"
             app:placeholderImageScaleType="centerCrop"
             app:roundedCornerRadius="@dimen/dp_8" />
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:layout_marginEnd="15dp"
             android:padding="8dp"
             android:src="@drawable/icon_map_nav" />
@@ -58,22 +58,20 @@
             android:src="@drawable/icon_delete"
             android:visibility="gone" />
 
-        <TextView
+        <com.evport.businessapp.ui.view.MediumBoldTextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="13dp"
             android:layout_marginRight="@dimen/dp_13"
             android:layout_toStartOf="@id/iv_nav"
             android:layout_toEndOf="@id/iv_image"
             android:ellipsize="end"
-            android:fontFamily="@font/manrope_semibold"
             android:singleLine="true"
             android:text="@{info.stationName}"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:textStyle="bold"
             tools:text="11111" />
 
         <TextView
@@ -94,16 +92,15 @@
 
         <TextView
             android:id="@+id/tv_distance"
-            android:layout_width="75dp"
+            android:layout_width="72dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_nav"
-            android:gravity="right"
+            android:gravity="center"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/dp_5"
             android:text="@{info.distance}"
             android:textColor="@color/color_AA"
             android:textSize="12sp"
-            tools:text="11111111111111" />
+            tools:text="111111111" />
 
         <TextView
             android:id="@+id/tv_score"
@@ -111,14 +108,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_street"
             android:layout_marginStart="3dp"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="6dp"
             android:layout_toEndOf="@id/ratingBar"
             android:drawablePadding="10dp"
-            android:fontFamily="@font/manrope_medium"
             android:text="@{info.ratingString()}"
-            android:textColor="@color/yellow"
+            android:textColor="@color/color_8F9293"
             android:textSize="14sp"
-            android:textStyle="bold"
             tools:text="4.5" />
 
         <TextView
@@ -145,7 +140,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_street"
             android:layout_alignStart="@id/tv_name"
-            android:layout_marginTop="3dp"
+            android:paddingLeft="-3dp"
+            android:layout_marginTop="6dp"
             app:srb_clickable="false"
             app:srb_drawableEmpty="@drawable/icon_star_grey"
             app:srb_drawableFilled="@drawable/icon_star"
@@ -165,9 +161,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/iv_image"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginBottom="9dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 

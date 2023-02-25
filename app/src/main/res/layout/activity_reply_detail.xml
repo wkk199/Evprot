@@ -38,34 +38,40 @@
 
             <ImageView
                 android:id="@+id/back"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:onClick="@{()->click.back()}"
                 android:src="@drawable/icon_back1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/manrope_semibold"
                 android:text="@string/comment_details"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
         </RelativeLayout>
 
+        <View
+            android:id="@+id/view_liner"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/white_f5"/>
+
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/toolbar">
+            android:layout_below="@id/view_liner">
 
             <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_above="@id/ll_to_reply"
-
                 android:fillViewport="true">
 
                 <RelativeLayout
@@ -209,18 +215,16 @@
                         android:layout_below="@id/rl_top"
                         android:background="@color/light_bg_color" />
 
-                    <TextView
+                    <com.evport.businessapp.ui.view.MediumBoldTextView
                         android:id="@+id/tv_reply"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:fontFamily="@font/manrope_semibold"
                         android:text=""
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         tools:text="11111" />
 
                     <View

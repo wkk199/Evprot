@@ -15,8 +15,7 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -36,60 +35,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:clipToPadding="true"
         android:fillViewport="true"
         android:fitsSystemWindows="true">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorTheme"
-            android:gravity="center"
-            android:orientation="vertical"
+            android:layout_height="?actionBarSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
+                android:id="@+id/back"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:onClick="@{()->click.back()}"
+                android:src="@drawable/icon_back1" />
+
+            <com.evport.businessapp.ui.view.MediumBoldTextView
+                android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_40"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:src="@drawable/icon_title_logo"
-                android:visibility="gone" />
+                android:layout_centerInParent="true"
+                android:text="My Feedback"
+                android:textColor="@color/black_222628"
+                android:textSize="16sp" />
 
-            <RelativeLayout
+        </RelativeLayout>
 
-                android:layout_width="match_parent"
-                android:layout_height="?actionBarSize">
-
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:onClick="@{()->click.back()}"
-                    android:src="@drawable/icon_back" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/manrope_semibold"
-                    android:text="反馈回复"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:background="@color/color_line" />
-        </LinearLayout>
+        <View
+            android:id="@+id/view_liner"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/white_f5"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -104,7 +87,7 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+            app:layout_constraintTop_toBottomOf="@+id/view_liner">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/selle_recycler_view1"

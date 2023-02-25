@@ -17,6 +17,7 @@ package com.evport.businessapp.ui.page.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
@@ -53,13 +54,15 @@ class ListStringAdapter(context: Context?) :
         item: SocketType,
         holder: RecyclerView.ViewHolder
     ) {
-
         if (selectId == holder.absoluteAdapterPosition) {
             binding.tvId.setTextColor(mContext.resources.getColor(R.color.colorTheme))
+            binding.rlBg.background =mContext.resources.getDrawable(R.drawable.green_bg_4)
             item.colorBgStatu = mContext.resources.getColor(R.color.colorTheme)
         } else {
-            binding.tvId.setTextColor(mContext.resources.getColor(R.color.light_text_color))
-            item.colorBgStatu = mContext.resources.getColor(R.color.light_text_color)
+            binding.tvId.setTextColor(mContext.resources.getColor(R.color.color_8F9293))
+            item.colorBgStatu = mContext.resources.getColor(R.color.color_8F9293)
+            binding.rlBg.background =mContext.resources.getDrawable(R.color.color_8F9293)
+            binding.rlBg.background =mContext.resources.getDrawable(R.drawable.gray_bg_4)
         }
         binding.info = item
 

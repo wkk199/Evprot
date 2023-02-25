@@ -3,6 +3,7 @@ package com.evport.businessapp.ui.page.adapter
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
@@ -11,8 +12,8 @@ import com.evport.businessapp.R
 import com.evport.businessapp.databinding.ItemAddImgBinding
 import com.evport.businessapp.utils.loader.GlideMy.ImageLoaderOptions
 
-class ImageAddAdapter(context: Context) :
-    SimpleDataBindingAdapter<Uri,ItemAddImgBinding>(
+class ImageAddAdapter(val context: Context) :
+    SimpleDataBindingAdapter<Uri, ItemAddImgBinding>(
         context,
         R.layout.item_add_img,
         object : DiffUtil.ItemCallback<Uri>() {
@@ -47,19 +48,27 @@ class ImageAddAdapter(context: Context) :
                 + context.resources.getResourceEntryName(R.drawable.image_add)
     )
 
-    var delClick:((item :Uri )->Any)?=null
+    var delClick: ((item: Uri) -> Any)? = null
     override fun onBindItem(
         binding: ItemAddImgBinding,
         item: Uri,
         holder: RecyclerView.ViewHolder
     ) {
-        binding.imgDelete.isVisible = item!=add
-        binding.imgUri.setImageURI(item)
+        if (item == add) {
+            binding.rlImageAdd.background =context.resources.getDrawable(R.drawable.shape_image_add_bt)
+            binding.imgUriBg.visibility =View.VISIBLE
+            binding.imgUri.setImageURI(null)
+        }else{
+            binding.imgUri.setImageURI(item)
+            binding.imgUriBg.visibility =View.GONE
+            binding.rlImageAdd.background =context.resources.getDrawable(R.drawable.shape_image_add_bt)
+        }
+        binding.imgDelete.isVisible = item != add
+
         binding.imgDelete.setOnClickListener {
             delClick?.invoke(item)
         }
     }
-
 
 
 }

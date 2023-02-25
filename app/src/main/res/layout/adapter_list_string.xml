@@ -12,25 +12,28 @@
     </data>
 
     <RelativeLayout
-        drawable_radius="@{4}"
-        drawable_strokeColor="@{info.colorBgStatu}"
-        drawable_strokeWidth="@{1}"
+        android:id="@+id/rl_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="5dp"
-        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_4"
+        android:layout_marginRight="@dimen/dp_4"
+        android:layout_marginTop="@dimen/dp_7"
+        android:layout_marginBottom="@dimen/dp_7"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/manrope_medium"
             android:text="@{info.name}"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingBottom="@dimen/dp_5"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/color_8F9293"
+            android:textSize="14sp"
             tools:text="111111" />
 
     </RelativeLayout>

@@ -121,7 +121,7 @@ class PlacesMapsLatngActivity : BaseActivity() {
         initRecyclerView()
         initSearchView()
         initHistory()
-        showKeyWord()
+
 
 
 
@@ -209,7 +209,7 @@ class PlacesMapsLatngActivity : BaseActivity() {
                 handler.removeCallbacksAndMessages(null)
 
                 // Start a new place prediction request in 300 ms
-                handler.postDelayed({ getPlacePredictions(keyWord) }, 100)
+                handler.postDelayed({ getPlacePredictions(keyWord) }, 10)
             } else {
 
                 recyclerView1.visibility = View.VISIBLE
@@ -246,18 +246,24 @@ class PlacesMapsLatngActivity : BaseActivity() {
                 }
             }
             var count = 0;
+            var name :PlaceBean? = null
             historyList.forEach {
                 if (it.id == item.id) {
+                    name = it
                     count++
                 }
+            }
+            if (name!=null) {
+                historyList.remove(name)
+                historyList.add(0,item)
             }
             if (count == 0) {
                 historyList.add(0, item)
                 if (historyList.size > 10) {
                     historyList.removeAt(10)
                 }
-                aCache!!.put("history", Gson().toJson(historyList))
             }
+            aCache!!.put("history", Gson().toJson(historyList))
             closeKeyWord()
             this@PlacesMapsLatngActivity.setResult(100, intent)
             this@PlacesMapsLatngActivity.finish()
@@ -308,7 +314,7 @@ class PlacesMapsLatngActivity : BaseActivity() {
 //            .setOrigin(LatLng(-33.8749937, 151.2041382))
             .setSessionToken(sessionToken)
 //            .setLocationBias(bias)
-            .setTypeFilter(TypeFilter.ADDRESS)
+            .setTypeFilter(TypeFilter.GEOCODE)
             .setQuery(query)
 //            .setCountries("es")
 
@@ -341,10 +347,24 @@ class PlacesMapsLatngActivity : BaseActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        showKeyWord()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        closeKeyWord()
+    }
+
+
     override fun onDestroy() {
         super.onDestroy()
+
         //注销
         NetworkManager.getInstance().unRegisterObserver(this)
+
+
     }
 
     companion object {

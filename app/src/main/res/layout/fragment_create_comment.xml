@@ -48,21 +48,20 @@
 
                 <ImageView
                     android:id="@+id/back"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:onClick="@{()->click.back()}"
                     android:src="@drawable/icon_back1" />
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:fontFamily="@font/manrope_semibold"
                     android:text="@string/post_a_comment"
-                    android:textColor="@color/color_theme_black"
+                    android:textColor="@color/black_222628"
                     android:textSize="16sp" />
 
 
@@ -95,18 +94,17 @@
                     android:id="@+id/tv_t"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="15dp"
                     android:layout_marginTop="50dp"
-                    android:fontFamily="@font/manrope_medium"
                     android:text="@string/score"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_222628"
                     android:textSize="16sp" />
 
                 <com.willy.ratingbar.ScaleRatingBar
                     android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="34dp"
                     android:layout_marginTop="45dp"
                     app:srb_clickable="true"
                     app:srb_drawableEmpty="@drawable/icon_star_grey"
@@ -129,9 +127,9 @@
                 drawable_strokeWidth="@{1}"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="15dp"
                 app:layout_constraintTop_toBottomOf="@id/ratingBar">
 
 
@@ -145,6 +143,8 @@
                     android:hint="@string/text_Your_comment"
                     android:maxLength="500"
                     android:padding="@dimen/dp_16"
+                    android:textColorHint="@color/black_222628"
+                    android:textColor="@color/black_222628"
                     android:textSize="@dimen/sp_14" />
 
                 <TextView
@@ -172,20 +172,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <TextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/btn_netx"
                 drawable_radius="@{8}"
                 drawable_solidColor="@{@color/colorTheme}"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:fontFamily="@font/manrope_semibold"
                 android:gravity="center"
                 android:onClick="@{()->click.comment()}"
                 android:text="Submit Comment"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

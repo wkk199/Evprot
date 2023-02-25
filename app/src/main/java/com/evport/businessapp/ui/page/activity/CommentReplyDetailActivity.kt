@@ -65,7 +65,7 @@ class CommentReplyDetailActivity : BaseActivity() {
                     setOnItemClickListener { item, position ->
                         addNewPK = item?.commentsReplyPk.toString()
                         addType = "reply"
-                        hint = "${resources.getString(R.string.reply)}${item?.replyName.toString()}"
+                        hint = "${resources.getString(R.string.reply)}${item?.replyName.toString()}"+"..."
                         et_reply.setText("")
                         et_reply.setHint(hint)
                         showSoftInputFromWindow()
@@ -94,6 +94,14 @@ class CommentReplyDetailActivity : BaseActivity() {
 ////                mReplyList.addAll(it)
 //
 //            }
+
+        if (!commentPk?.userName.isNullOrBlank()) {
+            hint = "${resources.getString(R.string.reply)}  ${commentPk?.userName}"+"..."
+        } else {
+            hint = "${resources.getString(R.string.reply)} "+"..."
+        }
+        et_reply.setText("")
+        et_reply.setHint(hint)
 
 //        mStationViewModel.listReplyDetail.value = mReplyList
         getData()
@@ -130,7 +138,7 @@ class CommentReplyDetailActivity : BaseActivity() {
             }
             rl_top.setOnClickListener {
                 addType = "reply"
-                hint = "reply ${this.replyName}"
+                hint = "reply ${this.replyName}"+"..."
                 et_reply.setText("")
                 et_reply.setHint(hint)
                 addNewPK = commentPk?.commentsReplyRootPk ?: commentPk?.commentsReplyPk?:commentPk?.commentsPk?:""

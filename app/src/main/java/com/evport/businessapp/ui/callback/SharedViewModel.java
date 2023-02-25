@@ -56,9 +56,17 @@ public class SharedViewModel extends ViewModel {
     public final EventLiveData<Boolean> stopAPP = new EventLiveData<>();
     public final EventLiveData<Boolean> mapRefresh = new EventLiveData<>();
     public final EventLiveData<Boolean> mapRefresh3 = new EventLiveData<>();
+    public final EventLiveData<Boolean> mapRefreshUser4 = new EventLiveData<>();
 
 
     public final EventLiveData<Boolean> changePwdClick = new EventLiveData<>();
     public final EventLiveData<Boolean> chargeSettingClick = new EventLiveData<>();
+
+
+
+
+
+
+    public final EventLiveData<Boolean> refreshComment = new EventLiveData<>();
 
 }

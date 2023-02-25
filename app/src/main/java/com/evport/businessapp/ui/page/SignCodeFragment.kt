@@ -150,7 +150,7 @@ class SignCodeFragment : BaseFragment() {
             if (NoFastClickUtils.isFastClick())
             //关闭软键盘
             closeKeyWord()
-//            showLoading()
+            showLoading()
 //            nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
 //                it.putString("email", email.text.toString())
 //                it.putString("emailCode", emailCode.text.toString())
@@ -241,7 +241,6 @@ class SignCodeFragment : BaseFragment() {
 
                 dismissLoading()
                 "The registration code has been sent, if you didn't find it in your inbox, it may be in your spam".toast(5000)
-//                ToastUtils.showLong("The registration code has been sent, if you didn't find it in your inbox, it may be in your spam.",2222)
             }
 
             override fun onFailure(message: String) {
@@ -266,18 +265,12 @@ class SignCodeFragment : BaseFragment() {
         object : NetworkBoundResource<String>(networkStatusCallback = object :
             NetworkStatusCallback<String> {
             override fun onSuccess(data: String?) {
-
-
-
-                if (data!=null) {
+                dismissLoading()
                     nav().navigate(R.id.action_signCodeFragment_to_signUpFragment, Bundle().also {
                         it.putString("email", email)
                         it.putString("emailCode", emailCode)
                     }
                     )
-                }
-
-
             }
 
             override fun onFailure(message: String) {

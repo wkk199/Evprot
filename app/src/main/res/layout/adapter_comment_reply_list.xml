@@ -36,10 +36,9 @@
         <ImageView
             android:id="@+id/iv_delete"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
+            android:layout_height="35dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="12dp"
-            android:padding="5dp"
+            android:layout_marginEnd="8dp"
             android:src="@drawable/icon_delete"
             android:visibility="visible" />
 
@@ -48,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_toEndOf="@id/iv_image"
             android:textColor="@color/black_5E5E5E"
             android:text="@{info.replyName}"
@@ -85,6 +84,7 @@
                 android:fontFamily="@font/manrope_medium"
                 android:text="@string/reply"
                 android:textSize="12sp"
+                android:visibility="gone"
                 android:textColor="@color/black_222628"
                 tools:text="Reply " />
 
@@ -99,23 +99,26 @@
                 android:drawablePadding="10dp"
                 android:textColor="@color/colorTheme"
                 android:fontFamily="@font/manrope_medium"
+                android:visibility="gone"
                 android:text="@{info.replySourceUserName}"
                 android:textSize="12sp"
                 tools:text="111111" />
 
 
-            <TextView
+            <com.evport.businessapp.ui.view.MTextView
                 android:id="@+id/tv_street"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/tv_father_name"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="6dp"
+                android:gravity="left"
+                android:layout_marginRight="@dimen/dp_20"
                 android:drawablePadding="10dp"
+                android:breakStrategy="simple"
                 android:fontFamily="@font/manrope_medium"
-                android:text="@{info.replyContent()}"
+                android:ellipsize="end"
                 android:textColor="@color/black_222628"
-                android:textSize="12sp"
-                tools:text="111111" />
+                android:textSize="14sp"
+                tools:text="1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111" />
 
         </RelativeLayout>
 
@@ -126,11 +129,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ll_content"
             android:layout_alignStart="@id/tv_name"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/manrope_medium"
             android:singleLine="true"
+            android:layout_marginBottom="@dimen/dp_5"
+            android:textColor="@color/color_8F9293"
             android:text="@{info.commentTime()}"
-            android:textSize="12sp"
+            android:textSize="14sp"
             tools:text="111111" />
     </RelativeLayout>
 </layout>

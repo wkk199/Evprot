@@ -179,15 +179,15 @@ fun String.toDust(): String {
 fun String.toDayFrendly(): String {
     var s = ""
     try {
-        val all = this.toLong().div(1)
+        val all = this.toLong().div(1000)
         val d = all.div(24 * 60 * 60)
         val h = all.minus(d * 24 * 60 * 60).div(60 * 60)
         val min = all.minus(d * 24 * 60 * 60).minus(h * 60 * 60).div(60)
         val sec = all.minus(d * 24 * 60 * 60).minus(h * 60 * 60).minus(min * 60)
         s = when {
-            d > 0 -> "${d}day ${h}h${min}m${sec}s"
-            h > 0 -> "${h}h${min}m${sec}s"
-            min > 0 -> "${min}m${sec}s"
+            d > 0 -> "${d}day ${h}h${min}min${sec}s"
+            h > 0 -> "${h}h${min}min${sec}s"
+            min > 0 -> "${min}min${sec}s"
             sec > 0 -> "${sec}s"
             else -> "0"
         }
@@ -265,15 +265,16 @@ fun String.toDustkg(): String {
 // unit
 fun String?.toUnit(): String {
     var s = ""
-    this?.apply {
-        s = CurrencyUtils.getCurrencySymbol(this)
+//    this?.apply {
+//        s = CurrencyUtils.getCurrencySymbol(this)
 //        if (s.isBlank()) {
 //            s = this
 //        }
-    }
+//    }
 //   s = NumberFormat.getCurrencyInstance(Locale.US).format()
 
-    return s.plus(" ")
+//    return s.plus(" ")
+    return "$ "
 }
 
 

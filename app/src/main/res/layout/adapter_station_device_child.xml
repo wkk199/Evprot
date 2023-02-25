@@ -56,8 +56,8 @@
 
                 <ImageView
                     android:id="@+id/img_socket"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp" />
+                    android:layout_width="24dp"
+                    android:layout_height="24dp" />
 <!--                <TextView-->
 <!--                    drawable_radius="@{10}"-->
 <!--                    drawable_solidColor="@{@color/white}"-->
@@ -77,6 +77,8 @@
                     android:layout_marginLeft="10dp"
                     android:fontFamily="@font/manrope_semibold"
                     android:text="@{info.socket}"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     tools:text="111111"
@@ -86,10 +88,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_toEndOf="@id/tv_title"
-                    android:gravity="center"
-                    android:layout_marginBottom="@dimen/dp_4"
-                    android:layout_gravity="center"
-                    android:text="."
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="·"
                      />
 
                 <TextView
@@ -100,6 +101,8 @@
                     android:layout_toEndOf="@id/tv_title"
                     android:fontFamily="@font/manrope_medium"
                     android:text="@{info.power}"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:textSize="12sp"
                     tools:text="111111"
                     android:layout_marginStart="5dp" />
@@ -110,6 +113,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/manrope_medium"
                     android:layout_marginLeft="@dimen/dp_2"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
                     android:text="kW"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@id/tv_title"

@@ -34,7 +34,7 @@ data class User(
     var email: String? = null,
     var ssoticket: String? = null,//token
     var sex: String? = null,//female ,male
-    var birthDay: String? = null,
+//    var birthDay: String? = null,
     var birthday: String? = null,//-
     var phone: String? = null,
     var areaCode: String? = null,

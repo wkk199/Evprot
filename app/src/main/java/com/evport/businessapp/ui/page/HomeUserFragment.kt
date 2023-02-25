@@ -33,6 +33,7 @@ import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.utils.getUser
 import com.evport.businessapp.utils.setImageIsWifi
 import com.evport.businessapp.utils.toast
+import com.gyf.immersionbar.ImmersionBar
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_home_user.*
 import kotlinx.android.synthetic.main.fragment_home_user.iv_avatar
@@ -83,6 +84,14 @@ class HomeUserFragment : BaseFragment() {
                     initUser()
                 }
             })
+        sharedViewModel.mapRefreshUser4.observe(this, EventObserver {
+            if (it) {
+                ImmersionBar.with(this).statusBarDarkFont(true).init()
+//                toastT("主页导航栏点击 刷新数据-时间戳：${DateUtil.getNow()}")
+            }
+        })
+
+
     }
 
     public override fun loadInitData() {
@@ -92,7 +101,6 @@ class HomeUserFragment : BaseFragment() {
     override fun onResume() {
         super.onResume()
         initUser()
-
     }
 
     fun initUser(){
@@ -118,7 +126,7 @@ class HomeUserFragment : BaseFragment() {
             startActivity<UserCollectActivity>()
         }
         fun myCard() {
-            nav().navigate(R.id.action_global_myWalletFragment)
+            nav().navigate(R.id.action_global_myCardListFragment)
         }
         fun family() {
             getFamilyList()

@@ -2,7 +2,6 @@ package com.evport.businessapp.ui.page.activity
 
 import android.os.Bundle
 import androidx.core.view.isVisible
-import com.blankj.utilcode.util.ToastUtils
 import com.gyf.immersionbar.ImmersionBar
 import com.evport.businessapp.BR
 import com.evport.businessapp.R
@@ -46,6 +45,7 @@ class RecordDetailActivity : BaseActivity() {
     inner class ClickProxy {
         fun back() {
             finish()
+            sharedViewModel.refreshComment.postValue(true)
         }
 
         fun comment() {

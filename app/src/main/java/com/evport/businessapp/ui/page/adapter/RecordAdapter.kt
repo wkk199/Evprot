@@ -53,10 +53,14 @@ class RecordAdapter(var context: Context?) :
     ) {
         binding.info = item
 
-        if (item.isChargingState()){
+        if (item.flag){
             binding.rlStartDate.background=context!!.resources.getDrawable(R.drawable.shape_record_bt1)
+            binding.tvFlag.background=context!!.resources.getDrawable(R.drawable.shape_record_bt4)
+            binding.tvFlag.setTextColor(context!!.resources.getColor(R.color.colorTheme))
         }else{
             binding.rlStartDate.background=context!!.resources.getDrawable(R.drawable.shape_record_bt)
+            binding.tvFlag.background=context!!.resources.getDrawable(R.drawable.shape_record_bt3)
+            binding.tvFlag.setTextColor(context!!.resources.getColor(R.color.unsettled_D94821))
         }
 
     }

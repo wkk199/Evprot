@@ -61,16 +61,26 @@ class HomeNav3Fragment : BaseFragment() {
     override fun getDataBindingConfig(): DataBindingConfig {
         mAdapter = RecordAdapter(context).apply {
             setOnItemClickListener { item, position ->
-         /*       if (item.isChargingState()) {
+//                nav().navigate(R.id.action_global_recordDetailFragment,
+//                    Bundle().apply
+//                    { putString("record", item?.transactionPk) })
+
+
+
+                if (item.flag) {
                     nav().navigate(R.id.action_global_recordDetailFragment,
                         Bundle().apply
                         { putString("record", item?.transactionPk) })
                 } else {
-                    ToastUtils.showShort("订单还未结算")
-                }*/
-                nav().navigate(R.id.action_global_recordDetailFragment,
-                    Bundle().apply
-                    { putString("record", item?.transactionPk) })
+                    val intent = Intent(
+                        activity,
+                        ChargeStatuListActivity::class.java
+                    )
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                }
+
 //                if (item.isChargingState()) {
 //                    nav().navigate(R.id.action_global_recordDetailFragment,
 //                        Bundle().apply

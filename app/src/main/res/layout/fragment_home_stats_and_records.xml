@@ -33,18 +33,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:fitsSystemWindows="true">
 
 
+        <com.lihang.ShadowLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white_f5"
+            app:hl_shadowColor="#30000000"
+            app:hl_shadowHiddenLeft="true"
+            app:hl_shadowHiddenRight="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:hl_shadowHiddenTop="true"
+            app:hl_shadowLimit="3dp"
+            >
             <RelativeLayout
-                android:id="@+id/toolbar"
+                android:id="@+id/rll"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_marginTop="@dimen/dp_40"
                 app:layout_constraintTop_toTopOf="parent"
                 >
-
                 <ImageView
                     android:id="@+id/back"
                     android:layout_width="32dp"
@@ -68,21 +79,17 @@
 
 
             </RelativeLayout>
-            <View
-                android:id="@+id/view_liner"
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="@color/white_f5"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                />
 
+
+
+        </com.lihang.ShadowLayout>
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingBottom="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_liner" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

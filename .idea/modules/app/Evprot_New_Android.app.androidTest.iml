@@ -23,6 +23,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/17f5292df4bbd7c65517d6d1fca88c69/databinding-runtime-4.1.1-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/modules-2/files-2.1/androidx.databinding/databinding-common/4.1.1/135fcbb4e3cb4f16b93a16c800776a48d2ce840/databinding-common-4.1.1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/4ed9c01bc592cd243829ec4afc51339d/material-1.2.1-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/02147a07b38b205ab2b89acb3fbddc48/jetified-androidx-3.1.4-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/7de59f36b2065036818c632eec107e61/jetified-crystalrangeseekbar-1.1.3-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b4455652b2955d9e88f0cc4587edbddb/jetified-timePickerWithSeconds-1.0.1-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f5014c62efa74769554fc40384c959a1/jetified-OneSignal-4.8.4-api.jar</arg>
@@ -188,8 +189,8 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5090e5280a4ab15f7c19a0ebc7a02669/jetified-circleprogress-1.2.1-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5fdcd11183b261bd826078c3631b0b10/jetified-banner-2.2.2-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8727f158a1033038e2ed153ffbfdbf3b/jetified-EasyPhotos-3.1.5-api.jar</arg>
-                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/37fc58dedc51dc95197628a9bf76923a/jetified-fresco-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/979dd83ca91234f8c80ffea9d723258c/jetified-ImagePreview-2.3.5-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/37fc58dedc51dc95197628a9bf76923a/jetified-fresco-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/7b9602fb326c6e0df763202d34cbf425/jetified-status-bar-compat-0.7-api.jar</arg>
                 <arg>$MODULE_DIR$/../../../blufilibrary/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/9dd29c2c344c8d9143ae4323f113cda4/jetified-XPopup-2.7.6-api.jar</arg>
@@ -369,6 +370,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.databinding:databinding-adapters:4.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.databinding:databinding-runtime:4.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.material:material:1.2.1@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.ypx.yimagepicker:androidx:3.1.4@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.crystal:crystalrangeseekbar:1.1.3@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.kovachcode:timePickerWithSeconds:1.0.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.onesignal:OneSignal:4.8.4@aar" level="project" />
@@ -506,8 +508,8 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.lzyzsd:circleprogress:1.2.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.github.youth5201314:banner:2.2.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.HuanTanSheng:EasyPhotos:3.1.5@aar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:fresco:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.ycjiang:ImagePreview:2.3.5@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:fresco:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.githang:status-bar-compat:0.7@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.li-xiaojun:XPopup:2.7.6@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.gyf.immersionbar:immersionbar:3.0.0@aar" level="project" />

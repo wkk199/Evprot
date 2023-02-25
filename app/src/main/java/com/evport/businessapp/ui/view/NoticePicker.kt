@@ -8,10 +8,6 @@ import com.lxj.xpopup.core.CenterPopupView
 
 class NoticePicker(
     context: Context,
-    var title: String,
-    var content: String,
-    var yes: String,
-    var no: String
 ) : CenterPopupView(context) {
 
     private var mconfirmBlock: () -> Unit = {}
@@ -24,9 +20,6 @@ class NoticePicker(
     }
 
     private fun initView() {
-        bind.close.setOnClickListener {
-            dismiss()
-        }
         bind.no.setOnClickListener {
             dismiss()
         }
@@ -34,10 +27,6 @@ class NoticePicker(
             dismiss()
             mconfirmBlock.invoke()
         }
-        bind.title.setText(title)
-        bind.content.setText(content)
-        bind.yes.setText(yes)
-        bind.no.setText(no)
     }
 
     fun setCallBack(confirmBlock: () -> Unit = {}) {

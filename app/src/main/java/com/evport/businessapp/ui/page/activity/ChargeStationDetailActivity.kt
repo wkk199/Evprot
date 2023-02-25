@@ -221,14 +221,7 @@ class ChargeStationDetailActivity : BaseActivity() {
             ratingBar.rating =
                 if (this.isNotEmpty()) mStationItem?.ratingString()?.toFloat()!! else 0.0f
         }
-        mStationItem?.apply {
-            if (stationAvatarUrl.equals("")) return
-            iv_bg.setImageIsWifi(stationAvatarUrl)
-        }
-        if (!mStationItem!!.stationAvatarUrl.isNullOrBlank()) {
-            imageList.add(mStationItem!!.stationAvatarUrl!!)
-            initBanner()
-        }
+
 
         stationCommentReq.stationPk = mStationItem?.stationPk
         getData()
@@ -300,6 +293,17 @@ class ChargeStationDetailActivity : BaseActivity() {
 
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
+
+
+        mStationItem?.apply {
+            if (stationAvatarUrl.equals("")) return
+            iv_bg.setImageIsWifi(stationAvatarUrl)
+        }
+        if (!mStationItem!!.stationAvatarUrl.isNullOrBlank()) {
+            imageList.add(mStationItem!!.stationAvatarUrl!!)
+            initBanner()
+        }
+
     }
 
     var currentItem = 0
@@ -320,7 +324,7 @@ class ChargeStationDetailActivity : BaseActivity() {
                 .request(object : OnPermissionCallback {
                     override fun onGranted(permissions: MutableList<String>, all: Boolean) {
                         if (!all) {
-                            ToastUtils.showShort("请获取拨打电话权限")
+                            ToastUtils.showShort("Obtain the right to make a call")
                             return
                         }
                         val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + text_phone.text)) //直接拨打电话
@@ -329,11 +333,11 @@ class ChargeStationDetailActivity : BaseActivity() {
 
                     override fun onDenied(permissions: MutableList<String>, never: Boolean) {
                         if (never) {
-                            ToastUtils.showShort("被永久拒绝授权，请手动授予拨打电话权限")
+                            ToastUtils.showShort("Permanently denied authorization, please manually grant call rights")
                             // 如果是被永久拒绝就跳转到应用权限系统设置页面
                             XXPermissions.startPermissionActivity(this@ChargeStationDetailActivity, permissions)
                         } else {
-                            ToastUtils.showShort("获取拨打电话权限失败")
+                            ToastUtils.showShort("Failed to obtain the call permission. Procedure")
                         }
                     }
                 })
@@ -412,10 +416,13 @@ class ChargeStationDetailActivity : BaseActivity() {
                         var imgs = data.images!!.split(",")
                         imageList.addAll(imgs)
                     } else {
-                        imageList.add(mStationItem!!.stationAvatarUrl!!)
+                        if (mStationItem!!.stationAvatarUrl!! != "") {
+                            imageList.add(mStationItem!!.stationAvatarUrl!!)
+                        }
                     }
-
-                    initBanner()
+                    if (imageList.size>0) {
+                        initBanner()
+                    }
                     mStationViewModel.deviceInfoTitle.set("Connectors $cNumber")
                     mStationViewModel.stationInfoTitle.set("Device " + data.device?.size)
                     TabPageBindingAdapter.tabSelectedListener(
@@ -448,6 +455,8 @@ class ChargeStationDetailActivity : BaseActivity() {
                         stationPk = mStationItem?.stationPk,
                         minPower = minPower,
                         maxPower = maxPower,
+                        latitude = getLat().toString(),
+                        longitude = getLng().toString()
 //                        status = status
                     )
                 )
@@ -471,9 +480,9 @@ class ChargeStationDetailActivity : BaseActivity() {
                     }
                     mStationViewModel.listComments.value = allComments
                     if (allComments.size == 0) {
-//                        empty_view.visibility = View.VISIBLE
+                        empty_view.visibility = View.VISIBLE
                     } else {
-//                        empty_view.visibility = View.GONE
+                        empty_view.visibility = View.GONE
                     }
 
                 }
@@ -549,11 +558,13 @@ class ChargeStationDetailActivity : BaseActivity() {
     }
 
     fun delComment(pk: String) {
+        refreshing = true
         object : NetworkBoundResource<Any>(networkStatusCallback = object :
             NetworkStatusCallback<Any> {
 
             override fun onSuccess(data: Any?) {
 //                ToastUtils.showShort("successfully")
+                "success".toast()
                 refresh()
 
             }
@@ -593,7 +604,7 @@ class ChargeStationDetailActivity : BaseActivity() {
             }
         }
         banner.isAutoLoop(true)
-        banner.setLoopTime(2000)
+        banner.setLoopTime(3000)
         banner.addBannerLifecycleObserver(this).setAdapter(ada)
         banner.setIndicator(indicator1, false)
 

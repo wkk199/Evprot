@@ -15,11 +15,21 @@
   -->
 
 <resources>
+    <declare-styleable name="RadiusCardView">
+        <!--        左上圆角大小-->
+        <attr name="rcv_topLeftRadiu" format="dimension" />
+        <!--        右上圆角大小-->
+        <attr name="rcv_topRightRadiu" format="dimension" />
+        <!--        右下圆角大小-->
+        <attr name="rcv_bottomRightRadiu" format="dimension" />
+        <!--        左下圆角大小-->
+        <attr name="rcv_bottomLeftRadiu" format="dimension" />
+    </declare-styleable>
+
 
     <declare-styleable name="ForegroundImageView">
         <attr name="android:foreground" />
     </declare-styleable>
-
 
     <declare-styleable name="PlayPause">
         <attr name="isCircleDraw" format="boolean" />
@@ -85,4 +95,14 @@
         <attr name="ct_second_drawable" format="reference" />
         <attr name="ct_drawable_tint" format="reference|color" />
     </declare-styleable>
+
+
+
+    <declare-styleable name="MediumBoldTextView">
+        <!--字体线条的描边粗细-->
+        <attr name="strokeWidth" format="dimension" />
+        <!--最大字符串长度，超过这个长度后显示...-->
+        <attr name="mediumMaxLength" format="integer" />
+    </declare-styleable>
+
 </resources>

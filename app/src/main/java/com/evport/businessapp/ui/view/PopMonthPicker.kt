@@ -5,6 +5,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.blankj.utilcode.util.ToastUtils
 import com.evport.businessapp.R
+import com.evport.businessapp.databinding.PopDataPickerBinding
 import com.evport.businessapp.databinding.PopMonthPickerBinding
 import com.evport.businessapp.utils.DateUtil
 import com.lxj.xpopup.core.BottomPopupView
@@ -12,7 +13,7 @@ import com.lxj.xpopup.core.BottomPopupView
 
 class PopMonthPicker(context: Context, val selectYear: Boolean) : BottomPopupView(context) {
 
-    private lateinit var bind: PopMonthPickerBinding
+    private lateinit var bind: PopDataPickerBinding
     private var mCurrYear: Int = DateUtil.getCurrDate("yyyy").toInt()
     private var mCurrMonth: Int = DateUtil.getCurrDate("MM").toInt()
     private var mOkBlock: (String) -> Unit = {}
@@ -20,7 +21,7 @@ class PopMonthPicker(context: Context, val selectYear: Boolean) : BottomPopupVie
     private var mCurrYearNow: Int = DateUtil.getCurrDate("yyyy").toInt()
     private var mCurrMonthNow: Int = DateUtil.getCurrDate("MM").toInt()
     override fun getImplLayoutId(): Int {
-        return R.layout.pop_month_picker
+        return R.layout.pop_data_picker
     }
 
     override fun onCreate() {
@@ -36,13 +37,15 @@ class PopMonthPicker(context: Context, val selectYear: Boolean) : BottomPopupVie
             bind.wheelMonth.visibility = View.VISIBLE
         }
 
+
         bind.apply {
             wheelYear.apply {
                 val max = mCurrYear
-                val min = 2020
+                val min = 1991
+                wrapSelectorWheel =true
                 refreshByNewDisplayedValues(arrayOfNulls<String>(max - min + 1).apply {
                     for (i in 0..max - min) {
-                        this[i] = "${2020 + i}"
+                        this[i] = "${1991 + i}"
                     }
                 })
 
@@ -69,6 +72,7 @@ class PopMonthPicker(context: Context, val selectYear: Boolean) : BottomPopupVie
             }
 
             wheelMonth.apply {
+                wrapSelectorWheel =true
                 refreshByNewDisplayedValues(arrayOfNulls<String>(mCurrMonth).apply {
                     for (i in 0 until mCurrMonth) {
                         this[i] = if (i < 9) "0${i + 1}" else "${i + 1}"
@@ -83,7 +87,7 @@ class PopMonthPicker(context: Context, val selectYear: Boolean) : BottomPopupVie
 
             tvOk.setOnClickListener {
                 if (mFinalYearMonth[0]!!.toInt() == mCurrYear && mFinalYearMonth[1]!!.toInt() > mCurrMonth) {
-                    ToastUtils.showShort("时间不能大于当前时间")
+                    ToastUtils.showShort("The time cannot be later than the current time")
                     return@setOnClickListener
                 }
                 mOkBlock.invoke("${mFinalYearMonth[0]}-${mFinalYearMonth[1]}")

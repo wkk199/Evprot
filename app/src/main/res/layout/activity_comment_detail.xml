@@ -45,12 +45,11 @@
                 android:onClick="@{()->click.back()}"
                 android:src="@drawable/icon_back1" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:fontFamily="@font/manrope_semibold"
                 android:text="@string/comment_details"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -233,18 +232,16 @@
                         android:layout_marginTop="@dimen/dp_13"
                         android:background="@color/white_f5" />
 
-                    <TextView
+                    <com.evport.businessapp.ui.view.MediumBoldTextView
                         android:id="@+id/tv_reply"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/line"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:fontFamily="@font/manrope_semibold"
                         android:text=""
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        android:textStyle="bold"
                         tools:text="11111" />
 
 

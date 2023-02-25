@@ -37,7 +37,6 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/manrope_semibold"
                 android:gravity="center"
                 android:lineSpacingExtra="4.3sp"
                 android:text="@string/there_was_no_system_message"

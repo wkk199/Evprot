@@ -17,9 +17,9 @@
         android:background="@color/white">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_logo_y"
+            android:layout_width="97dp"
+            android:layout_height="97dp"
+            android:background="@drawable/icon_logo_y"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="140dp"/>
 

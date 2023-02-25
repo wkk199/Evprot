@@ -259,14 +259,6 @@
         app:destination="@id/notiFeedbackDetailFragment" />
 
     <fragment
-        android:id="@+id/myWalletFragment"
-        android:name="com.evport.businessapp.ui.page.MyWalletFragment"
-        android:label="MyWalletFragment" />
-    <action
-        android:id="@+id/action_global_myWalletFragment"
-        app:destination="@id/myWalletFragment" />
-
-    <fragment
         android:id="@+id/myCardListFragment"
         android:name="com.evport.businessapp.ui.page.MyCardListFragment"
         android:label="MyCardListFragment" />

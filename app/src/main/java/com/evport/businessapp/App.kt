@@ -62,9 +62,9 @@ class App : Application(), ViewModelStoreOwner {
         aCache = ACache.get(this)
         mAppViewModelStore = ViewModelStore()
         appContext = this.applicationContext
-        val homeFilter = getHomeFilterData() ?: HomeFilter()
-        if (!homeFilter.isDefault)
-            saveHomeFilterData(HomeFilter())
+//        val homeFilter = getHomeFilterData() ?: HomeFilter()
+//        if (!homeFilter.isDefault)
+//            saveHomeFilterData(HomeFilter())
 // Initialize Places.
         //google 地图搜索
         Places.initialize(applicationContext, getString(R.string.google_maps_key))

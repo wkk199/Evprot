@@ -18,16 +18,23 @@ package com.evport.businessapp.ui.page.adapter
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
+import android.util.DisplayMetrics
+import android.view.View
+import android.view.WindowManager
+import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.evport.businessapp.R
 import com.evport.businessapp.data.bean.CheckTransaction
 import com.evport.businessapp.databinding.AdapterChargeStatusBinding
+import com.evport.businessapp.ui.view.PopTimePicker
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.socketTypeIsAc
 import com.evport.businessapp.utils.toUnit
 import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
+import com.kunminx.architecture.utils.AdaptScreenUtils
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.interfaces.OnConfirmListener
 import com.tencent.mm.opensdk.utils.Log
@@ -37,8 +44,7 @@ import kotlinx.coroutines.*
 /**
  * Create by KunMinX at 20/4/19
  */
-class ChargeStatusAdapter(val context: Context?) :
-    SimpleDataBindingAdapter<CheckTransaction, AdapterChargeStatusBinding>(
+class ChargeStatusAdapter(val context: Context?) : SimpleDataBindingAdapter<CheckTransaction, AdapterChargeStatusBinding>(
         context,
         R.layout.adapter_charge_status,
         object : DiffUtil.ItemCallback<CheckTransaction>() {
@@ -87,7 +93,21 @@ class ChargeStatusAdapter(val context: Context?) :
     }
 
     var stopClick: ((item: CheckTransaction, p: Int) -> Any)? = null
+    var onClickBack: () -> Unit = {}
 
+    fun setOnclick(okBlock: () -> Unit = {}) {
+        onClickBack = okBlock
+    }
+
+    private fun getDisplayMetrics(context: Context): DisplayMetrics {
+        val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val metrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(metrics)
+        return metrics
+    }
+
+
+    var strTYpe = ""
 
     protected override fun onBindItem(
         binding: AdapterChargeStatusBinding,
@@ -97,6 +117,118 @@ class ChargeStatusAdapter(val context: Context?) :
 
         binding.info = item
 
+//        if (currentList.size)
+        if (currentList.size ==1){
+            binding.imgItemCard.setTopRadiu(0f,0f)
+            binding.rlButoon.background= null
+
+            if (strTYpe == "首页") {
+                binding.toolbarBack.visibility =View.GONE
+                val lp1: RelativeLayout.LayoutParams =
+                    binding.llToReply.layoutParams as RelativeLayout.LayoutParams
+                lp1.bottomMargin = AdaptScreenUtils.dp2px(context, 62f)
+                binding.llToReply.layoutParams = lp1
+
+                val lp : RelativeLayout.LayoutParams = binding.clearFilterLl.layoutParams as RelativeLayout.LayoutParams
+                lp.topMargin = AdaptScreenUtils.dp2px(context,108f)
+                binding.clearFilterLl.layoutParams = lp
+
+            }else{
+
+                val lp : RelativeLayout.LayoutParams = binding.clearFilterLl.layoutParams as RelativeLayout.LayoutParams
+                lp.topMargin = AdaptScreenUtils.dp2px(context,29f)
+                binding.clearFilterLl.layoutParams = lp
+
+                binding.toolbarBack.visibility =View.VISIBLE
+                val lp1: RelativeLayout.LayoutParams =
+                    binding.llToReply.layoutParams as RelativeLayout.LayoutParams
+                lp1.bottomMargin = AdaptScreenUtils.dp2px(context, 0f)
+                binding.llToReply.layoutParams = lp1
+            }
+
+            if (strTYpe == "首页") {
+                val lp2: RelativeLayout.LayoutParams =
+                    binding.nsView.layoutParams as RelativeLayout.LayoutParams
+                lp2.bottomMargin = AdaptScreenUtils.dp2px(context, 165f)
+                binding.nsView.layoutParams = lp2
+            }else{
+                val lp2: RelativeLayout.LayoutParams =
+                    binding.nsView.layoutParams as RelativeLayout.LayoutParams
+                lp2.bottomMargin = AdaptScreenUtils.dp2px(context, 0f)
+                binding.nsView.layoutParams = lp2
+            }
+
+
+            val lp5 : RecyclerView.LayoutParams = binding.rlList.layoutParams as RecyclerView.LayoutParams
+            lp5.leftMargin = AdaptScreenUtils.dp2px(context,0f)
+            binding.rlList.layoutParams = lp5
+            binding.rlList.layoutParams?.width = (getDisplayMetrics(context!!).widthPixels.times(1f)).toInt()
+
+
+            val lp3 : RelativeLayout.LayoutParams = binding.imgItemCard.layoutParams as RelativeLayout.LayoutParams
+            lp3.height = AdaptScreenUtils.dp2px(context,430f)
+            binding.imgItemCard.layoutParams = lp3
+
+
+            val lp4 : RelativeLayout.LayoutParams = binding.llCard2.layoutParams as RelativeLayout.LayoutParams
+            lp4.topMargin = AdaptScreenUtils.dp2px(context,358f)
+            binding.llCard2.layoutParams = lp4
+
+        }else{
+            val lp : RelativeLayout.LayoutParams = binding.clearFilterLl.layoutParams as RelativeLayout.LayoutParams
+            lp.topMargin = AdaptScreenUtils.dp2px(context,29f)
+            binding.clearFilterLl.layoutParams = lp
+
+            binding.imgItemCard.setTopRadiu(20f,20f)
+            binding.rlButoon.background= context!!.resources.getDrawable(R.drawable.shape_yuan_bt1)
+            binding.rlList.layoutParams?.width = (getDisplayMetrics(context).widthPixels.times(0.94f)).toInt()
+            binding.toolbarBack.visibility =View.GONE
+            if (strTYpe == "首页") {
+                val lp2: RelativeLayout.LayoutParams =
+                    binding.nsView.layoutParams as RelativeLayout.LayoutParams
+                lp2.bottomMargin = AdaptScreenUtils.dp2px(context, 155f)
+                binding.nsView.layoutParams = lp2
+            }else{
+                val lp2: RelativeLayout.LayoutParams =
+                    binding.nsView.layoutParams as RelativeLayout.LayoutParams
+                lp2.bottomMargin = AdaptScreenUtils.dp2px(context, 140f)
+                binding.nsView.layoutParams = lp2
+            }
+
+            if (strTYpe == "首页") {
+                val lp1: RelativeLayout.LayoutParams =
+                    binding.llToReply.layoutParams as RelativeLayout.LayoutParams
+                lp1.bottomMargin = AdaptScreenUtils.dp2px(context, 62f)
+                binding.llToReply.layoutParams = lp1
+            }else{
+                val lp1: RelativeLayout.LayoutParams =
+                    binding.llToReply.layoutParams as RelativeLayout.LayoutParams
+                lp1.bottomMargin = AdaptScreenUtils.dp2px(context, 44f)
+                binding.llToReply.layoutParams = lp1
+            }
+
+            val lp3 : RelativeLayout.LayoutParams = binding.imgItemCard.layoutParams as RelativeLayout.LayoutParams
+//            lp3.topMargin = AdaptScreenUtils.dp2px(context,15f)
+            lp3.height = AdaptScreenUtils.dp2px(context,335f)
+            binding.imgItemCard.layoutParams = lp3
+
+            val lp4 : RelativeLayout.LayoutParams = binding.llCard2.layoutParams as RelativeLayout.LayoutParams
+            lp4.topMargin = AdaptScreenUtils.dp2px(context,287f)
+            binding.llCard2.layoutParams = lp4
+
+            val lp5 : RecyclerView.LayoutParams = binding.rlList.layoutParams as RecyclerView.LayoutParams
+            lp5.rightMargin = AdaptScreenUtils.dp2px(context,5f)
+            lp5.leftMargin = AdaptScreenUtils.dp2px(context,6f)
+            binding.rlList.layoutParams = lp5
+
+        }
+
+
+
+        binding.toolbarBack.setOnClickListener {
+            onClickBack.invoke()
+        }
+//
         if (!item.status.equals("Charging")) {
             binding.btnSetTime.text = mContext.resources.getString(R.string.Waiting)
             binding.btnSetTime.isEnabled = false
@@ -206,21 +338,25 @@ class ChargeStatusAdapter(val context: Context?) :
                     }
                 }
                 binding.time.setOnClickListener {
-                    val s = this.map { it.time }.toTypedArray()
-                    AlertDialog.Builder(mContext)
-                        .setItems(
-                            s
-                        ) { dialogInterface, i ->
-
-                            val i2 = this[i]
-                            binding.time.text = i2.time
-                            binding.tvCfee.text =
-                                "$".plus(i2.energy).plus("/KWh")
-                            binding.tvSfee.text =
-                                "$".plus(i2.service).plus("/KWh")
-                            binding.tvPfee.text =
-                                "$".plus(i2.park).plus("/h")
-                        }.create()
+//                    val s = this.map { it.time }.toTypedArray()
+//                    AlertDialog.Builder(mContext)
+//                        .setItems(
+//                            s
+//                        ) { dialogInterface, i ->
+//
+//                            val i2 = this[i]
+//                            binding.time.text = i2.time
+//                            binding.tvCfee.text =
+//                                "$".plus(i2.energy).plus("/KWh")
+//                            binding.tvSfee.text =
+//                                "$".plus(i2.service).plus("/KWh")
+//                            binding.tvPfee.text =
+//                                "$".plus(i2.park).plus("/h")
+//                        }.create()
+//                        .show()
+                    XPopup.Builder(context)
+                        .asCustom(PopTimePicker(context!!,this ).apply {
+                        })
                         .show()
                 }
             } else {

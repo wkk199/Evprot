@@ -263,6 +263,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
 
         adapter = ChargeGunListAdapter(requireContext()).apply {
             setOnItemClickListener { item, position ->
+                if (NoFastClickUtils.isFastClick())
                 startActivity(Intent(activity, ChargeStationDetailActivity::class.java).apply {
                     putExtra(STATION_ITEM, item)
                         .putExtra(MIN_POWER, mHomeSearch.minPower)
@@ -273,6 +274,7 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
         }
         adapterOne = ChargeGunListAdapter(requireContext()).apply {
             setOnItemClickListener { item, position ->
+                if (NoFastClickUtils.isFastClick())
                 startActivity(
                     Intent(activity, ChargeStationDetailActivity::class.java).apply {
                         putExtra(STATION_ITEM, item)
@@ -380,7 +382,18 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
     inner class ClickProxy {
 
         fun searchClick() {
+            statsViewModel?.listOne?.value = arrayListOf<StationListBean>()
+            statsViewModel?.isItemShow?.set(true)
+            currentPosition = -1
+            try {
+                if (currentMarker != null) {
+                    setMapsOnclickLogoShow()
+//                currentMarker?.hideInfoWindow()
+                    currentMarker = null
+                }
+            } catch (e: Exception) {
 
+            }
 //            // Use fields to define the data types to return.
 //            val placeFields = Arrays.asList(Place.Field.NAME);
 //
@@ -478,6 +491,19 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
         }
 
         fun filter() {
+            statsViewModel?.listOne?.value = arrayListOf<StationListBean>()
+            statsViewModel?.isItemShow?.set(true)
+            currentPosition = -1
+            try {
+                if (currentMarker != null) {
+                    setMapsOnclickLogoShow()
+//                currentMarker?.hideInfoWindow()
+                    currentMarker = null
+                }
+            } catch (e: Exception) {
+
+            }
+
             XPopup.Builder(requireContext())
                 .asCustom(PopFilterPicker(requireContext()).apply {
                     setCallBack {
@@ -596,6 +622,11 @@ class HomeMapFragment : BaseLocationFragment(), OnMapReadyCallback, LocationList
                     allList.addAll(data)
                     statsViewModel?.gunListBean?.value = allList
                     mMap?.clear()
+                    if(allList.size>0){
+                        empty_view.visibility=View.GONE
+                    }else{
+                        empty_view.visibility=View.VISIBLE
+                    }
                     allList.forEachIndexed { index, stationListBean ->
 
                         val statsData =

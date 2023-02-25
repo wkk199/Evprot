@@ -45,18 +45,18 @@
 
             >
 
-            <TextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/clear_filter_tv"
-                android:background="@drawable/shape_filter_bt1"
+                android:background="@drawable/shape_filter_bg1"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_44"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/reset_tv"
-                android:textColor="@color/black_65"
+                android:textColor="#00A0E9"
                 android:textSize="14sp" />
 
-            <TextView
+            <com.evport.businessapp.ui.view.MediumBoldTextView
                 android:id="@+id/confirm_btn"
                 android:background="@drawable/shape_filter_bt"
                 android:layout_width="0dp"
@@ -91,14 +91,13 @@
                     android:layout_height="wrap_content"
                     app:constraint_referenced_ids="delivery_title_tv,delivery_recycler_view" />
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/delivery_title_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_15"
-                    android:fontFamily="@font/manrope_medium"
                     android:text="@string/socket_type"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_222628"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="MissingConstraints" />
@@ -191,15 +190,14 @@
 <!--                </RelativeLayout>-->
 
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/title_tv_3"
                     android:layout_width="41dp"
                     android:layout_height="23dp"
                     android:layout_marginStart="@dimen/dp_15"
                     android:layout_marginTop="@dimen/dp_33"
-                    android:fontFamily="@font/manrope_medium"
                     android:text="@string/commonly_used"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_222628"
                     android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/delivery_recycler_view" />
@@ -216,15 +214,14 @@
                     app:spanCount="3" />
 
 
-                <TextView
+                <com.evport.businessapp.ui.view.MediumBoldTextView
                     android:id="@+id/female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dp_15"
                     android:layout_marginTop="@dimen/dp_33"
-                    android:fontFamily="@font/manrope_medium"
                     android:text="@string/save_as_default_Min_Power"
-                    android:textColor="@color/black"
+                    android:textColor="@color/black_222628"
                     android:textSize="14sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/recycler_view_3"
@@ -253,10 +250,10 @@
                         android:layout_weight="2"
                         android:layout_marginLeft="@dimen/dp_15"
                         android:text="7"
-                        android:background="@drawable/shape_filter_bt3"
+                        android:maxLength="3"
+                        android:background="@drawable/shape_filter_bt4"
                         android:hint="please enter energy"
                         android:padding="@dimen/dp_15"
-                        android:inputType="number|numberDecimal"
                         android:layout_marginRight="@dimen/dp_15"
                         android:textColor="@color/black_85"
                         android:textSize="14sp" />

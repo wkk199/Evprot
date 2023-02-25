@@ -160,11 +160,8 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
                 statsViewModel?.chargingEnergy?.set(statsData.power.plus("kWh"))
                 statsViewModel?.chargingTime?.set(statsData.time.toDayFrendly())
-                val fromJson = Gson().fromJson(statsData.money, HashMap::class.java)
-                statsViewModel!!.money.set(
-                    "$" + fromJson.values.toString()
-                        .substring(1, fromJson.values.toString().length - 1)
-                )
+                statsViewModel!!.money.set("$" +statsData.money)
+
                 if (!ek.isNullOrEmpty())
                     setData(statsData)
                 dismissLoading()
@@ -359,7 +356,7 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
             object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
                     return try {
-                        val long = DateUtil.stringToLong(ek[value.toInt()].xValue)
+                        val long = DateUtil.stringToLong(ek[value.toInt()].xvalue)
                         if (selectYear) {
                             DateUtil.longToStringY(long)
                         } else {
@@ -423,38 +420,66 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
         chart.highlightValue(null, false)//隐藏高亮
 
-
+        val dataSetList: MutableList<IBarDataSet> = ArrayList()
         if (selectEnergy) {
-            var xvalue = ek?.map { it.xValue }
+            var xvalue = ek?.map { it.xvalue }
 
             if (selectYear) {
-                xvalue = ek?.map { it.xValue }
+                xvalue = ek?.map { it.xvalue }
                 chart.xAxis.valueFormatter = IndexAxisValueFormatter(xvalue)
             } else {
-                xvalue = ek?.map { it.xValue.split("-")[1] }
+                xvalue = ek?.map { it.xvalue.split("-")[1] }
                 var months = getMonths(xvalue as ArrayList<String>)
                 chart.xAxis.valueFormatter = IndexAxisValueFormatter(months)
             }
             chart.xAxis.apply {
                 textColor = resources.getColor(R.color.color_8f)
             }
-            var entries = ArrayList<BarEntry>()
+            val entries = ArrayList<BarEntry>()
+            val entries1 = ArrayList<BarEntry>()
             stats.ek?.forEachIndexed { index, statsData ->
-                val barEntry =
-                    BarEntry(index.toFloat(), statsData.energy?.toFloat() ?: 0f, statsData)
-                entries.add(barEntry)
+//                val barEntry =
+//                    BarEntry(index.toFloat(), statsData.energy?.toFloat() ?: 0f, statsData)
+//                entries.add(barEntry)
+                if ( statsViewModel?.ChangeTime?.get() == statsData.xvalue ) {
+                    val barEntry =
+                        BarEntry(index.toFloat(), statsData.energy?.toFloat() ?: 0f, statsData)
+                    entries.add(barEntry)
+                    val dataset1 = BarDataSet(entries, "x")
+
+                    dataset1.setGradientColor(
+                        resources.getColor(R.color.colorTheme),
+                        resources.getColor(R.color.colorTheme)
+                    )
+                    dataset1.highLightColor = resources.getColor(R.color.colorTheme)
+                    dataset1.setDrawValues(true)
+                    dataSetList.add(index,dataset1)
+                } else {
+                    val barEntry = BarEntry(index.toFloat(), statsData.energy?.toFloat() ?: 0f, statsData)
+                    entries1.add(barEntry)
+                    val dataset2 = BarDataSet(entries1, "x")
+                    dataset2.setGradientColor(
+                        resources.getColor(R.color.color_72c2f6),
+                        resources.getColor(R.color.color_72c2f6)
+                    )
+                    dataset2.highLightColor = resources.getColor(R.color.colorTheme)
+                    dataset2.setDrawValues(true)
+                    dataSetList.add(index,dataset2)
+                }
             }
-            val dataSet = BarDataSet(entries, "x")
+
             if (chart.data != null) {
                 chart.data.clearValues()
             }
 
-            dataSet.setGradientColor(
-                resources.getColor(R.color.colorTheme_a20),
-                resources.getColor(R.color.color_69FFAC)
-            )
-            dataSet.highLightColor = resources.getColor(R.color.colorTheme)
-            val data = BarData(dataSet)
+//            dataSet.setGradientColor(
+//                resources.getColor(R.color.colorTheme_a20),
+//                resources.getColor(R.color.color_69FFAC)
+//            )
+//            dataSet.highLightColor = resources.getColor(R.color.colorTheme)
+//            val data = BarData(dataSet)
+
+            val data = BarData(dataSetList)
             data.barWidth = 0.4f // 宽度 设置为一半
             data.setValueTextSize(10f)
             data.setValueTextColor(resources.getColor(R.color.colorTheme))
@@ -468,27 +493,26 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
 
         } else {
 
-            var xvalue = ek?.map { it.xValue }
+            var xvalue = ek?.map { it.xvalue }
             if (selectYear) {
-                xvalue = ek?.map { it.xValue }
+                xvalue = ek?.map { it.xvalue }
                 chart.xAxis.valueFormatter = IndexAxisValueFormatter(xvalue)
             } else {
-                xvalue = ek?.map { it.xValue.split("-")[1] }
+                xvalue = ek?.map { it.xvalue.split("-")[1] }
                 var months = getMonths(xvalue as ArrayList<String>)
                 chart.xAxis.valueFormatter = IndexAxisValueFormatter(months)
             }
             chart.xAxis.apply {
-                textColor = resources.getColor(R.color.color_8f)
+                textColor = resources.getColor(R.color.color_8F9293)
             }
 
-            var entries = ArrayList<BarEntry>()
-            var entries1 = ArrayList<BarEntry>()
-            var entries2 = ArrayList<BarEntry>()
+            val entries = ArrayList<BarEntry>()
+            val entries1 = ArrayList<BarEntry>()
+            val entries2 = ArrayList<BarEntry>()
 
-            val dataSetList: MutableList<IBarDataSet> = ArrayList()
+
             stats.ek?.forEachIndexed { index, statsData ->
-                if (currentStatsData != null) {
-                    if (currentStatsData!!.xValue == statsData.xValue) {
+                    if ( statsViewModel?.ChangeTime?.get() == statsData.xvalue ) {
                         val barEntry =
                             BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
                         entries.add(barEntry)
@@ -514,23 +538,24 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
                         dataSetList.add(index,dataset2)
                     }
 
-                } else {
-                    val barEntry =
-                        BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
-                    entries2.add(barEntry)
-                    val dataset3 = BarDataSet(entries2, "x")
-                    //渐变颜色
-                    dataset3.setGradientColor(
-                        resources.getColor(R.color.color_72c2f6),
-                        resources.getColor(R.color.color_72c2f6)
-                    )
-                    dataset3.highLightColor = resources.getColor(R.color.colorTheme)
-                    dataset3.setDrawValues(true)
-                    dataSetList.add(index,dataset3)
                 }
+//            else {
+//                    val barEntry =
+//                        BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
+//                    entries2.add(barEntry)
+//                    val dataset3 = BarDataSet(entries2, "x")
+//                    //渐变颜色
+//                    dataset3.setGradientColor(
+//                        resources.getColor(R.color.color_72c2f6),
+//                        resources.getColor(R.color.color_72c2f6)
+//                    )
+//                    dataset3.highLightColor = resources.getColor(R.color.colorTheme)
+//                    dataset3.setDrawValues(true)
+//                    dataSetList.add(index,dataset3)
+//                }
 
 
-            }
+//            }
 //            stats.ek?.forEachIndexed { index, statsData ->
 //                val barEntry =
 //                    BarEntry(index.toFloat(), statsData.amount?.toFloat() ?: 0f, statsData)
@@ -576,13 +601,13 @@ class HomeNav1Fragment : BaseFragment(), OnChartValueSelectedListener {
         Log.e("hm----statsData", Gson().toJson(currentStatsData))
         currentStatsData?.apply {
             if (selectYear) {
-                year = xValue
+                year = xvalue
                 month = null
             } else {
-                month = xValue
+                month = xvalue
                 year = null
             }
-            statsViewModel!!.ChangeTime.set(xValue)
+            statsViewModel!!.ChangeTime.set(xvalue)
         }
 
         requestData()

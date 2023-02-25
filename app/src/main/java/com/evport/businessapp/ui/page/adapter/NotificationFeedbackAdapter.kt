@@ -16,6 +16,7 @@
 package com.evport.businessapp.ui.page.adapter
 
 import android.content.Context
+import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
@@ -54,7 +55,6 @@ class NotificationFeedbackAdapter(context: Context) :
         item: Feedback,
         holder: RecyclerView.ViewHolder
     ) {
-
         val adapter =  ListStringImageAdapter(context = mContext).apply {
             setOnItemClickListener { items, positions ->
                 recyClick?.invoke(item,positions)
@@ -72,6 +72,9 @@ class NotificationFeedbackAdapter(context: Context) :
 //                SpaceItemDecoration.TYPE_ALL
 //            )
 //        )
+        if (holder.absoluteAdapterPosition == currentList.size-1){
+            binding.viewLiner.visibility = View.GONE
+        }
 
         binding.adapter =adapter
 //        if (list.size>0) {

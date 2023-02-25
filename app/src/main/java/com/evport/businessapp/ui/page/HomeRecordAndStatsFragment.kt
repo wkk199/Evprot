@@ -66,6 +66,11 @@ class HomeRecordAndStatsFragment : BaseFragment() {
                 ImmersionBar.with(this).statusBarDarkFont(true).init()
             }
         }
+        sharedViewModel.refreshComment.observe(this) {
+            if (it) {
+                nav().navigateUp()
+            }
+        }
     }
 
 
@@ -79,7 +84,7 @@ class HomeRecordAndStatsFragment : BaseFragment() {
                 .commit()
         }else{
             back.setImageResource(R.drawable.icon_sats)
-            title.text = resources.getString(R.string.stats)
+            title.text = resources.getString(R.string.order)
             childFragmentManager
                 .beginTransaction()
                 .replace(R.id.content, HomeNav1Fragment())

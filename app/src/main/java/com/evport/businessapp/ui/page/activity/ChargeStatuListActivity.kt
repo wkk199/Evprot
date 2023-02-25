@@ -1,18 +1,22 @@
 package com.evport.businessapp.ui.page.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.widget.FrameLayout
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.blankj.utilcode.util.ToastUtils
+import com.evport.businessapp.BR
 import com.evport.businessapp.BuildConfig
 import com.evport.businessapp.OnMessageList
 import com.evport.businessapp.R
-import com.evport.businessapp.BR
 import com.evport.businessapp.data.bean.*
 import com.evport.businessapp.data.config.Configs
 import com.evport.businessapp.data.http.networkmanager.NetworkBoundResource
@@ -23,17 +27,27 @@ import com.evport.businessapp.ui.base.BaseActivity
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.ChargeStatusAdapter
 import com.evport.businessapp.ui.state.ScanViewModel
+import com.evport.businessapp.ui.view.PopTimePicker
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
+import com.evport.businessapp.utils.socketTypeIsAc
 import com.evport.businessapp.utils.toast
 import com.google.gson.Gson
 import com.gyf.immersionbar.ImmersionBar
 import com.kunminx.architecture.utils.SPUtils
+import com.lihang.ShadowLayout
 import com.lxj.xpopup.XPopup
 import com.lxj.xpopup.interfaces.OnConfirmListener
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_charge_statu_list.*
+import kotlinx.android.synthetic.main.activity_charge_statu_list.DonutProgress
+import kotlinx.android.synthetic.main.activity_charge_statu_list.fl_progress
+import kotlinx.android.synthetic.main.activity_charge_statu_list.iv_empty
+import kotlinx.android.synthetic.main.activity_charge_statu_list.tv_empty
+import kotlinx.android.synthetic.main.adapter_charge_status.*
+import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.*
 import org.jetbrains.anko.toast
+
 
 class ChargeStatuListActivity : BaseActivity() {
 //    val pk by lazy {
@@ -54,7 +68,8 @@ class ChargeStatuListActivity : BaseActivity() {
         val i = allList
         handler.removeCallbacksAndMessages(null)
         if (!i.isNullOrEmpty()) {
-            getCheckTransactions(i[position].transactionPk.toString())
+//            getCheckTransactions(i[position].transactionPk.toString())
+            getCheckTransactions("")
             handler.postDelayed({
                 refreshDataSelf()
             }, 15 * 1000)
@@ -170,6 +185,21 @@ class ChargeStatuListActivity : BaseActivity() {
 
                     allList.clear()
                     data?.reversed()?.let { allList.addAll(it) }
+                    if (allList.size == 1) {
+                        toolbar12.visibility = View.GONE
+                        view_liner3.visibility = View.GONE
+                        view_liner4.visibility = View.GONE
+                        ImmersionBar.with(this@ChargeStatuListActivity)
+                            .statusBarDarkFont(false).init()
+                    } else {
+                        toolbar12.visibility = View.VISIBLE
+                        view_liner3.visibility = View.VISIBLE
+                        view_liner4.visibility = View.VISIBLE
+                        ImmersionBar.with(this@ChargeStatuListActivity)
+                            .statusBarDarkFont(true).init()
+                    }
+
+                    mAdapter.strTYpe = ""
                     mScaViewModel.listCheckTransaction.value = allList
                     mAdapter.notifyDataSetChanged()
                 }
@@ -190,20 +220,13 @@ class ChargeStatuListActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
 
-//        val text =
-//            "{\"code\":\"200\",\"data\":{\"api\":\"remoteStart\",\"message\":\"Remote start [ lijk ] success.\"},\"message\":\"\",\"success\":\"true\"}"
-//        val gsonObjects =
-//            GsonUtils.getGson().fromJson<RemoteResp>(text, RemoteResp::class.java)
-//        val gsonObject =
-//            Gson().fromJson<RemoteDataRespBean>(text, RemoteDataRespBean::class.java)
-
+        ImmersionBar.with(this).transparentBar().init();
         LiveBus.getInstance().observeEvent(this, Observer {
             if (it.type == OnMessageList) {
 
                 h.removeCallbacks(runnableNet)
                 dismissLoading()
                 try {
-
                     val gsonObjects =
                         Gson().fromJson<RemoteDataRespBean>(
                             it.value.toString(),
@@ -288,7 +311,19 @@ class ChargeStatuListActivity : BaseActivity() {
         })
         rv.postDelayed({
             refreshDataSelf()
+//            val lp : RelativeLayout.LayoutParams = ll_to_reply.layoutParams as RelativeLayout.LayoutParams
+//            lp.bottomMargin = 80
+//            ll_to_reply.layoutParams = lp
+
         },2000)
+
+
+
+        mAdapter.setOnclick{
+            handler.removeCallbacksAndMessages(null)
+            finish()
+        }
+
     }
 
 
@@ -320,9 +355,17 @@ class ChargeStatuListActivity : BaseActivity() {
 
             override fun onSuccess(data: MutableList<CheckTransaction>?) {
                 if (data.isNullOrEmpty()) {
+                    ImmersionBar.with(this@ChargeStatuListActivity).statusBarDarkFont(true)
+                        .init()
+                    if (allList.size > position)
+                        allList.removeAt(position)
+                    mScaViewModel.listCheckTransaction.value = allList
+                    mAdapter.notifyDataSetChanged()
+                    iv_empty.isVisible = allList.size == 0
+                    tv_empty.isVisible = allList.size == 0
                 } else {
                     if (allList.size > position) {
-                        var i = allList[position]
+                        var i = allList[0]
                         if (i.transactionPk == data[0].transactionPk) {
                             i.current = data[0].current
                             i.usedEnergy = data[0].usedEnergy
@@ -336,19 +379,28 @@ class ChargeStatuListActivity : BaseActivity() {
                             i.chargingSetting = data[0].chargingSetting
                         }
 
-                        allList[position] = i
+                        allList[0] = i
                     }
 
-                    if (allList.size<=1){
-                        toolbar.visibility =View.GONE
-                    }else{
-                        toolbar.visibility =View.VISIBLE
+                    if (allList.size == 1) {
+                        toolbar12.visibility = View.GONE
+                        view_liner3.visibility = View.GONE
+                        view_liner4.visibility = View.GONE
+                        ImmersionBar.with(this@ChargeStatuListActivity)
+                            .statusBarDarkFont(false).init()
+                    } else {
+                        toolbar12.visibility = View.VISIBLE
+                        view_liner3.visibility = View.VISIBLE
+                        view_liner4.visibility = View.VISIBLE
+                        ImmersionBar.with(this@ChargeStatuListActivity)
+                            .statusBarDarkFont(true).init()
                     }
-
+                    allList.clear()
+                    allList.addAll(data)
+                    mAdapter.strTYpe = ""
                     mScaViewModel.listCheckTransaction.value = allList
                     mAdapter.notifyDataSetChanged()
-                    iv_empty.isVisible = allList.size==0
-                    tv_empty.isVisible = allList.size==0
+
                 }
             }
 
@@ -363,24 +415,5 @@ class ChargeStatuListActivity : BaseActivity() {
             }
         }
     }
-fun stopCharge(){
-    val popupView =
-        XPopup.Builder(this) //                        .hasBlurBg(true)
-            //                         .dismissOnTouchOutside(false)
-            //                         .autoDismiss(false)
-            //                        .popupAnimation(PopupAnimation.NoAnimation)
-            //                        .isLightStatusBar(true)
-            //                        .hasNavigationBar(false)
-
-          .asConfirm(
-                "stop", "Are you sure to finish charging?",
-                "Cancel", "Confirm",
-                OnConfirmListener { toast("click confirm") }, null, false
-            )
-    //popupView.contentTextView.setTextColor(Color.RED)
-    popupView.cancelTextView.setTextColor(resources.getColor(R.color.red))
-    popupView.confirmTextView.setTextColor(resources.getColor(R.color.colorPrimary))
-    popupView.show()
-}
 
 }

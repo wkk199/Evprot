@@ -31,6 +31,7 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.state.RecordViewModel
 import com.evport.businessapp.utils.toast
+import com.gyf.immersionbar.ImmersionBar
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_record_detail.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -66,10 +67,15 @@ class RecordDetailFragment : BaseFragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
+        ImmersionBar.with(this@RecordDetailFragment)
+            .statusBarDarkFont(false).init()
+
     }
 
     inner class ClickProxy {
         fun back() {
+            ImmersionBar.with(this@RecordDetailFragment)
+                .statusBarDarkFont(true).init()
             nav().navigateUp()
         }
         fun comment() {

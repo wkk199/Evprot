@@ -16,6 +16,7 @@
 package com.evport.businessapp.ui.page.adapter
 
 import android.content.Context
+import android.view.View
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kunminx.architecture.ui.adapter.SimpleDataBindingAdapter
@@ -54,6 +55,9 @@ class NotificationSysAdapter(context: Context) :
     ) {
 
         binding.info = item
+        if (holder.absoluteAdapterPosition ==currentList.size-1 ){
+            binding.viewLiner.visibility =  View.GONE
+        }
 //        binding.content.setOnClickListener {
 //            contentClick?.invoke(item,holder.bindingAdapterPosition)
 //        }

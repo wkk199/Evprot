@@ -24,6 +24,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ac9efb0f2711b67735bad19a33a58f08/jetified-junit-4.13.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/ae0e289eb656572b790308ff2748edaa/jetified-hamcrest-core-1.3.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/3f9c620063a8ec4a8ad905051af075f4/material-1.5.0-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/02147a07b38b205ab2b89acb3fbddc48/jetified-androidx-3.1.4-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/7de59f36b2065036818c632eec107e61/jetified-crystalrangeseekbar-1.1.3-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b4455652b2955d9e88f0cc4587edbddb/jetified-timePickerWithSeconds-1.0.1-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/f5014c62efa74769554fc40384c959a1/jetified-OneSignal-4.8.4-api.jar</arg>
@@ -198,6 +199,7 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5090e5280a4ab15f7c19a0ebc7a02669/jetified-circleprogress-1.2.1-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/5fdcd11183b261bd826078c3631b0b10/jetified-banner-2.2.2-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/8727f158a1033038e2ed153ffbfdbf3b/jetified-EasyPhotos-3.1.5-api.jar</arg>
+                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/979dd83ca91234f8c80ffea9d723258c/jetified-ImagePreview-2.3.5-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/37fc58dedc51dc95197628a9bf76923a/jetified-fresco-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/6e203f23443592d38004423b85524132/jetified-fbcore-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/9a1ce52302c371041aae89cb51f6ff0f/jetified-drawee-1.13.0-api.jar</arg>
@@ -205,7 +207,6 @@
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/cee97d2643978b315b8ece8315c91864/jetified-imagepipeline-base-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/b70c9b613efbed889e718ef69bc5ea20/jetified-nativeimagefilters-1.13.0-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/93b421b6d5dac04345b354c11e10bb73/jetified-nativeimagetranscoder-1.13.0-api.jar</arg>
-                <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/979dd83ca91234f8c80ffea9d723258c/jetified-ImagePreview-2.3.5-api.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/57b9967de2641c78c87b1117e3c3b911/jetified-javax.inject-1.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/97a7e990b231ad0412bd6144dc9c557d/jetified-firebase-annotations-16.0.0.jar</arg>
                 <arg>C:/Program Files/Java/jdk1.8.0_301/caches/transforms-2/files-2.1/7b9602fb326c6e0df763202d34cbf425/jetified-status-bar-compat-0.7-api.jar</arg>
@@ -353,6 +354,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.databinding:databinding-adapters:4.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.databinding:databinding-runtime:4.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.material:material:1.5.0@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.ypx.yimagepicker:androidx:3.1.4@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.crystal:crystalrangeseekbar:1.1.3@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.kovachcode:timePickerWithSeconds:1.0.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.onesignal:OneSignal:4.8.4@aar" level="project" />
@@ -497,6 +499,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.lzyzsd:circleprogress:1.2.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.github.youth5201314:banner:2.2.2@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.HuanTanSheng:EasyPhotos:3.1.5@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.ycjiang:ImagePreview:2.3.5@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:fresco:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:fbcore:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:drawee:1.13.0@aar" level="project" />
@@ -504,7 +507,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:imagepipeline-base:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:nativeimagefilters:1.13.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.facebook.fresco:nativeimagetranscoder:1.13.0@aar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.ycjiang:ImagePreview:2.3.5@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.githang:status-bar-compat:0.7@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.li-xiaojun:XPopup:2.7.6@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.github.li-xiaojun.XPopupExt:ext:0.0.8@aar" level="project" />

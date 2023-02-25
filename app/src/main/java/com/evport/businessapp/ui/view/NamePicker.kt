@@ -62,7 +62,7 @@ class NamePicker(context: Context, private val phone: String) : BottomPopupView(
                 mOkBlock.invoke(name.trim())
                 dismiss()
             } else {
-                ToastUtils.showShort("请输入姓名")
+                ToastUtils.showShort("Please enter your name")
             }
         }
     }

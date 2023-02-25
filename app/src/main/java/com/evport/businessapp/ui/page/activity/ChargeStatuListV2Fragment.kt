@@ -1,7 +1,6 @@
 package com.evport.businessapp.ui.page.activity
 
 import android.content.Intent
-import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -9,17 +8,13 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.blankj.utilcode.util.ToastUtils
-import com.google.gson.Gson
-import com.kunminx.architecture.ui.callback.EventObserver
-import com.evport.businessapp.OnMessageHome
-import com.evport.businessapp.data.bean.CheckTransaction
-import com.evport.businessapp.data.bean.RemoteDataRespBean
-import com.evport.businessapp.data.bean.ReqDefaultPk
-import com.evport.businessapp.data.bean.RequestChargeChange
 import com.evport.businessapp.*
+import com.evport.businessapp.data.bean.*
 import com.evport.businessapp.data.config.Configs
 import com.evport.businessapp.data.http.networkmanager.NetworkBoundResource
 import com.evport.businessapp.data.http.networkmanager.NetworkStatusCallback
@@ -29,24 +24,17 @@ import com.evport.businessapp.ui.base.BaseFragment
 import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.ChargeStatusAdapter
 import com.evport.businessapp.ui.state.ScanViewModel
-import com.evport.businessapp.ui.view.PopTimePicker
 import com.evport.businessapp.utils.DateUtil
 import com.evport.businessapp.utils.LiveBus
-import com.evport.businessapp.utils.socketTypeIsAc
+import com.google.gson.Gson
 import com.gyf.immersionbar.ImmersionBar
+import com.kunminx.architecture.ui.callback.EventObserver
 import com.kunminx.architecture.utils.SPUtils
-import com.lxj.xpopup.XPopup
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.adapter_charge_status.*
 import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.*
-import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.DonutProgress
-import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.fl_progress
-import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.iv_empty
-import kotlinx.android.synthetic.main.fragment_charge_statusv2_list.tv_empty
 import kotlinx.coroutines.*
 import org.jetbrains.anko.support.v4.toast
 import java.lang.Runnable
-import kotlin.collections.ArrayList
 
 
 class ChargeStatuListV2Fragment : BaseFragment() {
@@ -67,14 +55,17 @@ class ChargeStatuListV2Fragment : BaseFragment() {
 
     fun refreshDataSelf() {
         toastT("主页自动刷新数据-时间戳：${DateUtil.getNow()}")
-
         stopHandler()
         val i = allList
         if (!i.isNullOrEmpty() && !SPUtils.getInstance().getString(Configs.TOKEN).isNullOrEmpty()) {
-            getCheckTransactions(i[position].transactionPk.toString())
+//            getCheckTransactions(i[position].transactionPk.toString())
+            getCheckTransactions("")
             handler.postDelayed({
                 refreshDataSelf()
             }, 15 * 1000)
+        }else{
+            ImmersionBar.with(this@ChargeStatuListV2Fragment).statusBarDarkFont(true)
+                .init()
         }
     }
 
@@ -130,9 +121,10 @@ class ChargeStatuListV2Fragment : BaseFragment() {
         })
         sharedViewModel.refreshNav2.observe(this, EventObserver {
             if (it) {
-                ImmersionBar.with(this).statusBarDarkFont(true).init()
                 refreshDataSelf()
 //                toastT("主页导航栏点击 刷新数据-时间戳：${DateUtil.getNow()}")
+            }else{
+                stopHandler()
             }
         })
         sharedViewModel.stopAPP.observe(this, EventObserver {
@@ -148,12 +140,6 @@ class ChargeStatuListV2Fragment : BaseFragment() {
         })
 
 
-//                showLoading()
-//                mScaViewModel.remoteStop(
-//                    RequestChargeChange(
-//                        connectorPk = item?.connectorPk
-//                    )
-//                )
 
         return DataBindingConfig(R.layout.fragment_charge_statusv2_list, mScaViewModel)
             .addBindingParam(
@@ -183,30 +169,8 @@ class ChargeStatuListV2Fragment : BaseFragment() {
     }
 
 
-//    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//
-////        rv.postDelayed(runnable, 60 * 1000)
-////        mScaViewModel.isConnectSocket.observe(this, EventObserver {
-////            if (it) {
-////
-////            } else {
-////
-////            }
-////        })
-//
-//    }
-
     override fun onStart() {
         super.onStart()
-
-//        val text =
-//            "{\"code\":\"200\",\"data\":{\"api\":\"remoteStart\",\"message\":\"Remote start [ lijk ] success.\"},\"message\":\"\",\"success\":\"true\"}"
-//        val gsonObjects =
-//            GsonUtils.getGson().fromJson<RemoteResp>(text, RemoteResp::class.java)
-//        val gsonObject =
-//            Gson().fromJson<RemoteDataRespBean>(text, RemoteDataRespBean::class.java)
         if (mScaViewModel.checkTransLiveData != null) {
             mScaViewModel.checkTransLiveData.observe(
                 this,
@@ -216,9 +180,7 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                         withContext(Dispatchers.Main) {
                             dismissLoading()
                         }
-
                     }
-
                     if (!it.isNullOrEmpty()) {
                         iv_empty.visibility = View.GONE
                         tv_empty.visibility = View.GONE
@@ -237,6 +199,7 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                     allList.clear()
                     allList.addAll(it)
                     mScaViewModel.listCheckTransaction.value = allList
+                    mAdapter.strTYpe = "首页"
                     mAdapter.notifyDataSetChanged()
                 }
             )
@@ -283,6 +246,8 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                             intent.putExtra("record", transactionPk)
                                             startActivity(intent)
+                                            position = 0
+
 //                                            requireContext().startActivity<RecordDetailActivity>(
 //                                                Pair("record", transactionPk)
 //                                            )
@@ -328,9 +293,11 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                 if (recyclerView != null && recyclerView.childCount > 0) {
                     try {
 //                        val  currentPosition =((RecyclerView.LayoutParams) recyclerView.getChildAt(0).getLayoutParams()).getViewAdapterPosition();
-                        position =
-                            (recyclerView.getChildAt(0).layoutParams as RecyclerView.LayoutParams).bindingAdapterPosition
-                        Log.e("=====currentPosition", "" + position)
+
+                        position = findLastVisibleItem(recyclerView)
+//                        position =
+//                            (recyclerView.getChildAt(0).layoutParams as RecyclerView.LayoutParams).bindingAdapterPosition
+//                        Log.e("=====currentPosition", "currentPosition==============" + firstPosition)
                     } catch (e: Exception) {
 
                     }
@@ -345,6 +312,21 @@ class ChargeStatuListV2Fragment : BaseFragment() {
 
         mScaViewModel.getCheckTransactions()
     }
+
+    private fun findLastVisibleItem(recyclerView1: RecyclerView): Int {
+        when (val layoutManager = recyclerView1.layoutManager) {
+            is LinearLayoutManager -> {
+                return layoutManager.findLastCompletelyVisibleItemPosition()
+            }
+            is StaggeredGridLayoutManager -> {
+                return layoutManager.findLastVisibleItemPositions(null)[0]
+            }
+
+        }
+        return -1
+
+    }
+
 
     override fun onResume() {
         super.onResume()
@@ -381,6 +363,7 @@ class ChargeStatuListV2Fragment : BaseFragment() {
     }
 
 
+
     override fun onDestroy() {
         super.onDestroy()
         handler.removeCallbacksAndMessages(null)
@@ -400,14 +383,17 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                     dismissLoading()
 
                     if (data.isNullOrEmpty()) {
+                        ImmersionBar.with(this@ChargeStatuListV2Fragment).statusBarDarkFont(true)
+                            .init()
                         if (allList.size > position)
                             allList.removeAt(position)
                         mScaViewModel.listCheckTransaction.value = allList
                         mAdapter.notifyDataSetChanged()
-
+                        iv_empty.isVisible = allList.size == 0
+                        tv_empty.isVisible = allList.size == 0
                     } else {
                         if (allList.size > position) {
-                            var i = allList[position]
+                            val i = allList[0]
                             if (i.transactionPk == data[0].transactionPk) {
                                 i.current = data[0].current
                                 i.usedEnergy = data[0].usedEnergy
@@ -420,17 +406,27 @@ class ChargeStatuListV2Fragment : BaseFragment() {
                                 i.voltage = data[0].voltage
                                 i.chargingSetting = data[0].chargingSetting
                             }
-
-                            allList[position] = i
+                            allList[0] = i
                         }
                         if (allList.size == 1) {
-                            initView(allList[0])
+                            toolbar.visibility = View.GONE
+                            view_liner.visibility = View.GONE
+                            view_liner1.visibility = View.GONE
+                            ImmersionBar.with(this@ChargeStatuListV2Fragment)
+                                .statusBarDarkFont(false).init()
                         } else {
-                            iv_empty.isVisible = allList.size == 0
-                            tv_empty.isVisible = allList.size == 0
-                            mScaViewModel.listCheckTransaction.value = allList
-                            mAdapter.notifyDataSetChanged()
+                            home_back.visibility =View.GONE
+                            toolbar.visibility = View.VISIBLE
+                            view_liner.visibility = View.VISIBLE
+                            view_liner1.visibility = View.VISIBLE
+                            ImmersionBar.with(this@ChargeStatuListV2Fragment)
+                                .statusBarDarkFont(true).init()
                         }
+                        allList.clear()
+                        allList.addAll(data)
+                        mScaViewModel.listCheckTransaction.value = allList
+                        mAdapter.strTYpe = "首页"
+                        mAdapter.notifyDataSetChanged()
 
                     }
                 }
@@ -449,169 +445,16 @@ class ChargeStatuListV2Fragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-    }
+//        banner_view.layoutManager = ScaleBannerLayoutManager()
 
-
-    fun initView(crossinline: CheckTransaction) {
-        if (!crossinline.status.equals("Charging")) {
-            btn_setTime.text = this@ChargeStatuListV2Fragment.resources.getString(R.string.Waiting)
-            btn_setTime.isEnabled = false
-        } else {
-            btn_setTime.text =
-                this@ChargeStatuListV2Fragment.resources.getString(R.string.Stop_charging)
-            btn_setTime.isEnabled = true
-        }
-        btn_setTime.setOnClickListener {
-            val popupView =
-                XPopup.Builder(context)
-                    .asConfirm(
-                        this@ChargeStatuListV2Fragment.resources.getString(R.string.stop_),
-                        this@ChargeStatuListV2Fragment.resources.getString(R.string.areyousurrestop_),
-                        this@ChargeStatuListV2Fragment.resources.getString(R.string.cancel_tv),
-                        this@ChargeStatuListV2Fragment.resources.getString(R.string.Confirm),
-                        {
-                            transactionPk = crossinline.transactionPk.toString()
-                            mScaViewModel.remoteStop(RequestChargeChange(transactionPk = transactionPk))
-                            showLoading()
-                        },
-                        null,
-                        false
-                    )
-            popupView.cancelTextView.setTextColor(0x8193AE)
-            popupView.confirmTextView.setTextColor(0x15CD80)
-            popupView.show()
-        }
-        tv_local.text = crossinline.location
-        if (crossinline.chargingSetting?.toLowerCase() == "spendtime") {
-            Log.e("hm----startTime", crossinline.startTime.toString())
-            Log.e("hm----nowTiem", DateUtil.getNowTime())
-            tv_charge_time.setUpTime(
-                crossinline.startTime.toString(),
-                crossinline.settingValue.toString()
-            )
-        } else {
-            Log.e("TAG", "onBindItem: --------------" + crossinline.startTime)
-            if (crossinline.startTime != null)
-                tv_charge_time.setUpTime(crossinline.startTime.toString())
-        }
-        tv_eng.setCompoundDrawablesWithIntrinsicBounds(
-            0,
-            R.drawable.icon_charging_soc,
-            0,
-            0
-        )
-        toolbar1.visibility = View.INVISIBLE
-        Voltage.text = crossinline.voltageString()
-        Current.text = crossinline.currentString()
-        power.text = crossinline.powerString()
-        tv_start_times.text = crossinline.startTime
-        tv_start_time3.text = crossinline.feeString()
-
-
-        if (crossinline.type.isNullOrEmpty() || crossinline.type.toString().socketTypeIsAc()) {
-            // 交流不能设置百分比
-            tv_perscent.isVisible = false
-            // binding.ArcProgress.progress = 100
-            crossinline.chargingSetting?.apply {
-                when {
-                    this.toLowerCase() == "soc" -> {
-                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
-                    }
-                    this.toLowerCase() == "energy" -> {
-                        // binding.tvEng.text = "${item.settingValue ?: "--"}度"
-                        tv_eng.text =
-                            "${crossinline.usedEnergy ?: "--"}度/${crossinline.settingValue ?: "--"}KWh"
-                    }
-                    this.toLowerCase() == "spendtime" -> {
-                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
-                    }
-                    else -> {
-                        tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
-                    }
-                }
-            }
-        } else {
-            tv_eng.text = "${crossinline.usedEnergy ?: "--"}KWh"
-            tv_perscent.text = "${crossinline.soc ?: "--"}%"
-            tv_perscent.isVisible = !crossinline.soc.isNullOrBlank()
-
-            if (crossinline.progress?.toInt() ?: 0 != ArcProgress.progress) {
-                ArcProgress.progress = crossinline.progress?.toInt() ?: 0
-            }
-            crossinline.chargingSetting?.apply {
-                when {
-                    this.toLowerCase() == "soc" -> {
-                        tv_perscent.text =
-                            "${crossinline.soc ?: "--"}%/${crossinline.settingValue ?: "--"}%"
-                    }
-                    this.toLowerCase() == "energy" -> {
-                        tv_eng.text =
-                            "${crossinline.usedEnergy ?: "--"}KWh${crossinline.settingValue ?: "--"}KWh"
-                    }
-                }
-            }
-        }
-
-
-
-        crossinline.strategy?.apply {
-            if (this.isNotEmpty()) {
-                forEach {
-                    it.time?.split("-")?.apply {
-                        if (DateUtil.containNowDate(this[0].trim(), this[1].trim())) {
-                            time.text = it.time
-                            tv_cfee.text =
-                                "$".plus(it.energy).plus("/KWh")
-                            tv_sfee.text =
-                                "$".plus(it.service).plus("/KWh")
-                            tv_pfee.text =
-                                "$".plus(it.park).plus("/h")
-                        }
-                    }
-                }
-                time.setOnClickListener {
-
-                    XPopup.Builder(requireContext())
-                        .asCustom(PopTimePicker(requireContext(),this ).apply {
-                        })
-                        .show()
-
-
-//                    val s = this.map { it.time }.toTypedArray()
-//                    android.app.AlertDialog.Builder(context)
-//                        .setItems(
-//                            s
-//                        ) { dialogInterface, i ->
-//
-//                            val i2 = this[i]
-//                            time.text = i2.time
-//                            tv_cfee.text =
-//                                "$".plus(i2.energy).plus("/KWh")
-//                            tv_sfee.text =
-//                                "$".plus(i2.service).plus("/KWh")
-//                            tv_pfee.text =
-//                                "$".plus(i2.park).plus("/h")
-//                        }.create()
-//                        .show()
-                }
-            } else {
-                time.text = "--"
-                tv_cfee.text =
-                    "$".plus("--").plus("/KWh")
-                tv_sfee.text =
-                    "$".plus("--").plus("/KWh")
-                tv_pfee.text =
-                    "$".plus("--").plus("/h")
-            }
-
-        }
-
-
-        power_iv.setBackgroundResource(R.drawable.battery_anim)
-        val animationDrawable: AnimationDrawable = power_iv.background as AnimationDrawable
-        animationDrawable.start()
-
-
+//        banner_view.setUp(BannerSetting().apply {
+//            slideTimeGap = 3000
+//            autoSlideSpeed = 1000
+//            loop = false
+//            canAutoSlide = false
+//        }, mAdapter) {
+//            position = it
+//        }
     }
 
 

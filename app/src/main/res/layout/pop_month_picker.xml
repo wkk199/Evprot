@@ -71,10 +71,6 @@
             app:layout_constraintTop_toTopOf="@+id/linearLayout" />
         <TextView
             android:id="@+id/tv_cancel"
-            drawable_radius="@{8}"
-            drawable_solidColor="@{@color/white}"
-            drawable_strokeColor="@{@color/color_AA}"
-            drawable_strokeWidth="@{1}"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_marginStart="25dp"
@@ -99,6 +95,7 @@
             android:layout_marginEnd="25dp"
             android:gravity="center"
             android:text="@string/ok"
+            android:fontFamily="@font/manrope_semibold"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_cancel"

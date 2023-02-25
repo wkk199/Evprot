@@ -42,6 +42,7 @@ import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.activity.ChangeLanguageActivity
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.ui.view.NoticePicker
+import com.evport.businessapp.ui.view.PopLogoutPicker
 import com.evport.businessapp.upgrade.*
 import com.evport.businessapp.upgrade.model.bean.UpgradeOptions
 import com.evport.businessapp.utils.*
@@ -63,6 +64,9 @@ class AppSettingFragment : BaseFragment() {
     private var manager: UpgradeManager? = null
     private val REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 0x8052
     var  url=""
+
+    //退出账号
+    private val mPopLogoutPicker by lazy { PopLogoutPicker(context!!) }
     override fun initViewModel() {
         mDrawerViewModel = getFragmentViewModel(DrawerViewModel::class.java)
     }
@@ -82,6 +86,15 @@ class AppSettingFragment : BaseFragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
         manager = UpgradeManager(activity)
+
+        mPopLogoutPicker.setCallBack(object : PopLogoutPicker.CallBack{
+            override fun clickLogout() {
+                logOut()
+                sharedViewModel.isLoginSuccess.postValue(false)
+            }
+
+        })
+
     }
 
     public override fun loadInitData() {
@@ -138,17 +151,15 @@ class AppSettingFragment : BaseFragment() {
 
         }
         fun logoutClick() {
-            logOut()
-            sharedViewModel.isLoginSuccess.postValue(false)
+
+            XPopup.Builder(context)
+                .asCustom(mPopLogoutPicker)
+                .show()
+
         }
+
         fun delete() {
-            var noticeView = NoticePicker(
-                requireActivity(),
-                "注销",
-                "确认注销我的帐户和所有相关数据",
-                "确认",
-                "取消"
-            )
+            val noticeView = NoticePicker(requireContext())
             XPopup.Builder(activity)
                 .dismissOnTouchOutside(false)
                 .dismissOnBackPressed(false)

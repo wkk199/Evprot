@@ -30,6 +30,7 @@ import com.evport.businessapp.ui.base.DataBindingConfig
 import com.evport.businessapp.ui.page.adapter.MyCardAdapter
 import com.evport.businessapp.ui.state.DrawerViewModel
 import com.evport.businessapp.utils.toast
+import com.gyf.immersionbar.ImmersionBar
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_my_card_list.*
 
@@ -61,7 +62,6 @@ class MyCardListFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     inner class ClickProxy {

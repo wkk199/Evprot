@@ -83,4 +83,9 @@
         <item name="android:textSize">@dimen/dp_20</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="tabAllCapsStyle1" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dp_20</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

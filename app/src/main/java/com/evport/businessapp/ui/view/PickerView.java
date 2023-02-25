@@ -13,6 +13,7 @@ import android.os.Message;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -1313,37 +1314,55 @@ public class PickerView extends View {
     private void drawContent(Canvas canvas) {
         int index;
         int textColor;
-        float textSize;
+        float textSize = 14f;
         float fraction = 0f;// fraction of the item in state between normal and selected, in[0, 1]
-        float textSizeCenterYOffset;
+        float textSizeCenterYOffset = 0;
 
         for (int i = 0; i < mShownCount + 1; i++) {
             float y = mCurrDrawFirstItemY + mItemHeight * i;
             index = getIndexByRawIndex(mCurrDrawFirstItemIndex + i, getOneRecycleSize(), mWrapSelectorWheel && mWrapSelectorWheelCheck);
-            if (i == mShownCount / 2) {//this will be picked
-                fraction = (float) (mItemHeight + mCurrDrawFirstItemY) / mItemHeight;
-                textColor = getEvaluateColor(fraction, mTextColorNormal, mTextColorSelected);
-                textSize = getEvaluateSize(fraction, mTextSizeNormal, mTextSizeSelected);
-                textSizeCenterYOffset = getEvaluateSize(fraction, mTextSizeNormalCenterYOffset,
-                        mTextSizeSelectedCenterYOffset);
-                mPaintText.setColor(Color.BLACK);
-            } else if (i == mShownCount / 2 + 1) {
-                textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
-                textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
-                textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
-                        mTextSizeSelectedCenterYOffset);
-                mPaintText.setColor(Color.BLACK);
-            } else if (i == mShownCount / 2 - 1) {
-                textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
-                textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
-                textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
-                        mTextSizeSelectedCenterYOffset);
-                mPaintText.setColor(Color.BLACK);
-            } else {
-                textColor = mTextColorNormal;
-                textSize = mTextSizeNormal;
-                textSizeCenterYOffset = mTextSizeNormalCenterYOffset;
-                mPaintText.setColor(Color.GRAY);
+
+            if (!type) {
+                if (i == mShownCount / 2) {//this will be picked
+                    fraction = (float) (mItemHeight + mCurrDrawFirstItemY) / mItemHeight;
+                    textColor = getEvaluateColor(fraction, mTextColorNormal, mTextColorSelected);
+                    textSize = getEvaluateSize(fraction, mTextSizeNormal, mTextSizeSelected);
+                    textSizeCenterYOffset = getEvaluateSize(fraction, mTextSizeNormalCenterYOffset,
+                            mTextSizeSelectedCenterYOffset);
+                    mPaintText.setColor(Color.BLACK);
+                } else if (i == mShownCount / 2 + 1) {
+                    textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
+                    textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
+                    textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
+                            mTextSizeSelectedCenterYOffset);
+                    mPaintText.setColor(Color.BLACK);
+                } else if (i == mShownCount / 2 - 1) {
+                    textColor = getEvaluateColor(1 - fraction, mTextColorNormal, mTextColorSelected);
+                    textSize = getEvaluateSize(1 - fraction, mTextSizeNormal, mTextSizeSelected);
+                    textSizeCenterYOffset = getEvaluateSize(1 - fraction, mTextSizeNormalCenterYOffset,
+                            mTextSizeSelectedCenterYOffset);
+                    mPaintText.setColor(Color.BLACK);
+                } else {
+                    textColor = mTextColorNormal;
+                    textSize = mTextSizeNormal;
+                    textSizeCenterYOffset = mTextSizeNormalCenterYOffset;
+                    mPaintText.setColor(0x70888888);
+                }
+            }else {
+                if (i == mShownCount / 2) {//this will be picked
+                    fraction = (float) (mItemHeight + mCurrDrawFirstItemY) / mItemHeight;
+                    textColor = getEvaluateColor(fraction, mTextColorNormal, mTextColorSelected);
+                    textSize = getEvaluateSize(fraction, mTextSizeNormal, mTextSizeSelected);
+                    textSizeCenterYOffset = getEvaluateSize(fraction, mTextSizeNormalCenterYOffset,
+                            mTextSizeSelectedCenterYOffset);
+                    mPaintText.setColor(Color.BLACK);
+                } else {
+                    textColor = getEvaluateColor(fraction, mTextColorNormal,  R.color.light_gray);
+                    textSize = mTextSizeNormal;
+                    textSizeCenterYOffset = mTextSizeNormalCenterYOffset;
+                    Log.e("TAG", "drawContent: "+Color.GRAY );
+                    mPaintText.setColor(0x70888888);
+                }
             }
 
             mPaintText.setTextSize(textSize);
@@ -1361,6 +1380,7 @@ public class PickerView extends View {
             }
         }
     }
+    boolean type = false;
 
     private TextUtils.TruncateAt getEllipsizeType() {
         switch (mTextEllipsize) {

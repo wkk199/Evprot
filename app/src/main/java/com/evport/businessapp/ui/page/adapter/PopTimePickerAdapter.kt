@@ -40,9 +40,14 @@ class PopTimePickerAdapter(var context: Context, var strategy: List<Strategy>) :
     override fun onBindViewHolder(holder: PlacePredictionViewHolder, position: Int) {
 
         holder.time.text = strategy[position].time
-        holder.tv_eleString.text = strategy[position].energy
-        holder.tv_serviceString.text = strategy[position].service
-        holder.tv_unit.text = strategy[position].park
+        holder.tv_eleString.text =   "$".plus(strategy[position].energy).plus(" per kWh")
+        holder.tv_serviceString.text = "$".plus(strategy[position].service).plus(" per kWh")
+        holder.tv_unit.text = "$".plus(strategy[position].park).plus(" per h")
+
+        if (holder.absoluteAdapterPosition == strategy.size-1){
+            holder.view_liner.visibility =View.GONE
+        }
+
 
     }
 
@@ -58,11 +63,11 @@ class PopTimePickerAdapter(var context: Context, var strategy: List<Strategy>) :
 
 
     class PlacePredictionViewHolder(itemView: View) : ViewHolder(itemView) {
-        val content: LinearLayout = itemView.findViewById(R.id.content)
         val time: TextView = itemView.findViewById(R.id.time)
         val tv_eleString: TextView = itemView.findViewById(R.id.tv_eleString)
         val tv_serviceString: TextView = itemView.findViewById(R.id.tv_serviceString)
         val tv_unit: TextView = itemView.findViewById(R.id.tv_unit)
+        val view_liner: View = itemView.findViewById(R.id.view_liner)
 
     }
 
